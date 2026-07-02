@@ -42,3 +42,5 @@ check_tables.*
 server_out.txt
 server_err.txt
 server.err
+render.yaml
+railway.json
