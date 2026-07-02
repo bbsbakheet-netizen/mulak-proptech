@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head><meta charset="UTF-8"><title>توليد أيقونات PWA</title>
+<style>
+  body{font-family:Arial;max-width:800px;margin:40px auto;padding:20px;direction:rtl;background:#0F172A;color:#E2E8F0}
+  h1{color:#1B4F8A}
+  .upload-box{border:2px dashed #334155;padding:40px;text-align:center;border-radius:12px;margin:20px 0;cursor:pointer}
+  .upload-box:hover{border-color:#1B4F8A}
+  #preview{max-width:200px;max-height:200px;margin:20px auto;display:none}
+  .sizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin:20px 0}
+  .size-card{background:#1E293B;border-radius:8px;padding:12px;text-align:center}
+  .size-card canvas{border-radius:8px;margin-bottom:8px}
+  .size-card a{display:inline-block;background:#1B4F8A;color:#fff;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:13px;margin-top:4px}
+  .size-card a:hover{background:#2563EB}
+  .btn{background:#1B4F8A;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;cursor:pointer}
+  .btn:hover{background:#2563EB}
+  input[type="file"]{display:none}
+</style>
+</head>
+<body>
+<h1>توليد أيقونات PWA</h1>
+<p>ارفع صورتك لتوليد جميع المقاسات المطلوبة لتطبيق مُلاك</p>
+<p style="font-size:12px;color:#94A3B8">ملاحظة: التطبيق يستخدم أيقونة SVG حالياً — استخدم هذه الصفحة فقط إذا كنت تريد استبدالها بأيقونتك الخاصة</p>
+<div class="upload-box" id="dropZone" onclick="document.getElementById('fileInput').click()">
+  <p style="font-size:40px;margin:0">📁</p>
+  <p>اضغط لرفع الصورة أو اسحبها وأفلتها هنا</p>
+  <input type="file" id="fileInput" accept="image/*">
+</div>
+<img id="preview">
+<div class="sizes" id="sizesContainer"></div>
+<button class="btn" onclick="downloadAll()" id="downloadBtn" style="display:none">📥 تحميل جميع الأيقونات</button>
+
+<script>
+const SIZES = [72, 96, 128, 144, 152, 192, 384, 512];
+let currentImage = null;
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const container = document.getElementById('sizesContainer');
+const downloadBtn = document.getElementById('downloadBtn');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = '#1B4F8A'; });
+dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = '#334155'; });
+dropZone.addEventListener('drop', e => { e.preventDefault(); handleFile(e.dataTransfer.files[0]); });
+fileInput.addEventListener('change', e => { if(e.target.files[0]) handleFile(e.target.files[0]); });
+
+function handleFile(file) {
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      currentImage = img;
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+      generateSizes(img);
+      downloadBtn.style.display = 'block';
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function generateSizes(img) {
+  container.innerHTML = '';
+  SIZES.forEach(size => {
+    const card = document.createElement('div');
+    card.className = 'size-card';
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, size, size);
+    card.appendChild(canvas);
+    card.innerHTML += `<div style="font-size:12px;color:#94A3B8;margin-bottom:4px">${size}x${size}</div>`;
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = `icon-${size}x${size}.png`;
+    link.textContent = '💾 حفظ';
+    card.appendChild(link);
+    container.appendChild(card);
+  });
+}
+
+function downloadAll() {
+  SIZES.forEach(size => {
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(currentImage, 0, 0, size, size);
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = `icon-${size}x${size}.png`;
+    link.click();
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B4F8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <g transform="translate(256,290) scale(1.1)">
+    <!-- Building body -->
+    <rect x="-120" y="-160" width="240" height="250" rx="8" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="3"/>
+    <!-- Windows row 1 -->
+    <rect x="-90" y="-130" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <rect x="-20" y="-130" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <rect x="50" y="-130" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <!-- Windows row 2 -->
+    <rect x="-90" y="-55" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <rect x="-20" y="-55" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <rect x="50" y="-55" width="50" height="55" rx="6" fill="#93C5FD" stroke="#60A5FA" stroke-width="2"/>
+    <!-- Door -->
+    <rect x="-25" y="20" width="55" height="70" rx="27" fill="#1B4F8A"/>
+    <circle cx="12" cy="58" r="4" fill="#FCD34D"/>
+    <!-- Roof -->
+    <polygon points="-130,-160 0,-210 130,-160" fill="#1B4F8A" stroke="#153E6D" stroke-width="3"/>
+    <!-- Sun/Moon decorative -->
+    <circle cx="60" cy="-200" r="18" fill="#FCD34D" opacity="0.8"/>
+  </g>
+  <!-- Brand text -->
+  <text x="256" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#E2E8F0">مُلاك</text>
+</svg>

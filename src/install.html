@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحميل تطبيق مُلاك</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="مُلاك">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+  <link rel="apple-touch-icon" href="/icons/icon.svg">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#0F172A,#1B4F8A);min-height:100vh;display:flex;align-items:center;justify-content:center;color:#E2E8F0;padding:20px}
+    .card{background:#1E293B;border-radius:20px;padding:40px 36px;max-width:440px;width:100%;text-align:center;box-shadow:0 25px 50px rgba(0,0,0,.4)}
+    .icon{width:90px;height:90px;margin:0 auto 16px}
+    .icon img{width:100%;height:100%;border-radius:20px}
+    h1{font-size:26px;margin-bottom:4px;color:#fff}
+    .sub{font-size:14px;color:#94A3B8;margin-bottom:24px}
+    .section{text-align:right;margin:16px 0;background:#0F172A;border-radius:12px;padding:16px 20px}
+    .section-title{font-size:13px;color:#94A3B8;margin-bottom:12px;font-weight:600}
+    .step{display:flex;align-items:center;gap:12px;padding:6px 0;font-size:13.5px;color:#E2E8F0}
+    .step .num{background:#1B4F8A;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+    .btn{display:block;width:100%;padding:14px;border-radius:12px;border:none;font-size:15px;font-weight:600;cursor:pointer;margin-top:10px;text-decoration:none;text-align:center;transition:.15s}
+    .btn-primary{background:#1B4F8A;color:#fff}
+    .btn-primary:hover{background:#2563EB}
+    .btn-success{background:#1A7A4A;color:#fff}
+    .btn-success:hover{background:#219D5E}
+    .btn-sec{background:transparent;color:#94A3B8;border:1px solid #334155}
+    .btn-sec:hover{color:#E2E8F0;border-color:#1B4F8A}
+    .btn:disabled{opacity:.5;cursor:default}
+    .note{font-size:11.5px;color:#64748B;margin-top:14px;line-height:1.7}
+    .badge{display:inline-block;background:#1A7A4A;color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;margin-bottom:12px}
+    .manual{display:none}
+    .manual.show{display:block}
+    .platform-tabs{display:flex;gap:6px;margin-bottom:12px}
+    .platform-tab{padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;background:#334155;color:#94A3B8;border:none}
+    .platform-tab.active{background:#1B4F8A;color:#fff}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon"><img src="/icons/icon.svg" alt="مُلاك"></div>
+    <h1>مُلاك</h1>
+    <p class="sub">نظام إدارة عقارية متكامل</p>
+
+    <div id="installSection">
+      <div class="badge">✅ متوفر للتثبيت</div>
+      <button class="btn btn-success" id="installBtn">📲 تثبيت التطبيق على الجهاز</button>
+      <p class="note">سيتم تثبيت التطبيق على جهازك لتتمكن من استخدامه في أي وقت بدون حاجة للمتصفح</p>
+    </div>
+
+    <div id="installedSection" style="display:none">
+      <div class="badge" style="background:#1B4F8A">✅ التطبيق مثبت على جهازك</div>
+      <a href="/" class="btn btn-primary">🚀 فتح التطبيق</a>
+    </div>
+
+    <div id="manualSection" style="display:none">
+      <div class="section">
+        <div class="section-title">📋 التثبيت اليدوي (إذا لم يظهر الزر أعلاه)</div>
+        <div class="platform-tabs">
+          <button class="platform-tab active" onclick="switchPlatform('chrome')">Chrome / Edge</button>
+          <button class="platform-tab" onclick="switchPlatform('safari')">Safari (iPhone)</button>
+          <button class="platform-tab" onclick="switchPlatform('samsung')">Samsung Internet</button>
+        </div>
+        <div id="chrome-steps" class="manual show">
+          <div class="step"><span class="num">1</span><span>اضغط على أيقونة القائمة <strong>☰</strong> في شريط العنوان</span></div>
+          <div class="step"><span class="num">2</span><span>اختر <strong>"تثبيت التطبيق"</strong> أو <strong>"Install app"</strong></span></div>
+          <div class="step"><span class="num">3</span><span>أو اذهب إلى <strong>القائمة ← مشاركة ← إضافة إلى الشاشة الرئيسية</strong></span></div>
+        </div>
+        <div id="safari-steps" class="manual">
+          <div class="step"><span class="num">1</span><span>اضغط على أيقونة <strong>المشاركة 📤</strong> في أسفل الشاشة</span></div>
+          <div class="step"><span class="num">2</span><span>اختر <strong>"إضافة إلى الشاشة الرئيسية"</strong> (Add to Home Screen)</span></div>
+          <div class="step"><span class="num">3</span><span>اضغط <strong>"إضافة"</strong> في أعلى اليمين</span></div>
+        </div>
+        <div id="samsung-steps" class="manual">
+          <div class="step"><span class="num">1</span><span>اضغط على أيقونة القائمة <strong>☰</strong> (ثلاثة خطوط)</span></div>
+          <div class="step"><span class="num">2</span><span>اختر <strong>"إضافة صفحة إلى"</strong> ← <strong>"الشاشة الرئيسية"</strong></span></div>
+          <div class="step"><span class="num">3</span><span>اضغط <strong>"إضافة"</strong></span></div>
+        </div>
+      </div>
+      <a href="/" class="btn btn-primary">🚀 فتح التطبيق في المتصفح</a>
+    </div>
+
+    <p class="note" style="margin-top:16px">
+      💡 بعد التثبيت، ستظهر أيقونة مُلاك على سطح المكتب أو شاشة الهاتف<br>
+      يمكنك فتح التطبيق مباشرة منها في أي وقت
+    </p>
+  </div>
+
+  <script>
+    // Detect if already running as installed PWA
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      document.getElementById('installSection').style.display = 'none';
+      document.getElementById('installedSection').style.display = 'block';
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      document.getElementById('installBtn').addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(result => {
+          if (result.outcome === 'accepted') {
+            document.getElementById('installSection').style.display = 'none';
+            document.getElementById('installedSection').style.display = 'block';
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+
+    // If no install prompt after 3 seconds, show manual instructions
+    setTimeout(() => {
+      if (!deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone) {
+        document.getElementById('installSection').style.display = 'none';
+        document.getElementById('manualSection').style.display = 'block';
+      }
+    }, 3000);
+
+    // Also try showing manual section after install button is clicked and fails
+    document.addEventListener('click', e => {
+      if (e.target.id === 'installBtn' && !deferredPrompt) {
+        document.getElementById('installSection').style.display = 'none';
+        document.getElementById('manualSection').style.display = 'block';
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      document.getElementById('installSection').style.display = 'none';
+      document.getElementById('installedSection').style.display = 'block';
+    });
+
+    function switchPlatform(platform) {
+      document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.manual').forEach(s => s.classList.remove('show'));
+      document.getElementById(platform + '-steps').classList.add('show');
+    }
+  </script>
+</body>
+</html>

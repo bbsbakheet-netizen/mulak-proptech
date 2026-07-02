@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary / analysis files
+analyze_*.js
+find_translations.js
+list_tools.js
+run_*.js
+run_*.ps1
+testsprite_*
+check_account.js
+check_tables.*
+.opencode-summary.md
+server_out.txt
+server_err.txt
+server.err

@@ -1,0 +1,24 @@
+{
+  "name": "مُلاك - إدارة عقارية",
+  "short_name": "مُلاك",
+  "description": "نظام إدارة عقارية متكامل مع الفوترة الإلكترونية والتقارير الضريبية",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0F172A",
+  "theme_color": "#1B4F8A",
+  "dir": "rtl",
+  "lang": "ar",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "72x72 96x96 128x128 144x144 152x152 192x192 256x256 384x384 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["business", "productivity", "utilities"],
+  "prefer_related_applications": false
+}

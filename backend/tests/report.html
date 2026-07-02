@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TestSprite Report</title><style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#1a1d23;color:#e2e8f0;padding:40px 20px}
+    .container{max-width:900px;margin:0 auto}h1{text-align:center;font-size:26px;margin-bottom:8px}.sub{text-align:center;color:#94a3b8;margin-bottom:30px;font-size:14px}
+    .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+    .sc{background:#252a34;border-radius:12px;padding:18px;text-align:center}.sc .n{font-size:30px;font-weight:700}.sc .l{font-size:13px;color:#94a3b8;margin-top:4px}
+    .sc.pass .n{color:#22c55e}.sc.fail .n{color:#ef4444}.sc.total .n{color:#3b82f6}.sc.time .n{color:#f59e0b;font-size:22px}
+    table{width:100%;border-collapse:collapse;background:#252a34;border-radius:12px;overflow:hidden}
+    th{background:#2d3340;padding:11px 14px;font-size:13px;color:#94a3b8;text-align:right;font-weight:600}
+    td{padding:11px 14px;font-size:13px;border-top:1px solid #2d3340}td.num{text-align:center}
+    tr.pass td:first-child{color:#22c55e}tr.fail td:first-child{color:#ef4444}tr.fail{background:rgba(239,68,68,.06)}
+    .ftr{text-align:center;margin-top:28px;color:#64748b;font-size:12px}
+  </style></head><body><div class="container">
+    <h1>🧪 TestSprite Report</h1>
+    <div class="sub">Mulak PropTech — ❌ توجد أخطاء</div>
+    <div class="summary">
+      <div class="sc pass"><div class="n">68</div><div class="l">ناجح</div></div>
+      <div class="sc fail"><div class="n">5</div><div class="l">فاشل</div></div>
+      <div class="sc total"><div class="n">73</div><div class="l">إجمالي</div></div>
+      <div class="sc time"><div class="n">0.3s</div><div class="l">الوقت</div></div>
+    </div>
+    <table><thead><tr><th style="width:40px"></th><th>النظام</th><th style="width:70px">نجاح</th><th style="width:70px">فشل</th><th style="width:70px">المجموع</th></tr></thead><tbody><tr class="pass"><td>✅</td><td>🔐 Auth</td><td class="num">1</td><td class="num">0</td><td class="num">1</td></tr>
+<tr class="pass"><td>✅</td><td>🏠 Properties</td><td class="num">5</td><td class="num">0</td><td class="num">5</td></tr>
+<tr class="fail"><td>❌</td><td>🚪 Units</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>👥 Customers</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="fail"><td>❌</td><td>📝 Contracts</td><td class="num">2</td><td class="num">1</td><td class="num">3</td></tr>
+<tr class="fail"><td>❌</td><td>🧾 Receipts</td><td class="num">2</td><td class="num">1</td><td class="num">3</td></tr>
+<tr class="fail"><td>❌</td><td>📄 Quotations</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>👑 Owners</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>🤝 Deals + Commissions</td><td class="num">7</td><td class="num">0</td><td class="num">7</td></tr>
+<tr class="pass"><td>✅</td><td>🔧 Maintenance</td><td class="num">5</td><td class="num">0</td><td class="num">5</td></tr>
+<tr class="pass"><td>✅</td><td>📢 Marketing</td><td class="num">3</td><td class="num">0</td><td class="num">3</td></tr>
+<tr class="pass"><td>✅</td><td>📡 ZATCA</td><td class="num">5</td><td class="num">0</td><td class="num">5</td></tr>
+<tr class="pass"><td>✅</td><td>🏛️ Ejar</td><td class="num">3</td><td class="num">0</td><td class="num">3</td></tr>
+<tr class="pass"><td>✅</td><td>🛡️ RBAC</td><td class="num">4</td><td class="num">0</td><td class="num">4</td></tr>
+<tr class="pass"><td>✅</td><td>🏢 Branches</td><td class="num">4</td><td class="num">0</td><td class="num">4</td></tr>
+<tr class="pass"><td>✅</td><td>🔔 Alerts</td><td class="num">3</td><td class="num">0</td><td class="num">3</td></tr>
+<tr class="pass"><td>✅</td><td>📊 BI</td><td class="num">4</td><td class="num">0</td><td class="num">4</td></tr>
+<tr class="pass"><td>✅</td><td>📰 Fal</td><td class="num">1</td><td class="num">0</td><td class="num">1</td></tr>
+<tr class="pass"><td>✅</td><td>📒 Accounting</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>👷 Employees</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>🏪 Vendors</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="fail"><td>❌</td><td>📋 Purchase Orders</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>📦 Inventory</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>🛠️ Work Orders</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+<tr class="pass"><td>✅</td><td>⚡ Utilities</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr></tbody></table>
+    <div class="ftr">TestSprite — 2026-06-27T23:03:19.490Z</div>
+  </div></body></html>
