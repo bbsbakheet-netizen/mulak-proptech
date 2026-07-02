@@ -1,0 +1,24 @@
+app = "mulak-proptech"
+primary_region = "ams"
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[build]
+  builder = "heroku/buildpacks:20"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = false
+  min_machines_running = 1
+  processes = ["app"]
+
+[env]
+  PORT = "3000"
+  NODE_VERSION = "20"
+  DB_PATH = "/data/mullak.db"
+
+[mounts]
+  source = "mullak_data"
+  destination = "/data"
