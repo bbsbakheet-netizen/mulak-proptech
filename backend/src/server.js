@@ -2,7 +2,6 @@ import { createApp } from './app.js';
 import { getDb } from './db/database.js';
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
 
 // Initialize database on startup
 getDb();
@@ -10,9 +9,8 @@ console.log('📦 Database initialized');
 
 const app = createApp();
 
-app.listen(PORT, HOST, () => {
-  const host = HOST === '0.0.0.0' ? 'localhost' : HOST;
-  const base = `http://${host}:${PORT}`;
+app.listen(PORT, '0.0.0.0', () => {
+  const base = `http://localhost:${PORT}`;
   console.log(`
 🚀 Mulak PropTech API Server
    URL:        ${base}/
