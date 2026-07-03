@@ -2211,6 +2211,9 @@ const T = {
     'stat.collectionRate':'نسبة التحصيل',
     'status.occupied':'مسكونة','status.vacant':'شاغرة','status.maintenance':'صيانة',
     'status.connected':'متصل','status.pending':'معلق',
+    'status.expiring':'ينتهي قريباً','status.inProgress':'جارٍ','status.open':'مفتوح','status.completed':'مكتمل',
+    'status.sent':'مُرسل','status.accepted':'مقبول','status.draft':'مسودة','status.rejected':'مرفوض','status.leave':'إجازة','status.reported':'مُبلَّغ',
+    'priority.low':'منخفضة','priority.medium':'متوسطة','priority.high':'عالية','priority.critical':'حرجة',
     'col.contractNo':'رقم العقد','col.unit':'الوحدة','col.renter':'المستأجر',
     'col.from':'من','col.to':'إلى','col.rent':'الإيجار/شهر','col.status':'الحالة','col.receiptNo':'رقم السند','col.date':'التاريخ',
     'col.amount':'المبلغ','col.vat':'الضريبة','col.total':'الإجمالي','col.method':'طريقة الدفع',
@@ -2287,6 +2290,7 @@ const T = {
     'badge.registerEjar':'تسجيل في إيجار','badge.updateEjar':'تحديث الحالة',
     'badge.submitFal':'إرسال إلى فال','badge.changeStage':'تغيير المرحلة',
     'owners.total':'إجمالي الملاك','owners.active':'نشط','owners.properties':'عقارات مرتبطة',
+    'owners.add':'إضافة مالك','owners.edit':'تعديل مالك',
     'owners.inactive':'غير نشط','owners.confirmDelete':'تأكيد حذف هذا المالك؟',
     'owners.noOwners':'لا يوجد ملاك','owners.ownerNameRequired':'الرجاء إدخال اسم المالك','owners.notFound':'المالك غير موجود',
     'ejar.registered':'مسجل في إيجار','ejar.notarized':'موثق','ejar.reviewing':'قيد المراجعة','ejar.unregistered':'غير مسجل',
@@ -2322,11 +2326,106 @@ const T = {
     'comm.type.sale':'بيع','comm.type.rental':'تأجير','comm.type.management':'إدارة','comm.type.referral':'إحالة',
     'zatca.production':'إنتاج','zatca.test':'اختبار','zatca.compliant':'✔ متوافق','zatca.nonCompliant':'⚠ غير متوافق',
     'zatca.env':'البيئة','zatca.compliance':'حالة التوافق','zatca.taxNo':'الرقم الضريبي',
+    'zatca.empty':'لا توجد فواتير مرسلة',
+    'zatca.pending':'قيد الانتظار','zatca.cleared':'مؤكدة','zatca.failed':'فاشلة',
+    'zatca.send':'إرسال','zatca.submitted':'تم الإرسال',
+    'zatca.status.pending':'قيد الانتظار','zatca.status.submitted':'قيد الإرسال',
+    'zatca.status.cleared':'تمت المصادقة','zatca.status.reported':'مبرمجة',
+    'zatca.status.rejected':'مرفوضة','zatca.status.failed':'فاشلة',
+    'zatca.type.standard':'قياسية','zatca.type.simplified':'مبسطة',
+    'zatca.type.debit':'دائن','zatca.type.credit':'مدين',
     'fal.submit':'إرسال إلى فال','fal.changeStage':'تغيير المرحلة',
     'util.syncResult':'تمت المزامنة','util.synced':'تمت مزامنة','util.newBills':'فاتورة جديدة',
     'util.alreadySynced':'جميع الفواتير محدثة مسبقاً','util.syncFailed':'فشلت المزامنة: ',
     'nav.ejar':'إيجار','nav.chartOfAccounts':'دليل الحسابات','nav.journal':'قيود اليومية','nav.trialBalance':'ميزان المراجعة','nav.financialReports':'القوائم المالية','nav.zatca':'الفوترة الإلكترونية','nav.accounting':'المحاسبة',
     'currency':'ر.س',
+
+    'bi.info':'إعلامية',
+    'bi.warning':'تحذيرية',
+    'bi.total':'المجموع',
+    'bi.contracts':'عقود',
+    'bi.services':'خدمات',
+    'bi.localAlerts':'تنبيهات (محلي)',
+    'bi.noActiveAlerts':'لا توجد تنبيهات نشطة ✓',
+    'bi.contractExpiring':'عقد {num} — {tenant} ينتهي خلال {d} يوم',
+    'bi.serviceExpiring':'عقد خدمة {co} ينتهي خلال {d} يوم',
+    'branches.confirmDelete':'تأكيد حذف الفرع؟',
+    'coa.confirmCreateDefault':'سيتم إنشاء دليل حسابات افتراضي. هل تريد المتابعة؟',
+    'coa.created':'تم إنشاء {n} حساب',
+    'contract.leaseAgreement':'عقد إيجار عقاري',
+    'contract.term':'مدة العقد',
+    'contract.annualRent':'الإيجار السنوي',
+    'contract.monthlyRent':'الإيجار الشهري',
+    'contract.vat':'ضريبة القيمة المضافة 15%',
+    'contract.total':'الإجمالي',
+    'contract.deposit':'التأمين',
+    'contract.nafath':'التحقق عبر النفاذ',
+    'contract.verified':'تم التحقق',
+    'contract.pending':'في الانتظار',
+    'contract.autoReceipts':'سيتم إصدار سندات قبض تلقائياً لكل الدفعات وربطها بهيئة الزكاة والدخل',
+    'contract.landlordSig':'توقيع المؤجر: ______________',
+    'contract.tenantSig':'توقيع المستأجر: ______________',
+    'contract.verifyNafathFirst':'يرجى التحقق من هوية مالك العقار عبر النفاذ الوطني أولاً',
+    'contract.enterTenant':'يرجى إدخال اسم المستأجر',
+    'contract.created':'✓ تم إنشاء العقد {num} وتوليد {freq} سندات قبض تلقائياً',
+    'contract.noReceipts':'لا توجد سندات قبض لهذا العقد بعد',
+    'ejar.confirmSubmit':'تأكيد إرسال العقد إلى منصة إيجار؟',
+    'ejar.statusPrefix':'حالة العقد في إيجار: ',
+    'ejar.unknown':'غير معروفة',
+    'ejar.submitted':'تم الإرسال',
+    'fal.edit':'تعديل عقد تسويق',
+    'fal.new':'عقد تسويق جديد',
+    'fal.confirmActivate':'تفعيل عقد التسويق؟',
+    'fal.confirmComplete':'إنهاء عقد التسويق؟',
+    'fal.cancelReason':'سبب الإلغاء:',
+    'fal.confirmSubmit':'إرسال العقد إلى منصة فال؟',
+    'fal.submitted':'تم الإرسال',
+    'journal.confirmPost':'ترحيل القيد؟ لا يمكن التراجع عن هذه العملية.',
+    'listing.selectAgent':'اختر المسوق',
+    'listing.enterClient':'الرجاء إدخال اسم العميل',
+    'nafath.enterNID':'يرجى إدخال رقم الهوية الوطنية',
+    'nafath.enterPhone':'يرجى إدخال رقم الجوال المسجل في نفاذ',
+    'nafath.sending':'جاري الإرسال...',
+    'nafath.codeSent':'تم إرسال رمز التحقق إلى جوالك المسجل في نفاذ',
+    'nafath.resend':'إعادة إرسال',
+    'nafath.sendFailed':'فشل الإرسال',
+    'nafath.enterOtp':'أدخل رمز التحقق المرسل إلى جوالك:',
+    'nafath.verified':'تم التحقق من هوية مالك العقار عبر النفاذ الوطني',
+    'nafath.invalidCode':'رمز التحقق غير صحيح',
+    'payroll.calculated':'✓ تم احتساب مسير رواتب يونيو 2026',
+    'payroll.noActive':'لا يوجد موظفون نشطون لتصدير الملف',
+    'prop.select':'اختر العقار',
+    'prop.autoGenerateUnits':'سيتم توليد {total} وحدة تلقائياً موزعة على {floors} طابق ({perFloor} وحدة/طابق)',
+    'prop.addedWithUnits':'تم إضافة العقار وتوليد {total} وحدة تلقائياً',
+    'quote.itemDesc':'وصف البند',
+    'quote.qty':'الكمية',
+    'quote.unitPrice':'سعر الوحدة',
+    'quote.enterClient':'يرجى إدخال اسم العميل',
+    'quote.saved':'✓ تم حفظ عرض السعر بنجاح',
+    'reports.totalUnits':'إجمالي الوحدات',
+    'reports.expectedAnnual':'الإيرادات السنوية المتوقعة (ر.س)',
+    'reports.avgRent':'متوسط الإيجار (ر.س/شهر)',
+    'reports.revenueSAR':'الإيرادات (ر.س)',
+    'roles.confirmDelete':'تأكيد حذف الدور؟',
+    'roles.new':'دور جديد',
+    'roles.edit':'تعديل الدور',
+    'roles.enterName':'الرجاء إدخال اسم الدور',
+    'roles.delete':'حذف الدور',
+    'settings.enterOrgName':'الرجاء إدخال اسم المنشأة',
+    'settings.enterVat':'الرجاء إدخال الرقم الضريبي',
+    'settings.saved':'تم حفظ الإعدادات بنجاح',
+    'settings.connectionTest':'تم اختبار الاتصال بنجاح (محاكاة)',
+    'branches.edit':'تعديل الفرع',
+    'branches.enterName':'الرجاء إدخال اسم الفرع',
+    'branches.delete':'حذف الفرع',
+    'listing.new':'إضافة إعلان',
+    'wo.type.corrective':'تصحيحي',
+    'wo.type.preventive':'وقائي',
+    'wo.type.emergency':'طارئ',
+    'cust.total':'إجمالي العملاء',
+    'cust.individuals':'أفراد',
+    'cust.companies':'مؤسسات',
+    'cust.active':'نشط',
     'pl.revenue':'الإيرادات','pl.profit':'ربح','pl.rentIncome':'إيرادات إيجار','pl.total':'الإجمالي',
     'pl.noIncome':'لا توجد إيرادات هذا الشهر','pl.noExpenses':'لا توجد مصروفات هذا الشهر',
     'pl.utilityBreakdown':'تفصيل فواتير الخدمات','pl.purchaseBreakdown':'تفصيل المشتريات حسب التصنيف',
@@ -2342,6 +2441,197 @@ const T = {
     'receipt.approvedLog':'تم اعتماد السند: ','receipt.approveFailed':'فشل اعتماد السند',
     'receipt.qrLog':'تم إصدار QR للسند: ','receipt.qrFailed':'فشل إصدار QR',
     'badge.print':'طباعة',
+    'tbl.emptyQuotes':'لا توجد عروض أسعار',
+    'tbl.emptyStaff':'لا يوجد موظفون',
+    'tbl.emptyUtilities':'لا توجد فواتير',
+    'tbl.emptyVendors':'لا يوجد موردون',
+    'tbl.emptyPurchases':'لا توجد مشتريات مسجلة. سجل أول فاتورة مشتريات ضريبية',
+    'tbl.emptyPurchaseOrders':'لا توجد أوامر شراء',
+    'tbl.emptyInventory':'لا توجد أصناف مخزون',
+    'tbl.emptyServices':'لا توجد عقود خدمات',
+    'tbl.emptyWorkOrders':'لا توجد أوامر عمل',
+    'tbl.emptyQuotes':'No quotations yet',
+    'util.loading':'جاري التحميل...',
+    'util.error':'خطأ في تحميل الفواتير',
+    'util.types.electricity':'كهرباء',
+    'util.types.water':'ماء',
+    'util.types.gas':'غاز',
+    'util.types.telecom':'اتصالات',
+    'util.types.internet':'انترنت',
+    'util.stats.label':'{count} فاتورة {type}',
+    'util.paid':'مدفوع: {amount}',
+    'vendor.status.active':'نشط',
+    'vendor.status.inactive':'غير نشط',
+    'vendor.error':'خطأ في تحميل الموردين',
+    'purchases.loading':'جاري التحميل...',
+    'purchases.empty':'لا توجد مشتريات مسجلة. سجل أول فاتورة مشتريات ضريبية',
+    'purchases.error':'خطأ في تحميل المشتريات',
+    'purchases.stats.total':'إجمالي المشتريات (شاملة الضريبة)',
+    'purchases.stats.vat':'ضريبة مدخلة',
+    'purchases.stats.count':'فواتير المشتريات',
+    'purchases.col.invoiceNo':'رقم الفاتورة',
+    'purchases.col.supplier':'المورد',
+    'purchases.col.taxNo':'الرقم الضريبي',
+    'purchases.col.date':'التاريخ',
+    'purchases.col.subtotal':'المبلغ',
+    'purchases.col.vat':'الضريبة',
+    'purchases.col.total':'الإجمالي',
+    'purchases.col.status':'الحالة',
+    'purchases.status.received':'مستلم',
+    'purchases.status.confirmed':'مؤكد',
+    'purchases.status.other':'أخرى',
+    'purchases.calc.vat':'حساب الضريبة',
+    'purchases.vendor.select':'اختر مورد',
+    'purchases.vendor.name':'اسم المورد',
+    'purchases.vendor.tax':'الرقم الضريبي',
+    'purchases.invoiceNo':'رقم الفاتورة',
+    'purchases.invoiceNo.required':'يرجى إدخال رقم الفاتورة الضريبية',
+    'purchases.amount.required':'يرجى إدخال المبلغ',
+    'purchases.vendor.required':'يرجى إدخال اسم المورد أو اختياره',
+    'purchases.saved':'تم تسجيل فاتورة المشتريات',
+    'purchases.saveFailed':'فشل تسجيل الفاتورة: ',
+    'po.loading':'جاري التحميل...',
+    'po.empty':'لا توجد أوامر شراء',
+    'po.error':'خطأ في تحميل أوامر الشراء',
+    'po.col.no':'رقم الأمر',
+    'po.col.vendor':'المورد',
+    'po.col.date':'التاريخ',
+    'po.col.total':'الإجمالي',
+    'po.col.status':'الحالة',
+    'po.col.actions':'إجراءات',
+    'po.btn.receive':'استلام',
+    'po.btn.view':'عرض التفاصيل',
+    'po.receive.prompt':'كمية الاستلام:',
+    'po.receive.done':'تم الاستلام',
+    'po.receive.failed':'فشل الاستلام',
+    'inv.loading':'جاري التحميل...',
+    'inv.empty':'لا توجد أصناف مخزون',
+    'inv.error':'خطأ في تحميل المخزون',
+    'inv.col.code':'كود الصنف',
+    'inv.col.name':'الاسم',
+    'inv.col.category':'التصنيف',
+    'inv.cat.general':'عام',
+    'inv.col.unit':'الوحدة',
+    'inv.col.current':'المخزون الحالي',
+    'inv.col.min':'الحد الأدنى',
+    'inv.col.status':'الحالة',
+    'inv.status.low':'مخزون منخفض',
+    'inv.status.good':'جيد',
+    'inv.status.critical':'حرج',
+    'dash.revenue':'الإيرادات الشهرية',
+    'dash.occupancy':'معدلات الإشغال',
+    'dash.alerts':'تنبيهات عاجلة',
+    'dash.activity':'أنشطة حديثة',
+    'dash.noAlerts':'لا توجد تنبيهات عاجلة',
+    'dash.noActivity':'لا توجد أنشطة حديثة',
+    'dash.months':['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],
+    'dash.revenueLabel':'الإيرادات ({month})',
+    'dash.of':'من',
+    'dash.available':'متاحة',
+    'dash.in30days':'خلال 30 يوم',
+    'dash.overdue':'متأخرات (ر.س)',
+    'dash.alert.expiring':'عقد الوحدة {unit} ينتهي خلال {days} يوماً ({name})',
+    'prop.loading':'جاري التحميل...',
+    'prop.empty':'لا توجد عقارات حالياً. أضف عقارك الأول',
+    'prop.type.residential':'سكني',
+    'prop.type.hotel':'فندقي',
+    'prop.type.commercial':'تجاري',
+    'prop.type.mixed':'مختلط',
+    'prop.delete.confirm':'حذف العقار',
+    'prop.occupancy':'الإشغال',
+    'prop.floors':'طوابق',
+    'prop.units':'وحدة',
+    'prop.leased':'مؤجرة',
+    'prop.vacant':'شاغرة',
+    'unit.loading':'جاري التحميل...',
+    'prop.all':'كل العقارات',
+    'unit.select':'اختر',
+    'unit.selectUnit':'اختر الوحدة',
+    'unit.floor':'طابق',
+    'unit.type.apartment':'شقة',
+    'unit.type.hotel_room':'غرفة فندقية',
+    'unit.type.office':'مكتب',
+    'unit.type.suite':'جناح',
+    'unit.type.retail':'تجاري',
+    'unit.type.warehouse':'مستودع',
+    'unit.type.villa':'فيلا',
+    'unit.type.land':'أرض',
+    'unit.type.commercial':'تجاري',
+    'unit.type.studio':'استوديو',
+    'unit.type.other':'أخرى',
+    'unit.empty':'لا توجد وحدات تطابق المعايير',
+    'unit.unit':'الوحدة',
+    'unit.property':'العقار',
+    'unit.status':'الحالة',
+    'unit.tenant':'الساكن',
+    'unit.rent':'الإيجار',
+    'quote.currency':'ر.س',
+    'quote.btn.accept':'قبول',
+    'quote.accepted':'تم قبول العرض {num} وتحويله لعقد إيجار',
+    'payment.currency':'ر.س',
+    'payment.empty.approved':'لا توجد مدفوعات بعد',
+    'payment.empty.overdue':'لا توجد متأخرات',
+    'staff.loading':'جاري التحميل...',
+    'staff.empty':'لا يوجد موظفون',
+    'staff.col.avatar':'',
+    'staff.col.name':'الاسم',
+    'staff.col.role':'المنصب',
+    'staff.col.property':'العقار',
+    'staff.col.status':'الحالة',
+    'staff.all':'كل العقارات',
+    'payroll.loading':'جاري التحميل...',
+    'payroll.empty':'لا يوجد رواتب',
+    'payroll.col.name':'الموظف',
+    'payroll.col.basic':'الأساسي',
+    'payroll.col.allowances':'البدلات',
+    'payroll.col.gosi':'التأمينات',
+    'payroll.col.net':'الصافي',
+    'payroll.col.iban':'IBAN',
+    'payroll.col.status':'الحالة',
+    'payroll.status.pending':'في الانتظار',
+    'payroll.total':'إجمالي الصرف: {amount} ر.س',
+    'services.loading':'جاري التحميل...',
+    'services.empty':'لا توجد عقود خدمات',
+    'services.col.company':'الشركة',
+    'services.col.type':'النوع',
+    'services.col.properties':'العقارات',
+    'services.col.start':'البداية',
+    'services.col.end':'النهاية',
+    'services.col.value':'القيمة',
+    'services.col.status':'الحالة',
+    'services.col.contact':'التواصل',
+    'wo.loading':'جاري التحميل...',
+    'wo.empty':'لا توجد أوامر عمل',
+    'wo.col.no':'الرقم',
+    'wo.col.title':'العنوان',
+    'wo.col.property':'العقار',
+    'wo.col.type':'النوع',
+    'wo.col.priority':'الأولوية',
+    'wo.col.date':'التاريخ',
+    'wo.col.status':'الحالة',
+    'wo.type.corrective':'تصحيحي',
+    'wo.type.preventive':'وقائي',
+    'wo.type.emergency':'طارئ',
+    'fal.loading':'جاري التحميل...',
+    'fal.empty':'لا توجد عقود تسويق بعد',
+    'fal.col.contractNo':'رقم العقد',
+    'fal.col.owner':'المالك',
+    'fal.col.broker':'الوسيط',
+    'fal.col.property':'العقار',
+    'fal.col.status':'الحالة',
+    'fal.col.falStatus':'حالة فال',
+    'fal.col.start':'البداية',
+    'fal.col.end':'النهاية',
+    'fal.col.commission':'العمولة',
+    'fal.col.actions':'إجراءات',
+    'fal.btn.edit':'تعديل',
+    'fal.btn.submit':'إرسال إلى فال',
+    'fal.btn.activate':'تفعيل',
+    'fal.btn.complete':'إكمال',
+    'fal.btn.cancel':'إلغاء',
+    'fal.modal.new':'عقد تسويق جديد',
+    'fal.modal.edit':'تعديل عقد تسويق',
+    'fal.select.unit':'اختر الوحدة (اختياري)',
   },
   en: {
     'nav.main':'Main','nav.dashboard':'Dashboard','nav.customers':'Customers','nav.properties':'Properties',
@@ -2407,6 +2697,9 @@ const T = {
     'stat.collectionRate':'Collection Rate',
     'status.occupied':'Occupied','status.vacant':'Vacant','status.maintenance':'Maintenance',
     'status.connected':'Connected','status.pending':'Pending',
+    'status.expiring':'Expiring','status.inProgress':'In Progress','status.open':'Open','status.completed':'Completed',
+    'status.sent':'Sent','status.accepted':'Accepted','status.draft':'Draft','status.rejected':'Rejected','status.leave':'On Leave','status.reported':'Reported',
+    'priority.low':'Low','priority.medium':'Medium','priority.high':'High','priority.critical':'Critical',
     'col.contractNo':'Contract No.','col.unit':'Unit','col.renter':'Renter',
     'col.from':'From','col.to':'To','col.rent':'Rent/Month','col.status':'Status','col.receiptNo':'Receipt No.','col.date':'Date',
     'col.amount':'Amount','col.vat':'VAT','col.total':'Total','col.method':'Method',
@@ -2476,6 +2769,7 @@ const T = {
     'badge.registerEjar':'Register in Ejar','badge.updateEjar':'Update Status',
     'badge.submitFal':'Submit to Fal','badge.changeStage':'Change Stage',
     'owners.total':'Total Owners','owners.active':'Active','owners.properties':'Linked Properties',
+    'owners.add':'Add Owner','owners.edit':'Edit Owner',
     'owners.inactive':'Inactive','owners.confirmDelete':'Confirm delete this owner?',
     'owners.noOwners':'No owners found','owners.ownerNameRequired':'Please enter owner name','owners.notFound':'Owner not found',
     'ejar.registered':'Registered in Ejar','ejar.notarized':'Notarized','ejar.reviewing':'Under Review','ejar.unregistered':'Unregistered',
@@ -2511,11 +2805,106 @@ const T = {
     'comm.type.sale':'Sale','comm.type.rental':'Rental','comm.type.management':'Management','comm.type.referral':'Referral',
     'zatca.production':'Production','zatca.test':'Test','zatca.compliant':'✔ Compliant','zatca.nonCompliant':'⚠ Non-Compliant',
     'zatca.env':'Environment','zatca.compliance':'Compliance Status','zatca.taxNo':'Tax Number',
+    'zatca.empty':'No invoices sent',
+    'zatca.pending':'Pending','zatca.cleared':'Cleared','zatca.failed':'Failed',
+    'zatca.send':'Send','zatca.submitted':'Submitted',
+    'zatca.status.pending':'Pending','zatca.status.submitted':'Submitting',
+    'zatca.status.cleared':'Cleared','zatca.status.reported':'Reported',
+    'zatca.status.rejected':'Rejected','zatca.status.failed':'Failed',
+    'zatca.type.standard':'Standard','zatca.type.simplified':'Simplified',
+    'zatca.type.debit':'Debit','zatca.type.credit':'Credit',
     'fal.submit':'Submit to Fal','fal.changeStage':'Change Stage',
     'util.syncResult':'Synced','util.synced':'Synced','util.newBills':'new bills',
     'util.alreadySynced':'All bills are already up to date','util.syncFailed':'Sync failed: ',
     'nav.ejar':'Ejar','nav.chartOfAccounts':'Chart of Accounts','nav.journal':'Journal','nav.trialBalance':'Trial Balance','nav.financialReports':'Financial Reports','nav.zatca':'E-Invoicing','nav.accounting':'Accounting',
     'currency':'SAR',
+
+    'bi.info':'Info',
+    'bi.warning':'Warning',
+    'bi.total':'Total',
+    'bi.contracts':'Contracts',
+    'bi.services':'Services',
+    'bi.localAlerts':'Alerts (local)',
+    'bi.noActiveAlerts':'No active alerts ✓',
+    'bi.contractExpiring':'Contract {num} — {tenant} expiring in {d} days',
+    'bi.serviceExpiring':'Service contract {co} expiring in {d} days',
+    'branches.confirmDelete':'Confirm delete branch?',
+    'coa.confirmCreateDefault':'Create default chart of accounts?',
+    'coa.created':'{n} accounts created',
+    'contract.leaseAgreement':'Lease Agreement',
+    'contract.term':'Term',
+    'contract.annualRent':'Annual Rent',
+    'contract.monthlyRent':'Monthly Rent',
+    'contract.vat':'VAT 15%',
+    'contract.total':'Total',
+    'contract.deposit':'Deposit',
+    'contract.nafath':'Nafath',
+    'contract.verified':'Verified',
+    'contract.pending':'Pending',
+    'contract.autoReceipts':'Receipts will be auto-generated for all installments and linked to ZATCA',
+    'contract.landlordSig':'Landlord Signature: ______________',
+    'contract.tenantSig':'Tenant Signature: ______________',
+    'contract.verifyNafathFirst':'Please verify the property owner identity via Nafath first',
+    'contract.enterTenant':'Please enter tenant name',
+    'contract.created':'✓ Contract {num} created with {freq} auto-generated receipts',
+    'contract.noReceipts':'No receipts found for this contract',
+    'ejar.confirmSubmit':'Submit contract to Ejar?',
+    'ejar.statusPrefix':'Ejar status: ',
+    'ejar.unknown':'Unknown',
+    'ejar.submitted':'Contract submitted to Ejar',
+    'fal.edit':'Edit Marketing Contract',
+    'fal.new':'New Marketing Contract',
+    'fal.confirmActivate':'Activate marketing contract?',
+    'fal.confirmComplete':'Complete marketing contract?',
+    'fal.cancelReason':'Cancellation reason:',
+    'fal.confirmSubmit':'Submit contract to Fal platform?',
+    'fal.submitted':'Submitted',
+    'journal.confirmPost':'Post entry? This cannot be undone.',
+    'listing.selectAgent':'Select Agent',
+    'listing.enterClient':'Please enter client name',
+    'nafath.enterNID':'Please enter your national ID',
+    'nafath.enterPhone':'Please enter your phone registered with Nafath',
+    'nafath.sending':'Sending...',
+    'nafath.codeSent':'Verification code sent to your phone via Nafath',
+    'nafath.resend':'Resend',
+    'nafath.sendFailed':'Send failed',
+    'nafath.enterOtp':'Enter the verification code sent to your phone:',
+    'nafath.verified':'Property owner identity verified via Nafath',
+    'nafath.invalidCode':'Invalid verification code',
+    'payroll.calculated':'✓ June 2026 payroll calculated',
+    'payroll.noActive':'No active employees to export',
+    'prop.select':'Select Property',
+    'prop.autoGenerateUnits':'Will auto-generate {total} units across {floors} floors ({perFloor} units/floor)',
+    'prop.addedWithUnits':'Property added with {total} auto-generated units',
+    'quote.itemDesc':'Item description',
+    'quote.qty':'Quantity',
+    'quote.unitPrice':'Unit price',
+    'quote.enterClient':'Please enter client name',
+    'quote.saved':'✓ Quotation saved successfully',
+    'reports.totalUnits':'Total Units',
+    'reports.expectedAnnual':'Expected Annual Revenue (SAR)',
+    'reports.avgRent':'Avg Rent (SAR/mo)',
+    'reports.revenueSAR':'Revenue (SAR)',
+    'roles.confirmDelete':'Delete role?',
+    'roles.new':'New Role',
+    'roles.edit':'Edit Role',
+    'roles.enterName':'Please enter role name',
+    'roles.delete':'Delete role',
+    'settings.enterOrgName':'Please enter organization name',
+    'settings.enterVat':'Please enter VAT number',
+    'settings.saved':'Settings saved successfully',
+    'settings.connectionTest':'Connection test successful (simulated)',
+    'branches.edit':'Edit Branch',
+    'branches.enterName':'Please enter branch name',
+    'branches.delete':'Delete branch',
+    'listing.new':'New Listing',
+    'wo.type.corrective':'Corrective',
+    'wo.type.preventive':'Preventive',
+    'wo.type.emergency':'Emergency',
+    'cust.total':'Total Customers',
+    'cust.individuals':'Individuals',
+    'cust.companies':'Companies',
+    'cust.active':'Active',
     'pl.revenue':'Revenue','pl.profit':'Profit','pl.rentIncome':'Rental Income','pl.total':'Total',
     'pl.noIncome':'No income this month','pl.noExpenses':'No expenses this month',
     'pl.utilityBreakdown':'Utility Bills Breakdown','pl.purchaseBreakdown':'Purchase by Category',
@@ -2531,6 +2920,194 @@ const T = {
     'receipt.approvedLog':'Receipt approved: ','receipt.approveFailed':'Approve failed',
     'receipt.qrLog':'QR issued for receipt: ','receipt.qrFailed':'QR generation failed',
     'badge.print':'Print',
+    'tbl.emptyUtilities':'No utility bills',
+    'tbl.emptyVendors':'No vendors found',
+    'tbl.emptyPurchases':'No purchases recorded. Record your first tax purchase',
+    'tbl.emptyPurchaseOrders':'No purchase orders',
+    'tbl.emptyInventory':'No inventory items',
+    'tbl.emptyServices':'No service contracts',
+    'tbl.emptyWorkOrders':'No work orders',
+    'util.loading':'Loading...',
+    'util.error':'Error loading bills',
+    'util.types.electricity':'Electricity',
+    'util.types.water':'Water',
+    'util.types.gas':'Gas',
+    'util.types.telecom':'Telecom',
+    'util.types.internet':'Internet',
+    'util.stats.label':'{count} {type} bills',
+    'util.paid':'Paid: {amount}',
+    'vendor.status.active':'Active',
+    'vendor.status.inactive':'Inactive',
+    'vendor.error':'Error loading vendors',
+    'purchases.loading':'Loading...',
+    'purchases.empty':'No purchases recorded. Record your first tax purchase',
+    'purchases.error':'Error loading purchases',
+    'purchases.stats.total':'Total Purchases (incl. tax)',
+    'purchases.stats.vat':'Input VAT',
+    'purchases.stats.count':'Purchase Invoices',
+    'purchases.col.invoiceNo':'Invoice No.',
+    'purchases.col.supplier':'Supplier',
+    'purchases.col.taxNo':'Tax No.',
+    'purchases.col.date':'Date',
+    'purchases.col.subtotal':'Amount',
+    'purchases.col.vat':'VAT',
+    'purchases.col.total':'Total',
+    'purchases.col.status':'Status',
+    'purchases.status.received':'Received',
+    'purchases.status.confirmed':'Confirmed',
+    'purchases.status.other':'Other',
+    'purchases.calc.vat':'Calculate VAT',
+    'purchases.vendor.select':'Select Vendor',
+    'purchases.vendor.name':'Supplier Name',
+    'purchases.vendor.tax':'Tax Number',
+    'purchases.invoiceNo':'Invoice No.',
+    'purchases.invoiceNo.required':'Please enter tax invoice number',
+    'purchases.amount.required':'Please enter amount',
+    'purchases.vendor.required':'Please enter supplier name or select one',
+    'purchases.saved':'Purchase invoice saved',
+    'purchases.saveFailed':'Failed to save invoice: ',
+    'po.loading':'Loading...',
+    'po.empty':'No purchase orders',
+    'po.error':'Error loading purchase orders',
+    'po.col.no':'PO No.',
+    'po.col.vendor':'Vendor',
+    'po.col.date':'Date',
+    'po.col.total':'Total',
+    'po.col.status':'Status',
+    'po.col.actions':'Actions',
+    'po.btn.receive':'Receive',
+    'po.btn.view':'View Details',
+    'po.receive.prompt':'Receive Quantity:',
+    'po.receive.done':'Received',
+    'po.receive.failed':'Receive failed',
+    'inv.loading':'Loading...',
+    'inv.empty':'No inventory items',
+    'inv.error':'Error loading inventory',
+    'inv.col.code':'Item Code',
+    'inv.col.name':'Name',
+    'inv.col.category':'Category',
+    'inv.cat.general':'General',
+    'inv.col.unit':'Unit',
+    'inv.col.current':'Current Stock',
+    'inv.col.min':'Min Stock',
+    'inv.col.status':'Status',
+    'inv.status.low':'Low Stock',
+    'inv.status.good':'Good',
+    'inv.status.critical':'Critical',
+    'dash.revenue':'Monthly Revenue',
+    'dash.occupancy':'Occupancy Rates',
+    'dash.alerts':'Urgent Alerts',
+    'dash.activity':'Recent Activity',
+    'dash.noAlerts':'No urgent alerts',
+    'dash.noActivity':'No recent activity',
+    'dash.months':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    'dash.revenueLabel':'Revenue ({month})',
+    'dash.of':'of',
+    'dash.available':'Available',
+    'dash.in30days':'in 30 days',
+    'dash.overdue':'Overdue (SAR)',
+    'dash.alert.expiring':'Unit {unit} contract expires in {days} days ({name})',
+    'prop.loading':'Loading...',
+    'prop.empty':'No properties yet. Add your first property',
+    'prop.type.residential':'Residential',
+    'prop.type.hotel':'Hotel',
+    'prop.type.commercial':'Commercial',
+    'prop.type.mixed':'Mixed',
+    'prop.delete.confirm':'Delete property',
+    'prop.occupancy':'Occupancy',
+    'prop.floors':'Floors',
+    'prop.units':'Units',
+    'prop.leased':'Leased',
+    'prop.vacant':'Vacant',
+    'unit.loading':'Loading...',
+    'prop.all':'All Properties',
+    'unit.select':'Select',
+    'unit.selectUnit':'Select Unit',
+    'unit.floor':'Floor',
+    'unit.type.apartment':'Apartment',
+    'unit.type.hotel_room':'Hotel Room',
+    'unit.type.office':'Office',
+    'unit.type.suite':'Suite',
+    'unit.type.retail':'Retail',
+    'unit.type.warehouse':'Warehouse',
+    'unit.type.villa':'Villa',
+    'unit.type.land':'Land',
+    'unit.type.commercial':'Commercial',
+    'unit.type.studio':'Studio',
+    'unit.type.other':'Other',
+    'unit.empty':'No units match the filter',
+    'unit.unit':'Unit',
+    'unit.property':'Property',
+    'unit.status':'Status',
+    'unit.tenant':'Tenant',
+    'unit.rent':'Rent',
+    'quote.currency':'SAR',
+    'quote.btn.accept':'Accept',
+    'quote.accepted':'Quote {num} accepted and converted to contract',
+    'payment.currency':'SAR',
+    'payment.empty.approved':'No payments yet',
+    'payment.empty.overdue':'No overdue payments',
+    'staff.loading':'Loading...',
+    'staff.empty':'No employees',
+    'staff.col.avatar':'',
+    'staff.col.name':'Name',
+    'staff.col.role':'Role',
+    'staff.col.property':'Property',
+    'staff.col.status':'Status',
+    'staff.all':'All Properties',
+    'payroll.loading':'Loading...',
+    'payroll.empty':'No payroll',
+    'payroll.col.name':'Employee',
+    'payroll.col.basic':'Basic',
+    'payroll.col.allowances':'Allowances',
+    'payroll.col.gosi':'GOSI',
+    'payroll.col.net':'Net',
+    'payroll.col.iban':'IBAN',
+    'payroll.col.status':'Status',
+    'payroll.status.pending':'Pending',
+    'payroll.total':'Total Net: {amount} SAR',
+    'services.loading':'Loading...',
+    'services.empty':'No service contracts',
+    'services.col.company':'Company',
+    'services.col.type':'Type',
+    'services.col.properties':'Properties',
+    'services.col.start':'Start',
+    'services.col.end':'End',
+    'services.col.value':'Value',
+    'services.col.status':'Status',
+    'services.col.contact':'Contact',
+    'wo.loading':'Loading...',
+    'wo.empty':'No work orders',
+    'wo.col.no':'No.',
+    'wo.col.title':'Title',
+    'wo.col.property':'Property',
+    'wo.col.type':'Type',
+    'wo.col.priority':'Priority',
+    'wo.col.date':'Date',
+    'wo.col.status':'Status',
+    'wo.type.corrective':'Corrective',
+    'wo.type.preventive':'Preventive',
+    'wo.type.emergency':'Emergency',
+    'fal.loading':'Loading...',
+    'fal.empty':'No marketing contracts yet',
+    'fal.col.contractNo':'Contract No.',
+    'fal.col.owner':'Owner',
+    'fal.col.broker':'Broker',
+    'fal.col.property':'Property',
+    'fal.col.status':'Status',
+    'fal.col.falStatus':'Fal Status',
+    'fal.col.start':'Start',
+    'fal.col.end':'End',
+    'fal.col.commission':'Commission',
+    'fal.col.actions':'Actions',
+    'fal.btn.edit':'Edit',
+    'fal.btn.submit':'Submit to Fal',
+    'fal.btn.activate':'Activate',
+    'fal.btn.complete':'Complete',
+    'fal.btn.cancel':'Cancel',
+    'fal.modal.new':'New Marketing Contract',
+    'fal.modal.edit':'Edit Marketing Contract',
+    'fal.select.unit':'Select Unit (optional)',
   }
 };
 
@@ -2560,7 +3137,7 @@ let apiLog = [];
 // ═══════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════
-const t = k => (T[lang][k] || T.ar[k] || k);
+const t = (k, p) => { let s = T[lang][k] || T.ar[k] || k; if(p) for(const [key,val] of Object.entries(p)) s = s.replace(`{${key}}`,val); return s; };
 
 function getProp(id){ return getProps().find(p=>p.id===id)||{nameAr:'—',nameEn:'—'}; }
 function getUnit(id){ return getUnits().find(u=>u.id===id)||{num:'—'}; }
@@ -2583,22 +3160,22 @@ function statusBadge(s){
            expiring:'b-dan','in_progress':'b-inf',open:'b-gray',completed:'b-suc',
            sent:'b-inf',accepted:'b-suc',draft:'b-gray',rejected:'b-dan',
            leave:'b-war',reported:'b-suc',pending:'b-gray',connected:'b-suc'};
-  const lbl={active:lang==='ar'?'نشط':'Active',occupied:t('status.occupied'),
-             vacant:t('status.vacant'),maintenance:t('status.maintenance'),
-             expiring:lang==='ar'?'ينتهي قريباً':'Expiring',
-             'in_progress':lang==='ar'?'جارٍ':'In Progress',
-             open:lang==='ar'?'مفتوح':'Open',completed:lang==='ar'?'مكتمل':'Done',
-             sent:lang==='ar'?'مُرسل':'Sent',accepted:lang==='ar'?'مقبول':'Accepted',
-             draft:lang==='ar'?'مسودة':'Draft',rejected:lang==='ar'?'مرفوض':'Rejected',
-             leave:lang==='ar'?'إجازة':'On Leave',reported:lang==='ar'?'مُبلَّغ':'Reported',
-             pending:lang==='ar'?'معلق':'Pending',connected:t('status.connected')};
+  const lbl={active:t('vendor.status.active'),occupied:t('status.occupied'),
+              vacant:t('status.vacant'),maintenance:t('status.maintenance'),
+              expiring:t('status.expiring'),
+              'in_progress':t('status.inProgress'),
+              open:t('status.open'),completed:t('status.completed'),
+              sent:t('status.sent'),accepted:t('status.accepted'),
+              draft:t('status.draft'),rejected:t('status.rejected'),
+              leave:t('status.leave'),reported:t('status.reported'),
+              pending:t('status.pending'),connected:t('status.connected')};
   return `<span class="badge ${m[s]||'b-gray'}">${lbl[s]||s}</span>`;
 }
 
 function priorityBadge(p){
   const m={low:'b-gray',medium:'b-inf',high:'b-war',critical:'b-dan'};
-  const l={low:lang==='ar'?'منخفضة':'Low',medium:lang==='ar'?'متوسطة':'Medium',
-           high:lang==='ar'?'عالية':'High',critical:lang==='ar'?'حرجة':'Critical'};
+  const l={low:t('priority.low'),medium:t('priority.medium'),
+            high:t('priority.high'),critical:t('priority.critical')};
   return `<span class="badge ${m[p]||'b-gray'}">${l[p]||p}</span>`;
 }
 
@@ -2864,22 +3441,22 @@ function refreshCurrentPage(){
 function populateSelects(){
   const props = getProps(), units = getUnits();
   const propOpts = props.map(p=>`<option value="${p.id}">${propName(p)}</option>`).join('');
-  const allPropOpts = `<option value="">${lang==='ar'?'كل العقارات':'All Properties'}</option>`+propOpts;
+  const allPropOpts = `<option value="">${t('prop.all')}</option>`+propOpts;
   ['uf-prop','nu-prop','ns-prop','wo-prop'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
     el.innerHTML = id==='uf-prop' ? allPropOpts : propOpts;
   });
   const nsEl = document.getElementById('ns-prop');
-  if(nsEl) nsEl.innerHTML = `<option value="0">${lang==='ar'?'كل العقارات':'All'}</option>`+propOpts;
+  if(nsEl) nsEl.innerHTML = `<option value="0">${t('prop.all')}</option>`+propOpts;
 
   const unitOpts = units.map(u=>`<option value="${u.id}">${u.num} - ${propName(getProp(u.propId))}</option>`).join('');
   ['c-unit','pay-unit','q-unit'].forEach(id=>{
     const el = document.getElementById(id);
-    if(el){ if(id==='q-unit') el.innerHTML=`<option value="">-- ${lang==='ar'?'اختر':'Select'} --</option>`+unitOpts; else el.innerHTML=unitOpts; }
+    if(el){ if(id==='q-unit') el.innerHTML=`<option value="">-- ${t('unit.select')} --</option>`+unitOpts; else el.innerHTML=unitOpts; }
   });
   const muUnit = document.getElementById('mu-unit-select');
-  if(muUnit) muUnit.innerHTML = `<option value="">-- ${lang==='ar'?'اختر الوحدة':'Select Unit'} --</option>` + unitOpts;
+  if(muUnit) muUnit.innerHTML = `<option value="">-- ${t('unit.selectUnit')} --</option>` + unitOpts;
   ['c-prop-sel'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.innerHTML=propOpts;
   });
@@ -2917,10 +3494,10 @@ async function renderCustomers(){
   const companies = customers.filter(c => c.type === 'company');
   const active = customers.filter(c => c.status === 'active');
   document.getElementById('cust-stats').innerHTML = `
-    <div class="stat-card"><div class="stat-val">${customers.length}</div><div class="stat-lbl">${lang==='ar'?'إجمالي العملاء':'Total Customers'}</div></div>
-    <div class="stat-card"><div class="stat-val">${individuals.length}</div><div class="stat-lbl">${lang==='ar'?'أفراد':'Individuals'}</div></div>
-    <div class="stat-card"><div class="stat-val">${companies.length}</div><div class="stat-lbl">${lang==='ar'?'مؤسسات':'Companies'}</div></div>
-    <div class="stat-card"><div class="stat-val">${active.length}</div><div class="stat-lbl">${lang==='ar'?'نشط':'Active'}</div></div>
+    <div class="stat-card"><div class="stat-val">${customers.length}</div><div class="stat-lbl">${t('cust.total')}</div></div>
+    <div class="stat-card"><div class="stat-val">${individuals.length}</div><div class="stat-lbl">${t('cust.individuals')}</div></div>
+    <div class="stat-card"><div class="stat-val">${companies.length}</div><div class="stat-lbl">${t('cust.companies')}</div></div>
+    <div class="stat-card"><div class="stat-val">${active.length}</div><div class="stat-lbl">${t('cust.active')}</div></div>
   `;
 
   const tbody = document.getElementById('cust-body');
@@ -2928,14 +3505,14 @@ async function renderCustomers(){
     const isIndividual = c.type === 'individual';
     return `<tr>
       <td>${i + 1}</td>
-      <td><span class="badge ${isIndividual ? 'b-inf' : 'b-sec'}">${isIndividual ? (lang==='ar'?'فرد':'Individual') : (lang==='ar'?'مؤسسة':'Company')}</span></td>
+      <td><span class="badge ${isIndividual ? 'b-inf' : 'b-sec'}">${isIndividual ? t('reg.individual') : t('reg.company')}</span></td>
       <td><strong>${c.name || '—'}</strong>${c.crNumber ? '<br><small style="color:var(--text3)">سجل: ' + c.crNumber + '</small>' : ''}</td>
       <td>${c.phone || '—'}</td>
       <td>${c.email || '—'}</td>
       <td>${isIndividual ? (c.nationalId || '—') : (c.crNumber || '—')}</td>
       <td>${c.vatNumber || '—'}</td>
       <td style="font-size:11px;color:var(--text2)">${[c.buildingNumber,c.street,c.district,c.city].filter(Boolean).join(', ') || '—'}</td>
-      <td><span class="badge ${c.status === 'active' ? 'b-suc' : 'b-gray'}">${c.status === 'active' ? (lang==='ar'?'نشط':'Active') : (lang==='ar'?'غير نشط':'Inactive')}</span></td>
+      <td><span class="badge ${c.status === 'active' ? 'b-suc' : 'b-gray'}">${c.status === 'active' ? t('vendor.status.active') : t('vendor.status.inactive')}</span></td>
       <td><button class="btn btn-ghost btn-sm" onclick="editCustomer('${c.id}')"><i class="ti ti-edit"></i></button></td>
     </tr>`;
   }).join('');
@@ -3045,7 +3622,7 @@ function resetOwnerModal() {
   });
   document.getElementById('no-own-pct').value = '100';
   document.getElementById('no-mgmt-fee').value = '0';
-  document.querySelector('#m-owner .modal-title span').textContent = lang==='ar'?'إضافة مالك':'Add Owner';
+  document.querySelector('#m-owner .modal-title span').textContent = t('owners.add');
 }
 
 async function renderOwners() {
@@ -3139,7 +3716,7 @@ async function editOwner(id) {
     document.getElementById('no-mgmt-fee').value = o.management_fee_pct || 0;
     document.getElementById('no-terms').value = o.contract_terms || '';
     document.getElementById('no-notes').value = o.notes || '';
-    document.querySelector('#m-owner .modal-title span').textContent = lang==='ar'?'تعديل مالك':'Edit Owner';
+    document.querySelector('#m-owner .modal-title span').textContent = t('owners.edit');
     openM('m-owner');
   } catch (e) {
     alert(t('error.prefix') + ' ' + e.message);
@@ -3151,7 +3728,7 @@ function viewOwner(id) {
 }
 
 async function deleteOwner(id) {
-  if (!confirm(lang==='ar'?'هل أنت متأكد من حذف هذا المالك؟':t('owners.confirmDelete'))) return;
+  if (!confirm(t('owners.confirmDelete'))) return;
   try {
     await apiDelete(`/api/v1/owners/${id}`);
     renderOwners();
@@ -3187,14 +3764,14 @@ async function syncUtilityBills(){
 async function renderUtilities(){
   const body = document.getElementById('util-body');
   const statsEl = document.getElementById('util-stats');
-  body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">جاري التحميل...</td></tr>';
+  body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)" data-i="util.loading">${t('util.loading')}</td></tr>`;
 
   try {
     const bills = await apiGet('/api/v1/utilities');
     statsEl.innerHTML = '';
 
     if(!bills || bills.length===0){
-      body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">لا توجد فواتير</td></tr>';
+      body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)" data-i="tbl.emptyUtilities">${t('tbl.emptyUtilities')}</td></tr>`;
       return;
     }
 
@@ -3210,11 +3787,12 @@ async function renderUtilities(){
       const icons = {electricity:'ti-bolt', water:'ti-droplet', gas:'ti-flame', telecom:'ti-phone', internet:'ti-wifi'};
       const colors = {electricity:['#B45309','#FEF3C7'], water:['#0E7490','#E0F2FE'], gas:['#B91C1C','#FEE2E2'], telecom:['#1B4F8A','#E8F0FB'], internet:['#1A7A4A','#E6F4EC']};
       const c = colors[t.type] || ['#1B4F8A','#E8F0FB'];
+      const typeLabel = t('util.types.' + t.type) || t.type;
       return `<div class="stat-card">
         <div class="stat-icon" style="background:${c[1]};color:${c[0]}"><i class="ti ${icons[t.type]||'ti-file'}" aria-hidden="true"></i></div>
         <div class="stat-val" style="color:${c[0]}">${numFmt(t.total)}</div>
-        <div class="stat-lbl">${t.count} فاتورة ${t.type}</div>
-        <div class="stat-sub">مدفوع: ${numFmt(t.paid)}</div>
+        <div class="stat-lbl">${t.count} فاتورة ${typeLabel}</div>
+        <div class="stat-sub">${t('util.paid', {amount: numFmt(t.paid)})}</div>
       </div>`;
     }).join('');
 
@@ -3223,22 +3801,22 @@ async function renderUtilities(){
       const typeIcons = {electricity:'ti-bolt', water:'ti-droplet', gas:'ti-flame', telecom:'ti-phone', internet:'ti-wifi'};
       return `<tr>
         <td><strong>${b.bill_number}</strong></td>
-        <td><span class="badge b-pri"><i class="ti ${typeIcons[b.utility_type]||'ti-file'}" aria-hidden="true"></i> ${b.utility_type}</span></td>
+        <td><span class="badge b-pri"><i class="ti ${typeIcons[b.utility_type]||'ti-file'}" aria-hidden="true"></i> ${t('util.types.' + b.utility_type) || b.utility_type}</span></td>
         <td>${b.provider_name}</td>
         <td>${b.bill_date}</td>
         <td>${numFmt(b.consumption_amount)} ${b.consumption_unit}</td>
         <td><strong>${numFmt(b.total_amount)}</strong></td>
         <td><span class="badge ${statusClasses[b.payment_status]||'b-gray'}">${b.payment_status}</span></td>
         <td>
-          <button class="btn btn-ghost btn-sm" onclick="alert('عرض تفاصيل الفاتورة')"><i class="ti ti-eye" aria-hidden="true"></i></button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('${t('badge.view')}')"><i class="ti ti-eye" aria-hidden="true"></i></button>
           ${b.gov_service_id || b.sec_account_number || b.nwc_account_number
-            ? `<button class="btn btn-ghost btn-sm" onclick="syncUtility('${b.id}','${b.utility_type}')" title="مزامنة مع الجهة الحكومية"><i class="ti ti-refresh" aria-hidden="true"></i></button>`
+            ? `<button class="btn btn-ghost btn-sm" onclick="syncUtility('${b.id}','${b.utility_type}')" title="${t('util.sync')}"><i class="ti ti-refresh" aria-hidden="true"></i></button>`
             : ''}
         </td>
       </tr>`;
     }).join('');
   } catch(e){
-    body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)">خطأ في تحميل الفواتير</td></tr>';
+    body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)" data-i="util.error">${t('util.error')}</td></tr>`;
   }
 }
 
@@ -3256,12 +3834,12 @@ async function syncUtility(id, type){
 // ═══════════════════════════════════════════════
 async function renderVendors(){
   const body = document.getElementById('vendor-body');
-  body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">جاري التحميل...</td></tr>';
+  body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)" data-i="vendor.loading">${t('vendor.loading')}</td></tr>`;
 
   try {
     const vendors = await apiGet('/api/v1/purchases/vendors');
     if(!vendors || vendors.length===0){
-      body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">لا يوجد موردون</td></tr>';
+      body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)" data-i="tbl.emptyVendors">${t('tbl.emptyVendors')}</td></tr>`;
       return;
     }
     body.innerHTML = vendors.map(v => `
@@ -3273,11 +3851,11 @@ async function renderVendors(){
         <td>${v.contact_person||'-'}</td>
         <td>${v.phone||'-'}</td>
         <td style="font-size:11px;color:var(--text2)">${[v.building_number,v.street,v.district,v.city].filter(Boolean).join(', ') || '—'}</td>
-        <td><span class="badge ${v.is_active?'b-suc':'b-gray'}">${v.is_active?'نشط':'غير نشط'}</span></td>
+        <td><span class="badge ${v.is_active?'b-suc':'b-gray'}">${t('vendor.status.' + (v.is_active ? 'active' : 'inactive'))}</span></td>
       </tr>
     `).join('');
   } catch(e){
-    body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)">خطأ في تحميل الموردين</td></tr>';
+    body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)" data-i="vendor.error">${t('vendor.error')}</td></tr>`;
   }
 }
 
@@ -3286,7 +3864,7 @@ async function renderVendors(){
 // ═══════════════════════════════════════════════
 async function renderPurchases(){
   const body = document.getElementById('purchases-body');
-  body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">جاري التحميل...</td></tr>';
+  body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)" data-i="purchases.loading">${t('purchases.loading')}</td></tr>`;
   try {
     const pos = await apiGet('/api/v1/purchases/orders');
     const purchases = (pos||[]).filter(p => p.supplier_invoice_no || p.supplier_name || p.supplier_tax_number);
@@ -3304,12 +3882,12 @@ async function renderPurchases(){
         <td style="font-weight:700">${numFmt(p.total_amount||0)}</td>
         <td><span class="badge ${p.status==='received'||p.status==='confirmed'?'b-suc':'b-war'}">${p.status}</span></td>
       </tr>`;
-    }).join('') : '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">لا توجد مشتريات مسجلة. سجل أول فاتورة مشتريات ضريبية</td></tr>';
-    document.getElementById('pur-stats-total').textContent = numFmt(totalAmount) + ' ر.س';
-    document.getElementById('pur-stats-vat').textContent = numFmt(totalVat) + ' ر.س';
+    }).join('') : '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--text3)">'+t('purchases.empty')+'</td></tr>';
+    document.getElementById('pur-stats-total').textContent = numFmt(totalAmount) + ' ' + t('currency');
+    document.getElementById('pur-stats-vat').textContent = numFmt(totalVat) + ' ' + t('currency');
     document.getElementById('pur-count').textContent = purchases.length;
   } catch(e){
-    body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)">خطأ في تحميل المشتريات</td></tr>';
+    body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--dan)" data-i="purchases.error">${t('purchases.error')}</td></tr>`;
   }
 }
 
@@ -3389,12 +3967,12 @@ async function savePurchase(){
 // ═══════════════════════════════════════════════
 async function renderPurchaseOrders(){
   const body = document.getElementById('po-body');
-  body.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)">جاري التحميل...</td></tr>';
+  body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)" data-i="po.loading">${t('po.loading')}</td></tr>`;
 
   try {
     const pos = await apiGet('/api/v1/purchases/orders');
     if(!pos || pos.length===0){
-      body.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)">لا توجد أوامر شراء</td></tr>';
+      body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--text3)" data-i="po.empty">${t('po.empty')}</td></tr>`;
       return;
     }
     const statusClasses = {draft:'b-gray', sent:'b-inf', confirmed:'b-pri', received:'b-suc', partially_received:'b-war', cancelled:'b-dan'};
@@ -3407,24 +3985,24 @@ async function renderPurchaseOrders(){
         <td><span class="badge ${statusClasses[po.status]||'b-gray'}">${po.status}</span></td>
         <td>
           ${po.status==='confirmed'
-            ? `<button class="btn btn-success btn-sm" onclick="openReceivePO('${po.id}')"><i class="ti ti-truck-delivery" aria-hidden="true"></i> استلام</button>`
+            ? `<button class="btn btn-success btn-sm" onclick="openReceivePO('${po.id}')"><i class="ti ti-truck-delivery" aria-hidden="true"></i> ${t('po.btn.receive')}</button>`
             : ''}
-          <button class="btn btn-ghost btn-sm" onclick="alert('عرض تفاصيل أمر الشراء')"><i class="ti ti-eye" aria-hidden="true"></i></button>
+          <button class="btn btn-ghost btn-sm" onclick="alert('${t('badge.view')}')"><i class="ti ti-eye" aria-hidden="true"></i></button>
         </td>
       </tr>
     `).join('');
   } catch(e){
-    body.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--dan)">خطأ في تحميل أوامر الشراء</td></tr>';
+    body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--dan)" data-i="po.error">${t('po.error')}</td></tr>`;
   }
 }
 
 function openReceivePO(id){
   // Simple receive flow
-  const qty = prompt('كمية الاستلام:');
+  const qty = prompt(t('po.receive.prompt'));
   if(qty && !isNaN(qty)){
     apiPost(`/api/v1/purchases/orders/${id}/receive`, {items:[{name:'', qty:parseFloat(qty)}]})
       .then(() => renderPurchaseOrders())
-      .catch(() => alert('فشل الاستلام'));
+      .catch(() => alert(t('po.receive.failed')));
   }
 }
 
@@ -3433,12 +4011,12 @@ function openReceivePO(id){
 // ═══════════════════════════════════════════════
 async function renderInventory(){
   const body = document.getElementById('inv-body');
-  body.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">جاري التحميل...</td></tr>';
+  body.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)" data-i="inv.loading">${t('inv.loading')}</td></tr>`;
 
   try {
     const items = await apiGet('/api/v1/purchases/inventory');
     if(!items || items.length===0){
-      body.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)">لا توجد أصناف مخزون</td></tr>';
+      body.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--text3)" data-i="inv.empty">${t('inv.empty')}</td></tr>`;
       return;
     }
     body.innerHTML = items.map(item => {
@@ -3447,15 +4025,15 @@ async function renderInventory(){
       return `<tr>
         <td><strong>${item.item_code}</strong></td>
         <td>${item.name_ar}</td>
-        <td>${item.category||'عام'}</td>
-        <td>${item.unit_type||'قطعة'}</td>
+        <td>${item.category||t('inv.cat.general')}</td>
+        <td>${item.unit_type||t('inv.col.unit')}</td>
         <td class="${isLow?'':'fw-600'}">${numFmt(item.current_stock)}</td>
         <td>${numFmt(item.min_stock)}</td>
-        <td><span class="badge ${stockClass}">${isLow?'مخزون منخفض':'جيد'}</span></td>
+        <td><span class="badge ${stockClass}">${isLow ? t('inv.status.low') : t('inv.status.good')}</span></td>
       </tr>`;
     }).join('');
   } catch(e){
-    body.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--dan)">خطأ في تحميل المخزون</td></tr>';
+    body.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--dan)" data-i="inv.error">${t('inv.error')}</td></tr>`;
   }
 }
 
@@ -3471,10 +4049,10 @@ function renderDashboard(){
   const vacant = units.filter(u=>u.status==='vacant').length;
   const revenue = receipts.filter(r => r.approvalStatus === 'approved').reduce((s, r) => s + r.total, 0);
   const overdueTotal = receipts.filter(r => r.approvalStatus === 'pending').reduce((s, r) => s + r.total, 0);
-  const monthNamesAr = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-  const monthNamesEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  // const monthNamesAr = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  // const monthNamesEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const currentMonth = new Date().getMonth();
-  const revLabel = lang === 'ar' ? `الإيرادات (${monthNamesAr[currentMonth]})` : `Revenue (${monthNamesEn[currentMonth]})`;
+  const revLabel = t('dash.revenueLabel', {month: t('dash.months') [currentMonth]});
   const occRate = totalUnits ? Math.round(occupied/totalUnits*100) : 0;
   const now = new Date();
   const expiringSoon = contracts.filter(c => {
@@ -3494,13 +4072,13 @@ function renderDashboard(){
 
   const statsData = [
     {icon:'ti-building',color:['#1B4F8A','#E8F0FB'],val:props.length,lbl:t('stat.totalProps'),sub:''},
-    {icon:'ti-door',color:['#1A7A4A','#E6F4EC'],val:occupied,lbl:t('stat.occupied'),sub:totalUnits?`${lang==='ar'?'من':'of'} ${totalUnits}`:''},
-    {icon:'ti-door-off',color:['#B45309','#FEF3C7'],val:vacant,lbl:t('stat.vacant'),sub:lang==='ar'?'متاحة':'Available'},
+    {icon:'ti-door',color:['#1A7A4A','#E6F4EC'],val:occupied,lbl:t('stat.occupied'),sub:totalUnits?`${t('dash.of')} ${totalUnits}`:''},
+    {icon:'ti-door-off',color:['#B45309','#FEF3C7'],val:vacant,lbl:t('stat.vacant'),sub:t('dash.available')},
     {icon:'ti-cash',color:['#1A7A4A','#E6F4EC'],val:numFmt(revenue),lbl:revLabel,sub:'SAR'},
     {icon:'ti-percentage',color:['#1B4F8A','#E8F0FB'],val:occRate+'%',lbl:t('stat.occupancyRate'),sub:''},
     {icon:'ti-alert-circle',color:['#B91C1C','#FEE2E2'],val:numFmt(overdueTotal),lbl:t('stat.overdueShort'),sub:'SAR'},
     {icon:'ti-users',color:['#0E7490','#E0F2FE'],val:staffList.length,lbl:t('stat.employees'),sub:''},
-    {icon:'ti-calendar-x',color:['#B45309','#FEF3C7'],val:expiringCount,lbl:t('stat.expiringContracts'),sub:lang==='ar'?'خلال 30 يوم':'in 30 days'},
+    {icon:'ti-calendar-x',color:['#B45309','#FEF3C7'],val:expiringCount,lbl:t('stat.expiringContracts'),sub:t('dash.in30days')},
   ];
   document.getElementById('dash-stats').innerHTML = statsData.map(s=>`
     <div class="stat-card">
@@ -3516,11 +4094,9 @@ function renderDashboard(){
     const d = new Date(c.end);
     const diff = Math.ceil((d - now) / (1000 * 60 * 60 * 24));
     const type = diff <= 7 ? 'al-dan' : 'al-war';
-    const name = c.renterName || (lang==='ar'?'مستأجر':'Tenant');
+    const name = c.renterName || t('col.renter');
     const unit = c.unitNum || '';
-    alerts.push({type,icon:'ti-calendar-x',msg:lang==='ar'
-      ?`عقد الوحدة ${unit} ينتهي خلال ${diff} يوماً (${name})`
-      :`Unit ${unit} contract expires in ${diff} days (${name})`});
+    alerts.push({type,icon:'ti-calendar-x',msg:t('dash.alert.expiring').replace('{unit}',unit).replace('{days}',diff).replace('{name}',name)});
   });
 
   const alertEl = document.getElementById('dash-alerts');
@@ -3529,7 +4105,7 @@ function renderDashboard(){
     alertEl.innerHTML = alerts.map(a=>`<div class="alert-box ${a.type}"><i class="ti ${a.icon}" aria-hidden="true"></i><span>${a.msg}</span></div>`).join('');
     if (alertCountEl) { alertCountEl.textContent = alerts.length; alertCountEl.style.display = ''; }
   } else {
-    alertEl.innerHTML = `<div style="padding:14px;text-align:center;color:var(--text3);font-size:12px">${lang==='ar'?'لا توجد تنبيهات عاجلة':'No urgent alerts'}</div>`;
+    alertEl.innerHTML = `<div style="padding:14px;text-align:center;color:var(--text3);font-size:12px">${t('dash.noAlerts')}</div>`;
     if (alertCountEl) alertCountEl.style.display = 'none';
   }
 
@@ -3546,7 +4122,7 @@ function renderDashboard(){
     <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
       <div style="width:30px;height:30px;border-radius:8px;background:${a.color}22;color:${a.color};display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ${a.icon}" style="font-size:14px" aria-hidden="true"></i></div>
       <div><div style="font-size:12px">${a.msg}</div><div style="font-size:10px;color:var(--text3);margin-top:2px">${a.time}</div></div>
-    </div>`).join('') : `<div style="padding:14px;text-align:center;color:var(--text3);font-size:12px">${lang==='ar'?'لا توجد أنشطة حديثة':'No recent activity'}</div>`;
+    </div>`).join('') : `<div style="padding:14px;text-align:center;color:var(--text3);font-size:12px">${t('dash.noActivity')}</div>`;
 
   // Monthly revenue from approved receipts
   const year = new Date().getFullYear();
@@ -3567,16 +4143,16 @@ function initDashCharts(){
   if(revChart) revChart.destroy();
   const rc = document.getElementById('rev-chart');
   const revData = window._monthlyRevenue || [0,0,0,0,0,0];
-  const revLabels = lang==='ar'?['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر']:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const revLabels = t('dash.months');
   const hasRev = revData.some(v=>v>0);
   if(rc) revChart = new Chart(rc,{type:'line',data:{
     labels:revLabels,
-    datasets:[{label:lang==='ar'?'الإيرادات':'Revenue',data:revData,borderColor:'#1B4F8A',backgroundColor:'rgba(27,79,138,0.08)',fill:true,tension:.4,pointRadius:hasRev?4:0,pointBackgroundColor:'#1B4F8A'}]
+    datasets:[{label:t('dash.revenue'),data:revData,borderColor:'#1B4F8A',backgroundColor:'rgba(27,79,138,0.08)',fill:true,tension:.4,pointRadius:hasRev?4:0,pointBackgroundColor:'#1B4F8A'}]
   },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:tc,callback:v=>Math.round(v/1000)+'K'},grid:{color:gridC}},x:{ticks:{color:tc},grid:{display:false}}}}});
 
   if(occChart) occChart.destroy();
   const oc = document.getElementById('occ-chart');
-  const occlbl = lang==='ar'?['مسكونة','شاغرة','صيانة']:['Occupied','Vacant','Maintenance'];
+  const occlbl = [t('status.occupied'),t('status.vacant'),t('status.maintenance')];
   const uList = getUnits();
   const occData = [uList.filter(u=>u.status==='occupied').length, uList.filter(u=>u.status==='vacant').length, uList.filter(u=>u.status==='maintenance').length];
   if(oc) occChart = new Chart(oc,{type:'doughnut',data:{labels:occlbl,datasets:[{data:occData,backgroundColor:['#1A7A4A','#B45309','#B91C1C'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:tc,font:{size:11},padding:12}}}}});
@@ -3590,27 +4166,27 @@ function refreshCharts(){ if(document.getElementById('p-dashboard').classList.co
 function renderProperties(){
   const bgMap={residential:'#E8F4E8',hotel:'#E8F0FB',commercial:'#FEF3C7',mixed:'#F3E8FB'};
   const props = getProps();
-  if(!props.length){ document.getElementById('prop-grid').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3)">'+(lang==='ar'?'لا توجد عقارات حالياً. أضف عقارك الأول':'No properties yet. Add your first property')+'</div>'; return; }
+  if(!props.length){ document.getElementById('prop-grid').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3)">'+t('prop.empty')+'</div>'; return; }
   document.getElementById('prop-grid').innerHTML = props.map(p=>{
     const pct = Math.round(p.occ/p.total*100);
     return `<div class="prop-card">
       <div class="prop-thumb" style="background:${bgMap[p.type]||'var(--bg)'}">
         ${p.emoji}
-        <div class="prop-badge"><span class="badge b-pri" style="font-size:10px">${lang==='ar'?({residential:'سكني',hotel:'فندقي',commercial:'تجاري',mixed:'مختلط'})[p.type]||p.type:p.type}</span></div>
-        <i class="ti ti-trash" style="position:absolute;top:6px;right:6px;color:rgba(239,68,68,.7);font-size:14px;cursor:pointer;background:rgba(255,255,255,.8);border-radius:4px;padding:2px" onclick="event.stopPropagation();deleteProperty('${p.id}')" title="${lang==='ar'?'حذف العقار':'Delete property'}"></i>
+        <div class="prop-badge"><span class="badge b-pri" style="font-size:10px">${t('prop.type.'+p.type)||p.type}</span></div>
+        <i class="ti ti-trash" style="position:absolute;top:6px;right:6px;color:rgba(239,68,68,.7);font-size:14px;cursor:pointer;background:rgba(255,255,255,.8);border-radius:4px;padding:2px" onclick="event.stopPropagation();deleteProperty('${p.id}')" title="${t('prop.delete.confirm')}"></i>
       </div>
       <div class="prop-body">
         <div class="prop-name">${propName(p)}</div>
         <div class="prop-sub"><i class="ti ti-map-pin" style="font-size:11px" aria-hidden="true"></i> ${p.city} — ${p.district}</div>
         <div style="margin-bottom:10px">
-          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;color:var(--text2)"><span>${lang==='ar'?'الإشغال':'Occupancy'}</span><span style="font-weight:600">${pct}%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;color:var(--text2)"><span>${t('prop.occupancy')}</span><span style="font-weight:600">${pct}%</span></div>
           <div class="progress"><div class="progress-fill" style="width:${pct}%;background:${pct>70?'var(--suc)':pct>40?'var(--war)':'var(--dan)'}"></div></div>
         </div>
         <div class="prop-stats">
-          <div><div class="ps-val">${p.floors}</div><div class="ps-lbl">${lang==='ar'?'طوابق':'Floors'}</div></div>
-          <div><div class="ps-val">${p.total}</div><div class="ps-lbl">${lang==='ar'?'وحدة':'Units'}</div></div>
-          <div><div class="ps-val" style="color:var(--suc)">${p.occ}</div><div class="ps-lbl">${lang==='ar'?'مؤجرة':'Leased'}</div></div>
-          <div><div class="ps-val" style="color:var(--war)">${p.total-p.occ}</div><div class="ps-lbl">${lang==='ar'?'شاغرة':'Vacant'}</div></div>
+          <div><div class="ps-val">${p.floors}</div><div class="ps-lbl">${t('prop.floors')}</div></div>
+          <div><div class="ps-val">${p.total}</div><div class="ps-lbl">${t('prop.units')}</div></div>
+          <div><div class="ps-val" style="color:var(--suc)">${p.occ}</div><div class="ps-lbl">${t('prop.leased')}</div></div>
+          <div><div class="ps-val" style="color:var(--war)">${p.total-p.occ}</div><div class="ps-lbl">${t('prop.vacant')}</div></div>
         </div>
       </div>
     </div>`;
@@ -3640,27 +4216,27 @@ function renderUnits(){
   for(const pname of Object.keys(grouped)){
     html+=`<div class="card" style="margin-bottom:12px">
       <div class="card-header"><div class="card-title"><i class="ti ti-building" aria-hidden="true"></i>${pname}</div>
-      <span style="font-size:11px;color:var(--text2)">${lang==='ar'?'الطابق':'Floor'}</span></div>`;
+      <span style="font-size:11px;color:var(--text2)">${t('unit.floor')}</span></div>`;
     for(const fl of Object.keys(grouped[pname]).sort((a,b)=>+a-+b)){
-      html+=`<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:6px">${lang==='ar'?'الطابق':'Floor'} ${fl}</div><div class="unit-grid">`;
+      html+=`<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:6px">${t('unit.floor')} ${fl}</div><div class="unit-grid">`;
       grouped[pname][fl].forEach(u=>{
         const cls = {occupied:'uc-occupied',vacant:'uc-vacant',maintenance:'uc-maintenance',reserved:'uc-reserved'}[u.status]||'uc-vacant';
         html+=`<div class="unit-cell ${cls}" title="${u.tenant||t('status.'+u.status)}" onclick="showUnitDetail(${u.id})">
           <div class="uc-num">${u.num}</div>
-          <div class="uc-type">${lang==='ar'?({apartment:'شقة',hotel_room:'غرفة',office:'مكتب',suite:'جناح',studio:'استوديو'})[u.type]||u.type:u.type}</div>
+          <div class="uc-type">${t('unit.type.'+u.type)||u.type}</div>
         </div>`;
       });
       html+='</div></div>';
     }
     html+='</div>';
   }
-  document.getElementById('unit-grid-wrap').innerHTML = html||`<div style="text-align:center;padding:40px;color:var(--text3)">${lang==='ar'?'لا توجد وحدات':'No units found'}</div>`;
+  document.getElementById('unit-grid-wrap').innerHTML = html||`<div style="text-align:center;padding:40px;color:var(--text3)">${t('unit.empty')}</div>`;
 }
 
 function showUnitDetail(id){
   const u = getUnits().find(x=>x.id===id); if(!u) return;
   const p = getProp(u.propId);
-  alert(`${lang==='ar'?'الوحدة':'Unit'}: ${u.num}\n${lang==='ar'?'العقار':'Property'}: ${propName(p)}\n${lang==='ar'?'الحالة':'Status'}: ${u.status}\n${u.tenant?`${lang==='ar'?'الساكن':'Tenant'}: ${u.tenant}`:''}\n${lang==='ar'?'الإيجار':'Rent'}: ${numFmt(u.rent)} SAR`);
+  alert(`${t('unit.unit')}: ${u.num}\n${t('unit.property')}: ${propName(p)}\n${t('unit.status')}: ${statusBadge(u.status)}\n${u.tenant?`${t('unit.tenant')}: ${u.tenant}`:''}\n${t('unit.rent')}: ${numFmt(u.rent)} SAR`);
 }
 
 // ═══════════════════════════════════════════════
@@ -3817,12 +4393,12 @@ function renderQuotes(){
     <td><span style="font-family:monospace;font-size:11px">${q.num}</span></td>
     <td style="font-weight:500">${q.client}</td>
     <td><span class="badge b-pri">${q.type}</span></td>
-    <td style="font-weight:700">${numFmt(q.total)} ${lang==='ar'?'ر.س':'SAR'}</td>
+    <td style="font-weight:700">${numFmt(q.total)} ${t('currency')}</td>
     <td style="font-size:11px;color:var(--text2)">${q.valid}</td>
     <td>${statusBadge(q.status)}</td>
     <td style="display:flex;gap:3px">
       <button class="btn btn-sm btn-ghost" title="PDF"><i class="ti ti-download" aria-hidden="true"></i></button>
-      ${q.status==='sent'?`<button class="btn btn-sm btn-success" onclick="acceptQuote(${q.id})">${lang==='ar'?'قبول':'Accept'}</button>`:''}
+      ${q.status==='sent'?`<button class="btn btn-sm btn-success" onclick="acceptQuote(${q.id})">${t('quote.btn.accept')}</button>`:''}
     </td>
   </tr>`).join('');
 }
@@ -3832,7 +4408,7 @@ function acceptQuote(id){
   if(!q) return;
   q.status = 'accepted';
   renderQuotes();
-  alert(lang==='ar'?`تم قبول العرض ${q.num} وتحويله لعقد إيجار`:`Quote ${q.num} accepted and converted to contract`);
+  alert(t('quote.accepted',{num:q.num}));
 }
 
 // ═══════════════════════════════════════════════
@@ -3856,14 +4432,14 @@ function renderPayments(){
   document.getElementById('payments-list').innerHTML = approved.slice(-5).reverse().map(p => `
     <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)">
       <div><div style="font-size:12.5px;font-weight:500">${p.tenant} — ${p.unit}</div><div style="font-size:11px;color:var(--text2)">${p.date} · ${p.method}</div></div>
-      <span class="badge b-suc">${numFmt(p.total)} ${lang==='ar'?'ر.س':'SAR'}</span>
-    </div>`).join('') || '<div style="text-align:center;padding:20px;color:var(--text3);font-size:12px">لا توجد مدفوعات بعد</div>';
+      <span class="badge b-suc">${numFmt(p.total)} ${t('currency')}</span>
+    </div>`).join('') || `<div style="text-align:center;padding:20px;color:var(--text3);font-size:12px">${t('payment.empty.approved')}</div>`;
 
   document.getElementById('overdue-list').innerHTML = pending.map(o => `
     <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)">
       <div><div style="font-size:12.5px;font-weight:500">${o.tenant}</div><div style="font-size:11px;color:var(--text2)">${o.unit} — ${o.prop}</div></div>
-      <span class="badge b-dan">${numFmt(o.total)} ${lang==='ar'?'ر.س':'SAR'}</span>
-    </div>`).join('') || '<div style="text-align:center;padding:20px;color:var(--text3);font-size:12px">لا توجد متأخرات</div>';
+      <span class="badge b-dan">${numFmt(o.total)} ${t('currency')}</span>
+    </div>`).join('') || `<div style="text-align:center;padding:20px;color:var(--text3);font-size:12px">${t('payment.empty.overdue')}</div>`;
 }
 
 // ═══════════════════════════════════════════════
@@ -3873,12 +4449,12 @@ function renderStaff(){
   const staffList = getStaff();
   const admin = staffList.filter(s=>s.cat==='admin');
   const workers = staffList.filter(s=>s.cat==='worker');
-  if(!staffList.length){ document.getElementById('admin-body').innerHTML='<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--text3)" data-i="tbl.emptyStaff">لا يوجد موظفون</td></tr>'; return; }
+  if(!staffList.length){ document.getElementById('admin-body').innerHTML='<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--text3)" data-i="staff.empty">'+t('staff.empty')+'</td></tr>'; return; }
   document.getElementById('admin-body').innerHTML = admin.map((s,i)=>`<tr>
     <td>${avatar(s.nameAr,i)}</td>
     <td><strong>${lang==='ar'?s.nameAr:s.nameEn}</strong></td>
     <td style="color:var(--text2)">${s.role}</td>
-    <td style="font-size:11px">${s.propId?propName(getProp(s.propId)):lang==='ar'?'كل العقارات':'All'}</td>
+    <td style="font-size:11px">${s.propId?propName(getProp(s.propId)):t('staff.all')}</td>
     <td>${statusBadge(s.status)}</td>
   </tr>`).join('');
   document.getElementById('worker-body').innerHTML = workers.map((s,i)=>`<tr>
@@ -3905,11 +4481,11 @@ function renderPayroll(){
       <td style="color:var(--dan)">${numFmt(gosi)}</td>
       <td style="font-weight:700;color:var(--suc)">${numFmt(net)}</td>
       <td style="font-family:monospace;font-size:10px;color:var(--text2)">${s.iban.substring(0,12)}...</td>
-      <td><span class="badge b-war">${lang==='ar'?'في الانتظار':'Pending'}</span></td>
+      <td><span class="badge b-war">${t('payroll.status.pending')}</span></td>
     </tr>`;
   }).join('');
   const totalNet = active.reduce((s,e)=>s+e.basic+e.housing+e.transport-(e.basic*0.10),0);
-  document.getElementById('payroll-totals').innerHTML=`<div class="card" style="text-align:${lang==='ar'?'left':'right'}"><strong>${lang==='ar'?'إجمالي الصرف:':'Total Net:'} ${numFmt(Math.round(totalNet))} ${lang==='ar'?'ر.س':'SAR'}</strong></div>`;
+  document.getElementById('payroll-totals').innerHTML=`<div class="card" style="text-align:${lang==='ar'?'left':'right'}"><strong>${t('payroll.total',{amount:numFmt(Math.round(totalNet))})}</strong></div>`;
 }
 
 // ═══════════════════════════════════════════════
@@ -3923,7 +4499,7 @@ function renderServices(){
     <td style="font-size:11px">${s.props}</td>
     <td style="font-size:11px;color:var(--text2)">${s.start}</td>
     <td style="font-size:11px;color:${s.status==='expiring'?'var(--dan)':'var(--text2)'}">${s.end}</td>
-    <td style="font-weight:600">${numFmt(s.val)} ${lang==='ar'?'ر.س':'SAR'}</td>
+    <td style="font-weight:600">${numFmt(s.val)} ${t('currency')}</td>
     <td>${statusBadge(s.status)}</td>
     <td style="font-size:11px;color:var(--pri)">${s.phone}</td>
   </tr>`).join('');
@@ -3936,7 +4512,7 @@ function renderWOs(){
   const workOrders = getWorkOrders();
   document.getElementById('wo-body').innerHTML = workOrders.map(w=>{
     const p = getProp(w.propId);
-    const typeL={corrective:lang==='ar'?'تصحيحي':'Corrective',preventive:lang==='ar'?'وقائي':'Preventive',emergency:lang==='ar'?'طارئ':'Emergency'};
+    const typeL={corrective:t('wo.type.corrective'),preventive:t('wo.type.preventive'),emergency:t('wo.type.emergency')};
     return `<tr>
       <td><span style="font-family:monospace;font-size:11px">${w.num}</span></td>
       <td style="font-weight:500">${w.title}</td>
@@ -4001,16 +4577,16 @@ async function renderFal(){
 }
 
 function tPropType(t){
-  const m = { apartment:'شقة', villa:'فيلا', land:'أرض', commercial:'تجاري', warehouse:'مستودع', residential:'سكني', hotel:'فندقي', mixed:'مختلط' };
-  return lang==='ar' ? (m[t]||t) : t;
+  const m = { apartment:'unit.type.apartment', villa:'unit.type.villa', land:'unit.type.land', commercial:'unit.type.commercial', warehouse:'unit.type.warehouse', residential:'prop.type.residential', hotel:'prop.type.hotel', mixed:'prop.type.mixed' };
+  return t(m[t]||t);
 }
 
 function showFalModal(data){
   falStepCurrent = 1;
   document.getElementById('fal-edit-id').value = data ? data.id : '';
   document.getElementById('m-fal').querySelector('.modal-title span').textContent = data
-    ? (lang==='ar'?'تعديل عقد تسويق':'Edit Marketing Contract')
-    : (lang==='ar'?'عقد تسويق جديد':'New Marketing Contract');
+    ? t('fal.edit')
+    : t('fal.new');
   // Reset form
   ['fal-owner-name','fal-owner-nid','fal-owner-phone','fal-owner-email',
    'fal-broker-name','fal-broker-license','fal-broker-phone','fal-broker-email',
@@ -4192,7 +4768,7 @@ async function falEdit(id){
 }
 
 async function falActivate(id){
-  if(!confirm(lang==='ar'?'تفعيل عقد التسويق؟':'Activate marketing contract?')) return;
+  if(!confirm(t('fal.confirmActivate'))) return;
   try {
     await apiPut(`/fal/${id}/activate`);
     renderFal();
@@ -4200,7 +4776,7 @@ async function falActivate(id){
 }
 
 async function falComplete(id){
-  if(!confirm(lang==='ar'?'إنهاء عقد التسويق؟':'Complete marketing contract?')) return;
+  if(!confirm(t('fal.confirmComplete'))) return;
   try {
     await apiPut(`/fal/${id}/complete`);
     renderFal();
@@ -4208,7 +4784,7 @@ async function falComplete(id){
 }
 
 async function falCancel(id){
-  const reason = prompt(lang==='ar'?'سبب الإلغاء:':'Cancellation reason:');
+  const reason = prompt(t('fal.cancelReason'));
   if(reason === null) return;
   try {
     await apiPut(`/fal/${id}/cancel`, { reason });
@@ -4217,10 +4793,10 @@ async function falCancel(id){
 }
 
 async function falSubmitToFal(id){
-  if(!confirm(lang==='ar'?'إرسال العقد إلى منصة فال؟':'Submit contract to Fal platform?')) return;
+  if(!confirm(t('fal.confirmSubmit'))) return;
   try {
     const res = await apiPost(`/fal/${id}/submit-to-fal`);
-    alert(res.message || (lang==='ar'?'تم الإرسال':'Submitted'));
+    alert(res.message || t('fal.submitted'));
     renderFal();
   } catch(e){ alert(e.message); }
 }
@@ -4314,10 +4890,10 @@ async function renderEjarPending() {
 }
 
 async function submitToEjar(contractId) {
-  if (!confirm(lang==='ar'?'تأكيد إرسال العقد إلى منصة إيجار؟':'Submit contract to Ejar?')) return;
+  if (!confirm(t('ejar.confirmSubmit'))) return;
   try {
     const res = await apiPost(`/api/v1/ejar/submit/${contractId}`);
-    alert(res.data?.message || (lang==='ar'?'تم إرسال العقد إلى إيجار':'Contract submitted to Ejar'));
+    alert(res.data?.message || t('ejar.submitted'));
     renderEjar();
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
@@ -4325,7 +4901,7 @@ async function submitToEjar(contractId) {
 async function checkEjarStatus(contractId) {
   try {
     const res = await apiGet(`/api/v1/ejar/status/${contractId}`);
-    alert((lang==='ar'?`حالة العقد في إيجار: ${res.data?.status || 'غير معروفة'}`:`Ejar status: ${res.data?.status || 'Unknown'}`));
+    alert(t('ejar.statusPrefix') + (res.data?.status || t('ejar.unknown')));
     renderEjarContracts();
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
@@ -4518,7 +5094,7 @@ async function saveRole() {
 }
 
 async function deleteRole(id) {
-  if (!confirm(lang==='ar'?'تأكيد حذف الدور؟':'Delete role?')) return;
+  if (!confirm(t('roles.confirmDelete'))) return;
   try {
     await apiDelete(`/api/v1/rbac/roles/${id}`);
     renderRoles();
@@ -4580,7 +5156,7 @@ function resetBranchModal() {
   document.getElementById('nb-email').value = '';
   document.getElementById('nb-address').value = '';
   document.getElementById('nb-hq').checked = false;
-  document.querySelector('#m-branch .modal-title span').textContent = lang==='ar'?'فرع جديد':'New Branch';
+  document.querySelector('#m-branch .modal-title span').textContent = t('branches.newBranch');
 }
 
 async function editBranch(id) {
@@ -4625,7 +5201,7 @@ async function saveBranch() {
 }
 
 async function deleteBranch(id) {
-  if (!confirm(lang==='ar'?'تأكيد حذف الفرع؟':'Delete branch?')) return;
+  if (!confirm(t('branches.confirmDelete'))) return;
   try { await apiDelete(`/api/v1/branches/${id}`); renderBranches(); }
   catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
@@ -4745,14 +5321,14 @@ async function renderAlerts(){
     const warning = alerts.filter(a => a.priority === 'warning').length;
     const info = alerts.filter(a => a.priority === 'info').length;
     statsEl.innerHTML = `
-      <div class="stat"><span class="stat-num badge ${critical>0?'badge-dan':'badge-suc'}">${critical}</span><span class="stat-lbl">${lang==='ar'?'حرجة':'Critical'}</span></div>
-      <div class="stat"><span class="stat-num badge ${warning>0?'badge-war':'badge-suc'}">${warning}</span><span class="stat-lbl">${lang==='ar'?'تحذيرية':'Warning'}</span></div>
-      <div class="stat"><span class="stat-num badge badge-pri">${info}</span><span class="stat-lbl">${lang==='ar'?'إعلامية':'Info'}</span></div>
-      <div class="stat"><span class="stat-num">${alerts.length}</span><span class="stat-lbl">${lang==='ar'?'المجموع':'Total'}</span></div>`;
-    const prioMap = { critical: lang==='ar'?'عالية':'High', warning: lang==='ar'?'متوسطة':'Medium', info: lang==='ar'?'منخفضة':'Low' };
+      <div class="stat"><span class="stat-num badge ${critical>0?'badge-dan':'badge-suc'}">${critical}</span><span class="stat-lbl">${t('priority.critical')}</span></div>
+      <div class="stat"><span class="stat-num badge ${warning>0?'badge-war':'badge-suc'}">${warning}</span><span class="stat-lbl">${t('bi.warning')}</span></div>
+      <div class="stat"><span class="stat-num badge badge-pri">${info}</span><span class="stat-lbl">${t('bi.info')}</span></div>
+      <div class="stat"><span class="stat-num">${alerts.length}</span><span class="stat-lbl">${t('bi.total')}</span></div>`;
+    const prioMap = { critical: t('priority.high'), warning: t('priority.medium'), info: t('priority.low') };
     const prioCls = { critical: 'badge-dan', warning: 'badge-war', info: 'badge-pri' };
     if (alerts.length === 0) {
-      body.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">${lang==='ar'?'لا توجد تنبيهات نشطة ✓':'No active alerts ✓'}</td></tr>`;
+      body.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3)">${t('bi.noActiveAlerts')}</td></tr>`;
       return;
     }
     body.innerHTML = alerts.map(a => `<tr>
@@ -4769,18 +5345,18 @@ async function renderAlerts(){
     let items = [];
     contracts.forEach(c => {
       const d = Math.ceil((new Date(c.end)-today)/86400000);
-      if (d > 0 && d < 30) items.push({type:'al-dan',icon:'ti-calendar-x',msg:(lang==='ar'?`عقد ${c.num} — ${c.tenant} ينتهي خلال ${d} يوم`:`Contract ${c.num} — ${c.tenant} expiring in ${d} days`), category:lang==='ar'?'عقود':'Contracts', priority:'warning', related_to: c.propName || ''});
+      if (d > 0 && d < 30) items.push({type:'al-dan',icon:'ti-calendar-x',msg:t('bi.contractExpiring').replace('{num}',c.num).replace('{tenant}',c.tenant).replace('{d}',d), category:t('bi.contracts'), priority:'warning', related_to: c.propName || ''});
     });
     services.forEach(s => {
       const d = Math.ceil((new Date(s.end)-today)/86400000);
-      if (d > 0 && d < 60) items.push({type:'al-war',icon:'ti-tool',msg:lang==='ar'?`عقد خدمة ${s.co} ينتهي خلال ${d} يوم`:`Service contract ${s.co} expiring in ${d} days`, category:lang==='ar'?'خدمات':'Services', priority:'info', related_to: ''});
+      if (d > 0 && d < 60) items.push({type:'al-war',icon:'ti-tool',msg:t('bi.serviceExpiring').replace('{co}',s.co).replace('{d}',d), category:t('bi.services'), priority:'info', related_to: ''});
     });
-    statsEl.innerHTML = `<div class="stat"><span class="stat-num badge ${items.filter(x=>x.priority==='warning').length>0?'badge-war':'badge-suc'}">${items.length}</span><span class="stat-lbl">${lang==='ar'?'تنبيهات (محلي)':'Alerts (local)'}</span></div>`;
+    statsEl.innerHTML = `<div class="stat"><span class="stat-num badge ${items.filter(x=>x.priority==='warning').length>0?'badge-war':'badge-suc'}">${items.length}</span><span class="stat-lbl">${t('bi.localAlerts')}</span></div>`;
     body.innerHTML = items.map(a => `<tr>
       <td><i class="ti ${a.icon}"></i> ${a.category}</td>
       <td>${a.msg}</td>
       <td>${a.related_to}</td>
-      <td><span class="badge badge-war">${a.priority === 'warning' ? (lang==='ar'?'متوسطة':'Medium') : (lang==='ar'?'منخفضة':'Low')}</span></td>
+      <td><span class="badge badge-war">${a.priority === 'warning' ? t('priority.medium') : t('priority.low')}</span></td>
       <td style="font-size:11px;color:var(--text3)">—</td>
     </tr>`).join('');
   }
@@ -4802,7 +5378,7 @@ function renderReportStats(){
   const annualExpected = activeContracts.reduce((s, c) => s + (c.annual || 0), 0);
   document.getElementById('report-stats').innerHTML = `
     <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${lang==='ar'?'الإيرادات السنوية المتوقعة (ر.س)':'Expected Annual Revenue (SAR)'}</div></div>
-    <div class="stat-card"><div class="stat-val">${units.length}</div><div class="stat-lbl">${lang==='ar'?'إجمالي الوحدات':'Total Units'}</div></div>
+    <div class="stat-card"><div class="stat-val">${units.length}</div><div class="stat-lbl">${t('reports.totalUnits')}</div></div>
     <div class="stat-card"><div class="stat-val" style="color:var(--pri)">${avgRent ? numFmt(avgRent) : '—'}</div><div class="stat-lbl">${lang==='ar'?'متوسط الإيجار (ر.س/شهر)':'Avg Rent (SAR/mo)'}</div></div>
     <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${lang==='ar'?'الصافي بعد المصاريف':'Net after expenses'}</div></div>`;
 }
@@ -4820,7 +5396,7 @@ function initReportCharts(){
   });
   if(pc) propChart = new Chart(pc,{type:'bar',data:{
     labels: props.map(p=>propName(p)),
-    datasets:[{label:lang==='ar'?'الإيرادات (ر.س)':'Revenue (SAR)',data:propRevenue,backgroundColor:'#1B4F8A',borderRadius:6}]
+    datasets:[{label:t('reports.revenueSAR'),data:propRevenue,backgroundColor:'#1B4F8A',borderRadius:6}]
   },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:tc,callback:v=>Math.round(v/1000)+'K'},grid:{color:'rgba(128,128,128,0.06)'}},x:{ticks:{color:tc,font:{size:10}},grid:{display:false}}}}});
 }
 
@@ -4832,7 +5408,7 @@ function initContractModal(){
   document.getElementById('c-nafath-status').innerHTML = '';
   document.getElementById('c-nafath-confirm-btn').style.display = 'none';
   document.getElementById('c-nafath-btn').disabled = false;
-  document.getElementById('c-nafath-btn').innerHTML = `<i class="ti ti-send" aria-hidden="true"></i><span data-i="nafath.sendOtp">${lang==='ar'?'إرسال رمز التحقق':'Send verification code'}</span>`;
+  document.getElementById('c-nafath-btn').innerHTML = `<i class="ti ti-send" aria-hidden="true"></i><span data-i="nafath.sendOtp">${t('nafath.sendOtp')}</span>`;
   showContractStep(1);
   populateSelects();
   // Set default dates
@@ -4871,19 +5447,19 @@ let cNafathVerified = false;
 function startContractNafath(){
   const nid = document.getElementById('c-owner-nid').value.trim();
   const phone = document.getElementById('c-owner-phone').value.trim();
-  if(!nid) { alert(lang==='ar'?'يرجى إدخال رقم الهوية الوطنية':'Please enter your national ID'); return; }
-  if(!phone) { alert(lang==='ar'?'يرجى إدخال رقم الجوال المسجل في نفاذ':'Please enter your phone registered with Nafath'); return; }
+  if(!nid) { alert(t('nafath.enterNID')); return; }
+  if(!phone) { alert(t('nafath.enterPhone')); return; }
   const btn = document.getElementById('c-nafath-btn');
-  btn.disabled = true; btn.innerHTML = `<i class="ti ti-loader" aria-hidden="true"></i> ${lang==='ar'?'جاري الإرسال...':'Sending...'}`;
+  btn.innerHTML = `<i class="ti ti-loader" aria-hidden="true"></i> ${t('nafath.sending')}`;
   apiPost('/nafath/verify', { national_id: nid, phone }).then(res => {
     if(res.request_id) {
       cNafathRequestId = res.request_id;
-      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--suc)">${lang==='ar'?'✓ تم إرسال رمز التحقق إلى جوالك المسجل في نفاذ':'✓ Verification code sent to your phone via Nafath'}</span>`;
+      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--suc)">✓ ${t('nafath.codeSent')}</span>`;
       document.getElementById('c-nafath-confirm-btn').style.display = '';
-      btn.innerHTML = `<i class="ti ti-send" aria-hidden="true"></i> ${lang==='ar'?'إعادة إرسال':'Resend'}`;
+      btn.innerHTML = `<i class="ti ti-send" aria-hidden="true"></i> ${t('nafath.resend')}`;
       btn.disabled = false;
     } else {
-      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--dan)">${lang==='ar'?'✗ فشل الإرسال':'✗ Send failed'}</span>`;
+      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--dan)">✗ ${t('nafath.sendFailed')}</span>`;
       btn.disabled = false;
     }
   }).catch(e => {
@@ -4893,15 +5469,15 @@ function startContractNafath(){
 }
 
 function confirmContractNafath(){
-  const otp = prompt(lang==='ar'?'أدخل رمز التحقق المرسل إلى جوالك:':'Enter the verification code sent to your phone:');
+  const otp = prompt(t('nafath.enterOtp'));
   if(!otp) return;
   apiPost('/nafath/confirm', { request_id: cNafathRequestId, otp }).then(res => {
     if(res.status === 'verified') {
       cNafathVerified = true;
-      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--suc);font-weight:600">✓ ${lang==='ar'?'تم التحقق من هوية مالك العقار عبر النفاذ الوطني':'Property owner identity verified via Nafath'}</span>`;
+      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--suc);font-weight:600">✓ ${t('nafath.verified')}</span>`;
       document.getElementById('c-nafath-confirm-btn').style.display = 'none';
     } else {
-      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--dan)">✗ ${lang==='ar'?'رمز التحقق غير صحيح':'Invalid verification code'}</span>`;
+      document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--dan)">✗ ${t('nafath.invalidCode')}</span>`;
     }
   }).catch(e => {
     document.getElementById('c-nafath-status').innerHTML = `<span style="color:var(--dan)">✗ ${e.message}</span>`;
@@ -4920,31 +5496,31 @@ function buildContractPreview(){
   const contractNum = 'RC-'+new Date().getFullYear()+'-'+(getContracts().length+1).toString().padStart(5,'0');
 
   document.getElementById('contract-preview').innerHTML=`
-    <h3>${lang==='ar'?'عقد إيجار عقاري':'Lease Agreement'}</h3>
+    <h3>${t('contract.leaseAgreement')}</h3>
     <p class="subtitle">${contractNum}</p>
     <table class="receipt-table">
-      <tr><td>${lang==='ar'?'المستأجر':'Tenant'}</td><td>${tenant}</td></tr>
-      <tr><td>${lang==='ar'?'مدة العقد':'Term'}</td><td>${start} → ${end}</td></tr>
+      <tr><td>${t('col.renter')}</td><td>${tenant}</td></tr>
+      <tr><td>${t('contract.term')}</td><td>${start} → ${end}</td></tr>
       <tr><td>${lang==='ar'?'الإيجار السنوي':'Annual Rent'}</td><td>${numFmt(annual)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
       <tr><td>${lang==='ar'?'الإيجار الشهري':'Monthly Rent'}</td><td>${numFmt(monthly)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
       <tr><td>${lang==='ar'?'ضريبة القيمة المضافة 15%':'VAT 15%'}</td><td>${numFmt(vat)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
       <tr><td><strong>${lang==='ar'?'الإجمالي':'Total'}</strong></td><td><strong>${numFmt(total)} ${lang==='ar'?'ر.س':'SAR'}</strong></td></tr>
       <tr><td>${lang==='ar'?'التأمين':'Deposit'}</td><td>${numFmt(deposit)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
-      <tr><td>${lang==='ar'?'التحقق عبر النفاذ':'Nafath'}</td><td>${cNafathVerified?`<span style="color:var(--suc)">✓ ${lang==='ar'?'تم التحقق':'Verified'}</span>`:`<span style="color:var(--war)">${lang==='ar'?'في الانتظار':'Pending'}</span>`}</td></tr>
+      <tr><td>${t('contract.nafath')}</td><td>${cNafathVerified?`<span style="color:var(--suc)">✓ ${t('contract.verified')}</span>`:`<span style="color:var(--war)">${t('contract.pending')}</span>`}</td></tr>
     </table>
     <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)">
-      ${lang==='ar'?'سيتم إصدار سندات قبض تلقائياً لكل الدفعات وربطها بهيئة الزكاة والدخل':'Receipts will be auto-generated for all installments and linked to ZATCA'}
+      ${t('contract.autoReceipts')}
     </div>
     <div style="display:flex;justify-content:space-between;margin-top:20px;font-size:11px;color:var(--text2)">
-      <span>${lang==='ar'?'توقيع المؤجر: ______________':'Landlord Signature: ______________'}</span>
-      <span>${lang==='ar'?'توقيع المستأجر: ______________':'Tenant Signature: ______________'}</span>
+      <span>${t('contract.landlordSig')}</span>
+      <span>${t('contract.tenantSig')}</span>
     </div>`;
 }
 
 function saveContract(){
-  if(!cNafathVerified){ alert(lang==='ar'?'يرجى التحقق من هوية مالك العقار عبر النفاذ الوطني أولاً':'Please verify the property owner identity via Nafath first'); return; }
+  if(!cNafathVerified){ alert(t('contract.verifyNafathFirst')); return; }
   const tenant = document.getElementById('c-tenant').value;
-  if(!tenant){ alert(lang==='ar'?'يرجى إدخال اسم المستأجر':'Please enter tenant name'); return; }
+  if(!tenant){ alert(t('contract.enterTenant')); return; }
   const annual = +document.getElementById('c-annual').value||0;
   const freq = +document.getElementById('c-freq').value||12;
   const cArr = getContracts(), rArr = getReceipts();
@@ -4979,7 +5555,7 @@ function saveContract(){
 
   closeM('m-contract');
   renderContracts();
-  alert(lang==='ar'?`✓ تم إنشاء العقد ${newC.num} وتوليد ${freq} سندات قبض تلقائياً`:`✓ Contract ${newC.num} created with ${freq} auto-generated receipts`);
+  alert(t('contract.created').replace('{num}',newC.num).replace('{freq}',freq));
 }
 
 // ═══════════════════════════════════════════════
@@ -5014,12 +5590,12 @@ function addQuoteItem(){
   row.className='quote-item-row';
   row.id=`qi-${quoteItemCount}`;
   row.innerHTML=`
-    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${lang==='ar'?'وصف البند':'Item description'}
-    <input aria-label="${lang==='ar'?'وصف البند':'Item description'}" placeholder="${lang==='ar'?'وصف البند':'Item description'}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);width:120px" id="qi-desc-${quoteItemCount}"></label>
-    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${lang==='ar'?'الكمية':'Quantity'}
-    <input type="number" value="1" min="1" aria-label="${lang==='ar'?'الكمية':'Quantity'}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);text-align:center;width:70px" id="qi-qty-${quoteItemCount}" oninput="calcQuote()"></label>
-    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${lang==='ar'?'سعر الوحدة':'Unit price'}
-    <input type="number" value="0" min="0" aria-label="${lang==='ar'?'سعر الوحدة':'Unit price'}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);text-align:center;width:80px" id="qi-price-${quoteItemCount}" oninput="calcQuote()"></label>
+    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${t('quote.itemDesc')}
+    <input aria-label="${t('quote.itemDesc')}" placeholder="${t('quote.itemDesc')}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);width:120px" id="qi-desc-${quoteItemCount}"></label>
+    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${t('quote.qty')}
+    <input type="number" value="1" min="1" aria-label="${t('quote.qty')}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);text-align:center;width:70px" id="qi-qty-${quoteItemCount}" oninput="calcQuote()"></label>
+    <label style="display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px">${t('quote.unitPrice')}
+    <input type="number" value="0" min="0" aria-label="${t('quote.unitPrice')}" style="padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--surface);color:var(--text1);text-align:center;width:80px" id="qi-price-${quoteItemCount}" oninput="calcQuote()"></label>
     <div id="qi-total-${quoteItemCount}" style="text-align:center;font-weight:600;font-size:12px;padding:6px 0">0</div>
     <button class="btn btn-ghost btn-icon btn-sm" onclick="document.getElementById('qi-${quoteItemCount}').remove();calcQuote()"><i class="ti ti-x" style="font-size:12px" aria-hidden="true"></i></button>`;
   document.getElementById('quote-items').appendChild(row);
@@ -5045,7 +5621,7 @@ function calcQuote(){
 
 function saveQuote(){
   const client = document.getElementById('q-client').value;
-  if(!client){ alert(lang==='ar'?'يرجى إدخال اسم العميل':'Please enter client name'); return; }
+  if(!client){ alert(t('quote.enterClient')); return; }
   let sub=0;
   for(let i=1;i<=quoteItemCount;i++){
     const qEl=document.getElementById(`qi-qty-${i}`);
@@ -5064,7 +5640,7 @@ function saveQuote(){
     status:'draft'
   });
   closeM('m-quote'); renderQuotes();
-  alert(lang==='ar'?'✓ تم حفظ عرض السعر بنجاح':'✓ Quotation saved successfully');
+  alert(t('quote.saved'));
 }
 
 // ═══════════════════════════════════════════════
@@ -5075,7 +5651,7 @@ function previewUnits(){
   const total = +document.getElementById('np-total').value||0;
   const perFloor = Math.ceil(total/floors);
   document.getElementById('units-preview-text').textContent =
-    lang==='ar'?`سيتم توليد ${total} وحدة تلقائياً موزعة على ${floors} طابق (${perFloor} وحدة/طابق)`
+    t('prop.autoGenerateUnits').replace('{total}',total).replace('{floors}',floors).replace('{perFloor}',perFloor)
                :`${total} units will be auto-generated across ${floors} floors (${perFloor} units/floor)`;
 }
 
@@ -5111,7 +5687,7 @@ function addProp(){
   closeM('m-prop');
   renderProperties();
   populateSelects();
-  alert(`✓ ${lang==='ar'?`تم إضافة العقار وتوليد ${total} وحدة تلقائياً`:`Property added with ${total} auto-generated units`}`);
+  alert(t('prop.addedWithUnits').replace('{total}',total));
 }
 
 function addUnit(){
@@ -5175,7 +5751,7 @@ function addWO(){
 
 function runPayroll(){
   renderPayroll();
-  alert(lang==='ar'?'✓ تم احتساب مسير رواتب يونيو 2026':'✓ June 2026 payroll calculated');
+  alert(t('payroll.calculated'));
 }
 
 // ═══════════════════════════════════════════════
@@ -5193,7 +5769,7 @@ async function deleteProperty(id){
     renderDashboard();
     addApiLog('DELETE','/properties/'+id,`${lang==='ar'?'تم الحذف':'Deleted'}: ${propName(p)}`);
   } catch(e){
-    alert(lang==='ar'?'فشل الحذف: '+e.message:'Delete failed: '+e.message);
+    alert(t('error.prefix')+e.message);
   }
 }
 
@@ -5245,7 +5821,7 @@ function exportPDF(){
 }
 function exportSIF(){
   const staff = getStaff().filter(s => s.status === 'active');
-  if (!staff.length) { alert(lang==='ar'?'لا يوجد موظفون نشطون لتصدير الملف':'No active employees to export'); return; }
+  if (!staff.length) { alert(t('payroll.noActive')); return; }
   const month = document.getElementById('payroll-month')?.value || new Date().toISOString().slice(0,7);
   // Build CSV in SIF format: EmployeeNo | IBAN | Amount | ... 
   let csv = 'EmployeeNo,IBAN,Amount,NationalID,Name\n';
@@ -5317,7 +5893,7 @@ function printReceipt(id){
 function showContractReceipts(cid){
   const list = getReceipts().filter(r => r.contractId === cid);
   if(!list.length){
-    alert(lang==='ar' ? 'لا توجد سندات قبض لهذا العقد بعد' : 'No receipts found for this contract');
+    alert(t('contract.noReceipts'));
     return;
   }
   const c = getContract(cid);
@@ -5683,11 +6259,11 @@ async function saveZatcaSettings() {
     postal_code: document.getElementById('zt-postal').value.trim(),
     additional_number: document.getElementById('zt-add-no').value.trim(),
   };
-  if (!data.organization_name) { alert(lang==='ar'?'الرجاء إدخال اسم المنشأة':'Please enter organization name'); return; }
-  if (!data.vat_number) { alert(lang==='ar'?'الرجاء إدخال الرقم الضريبي':'Please enter VAT number'); return; }
+  if (!data.organization_name) { alert(t('settings.enterOrgName')); return; }
+  if (!data.vat_number) { alert(t('settings.enterVat')); return; }
   try {
     await apiPut('/api/v1/zatca/settings', data);
-    alert(lang==='ar'?'تم حفظ الإعدادات بنجاح':'Settings saved successfully');
+    alert(t('settings.saved'));
     loadZatcaSettings();
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
@@ -5695,7 +6271,7 @@ async function saveZatcaSettings() {
 async function testZatcaConnection() {
   try {
     await loadZatcaSettings();
-    alert(lang==='ar'?'تم اختبار الاتصال بنجاح (محاكاة)':'Connection test successful (simulated)');
+    alert(t('settings.connectionTest'));
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
 
@@ -5711,18 +6287,18 @@ async function renderZatcaQueue() {
     const queue = queueRes.data || [];
     const stats = statsRes.data || {};
     statsEl.innerHTML = `
-      <div class="stat"><span class="stat-num">${stats.total || 0}</span><span class="stat-lbl">${lang==='ar'?'إجمالي':'Total'}</span></div>
-      <div class="stat"><span class="stat-num badge badge-war">${stats.pending || 0}</span><span class="stat-lbl">${lang==='ar'?'قيد الانتظار':'Pending'}</span></div>
-      <div class="stat"><span class="stat-num badge badge-suc">${stats.cleared || 0}</span><span class="stat-lbl">${lang==='ar'?'مؤكدة':'Cleared'}</span></div>
-      <div class="stat"><span class="stat-num badge badge-dan">${stats.failed || 0}</span><span class="stat-lbl">${lang==='ar'?'فاشلة':'Failed'}</span></div>
+      <div class="stat"><span class="stat-num">${stats.total || 0}</span><span class="stat-lbl">${t('deals.total')}</span></div>
+      <div class="stat"><span class="stat-num badge badge-war">${stats.pending || 0}</span><span class="stat-lbl">${t('zatca.pending')}</span></div>
+      <div class="stat"><span class="stat-num badge badge-suc">${stats.cleared || 0}</span><span class="stat-lbl">${t('zatca.cleared')}</span></div>
+      <div class="stat"><span class="stat-num badge badge-dan">${stats.failed || 0}</span><span class="stat-lbl">${t('zatca.failed')}</span></div>
     `;
     if (queue.length === 0) {
-      body.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--text3)">${lang==='ar'?'لا توجد فواتير مرسلة':'No invoices sent'}</td></tr>`;
+      body.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:20px;color:var(--text3)">${t('zatca.empty')}</td></tr>`;
       return;
     }
-    const statusMap = { pending: lang==='ar'?'قيد الانتظار':'Pending', submitted: lang==='ar'?'قيد الإرسال':'Submitting', cleared: lang==='ar'?'تمت المصادقة':'Cleared', reported: lang==='ar'?'مبرمجة':'Reported', rejected: lang==='ar'?'مرفوضة':'Rejected', failed: lang==='ar'?'فاشلة':'Failed' };
-    const statusBadge = { pending:'war', submitted:'inf', cleared:'suc', reported:'suc', rejected:'dan', failed:'dan' };
-    const typeMap = { standard: lang==='ar'?'قياسية':'Standard', simplified: lang==='ar'?'مبسطة':'Simplified', debit: lang==='ar'?'دائن':'Debit', credit: lang==='ar'?'مدين':'Credit' };
+    const statusMap = { pending: t('zatca.status.pending'), submitted: t('zatca.status.submitted'), cleared: t('zatca.status.cleared'), reported: t('zatca.status.reported'), rejected: t('zatca.status.rejected'), failed: t('zatca.status.failed') };
+    const statusBadgeCls = { pending:'war', submitted:'inf', cleared:'suc', reported:'suc', rejected:'dan', failed:'dan' };
+    const typeMap = { standard: t('zatca.type.standard'), simplified: t('zatca.type.simplified'), debit: t('zatca.type.debit'), credit: t('zatca.type.credit') };
     body.innerHTML = queue.map((q, i) => `
       <tr>
         <td>${i+1}</td>
@@ -5731,29 +6307,29 @@ async function renderZatcaQueue() {
         <td>${q.renter_name || '-'}</td>
         <td>${(q.total_amount || 0).toLocaleString('ar-SA')}</td>
         <td style="font-size:11px;direction:ltr;max-width:120px;overflow:hidden;text-overflow:ellipsis">${q.invoice_uuid ? q.invoice_uuid.substring(0, 20)+'...' : '-'}</td>
-        <td><span class="badge badge-${statusBadge[q.status]}">${statusMap[q.status] || q.status}</span></td>
+        <td><span class="badge badge-${statusBadgeCls[q.status]}">${statusMap[q.status] || q.status}</span></td>
         <td style="font-size:12px">${q.submitted_at ? q.submitted_at.substring(0, 10) : (q.created_at ? q.created_at.substring(0, 10) : '-')}</td>
         <td style="white-space:nowrap">
-          ${q.status === 'pending' ? `<button class="btn btn-ghost btn-sm" onclick="submitSingleZatca('${q.id}')" title="إرسال"><i class="ti ti-send"></i></button>` : ''}
+          ${q.status === 'pending' ? `<button class="btn btn-ghost btn-sm" onclick="submitSingleZatca('${q.id}')" title="${t('zatca.send')}"><i class="ti ti-send"></i></button>` : ''}
         </td>
       </tr>
     `).join('');
-  } catch (e) { body.innerHTML = `<tr><td colspan="9" style="text-align:center;color:var(--dan)">خطأ: ${e.message}</td></tr>`; }
+  } catch (e) { body.innerHTML = `<tr><td colspan="9" style="text-align:center;color:var(--dan)">${t('error.prefix')}${e.message}</td></tr>`; }
 }
 
 async function submitSingleZatca(id) {
   try {
     await apiPost(`/api/v1/zatca/queue/${id}/submit`);
     renderZatcaQueue();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('error.prefix') + e.message); }
 }
 
 async function submitAllZatca() {
   try {
     const res = await apiPost('/api/v1/zatca/queue/submit-all');
-    alert(`تم إرسال ${res.data?.submitted || 0} فاتورة`);
+    alert(t('zatca.submitted'));
     renderZatcaQueue();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('error.prefix') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -5847,8 +6423,8 @@ async function resetListingModal() {
   document.getElementById('nl-type').value = 'rent';
   document.getElementById('nl-negotiable').checked = true;
   document.getElementById('nl-featured').checked = false;
-  document.getElementById('nl-property').innerHTML = `<option value="">${lang==='ar'?'اختر العقار':'Select Property'}</option>`;
-  document.getElementById('nl-unit').innerHTML = `<option value="">${lang==='ar'?'اختر الوحدة':'Select Unit'}</option>`;
+  document.getElementById('nl-property').innerHTML = `<option value="">${t('prop.select')}</option>`;
+  document.getElementById('nl-unit').innerHTML = `<option value="">${t('unit.selectUnit')}</option>`;
   document.querySelector('#m-listing .modal-title span').textContent = lang==='ar'?'إعلان جديد':'New Listing';
   try {
     const [props, channels] = await Promise.all([
@@ -6048,7 +6624,7 @@ function resetDealModal() {
   document.getElementById('nd-agent').value = '';
   document.getElementById('nd-close-date').value = '';
   document.getElementById('nd-notes').value = '';
-  document.querySelector('#m-deal .modal-title span').textContent = lang==='ar'?'صفقة جديدة':'New Deal';
+  document.querySelector('#m-deal .modal-title span').textContent = t('deals.newDeal');
 }
 
 async function renderDealDropdowns() {
@@ -6058,9 +6634,9 @@ async function renderDealDropdowns() {
       apiGet('/api/auth/profile'),
     ]);
     const propSel = document.getElementById('nd-prop');
-    propSel.innerHTML = `<option value="">${lang==='ar'?'اختر العقار':'Select Property'}</option>` + (props.data || []).map(p => `<option value="${p.id}">${p.name_ar}</option>`).join('');
+    propSel.innerHTML = `<option value="">${t('prop.select')}</option>` + (props.data || []).map(p => `<option value="${p.id}">${p.name_ar}</option>`).join('');
     const agentSel = document.getElementById('nd-agent');
-    agentSel.innerHTML = `<option value="">${lang==='ar'?'اختر المسوق':'Select Agent'}</option>`;
+    agentSel.innerHTML = `<option value="">${t('listing.selectAgent')}</option>`;
   } catch (e) {}
 }
 
@@ -6080,7 +6656,7 @@ async function saveDeal() {
     expected_close_date: document.getElementById('nd-close-date').value || null,
     notes: document.getElementById('nd-notes').value.trim(),
   };
-  if (!data.client_name) { alert(lang==='ar'?'الرجاء إدخال اسم العميل':'Please enter client name'); return; }
+  if (!data.client_name) { alert(t('listing.enterClient')); return; }
   try {
     const id = document.getElementById('nd-id').value;
     if (id) { await apiPut(`/api/v1/deals/${id}`, data); }
@@ -6109,7 +6685,7 @@ async function editDeal(id) {
     document.getElementById('nd-agent').value = d.agent_id || '';
     document.getElementById('nd-close-date').value = d.expected_close_date || '';
     document.getElementById('nd-notes').value = d.notes || '';
-    document.querySelector('#m-deal .modal-title span').textContent = lang==='ar'?'تعديل صفقة':'Edit Deal';
+    document.querySelector('#m-deal .modal-title span').textContent = t('deals.editDeal');
     await renderDealDropdowns();
     openM('m-deal');
   } catch (e) { alert('خطأ: ' + e.message); }
@@ -6417,10 +6993,10 @@ async function renderChartOfAccounts() {
 }
 
 async function seedAccounts() {
-  if (!confirm(lang==='ar'?'سيتم إنشاء دليل حسابات افتراضي. هل تريد المتابعة؟':'Create default chart of accounts?')) return;
+  if (!confirm(t('coa.confirmCreateDefault'))) return;
   try {
     const res = await apiPost('/api/v1/accounting/accounts/seed');
-    alert((lang==='ar'?`تم إنشاء ${res.count || 0} حساب`:`${res.count || 0} accounts created`));
+    alert(t('coa.created').replace('{n}',res.count||0));
     renderChartOfAccounts();
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
@@ -6455,7 +7031,7 @@ async function renderJournal() {
 }
 
 async function postEntry(id) {
-  if (!confirm(lang==='ar'?'ترحيل القيد؟ لا يمكن التراجع عن هذه العملية.':'Post entry? This cannot be undone.')) return;
+  if (!confirm(t('journal.confirmPost'))) return;
   try {
     await apiPost(`/api/v1/accounting/entries/${id}/post`);
     renderJournal();
