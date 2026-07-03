@@ -416,9 +416,9 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div class="register-card">
     <div class="register-header">
       <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px">
-        <div style="width:48px;height:48px;background:var(--md-primary);border-radius:var(--md-shape-md);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--md-on-primary)">م</div>
+        <div style="width:48px;height:48px;background:var(--md-primary);border-radius:var(--md-shape-md);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--md-on-primary)" data-i="brand.logo">م</div>
         <div style="text-align:right">
-          <div style="font-size:24px;font-weight:700;color:var(--md-on-surface)">مُـلاك</div>
+          <div style="font-size:24px;font-weight:700;color:var(--md-on-surface)" data-i="brand.name">مُـلاك</div>
           <div style="font-size:10px;color:var(--md-on-surface-variant);letter-spacing:2px">MULAK PROPTECH</div>
         </div>
       </div>
@@ -464,11 +464,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <div id="reg-step-login" style="display:none">
         <div class="fg">
           <label id="lbl-login-email" for="inp-login-email" data-i="field.email">البريد الإلكتروني</label>
-          <input id="inp-login-email" type="email" placeholder="info@example.com" dir="ltr" style="text-align:left">
+          <input id="inp-login-email" type="email" placeholder="info@example.com" dir="ltr" style="text-align:left" data-i-placeholder="reg.emailPlh">
         </div>
         <div class="fg">
           <label id="lbl-login-password" for="inp-login-password" data-i="reg.password">كلمة المرور</label>
-          <input id="inp-login-password" type="password" placeholder="••••••••" dir="ltr">
+          <input id="inp-login-password" type="password" placeholder="••••••••" dir="ltr" data-i-placeholder="reg.passwordPlh">
         </div>
         <button class="btn btn-primary" style="width:100%;justify-content:center;height:44px;font-size:14px;margin-top:8px" onclick="loginWithEmail()">
           <i class="ti ti-login" aria-hidden="true"></i>
@@ -486,7 +486,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <div id="reg-step-forgot" style="display:none">
         <div class="fg">
           <label id="lbl-forgot-phone" for="inp-forgot-phone" data-i="reg.forgotPhone">رقم الجوال المسجل</label>
-          <input id="inp-forgot-phone" type="tel" placeholder="05xxxxxxxx" dir="ltr" style="text-align:left">
+          <input id="inp-forgot-phone" type="tel" placeholder="05xxxxxxxx" dir="ltr" style="text-align:left" data-i-placeholder="reg.phonePlh">
         </div>
         <button class="btn btn-primary" style="width:100%;justify-content:center;height:44px;font-size:14px;margin-top:8px" onclick="forgotPassword()">
           <i class="ti ti-send" aria-hidden="true"></i>
@@ -502,11 +502,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
         <p style="text-align:center;font-size:13px;color:var(--md-on-surface-variant)" id="reset-message"></p>
         <div class="fg">
           <label for="inp-reset-token" data-i="reg.resetCode">رمز إعادة التعيين</label>
-          <input id="inp-reset-token" type="text" placeholder="انسخ الرمز أعلاه" dir="ltr" style="text-align:left;font-size:12px">
+          <input id="inp-reset-token" type="text" placeholder="انسخ الرمز أعلاه" dir="ltr" style="text-align:left;font-size:12px" data-i-placeholder="reg.resetCodePlh">
         </div>
         <div class="fg">
           <label id="lbl-reset-password" for="inp-reset-password" data-i="reg.newPassword">كلمة المرور الجديدة</label>
-          <input id="inp-reset-password" type="password" placeholder="•••••••• (6 أحرف أو أكثر)" dir="ltr">
+          <input id="inp-reset-password" type="password" placeholder="•••••••• (6 أحرف أو أكثر)" dir="ltr" data-i-placeholder="reg.newPasswordPlh">
         </div>
         <button class="btn btn-primary" style="width:100%;justify-content:center;height:44px;font-size:14px;margin-top:8px" onclick="resetPassword()">
           <i class="ti ti-key" aria-hidden="true"></i>
@@ -521,8 +521,8 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <div id="reg-step-1" style="display:none">
         <div class="fg">
           <label id="lbl-nafath-nid" for="inp-nafath-nid" data-i="customer.nid">رقم الهوية الوطنية / الإقامة</label>
-          <input id="inp-nafath-nid" placeholder="10 أرقام" maxlength="10" style="font-size:16px;letter-spacing:2px;text-align:center">
-          <div class="hint" id="hint-nid">سيتم التحقق من هويتك عبر منصة نفاذ الوطنية</div>
+          <input id="inp-nafath-nid" placeholder="10 أرقام" maxlength="10" style="font-size:16px;letter-spacing:2px;text-align:center" data-i-placeholder="reg.nafathNidPlh">
+          <div class="hint" id="hint-nid" data-i="reg.nafathHint">سيتم التحقق من هويتك عبر منصة نفاذ الوطنية</div>
         </div>
         <div class="fg">
           <label id="lbl-nafath-phone" for="inp-nafath-phone" data-i="customer.phone">رقم الجوال</label>
@@ -530,38 +530,38 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
         </div>
         <div class="fg">
           <label id="lbl-n-company" for="inp-n-company" data-i="ticket.company">اسم الشركة / المؤسسة</label>
-          <input id="inp-n-company" placeholder="شركة الأملاك المتحدة">
+          <input id="inp-n-company" placeholder="شركة الأملاك المتحدة" data-i-placeholder="reg.companyNamePlh">
         </div>
         <button class="btn btn-nafath" style="width:100%;justify-content:center;height:44px;font-size:14px;margin-top:8px" onclick="startNafath()">
           <i class="ti ti-shield-check" aria-hidden="true"></i>
-          <span id="btn-nafath-txt2">التحقق عبر نفاذ</span>
+          <span id="btn-nafath-txt2" data-i="reg.nafathVerify">التحقق عبر نفاذ</span>
         </button>
-        <div class="divider"><span id="lbl-or-back">أو</span></div>
+        <div class="divider"><span id="lbl-or-back" data-i="common.or">أو</span></div>
         <button class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;height:40px" onclick="showEmailReg()">
           <i class="ti ti-arrow-right" aria-hidden="true"></i>
-          <span id="btn-back-email">العودة للتسجيل بالبريد</span>
+          <span id="btn-back-email" data-i="reg.backToEmail">العودة للتسجيل بالبريد</span>
         </button>
       </div>
 
       <!-- Nafath verification step -->
       <div id="reg-step-2" style="display:none;text-align:center">
         <div class="nafath-circle" id="nafath-number">47</div>
-        <h3 style="margin-bottom:8px;font-size:18px;font-weight:500" id="nafath-title">تأكيد هويتك</h3>
-        <p style="font-size:13px;color:var(--md-on-surface-variant);margin-bottom:18px" id="nafath-desc">افتح تطبيق <strong>نفاذ</strong> وأدخل الرقم المعروض أعلاه لتأكيد هويتك</p>
+        <h3 style="margin-bottom:8px;font-size:18px;font-weight:500" id="nafath-title" data-i="reg.nafathConfirmTitle">تأكيد هويتك</h3>
+        <p style="font-size:13px;color:var(--md-on-surface-variant);margin-bottom:18px" id="nafath-desc" data-i="reg.nafathDesc">افتح تطبيق <strong>نفاذ</strong> وأدخل الرقم المعروض أعلاه لتأكيد هويتك</p>
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:18px">
           <div style="width:10px;height:10px;border-radius:var(--md-shape-full);background:var(--md-success);animation:md3-pulse 1s infinite"></div>
-          <span style="font-size:13px;color:var(--md-on-surface-variant)" id="nafath-waiting">في انتظار التأكيد...</span>
+          <span style="font-size:13px;color:var(--md-on-surface-variant)" id="nafath-waiting" data-i="reg.nafathWaiting">في انتظار التأكيد...</span>
         </div>
-        <div style="font-size:12px;color:var(--md-on-surface-variant);margin-bottom:18px" id="nafath-expires">ينتهي خلال <span id="countdown">120</span> ثانية</div>
-        <button class="btn btn-outline" style="font-size:12px" onclick="simulateNafathSuccess()" id="btn-sim">محاكاة نجاح التحقق</button>
+        <div style="font-size:12px;color:var(--md-on-surface-variant);margin-bottom:18px" id="nafath-expires" data-i="reg.nafathExpires">ينتهي خلال <span id="countdown">120</span> ثانية</div>
+        <button class="btn btn-outline" style="font-size:12px" onclick="simulateNafathSuccess()" id="btn-sim" data-i="reg.nafathSimulate">محاكاة نجاح التحقق</button>
       </div>
 
       <!-- Success step -->
       <div id="reg-step-3" style="display:none;text-align:center">
         <div style="width:72px;height:72px;background:var(--md-success-container);border-radius:var(--md-shape-full);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:34px;color:var(--md-success)">✓</div>
-        <h3 id="success-title" style="margin-bottom:8px;font-size:20px;font-weight:500">تم التحقق بنجاح!</h3>
-        <p style="font-size:13px;color:var(--md-on-surface-variant);margin-bottom:24px" id="success-desc">جارٍ تحضير لوحة التحكم الخاصة بك...</p>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;height:44px;font-size:14px" onclick="enterApp()" id="btn-enter">الدخول إلى النظام</button>
+        <h3 id="success-title" style="margin-bottom:8px;font-size:20px;font-weight:500" data-i="reg.verified">تم التحقق بنجاح!</h3>
+        <p style="font-size:13px;color:var(--md-on-surface-variant);margin-bottom:24px" id="success-desc" data-i="reg.preparing">جارٍ تحضير لوحة التحكم الخاصة بك...</p>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;height:44px;font-size:14px" onclick="enterApp()" id="btn-enter" data-i="reg.enterApp">الدخول إلى النظام</button>
       </div>
     </div>
   </div>
@@ -573,11 +573,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="app" id="main-app" style="display:none">
 
 <!-- SIDEBAR -->
-<nav class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
+  <nav class="sidebar" id="sidebar" aria-label="القائمة الرئيسية" data-i-aria-label="nav.mainMenu">
   <div class="sidebar-logo">
-    <div class="logo-mark">م</div>
+    <div class="logo-mark" data-i="brand.logo">م</div>
     <div class="logo-text">
-      <span>مُلاك</span>
+      <span data-i="brand.name">مُلاك</span>
       <span>MULAK PROPTECH</span>
     </div>
   </div>
@@ -2890,7 +2890,57 @@ const T = {
     'inv.minStock':'الحد الأدنى',
     'inv.maxStock':'الحد الأعلى',
     'vendor.loading':'${t(\'vendor.loading\')}'
-  },
+  ,
+  'brand.name':'مُـلاك',
+  'reg.nafathHint':'سيتم التحقق من هويتك عبر منصة نفاذ الوطنية',
+  'reg.nafathVerify':'التحقق عبر نفاذ',
+  'reg.backToEmail':'العودة للتسجيل بالبريد',
+  'reg.nafathConfirmTitle':'تأكيد هويتك',
+  'reg.nafathDesc':'افتح تطبيق نفاذ وأدخل الرقم المعروض أعلاه لتأكيد هويتك',
+  'reg.nafathWaiting':'في انتظار التأكيد...',
+  'reg.nafathExpires':'ينتهي خلال {sec,
+  'brand.name':'Mulak PropTech',
+  'common.or':'Or',
+  'reg.nafathSimulate':'Simulate verification success',
+  'reg.verified':'Verified Successfully!',
+  'reg.preparing':'Preparing your dashboard...',
+  'reg.enterApp':'Enter the system',
+  'reg.newPasswordPlh':'•••••••• (6+ characters)',
+  'reg.nafathNidPlh':'10 digits',
+  'common.save':'Save',
+  'common.cancel':'Cancel',
+  'common.all':'All'} ثانية',
+  'reg.nafathSimulate':'محاكاة نجاح التحقق',
+  'reg.verified':'تم التحقق بنجاح!',
+  'reg.preparing':'جارٍ تحضير لوحة التحكم الخاصة بك...',
+  'reg.enterApp':'الدخول إلى النظام',
+  'reg.newPasswordPlh':'•••••••• (6 أحرف أو أكثر)',
+  'reg.nafathNidPlh':'10 أرقام',
+  'locale.numFmt':'ar-SA',
+  'dir.right':'left',
+  'reg.err.nid10':'رقم الهوية يجب أن يكون 10 أرقام',
+  'reg.err.passwordMatch':'كلمة المرور وتأكيدها غير متطابقتين',
+  'reg.err.passwordMin':'كلمة المرور يجب أن تكون 6 أحرف على الأقل',
+  'reg.err.requiredFields':'يرجى تعبئة جميع الحقول المطلوبة',
+  'reg.err.noEmailPass':'يرجى إدخال البريد الإلكتروني وكلمة المرور',
+  'reg.err.noPhone':'يرجى إدخال رقم الجوال',
+  'reg.err.resetFields':'يرجى تعبئة جميع الحقول',
+  'reg.err.passwordMin2':'كلمة المرور يجب أن تكون 6 أحرف على الأقل',
+  'reg.success.passwordChanged':'تم تغيير كلمة المرور بنجاح. يمكنك تسجيل الدخول الآن',
+  'reg.err.nidValid10':'يرجى إدخال رقم هوية صحيح (10 أرقام)',
+  'sync.allUpToDate':'جميع الفواتير محدثة مسبقاً',
+  'sync.newBillsSynced':'تمت مزامنة {count,
+  'reg.err.nid10':'National ID must be 10 digits',
+  'sync.failed':'Sync failed: ',
+  'sync.invalidAccessToken':'Invalid access token. Please re-authenticate: ',
+  'common.errorSaving':'Error saving: ',
+  'common.errorDeleting':'Error deleting: ',
+  'common.errorSync':'Sync error: '} فاتورة جديدة',
+  'sync.failed':'فشلت المزامنة: ',
+  'sync.invalidAccessToken':'رمز الوصول غير صالح. يرجى إعادة المصادقة: ',
+  'common.errorSaving':'خطأ في الحفظ: ',
+  'common.errorDeleting':'خطأ في الحذف: ',
+  'common.errorSync':'خطأ في المزامنة: '},
   en: {
     'nav.main':'Main','nav.dashboard':'Dashboard','nav.customers':'Customers','nav.properties':'Properties',
     'nav.owners':'Owners','nav.units':'Units','nav.customersProperties':'Customers & Properties',
@@ -3624,7 +3674,8 @@ const T = {
     'common.or':'Or','common.nafath':'Nafath','common.verifyNafath':'Verify via Nafath',
     'common.loading':'Loading...','common.error':'Error','common.noData':'No data',
     'common.yes':'Yes','common.no':'No','placeholder.companyName':'Company name',
-  }
+  ,
+  'locale.numFmt':'en-US'}
 };
 
 // ═══════════════════════════════════════════════
@@ -3701,7 +3752,7 @@ function avatar(name, i=0){
   return `<div class="avatar" style="background:${avColors[i%avColors.length]};color:#fff">${init}</div>`;
 }
 
-function numFmt(n){ return Number(n).toLocaleString(lang==='ar'?'ar-SA':'en-US'); }
+function numFmt(n){ return Number(n).toLocaleString(t('locale.numFmt')); }
 
 // API helpers for inline scripts
 if (window.location.protocol === 'file:') {
@@ -4280,13 +4331,13 @@ async function syncUtilityBills(){
     }
     renderUtilities();
     if(result.synced === 0){
-      alert(lang === 'ar' ? 'جميع الفواتير محدثة مسبقاً' : 'All bills are already up to date');
+      alert(t('sync.allUpToDate'));
     } else {
-      alert(lang === 'ar' ? `تمت مزامنة ${result.synced} فاتورة جديدة` : `${result.synced} new bills synced`);
+      alert(t('sync.newBillsSynced',{count:result.synced}));
     }
   } catch(e) {
     renderUtilities();
-    alert(lang === 'ar' ? 'فشلت المزامنة: ' : 'Sync failed: ' + e.message);
+    alert(t('sync.failed') + e.message);
   }
 }
 
@@ -5014,7 +5065,7 @@ function renderPayroll(){
     </tr>`;
   }).join('');
   const totalNet = active.reduce((s,e)=>s+e.basic+e.housing+e.transport-(e.basic*0.10),0);
-  document.getElementById('payroll-totals').innerHTML=`<div class="card" style="text-align:${lang==='ar'?'left':'right'}"><strong>${t('payroll.total',{amount:numFmt(Math.round(totalNet))})}</strong></div>`;
+  document.getElementById('payroll-totals').innerHTML=`<div class="card" style="text-align:${t('dir.right')}"><strong>${t('payroll.total',{amount:numFmt(Math.round(totalNet))})}</strong></div>`;
 }
 
 // ═══════════════════════════════════════════════
@@ -6528,11 +6579,11 @@ async function registerWithEmail(){
   const password = document.getElementById('inp-password').value;
   const confirm = document.getElementById('inp-password-confirm').value;
   if(password !== confirm){
-    alert(lang === 'ar' ? 'كلمة المرور وتأكيدها غير متطابقتين' : 'Passwords do not match');
+    alert(t('reg.err.passwordMatch'));
     return;
   }
   if(password.length < 6){
-    alert(lang === 'ar' ? 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' : 'Password must be at least 6 characters');
+    alert(t('reg.err.passwordMin'));
     return;
   }
 
@@ -6543,11 +6594,11 @@ async function registerWithEmail(){
     const phone = document.getElementById('inp-phone').value.trim();
     const falLicense = document.getElementById('inp-fal-license').value.trim();
     if(!name || !nid || !email || !phone || !falLicense){
-      alert(lang === 'ar' ? 'يرجى تعبئة جميع الحقول المطلوبة' : 'Please fill all required fields');
+      alert(t('reg.err.requiredFields'));
       return;
     }
     if(nid.length < 10){
-      alert(lang === 'ar' ? 'رقم الهوية يجب أن يكون 10 أرقام' : 'National ID must be 10 digits');
+      alert(t('reg.err.nid10'));
       return;
     }
     try {
@@ -6571,7 +6622,7 @@ async function registerWithEmail(){
     const companyPhone = document.getElementById('inp-company-phone').value.trim();
     const companyFalLicense = document.getElementById('inp-company-fal-license').value.trim();
     if(!company || !cr || !companyEmail || !companyPhone || !companyFalLicense){
-      alert(lang === 'ar' ? 'يرجى تعبئة جميع الحقول المطلوبة' : 'Please fill all required fields');
+      alert(t('reg.err.requiredFields'));
       return;
     }
     try {
@@ -6594,7 +6645,7 @@ async function loginWithEmail(){
   const email = document.getElementById('inp-login-email').value.trim();
   const password = document.getElementById('inp-login-password').value;
   if(!email || !password){
-    alert(lang === 'ar' ? 'يرجى إدخال البريد الإلكتروني وكلمة المرور' : 'Please enter email and password');
+    alert(t('reg.err.noEmailPass'));
     return;
   }
   try {
@@ -6620,7 +6671,7 @@ function showForgotPassword(){
 async function forgotPassword(){
   const phone = document.getElementById('inp-forgot-phone').value.trim();
   if(!phone){
-    alert(lang === 'ar' ? 'يرجى إدخال رقم الجوال' : 'Please enter your phone number');
+    alert(t('reg.err.noPhone'));
     return;
   }
   try {
@@ -6640,16 +6691,16 @@ async function resetPassword(){
   const resetToken = document.getElementById('inp-reset-token').value.trim();
   const newPassword = document.getElementById('inp-reset-password').value;
   if(!resetToken || !newPassword){
-    alert(lang === 'ar' ? 'يرجى تعبئة جميع الحقول' : 'Please fill all fields');
+    alert(t('reg.err.resetFields'));
     return;
   }
   if(newPassword.length < 6){
-    alert(lang === 'ar' ? 'كلمة المرور يجب أن تكون 6 أحرف على الأقل' : 'Password must be at least 6 characters');
+    alert(t('reg.err.passwordMin'));
     return;
   }
   try {
     await apiPost('/api/auth/reset-password', { reset_token: resetToken, new_password: newPassword });
-    alert(lang === 'ar' ? 'تم تغيير كلمة المرور بنجاح. يمكنك تسجيل الدخول الآن' : 'Password changed. You can now log in');
+    alert(t('reg.success.passwordChanged'));
     showLoginForm();
   } catch(e) {
     alert(e.message || 'فشل تغيير كلمة المرور');
@@ -6664,7 +6715,7 @@ let countdownTimer;
 function startNafath(){
   const nid = document.getElementById('inp-nafath-nid').value;
   if(nid.length < 10){
-    alert(lang === 'ar' ? 'يرجى إدخال رقم هوية صحيح (10 أرقام)' : 'Please enter a valid 10-digit ID');
+    alert(t('reg.err.nidValid10'));
     return;
   }
 
