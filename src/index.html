@@ -404,8 +404,8 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
 <!-- PWA Install Banner -->
 <div id="pwa-banner" style="display:none;background:var(--md-primary);color:var(--md-on-primary);padding:10px 16px;text-align:center;font-size:13px;position:relative">
-  <span>📲 ثبّت تطبيق <strong>مُلاك</strong> على جهازك لاستخدام أسرع</span>
-  <button onclick="installPWA()" class="btn btn-primary btn-sm" style="color:var(--md-primary);background:var(--md-on-primary);margin:0 10px">تثبيت</button>
+  <span data-i="pwa.installDesc">📲 ثبّت تطبيق <strong>مُلاك</strong> على جهازك لاستخدام أسرع</span>
+  <button onclick="installPWA()" class="btn btn-primary btn-sm" style="color:var(--md-primary);background:var(--md-on-primary);margin:0 10px" data-i="pwa.installBtn">تثبيت</button>
   <button onclick="dismissPWABanner()" style="background:transparent;color:var(--md-on-primary);border:none;cursor:pointer;font-size:20px;position:absolute;left:10px;top:50%;transform:translateY(-50%)">&times;</button>
 </div>
 
@@ -2666,7 +2666,7 @@ const T = {
     'label.notes':'ملاحظات','label.bankInfo':'معلومات بنكية','label.ownershipPct':'نسبة الملكية',
     'label.ownershipTerms':'شروط الملكية','label.password':'كلمة المرور','label.confirmPassword':'تأكيد كلمة المرور',
     'common.or':'أو','common.nafath':'نفاذ','common.verifyNafath':'التحقق عبر نفاذ',
-    'common.loading':'جارٍ التحميل...','common.error':'خطأ','common.noData':'لا توجد بيانات',
+    'common.loading':'جارٍ التحميل...','common.error':'خطأ: ','common.noData':'لا توجد بيانات',
     'common.yes':'نعم','common.no':'لا','placeholder.companyName':'اسم الشركة',
   ,
     'owner.property':'نظام إدارة العقارات الذكي للسوق السعودي',
@@ -2940,8 +2940,58 @@ const T = {
   'sync.invalidAccessToken':'رمز الوصول غير صالح. يرجى إعادة المصادقة: ',
   'common.errorSaving':'خطأ في الحفظ: ',
   'common.errorDeleting':'خطأ في الحذف: ',
-  'common.errorSync':'خطأ في المزامنة: '},
-  en: {
+  'common.errorSync':'خطأ في المزامنة: ',
+  'common.errorSavingClient':'خطأ في حفظ العميل: ',
+  'export.noReceipts':'لا توجد سندات للتصدير',
+  'purchases.err.vendorName':'يرجى إدخال اسم المورد أو اختياره',
+  'purchases.err.invoiceNo':'يرجى إدخال رقم الفاتورة الضريبية',
+  'purchases.err.amount':'يرجى إدخال المبلغ',
+  'purchases.success':'✓ تم تسجيل فاتورة المشتريات',
+  'purchases.err.saveInvoice':'فشل تسجيل الفاتورة: ',
+  'settings.err.apiKey':'الرجاء إدخال مفتاح API',
+  'listings.err.titleAr':'الرجاء إدخال عنوان الإعلان',
+  'deals.err.noAgent':'الرجاء اختيار الوسيط',
+  'maintenance.err.title':'الرجاء إدخال عنوان التذكرة',
+  'maintenance.err.desc':'الرجاء إدخال وصف النشاط',
+  'po.err.noVendor':'يرجى اختيار المورد',
+  'po.err.noItems':'يرجى إضافة بند واحد على الأقل',
+  'po.err.save':'فشل حفظ أمر الشراء: ',
+  'inv.err.save':'فشل حفظ الصنف',
+  'purchases.err.saveVendor':'فشل حفظ المورد',
+  'purchases.err.saveInvoice2':'فشل حفظ الفاتورة',
+  'reg.err.registerFailed':'فشل التسجيل',
+  'reg.err.loginFailed':'فشل تسجيل الدخول',
+  'reg.err.resetFailed':'فشل إرسال رمز إعادة التعيين',
+  'reg.err.changePasswordFailed':'فشل تغيير كلمة المرور',
+  'pwa.installDesc':'ثبّت تطبيق مُلاك على جهازك لاستخدام أسرع',
+  'pwa.installBtn':'تثبيت',
+  'print.contract.title':'عقد إيجار عقاري',
+  'print.contract.num':'رقم العقد',
+  'print.contract.duration':'مدة العقد',
+  'print.contract.annualRent':'الإيجار السنوي',
+  'print.contract.monthlyRent':'الإيجار الشهري',
+  'print.contract.deposit':'التأمين',
+  'print.contract.landlordSig':'توقيع المؤجر: _______________',
+  'print.contract.tenantSig':'توقيع المستأجر: _______________',
+  'print.contract.printBtn':'طباعة',
+  'print.contract.sar':'ريال',
+  'print.contract.nafathStatus':'التحقق عبر النفاذ',
+  'print.contract.verified':'تم التحقق',
+  'print.contract.notVerified':'غير موثق',
+  'print.receipt.heading':'سند قبض - Receipt Voucher',
+  'print.receipt.amount':'المبلغ',
+  'print.receipt.date':'التاريخ',
+  'print.receipt.paymentMethod':'طريقة الدفع',
+  'print.receipt.zatcaStatus':'حالة زاتكا',
+  'print.receipt.zatcaReported':'مبلّغ',
+  'print.receipt.zatcaPending':'معلق',
+  'print.receipt.total':'الإجمالي: {amount} {currency}',
+  'common.to':'إلى',
+  'common.error':'خطأ: ',
+  'common.errorSavingClient':'خطأ في حفظ العميل: ',
+  'common.errorDeleting':'خطأ في الحذف: ',
+  'settings.saved':'تم حفظ إعدادات إيجار'},
+en: {
     'nav.main':'Main','nav.dashboard':'Dashboard','nav.customers':'Customers','nav.properties':'Properties',
     'nav.owners':'Owners','nav.units':'Units','nav.customersProperties':'Customers & Properties',
     'nav.finance':'Finance','nav.contracts':'Lease Contracts',
@@ -3672,11 +3722,60 @@ const T = {
     'label.notes':'Notes','label.bankInfo':'Bank Info','label.ownershipPct':'Ownership %',
     'label.ownershipTerms':'Ownership Terms','label.password':'Password','label.confirmPassword':'Confirm Password',
     'common.or':'Or','common.nafath':'Nafath','common.verifyNafath':'Verify via Nafath',
-    'common.loading':'Loading...','common.error':'Error','common.noData':'No data',
+    'common.loading':'Loading...','common.error':'Error: ','common.noData':'No data',
     'common.yes':'Yes','common.no':'No','placeholder.companyName':'Company name',
-  ,
+
+  'common.errorSavingClient':'Error saving client: ',
+  'common.errorDeleting':'Error deleting: ',
+  'common.to':'to',
+  'export.noReceipts':'No receipts to export',
+  'purchases.err.vendorName':'Please enter or select vendor name',
+  'purchases.err.invoiceNo':'Please enter tax invoice number',
+  'purchases.err.amount':'Please enter the amount',
+  'purchases.success':'✓ Purchase invoice recorded',
+  'purchases.err.saveInvoice':'Failed to save invoice: ',
+  'settings.err.apiKey':'Please enter API key',
+  'listings.err.titleAr':'Please enter listing title',
+  'deals.err.noAgent':'Please select a broker',
+  'maintenance.err.title':'Please enter ticket title',
+  'maintenance.err.desc':'Please enter activity description',
+  'po.err.noVendor':'Please select a vendor',
+  'po.err.noItems':'Please add at least one item',
+  'po.err.save':'Failed to save purchase order: ',
+  'inv.err.save':'Failed to save item',
+  'purchases.err.saveVendor':'Failed to save vendor',
+  'purchases.err.saveInvoice2':'Failed to save invoice',
+  'reg.err.registerFailed':'Registration failed',
+  'reg.err.loginFailed':'Login failed',
+  'reg.err.resetFailed':'Failed to send reset code',
+  'reg.err.changePasswordFailed':'Failed to change password',
+  'pwa.installDesc':'📲 Install the Mulak app for faster use',
+  'pwa.installBtn':'Install',
+  'print.contract.title':'Property Lease Contract',
+  'print.contract.num':'Contract No.',
+  'print.contract.duration':'Contract Duration',
+  'print.contract.annualRent':'Annual Rent',
+  'print.contract.monthlyRent':'Monthly Rent',
+  'print.contract.deposit':'Security Deposit',
+  'print.contract.landlordSig':'Landlord Signature: _______________',
+  'print.contract.tenantSig':'Tenant Signature: _______________',
+  'print.contract.printBtn':'Print',
+  'print.contract.sar':'SAR',
+  'print.contract.nafathStatus':'Nafath Verification',
+  'print.contract.verified':'Verified',
+  'print.contract.notVerified':'Not Verified',
+  'print.receipt.heading':'Receipt Voucher',
+  'print.receipt.amount':'Amount',
+  'print.receipt.date':'Date',
+  'print.receipt.paymentMethod':'Payment Method',
+  'print.receipt.zatcaStatus':'ZATCA Status',
+  'print.receipt.zatcaReported':'Reported',
+  'print.receipt.zatcaPending':'Pending',
+  'print.receipt.total':'Total: {amount} {currency}',
+  'print.receipt.qrAlt':'QR Code',
+  'print.receipt.vatCode':'Verification Code – ZATCA',  ,
   'locale.numFmt':'en-US'}
-};
+};};
 
 // ═══════════════════════════════════════════════
 // DATA
@@ -4144,7 +4243,7 @@ async function addCustomer(){
     closeM('m-customer');
     renderCustomers();
   } catch(e) {
-    alert((lang||'ar')==='ar'?'خطأ في حفظ العميل: ':'Error: ' + e.message);
+    alert(t('common.errorSavingClient') + e.message);
   }
 }
 
@@ -4313,7 +4412,7 @@ async function deleteOwner(id) {
     await apiDelete(`/api/v1/owners/${id}`);
     renderOwners();
   } catch (e) {
-    alert('خطأ في الحذف: ' + e.message);
+    alert(t('common.errorDeleting') + e.message);
   }
 }
 
@@ -4515,10 +4614,10 @@ async function savePurchase(){
   const notes = document.getElementById('pur-notes').value.trim();
 
   if(!supplierName && !document.getElementById('pur-vendor').value){
-    alert('يرجى إدخال اسم المورد أو اختياره'); return;
+    alert(t('purchases.err.vendorName')); return;
   }
-  if(!invoiceNo){ alert('يرجى إدخال رقم الفاتورة الضريبية'); return; }
-  if(amount<=0){ alert('يرجى إدخال المبلغ'); return; }
+  if(!invoiceNo){ alert(t('purchases.err.invoiceNo')); return; }
+  if(amount<=0){ alert(t('purchases.err.amount')); return; }
 
   const data = {
     vendor_id: document.getElementById('pur-vendor').value || null,
@@ -4536,9 +4635,9 @@ async function savePurchase(){
     await apiPost('/api/v1/purchases/orders', data);
     closeM('m-purchase');
     renderPurchases();
-    alert('✓ تم تسجيل فاتورة المشتريات');
+    alert(t('purchases.success'));
   } catch(e){
-    alert('فشل تسجيل الفاتورة: ' + e.message);
+    alert(t('purchases.err.saveInvoice') + e.message);
   }
 }
 
@@ -4727,7 +4826,52 @@ function initDashCharts(){
   const hasRev = revData.some(v=>v>0);
   if(rc) revChart = new Chart(rc,{type:'line',data:{
     labels:revLabels,
-    datasets:[{label:t('dash.revenue'),data:revData,borderColor:'#1B4F8A',backgroundColor:'rgba(27,79,138,0.08)',fill:true,tension:.4,pointRadius:hasRev?4:0,pointBackgroundColor:'#1B4F8A'}]
+    datasets:[{label:t('dash.revenue'),data:revData,borderColor:'#1B4F8A',backgroundColor:'rgba(27,79,138,0.08)',fill:true,tension:.4,pointRadius:hasRev?4:0,pointBackgroundColor:'#1B4F8A'}],
+  'common.to':'to',
+  'common.errorSavingClient':'Error saving client: ',
+  'common.errorDeleting':'Error deleting: ',
+  'export.noReceipts':'No receipts to export',
+  'purchases.err.vendorName':'Please enter or select vendor name',
+  'purchases.err.invoiceNo':'Please enter tax invoice number',
+  'purchases.err.amount':'Please enter the amount',
+  'purchases.success':'✓ Purchase invoice recorded',
+  'purchases.err.saveInvoice':'Failed to save invoice: ',
+  'settings.err.apiKey':'Please enter API key',
+  'listings.err.titleAr':'Please enter listing title',
+  'deals.err.noAgent':'Please select a broker',
+  'maintenance.err.title':'Please enter ticket title',
+  'maintenance.err.desc':'Please enter activity description',
+  'po.err.noVendor':'Please select a vendor',
+  'po.err.noItems':'Please add at least one item',
+  'po.err.save':'Failed to save purchase order: ',
+  'inv.err.save':'Failed to save item',
+  'purchases.err.saveVendor':'Failed to save vendor',
+  'purchases.err.saveInvoice2':'Failed to save invoice',
+  'pwa.installDesc':'📲 Install the Mulak app for faster use',
+  'pwa.installBtn':'Install',
+  'print.contract.title':'Property Lease Contract',
+  'print.contract.num':'Contract No.',
+  'print.contract.duration':'Contract Duration',
+  'print.contract.annualRent':'Annual Rent',
+  'print.contract.monthlyRent':'Monthly Rent',
+  'print.contract.deposit':'Security Deposit',
+  'print.contract.landlordSig':'Landlord Signature: _______________',
+  'print.contract.tenantSig':'Tenant Signature: _______________',
+  'print.contract.printBtn':'Print',
+  'print.contract.sar':'SAR',
+  'print.contract.nafathStatus':'Nafath Verification',
+  'print.contract.verified':'Verified',
+  'print.contract.notVerified':'Not Verified',
+  'print.receipt.heading':'Receipt Voucher',
+  'print.receipt.amount':'Amount',
+  'print.receipt.date':'Date',
+  'print.receipt.paymentMethod':'Payment Method',
+  'print.receipt.zatcaStatus':'ZATCA Status',
+  'print.receipt.zatcaReported':'Reported',
+  'print.receipt.zatcaPending':'Pending',
+  'print.receipt.total':'Total: {amount} {currency}',
+  'print.receipt.qrAlt':'QR Code',
+  'print.receipt.vatCode':'Verification Code – ZATCA'
   },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:tc,callback:v=>Math.round(v/1000)+'K'},grid:{color:gridC}},x:{ticks:{color:tc},grid:{display:false}}}}});
 
   if(occChart) occChart.destroy();
@@ -5502,11 +5646,11 @@ async function saveEjarSettings() {
     api_secret: document.getElementById('ej-api-secret').value.trim(),
     environment: document.getElementById('ej-env').value,
   };
-  if (!data.api_key) { alert('الرجاء إدخال مفتاح API'); return; }
+  if (!data.api_key) { alert(t('settings.err.apiKey')); return; }
   try {
     await apiPut('/api/v1/ejar/credentials', data);
-    alert('تم حفظ إعدادات إيجار');
-  } catch (e) { alert('خطأ: ' + e.message); }
+    alert(t('settings.saved'));
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -5678,7 +5822,7 @@ async function deleteRole(id) {
   try {
     await apiDelete(`/api/v1/rbac/roles/${id}`);
     renderRoles();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 async function openAssignRole(userId, userName) {
@@ -5687,7 +5831,7 @@ async function openAssignRole(userId, userName) {
   try {
     await apiPost('/api/v1/rbac/assign', { user_id: userId, role_id: roles });
     renderRbacUsers();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -6381,7 +6525,7 @@ function exportReceiptsCSV(){
 
 function exportPDF(){
   const list = getReceipts();
-  if(!list.length){ alert('لا توجد سندات للتصدير'); return; }
+  if(!list.length){ alert(t('export.noReceipts')); return; }
   const w=window.open('','_blank');
   w.document.write(`<!DOCTYPE html><html dir="rtl"><head><meta charset="UTF-8"><title>سندات القبض</title>
   <style>body{font-family:Arial;padding:24px;direction:rtl}h2{color:#1B4F8A;text-align:center}
@@ -6426,23 +6570,23 @@ function printContract(id){
   const u=(window.units||units).find(x=>x.id===c.unitId);
   const p=(window.props||props).find(x=>x.id===(u?.propId||c.propId));
   const w=window.open('','_blank');
-  w.document.write(`<html dir="rtl" lang="ar"><head><meta charset="UTF-8"><title>عقد ${c.num}</title>
+  w.document.write(`<html dir="rtl" lang="ar"><head><meta charset="UTF-8"><title>${t('print.contract.title')} ${c.num}</title>
   <style>body{font-family:Arial;padding:30px;direction:rtl;font-size:13px}h2{text-align:center;margin-bottom:20px;border-bottom:2px solid #1B4F8A;padding-bottom:10px;color:#1B4F8A}table{width:100%;border-collapse:collapse}td{padding:8px 12px;border:1px solid #ddd}.sig{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid #ddd}@media print{button{display:none}}</style>
   </head><body>
-  <h2>عقد إيجار عقاري</h2>
-  <table><tr><td>رقم العقد</td><td>${c.num}</td></tr>
-  <tr><td data-i="ticket.tenant">المستأجر</td><td>${c.tenant}</td></tr>
-  <tr><td data-i="customer.nid">رقم الهوية</td><td>${c.nid}</td></tr>
-  <tr><td data-i="ticket.unit">الوحدة</td><td>${u?u.num:'—'} - ${p?propName(p):'—'}</td></tr>
-  <tr><td>مدة العقد</td><td>${c.start} إلى ${c.end}</td></tr>
-  <tr><td>الإيجار السنوي</td><td>${numFmt(c.annual)} ريال</td></tr>
-  <tr><td>الإيجار الشهري</td><td>${numFmt(Math.round(c.annual/12))} ريال</td></tr>
-  <tr><td data-i="po.vat">ضريبة القيمة المضافة 15%</td><td>${numFmt(Math.round(c.annual/12*0.15))} ريال</td></tr>
-  <tr><td>التأمين</td><td>${numFmt(c.deposit)} ريال</td></tr>
-  <tr><td>التحقق عبر النفاذ</td><td>${c.nafathVerified?'✓ تم التحقق':'غير موثق'}</td></tr>
+  <h2>${t('print.contract.title')}</h2>
+  <table><tr><td>${t('print.contract.num')}</td><td>${c.num}</td></tr>
+  <tr><td data-i="ticket.tenant">${t('ticket.tenant')}</td><td>${c.tenant}</td></tr>
+  <tr><td data-i="customer.nid">${t('customer.nid')}</td><td>${c.nid}</td></tr>
+  <tr><td data-i="ticket.unit">${t('ticket.unit')}</td><td>${u?u.num:'—'} - ${p?propName(p):'—'}</td></tr>
+  <tr><td>${t('print.contract.duration')}</td><td>${c.start} ${t('common.to')} ${c.end}</td></tr>
+  <tr><td>${t('print.contract.annualRent')}</td><td>${numFmt(c.annual)} ${t('print.contract.sar')}</td></tr>
+  <tr><td>${t('print.contract.monthlyRent')}</td><td>${numFmt(Math.round(c.annual/12))} ${t('print.contract.sar')}</td></tr>
+  <tr><td data-i="po.vat">${t('po.vat')}</td><td>${numFmt(Math.round(c.annual/12*0.15))} ${t('print.contract.sar')}</td></tr>
+  <tr><td>${t('print.contract.deposit')}</td><td>${numFmt(c.deposit)} ${t('print.contract.sar')}</td></tr>
+  <tr><td>${t('print.contract.nafathStatus')}</td><td>${c.nafathVerified?'✓ '+t('print.contract.verified'):t('print.contract.notVerified')}</td></tr>
   </table>
-  <div class="sig"><span>توقيع المؤجر: _______________</span><span data-i="ticket.tenant">توقيع المستأجر: _______________</span></div>
-  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة</button>
+  <div class="sig"><span>${t('print.contract.landlordSig')}</span><span data-i="ticket.tenant">${t('print.contract.tenantSig')}</span></div>
+  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 ${t('print.contract.printBtn')}</button>
   </body></html>`);
 }
 
@@ -6453,19 +6597,19 @@ function printReceipt(id){
   w.document.write(`<html dir="rtl"><head><meta charset="UTF-8"><title>سند ${r.num}</title>
   <style>body{font-family:Arial;padding:30px;direction:rtl}h2{text-align:center;color:#1B4F8A}table{width:100%;border-collapse:collapse}td{padding:8px;border:1px solid #ddd}.total{font-size:16px;font-weight:bold;text-align:center;margin-top:20px;padding:12px;background:#E8F0FB;color:#1B4F8A;border-radius:8px}.qr{text-align:center;margin-top:16px}.qr img{width:100px;height:100px}.zatca-badge{display:inline-block;background:#059669;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px}@media print{button{display:none}}</style>
   </head><body>
-  <h2>سند قبض - Receipt Voucher</h2>
+  <h2>${t('print.receipt.heading')}</h2>
   <p style="text-align:center;font-size:11px;color:#666">${r.num}</p>
-  <table><tr><td data-i="ticket.tenant">المستأجر</td><td>${r.tenant}</td></tr>
-  <tr><td data-i="ticket.unit">الوحدة</td><td>${r.unit} - ${r.prop}</td></tr>
-  <tr><td data-i="utility.amountExVat">المبلغ</td><td>${numFmt(r.amount)} ريال</td></tr>
-  <tr><td data-i="po.vat">ضريبة القيمة المضافة 15%</td><td>${numFmt(r.vat)} ريال</td></tr>
-  <tr><td>التاريخ</td><td>${r.date}</td></tr>
-  <tr><td>طريقة الدفع</td><td>${r.method}</td></tr>
-  <tr><td>حالة زاتكا</td><td>${r.zatca==='reported'?'<span class="zatca-badge">✓ مبلّغ</span>':'<span style="color:#D97706">معلق</span>'}</td></tr>
+  <table><tr><td data-i="ticket.tenant">${t('ticket.tenant')}</td><td>${r.tenant}</td></tr>
+  <tr><td data-i="ticket.unit">${t('ticket.unit')}</td><td>${r.unit} - ${r.prop}</td></tr>
+  <tr><td data-i="utility.amountExVat">${t('utility.amountExVat')}</td><td>${numFmt(r.amount)} ${t('print.contract.sar')}</td></tr>
+  <tr><td data-i="po.vat">${t('po.vat')}</td><td>${numFmt(r.vat)} ${t('print.contract.sar')}</td></tr>
+  <tr><td>${t('print.receipt.date')}</td><td>${r.date}</td></tr>
+  <tr><td>${t('print.receipt.paymentMethod')}</td><td>${r.method}</td></tr>
+  <tr><td>${t('print.receipt.zatcaStatus')}</td><td>${r.zatca==='reported'?'<span class="zatca-badge">✓ '+t('print.receipt.zatcaReported')+'</span>':'<span style="color:#D97706">'+t('print.receipt.zatcaPending')+'</span>'}</td></tr>
   </table>
-  <div class="total" data-i="purchase.total">الإجمالي: ${numFmt(r.total)} ريال</div>
-  ${qrBase64 ? `<div class="qr"><img src="data:image/png;base64,${qrBase64}" alt="QR"/><div style="font-size:9px;color:#999;margin-top:4px" data-i="purchase.vat">رمز التحقق – هيئة الزكاة والضريبة والجمارك</div></div>` : ''}
-  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة</button>
+  <div class="total" data-i="purchase.total">${t('print.receipt.total',{amount:numFmt(r.total),currency:t('print.contract.sar')})}</div>
+  ${qrBase64 ? `<div class="qr"><img src="data:image/png;base64,${qrBase64}" alt="${t('print.receipt.qrAlt')}"/><div style="font-size:9px;color:#999;margin-top:4px" data-i="purchase.vat">${t('print.receipt.vatCode')}</div></div>` : ''}
+  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 ${t('print.contract.printBtn')}</button>
   </body></html>`);
 }
 
@@ -6612,7 +6756,7 @@ async function registerWithEmail(){
       }
       enterApp();
     } catch(e) {
-      alert(e.message || 'فشل التسجيل');
+      alert(e.message || t('reg.err.registerFailed'));
     }
   } else {
     const company = document.getElementById('inp-company-name').value.trim();
@@ -6636,7 +6780,7 @@ async function registerWithEmail(){
       }
       enterApp();
     } catch(e) {
-      alert(e.message || 'فشل التسجيل');
+      alert(e.message || t('reg.err.registerFailed'));
     }
   }
 }
@@ -6656,7 +6800,7 @@ async function loginWithEmail(){
       enterApp();
     }
   } catch(e) {
-    alert(e.message || 'فشل تسجيل الدخول');
+    alert(e.message || t('reg.err.loginFailed'));
   }
 }
 
@@ -6683,7 +6827,7 @@ async function forgotPassword(){
     document.getElementById('reg-step-forgot').style.display = 'none';
     document.getElementById('reg-step-reset').style.display = 'block';
   } catch(e) {
-    alert(e.message || 'فشل إرسال رمز إعادة التعيين');
+    alert(e.message || t('reg.err.resetFailed'));
   }
 }
 
@@ -6703,7 +6847,7 @@ async function resetPassword(){
     alert(t('reg.success.passwordChanged'));
     showLoginForm();
   } catch(e) {
-    alert(e.message || 'فشل تغيير كلمة المرور');
+    alert(e.message || t('reg.err.changePasswordFailed'));
   }
 }
 
@@ -7021,7 +7165,7 @@ async function resetListingModal() {
 
 async function saveListing() {
   const titleAr = document.getElementById('nl-title-ar').value.trim();
-  if (!titleAr) { alert('الرجاء إدخال عنوان الإعلان'); return; }
+  if (!titleAr) { alert(t('listings.err.titleAr')); return; }
   const channels = Array.from(document.querySelectorAll('#nl-channels .ch-channel:checked')).map(el => el.value);
   const data = {
     title_ar: titleAr,
@@ -7042,7 +7186,7 @@ async function saveListing() {
     else { await apiPost('/api/v1/marketing', data); }
     closeM('m-listing');
     renderListings();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 async function editListing(id) {
@@ -7077,7 +7221,7 @@ async function editListing(id) {
     const chs = typeof l.channels === 'string' ? JSON.parse(l.channels) : (l.channels || []);
     document.querySelectorAll('#nl-channels .ch-channel').forEach(el => { el.checked = chs.includes(el.value); });
     openM('m-listing');
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 async function viewListing(id) {
@@ -7124,14 +7268,14 @@ async function viewListing(id) {
       `).join('') : '<span style="color:var(--text3)" data-i="deals.inquiry">لا توجد استفسارات</span>'}`;
     document.getElementById('listing-view-content').innerHTML = html;
     openM('m-listing-view');
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 async function publishListing(id) {
   try {
     await apiPatch(`/api/v1/marketing/${id}/publish`);
     renderListings();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -7267,7 +7411,7 @@ async function editDeal(id) {
     document.querySelector('#m-deal .modal-title span').textContent = t('deals.editDeal');
     await renderDealDropdowns();
     openM('m-deal');
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 function changeDealStage(id) {
@@ -7342,12 +7486,12 @@ async function saveCommission() {
     due_date: document.getElementById('comm-due').value || null,
     notes: document.getElementById('comm-notes').value.trim(),
   };
-  if (!data.agent_id) { alert('الرجاء اختيار الوسيط'); return; }
+  if (!data.agent_id) { alert(t('deals.err.noAgent')); return; }
   try {
     await apiPost('/api/v1/deals/commissions', data);
     closeM('m-commission');
     renderCommissions();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -7448,7 +7592,7 @@ async function resetTicketModal() {
 
 async function saveTicket() {
   const title = document.getElementById('nt-title').value.trim();
-  if (!title) { alert('الرجاء إدخال عنوان التذكرة'); return; }
+  if (!title) { alert(t('maintenance.err.title')); return; }
   const data = {
     title,
     description: document.getElementById('nt-desc').value.trim(),
@@ -7468,7 +7612,7 @@ async function saveTicket() {
     else { await apiPost('/api/v1/maintenance', data); }
     closeM('m-ticket');
     renderTickets();
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 async function viewTicket(id) {
@@ -7515,7 +7659,7 @@ async function viewTicket(id) {
     html += `</div>`;
     document.getElementById('ticket-view-content').innerHTML = html;
     openM('m-ticket-view');
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 function changeTicketStatus(id) {
@@ -7533,12 +7677,12 @@ function showAddActivity(ticketId) {
 async function saveTicketActivity() {
   const ticketId = document.getElementById('nta-ticket-id').value;
   const desc = document.getElementById('nta-desc').value.trim();
-  if (!desc) { alert('الرجاء إدخال وصف النشاط'); return; }
+  if (!desc) { alert(t('maintenance.err.desc')); return; }
   try {
     await apiPost(`/api/v1/maintenance/${ticketId}/activities`, { description: desc, activity_type: 'note' });
     closeM('m-ticket-activity');
     viewTicket(ticketId);
-  } catch (e) { alert('خطأ: ' + e.message); }
+  } catch (e) { alert(t('common.error') + e.message); }
 }
 
 // ═══════════════════════════════════════════════
@@ -7993,7 +8137,7 @@ async function addUtility(){
     await apiPost('/api/v1/utilities', data);
     closeM('m-utility');
     renderUtilities();
-  } catch(e){ alert('فشل حفظ الفاتورة'); }
+  } catch(e){ alert(t('purchases.err.saveInvoice2')); }
 }
 
 async function addVendor(){
@@ -8018,7 +8162,7 @@ async function addVendor(){
     await apiPost('/api/v1/purchases/vendors', data);
     closeM('m-vendor');
     renderVendors();
-  } catch(e){ alert('فشل حفظ المورد'); }
+  } catch(e){ alert(t('purchases.err.saveVendor')); }
 }
 
 function addPOItem(reCalc=true){
@@ -8050,7 +8194,7 @@ function recalcPOTotals(){
 
 async function addPO(){
   const vendorId = document.getElementById('mp-vendor').value;
-  if(!vendorId){ alert('يرجى اختيار المورد'); return; }
+  if(!vendorId){ alert(t('po.err.noVendor')); return; }
   const items = [];
   document.querySelectorAll('#po-items .form-row-3').forEach(row => {
     const name = row.querySelector('.po-item-name')?.value;
@@ -8058,7 +8202,7 @@ async function addPO(){
     const price = parseFloat(row.querySelector('.po-item-price')?.value||0);
     if(name) items.push({name, qty, unit_price: price});
   });
-  if(!items.length){ alert('يرجى إضافة بند واحد على الأقل'); return; }
+  if(!items.length){ alert(t('po.err.noItems')); return; }
   const data = {
     vendor_id: vendorId,
     supplier_tax_number: document.getElementById('mp-tax-no').value || null,
@@ -8071,7 +8215,7 @@ async function addPO(){
     await apiPost('/api/v1/purchases/orders', data);
     closeM('m-po');
     renderPurchaseOrders();
-  } catch(e){ alert('فشل حفظ أمر الشراء: '+e.message); }
+  } catch(e){ alert(t('po.err.save') + e.message); }
 }
 
 async function addInventoryItem(){
@@ -8089,7 +8233,7 @@ async function addInventoryItem(){
     await apiPost('/api/v1/purchases/inventory', data);
     closeM('m-inv');
     renderInventory();
-  } catch(e){ alert('فشل حفظ الصنف'); }
+  } catch(e){ alert(t('inv.err.save')); }
 }
 
 // ═══════════════════════════════════════════════
