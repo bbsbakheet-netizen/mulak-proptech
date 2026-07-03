@@ -795,11 +795,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <!-- Settings -->
     <div id="ej-settings" class="card" style="margin-top:8px;display:none">
       <div class="row">
-        <div class="fg"><label>مفتاح API (Ejar)</label><input id="ej-api-key" placeholder="مفتاح API"></div>
-        <div class="fg"><label>السر (Secret)</label><input id="ej-api-secret" type="password" placeholder="المفتاح السري"></div>
+        <div class="fg"><label for="ej-api-key">مفتاح API (Ejar)</label><input id="ej-api-key" placeholder="مفتاح API"></div>
+        <div class="fg"><label for="ej-api-secret">السر (Secret)</label><input id="ej-api-secret" type="password" placeholder="المفتاح السري"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>البيئة</label><select id="ej-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
+        <div class="fg"><label for="ej-env">البيئة</label><select id="ej-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
         <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-primary" onclick="saveEjarSettings()"><i class="ti ti-check"></i><span>حفظ</span></button></div>
       </div>
     </div>
@@ -1101,7 +1101,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── JOURNAL ENTRIES ─────────────────────────── -->
   <div id="p-journal" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
-      <div class="fg" style="max-width:200px"><select id="je-filter" onchange="renderJournal()"><option value="">كل القيود</option><option value="0">غير مرحلة</option><option value="1">مرحلة</option></select></div>
+      <div class="fg" style="max-width:200px"><select id="je-filter" onchange="renderJournal()" aria-label="تصفية قيود اليومية"><option value="">كل القيود</option><option value="0">غير مرحلة</option><option value="1">مرحلة</option></select></div>
       <button class="btn btn-primary" onclick="openEntryModal()"><i class="ti ti-plus"></i><span>قيد يومية جديد</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
@@ -1200,24 +1200,24 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="zt-settings" class="card">
       <div class="stats-row" id="zt-status-bar"></div>
       <div class="row">
-        <div class="fg"><label>اسم المنشأة</label><input id="zt-org-name" placeholder="الاسم كما يظهر في الفاتورة"></div>
-        <div class="fg"><label>الرقم الضريبي (VAT)</label><input id="zt-vat" placeholder="300000000000003"></div>
+        <div class="fg"><label for="zt-org-name">اسم المنشأة</label><input id="zt-org-name" placeholder="الاسم كما يظهر في الفاتورة"></div>
+        <div class="fg"><label for="zt-vat">الرقم الضريبي (VAT)</label><input id="zt-vat" placeholder="300000000000003"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>رقم السجل التجاري</label><input id="zt-cr" placeholder="رقم السجل"></div>
-        <div class="fg"><label>البيئة</label><select id="zt-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
+        <div class="fg"><label for="zt-cr">رقم السجل التجاري</label><input id="zt-cr" placeholder="رقم السجل"></div>
+        <div class="fg"><label for="zt-env">البيئة</label><select id="zt-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>رقم المبنى</label><input id="zt-building" placeholder="رقم المبنى"></div>
-        <div class="fg"><label>الشارع</label><input id="zt-street" placeholder="اسم الشارع"></div>
+        <div class="fg"><label for="zt-building">رقم المبنى</label><input id="zt-building" placeholder="رقم المبنى"></div>
+        <div class="fg"><label for="zt-street">الشارع</label><input id="zt-street" placeholder="اسم الشارع"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الحي</label><input id="zt-district" placeholder="الحي"></div>
-        <div class="fg"><label>المدينة</label><input id="zt-city" placeholder="المدينة"></div>
+        <div class="fg"><label for="zt-district">الحي</label><input id="zt-district" placeholder="الحي"></div>
+        <div class="fg"><label for="zt-city">المدينة</label><input id="zt-city" placeholder="المدينة"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الرمز البريدي</label><input id="zt-postal" placeholder="الرمز البريدي"></div>
-        <div class="fg"><label>الرقم الإضافي</label><input id="zt-add-no" placeholder="الرقم الإضافي"></div>
+        <div class="fg"><label for="zt-postal">الرمز البريدي</label><input id="zt-postal" placeholder="الرمز البريدي"></div>
+        <div class="fg"><label for="zt-add-no">الرقم الإضافي</label><input id="zt-add-no" placeholder="الرقم الإضافي"></div>
       </div>
       <div style="display:flex;gap:8px;margin-top:12px">
         <button class="btn btn-primary" onclick="saveZatcaSettings()"><i class="ti ti-check"></i><span>حفظ الإعدادات</span></button>
@@ -1366,7 +1366,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-commissions" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <select id="com-filter-status" onchange="renderCommissions()" style="max-width:150px"><option value="">الكل</option><option value="pending">معلقة</option><option value="approved">معتمدة</option><option value="paid">مدفوعة</option></select>
+        <select id="com-filter-status" onchange="renderCommissions()" style="max-width:150px" aria-label="تصفية العمولات"><option value="">الكل</option><option value="pending">معلقة</option><option value="approved">معتمدة</option><option value="paid">مدفوعة</option></select>
       </div>
       <button class="btn btn-primary" onclick="resetCommissionModal();openM('m-commission')"><i class="ti ti-plus"></i><span>إضافة عمولة</span></button>
     </div>
@@ -1454,30 +1454,30 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <input type="hidden" id="nd-id">
       <div class="row">
-        <div class="fg"><label>اسم العميل</label><input id="nd-name" placeholder="الاسم الكامل"></div>
-        <div class="fg"><label>الجوال</label><input id="nd-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nd-name">اسم العميل</label><input id="nd-name" placeholder="الاسم الكامل"></div>
+        <div class="fg"><label for="nd-phone">الجوال</label><input id="nd-phone" placeholder="05xxxxxxxx"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>البريد الإلكتروني</label><input id="nd-email" type="email" placeholder="example@email.com"></div>
-        <div class="fg"><label>نوع الصفقة</label><select id="nd-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="other">أخرى</option></select></div>
+        <div class="fg"><label for="nd-email">البريد الإلكتروني</label><input id="nd-email" type="email" placeholder="example@email.com"></div>
+        <div class="fg"><label for="nd-type">نوع الصفقة</label><select id="nd-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="other">أخرى</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>مصدر العميل</label><select id="nd-source"><option value="direct">مباشر</option><option value="referral">إحالة</option><option value="website">الموقع الإلكتروني</option><option value="social">تواصل اجتماعي</option><option value="other">أخرى</option></select></div>
-        <div class="fg"><label>المرحلة</label><select id="nd-stage"><option value="lead">عميل محتمل</option><option value="inquiry">استفسار</option><option value="viewing">معاينة</option><option value="negotiation">تفاوض</option><option value="offer">عرض</option><option value="signed">متعاقد</option></select></div>
+        <div class="fg"><label for="nd-source">مصدر العميل</label><select id="nd-source"><option value="direct">مباشر</option><option value="referral">إحالة</option><option value="website">الموقع الإلكتروني</option><option value="social">تواصل اجتماعي</option><option value="other">أخرى</option></select></div>
+        <div class="fg"><label for="nd-stage">المرحلة</label><select id="nd-stage"><option value="lead">عميل محتمل</option><option value="inquiry">استفسار</option><option value="viewing">معاينة</option><option value="negotiation">تفاوض</option><option value="offer">عرض</option><option value="signed">متعاقد</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>العقار</label><select id="nd-prop"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label>المسوق</label><select id="nd-agent"><option value="">اختر المسوق</option></select></div>
+        <div class="fg"><label for="nd-prop">العقار</label><select id="nd-prop"><option value="">اختر العقار</option></select></div>
+        <div class="fg"><label for="nd-agent">المسوق</label><select id="nd-agent"><option value="">اختر المسوق</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>القيمة المتوقعة</label><input id="nd-value" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label>نسبة العمولة (%)</label><input id="nd-comm-pct" type="number" min="0" max="100" step="0.01"></div>
+        <div class="fg"><label for="nd-value">القيمة المتوقعة</label><input id="nd-value" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nd-comm-pct">نسبة العمولة (%)</label><input id="nd-comm-pct" type="number" min="0" max="100" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>قيمة العمولة</label><input id="nd-comm-value" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label>تاريخ الإغلاق المتوقع</label><input id="nd-close-date" type="date"></div>
+        <div class="fg"><label for="nd-comm-value">قيمة العمولة</label><input id="nd-comm-value" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nd-close-date">تاريخ الإغلاق المتوقع</label><input id="nd-close-date" type="date"></div>
       </div>
-      <div class="fg"><label>ملاحظات</label><textarea id="nd-notes" rows="2"></textarea></div>
+      <div class="fg"><label for="nd-notes">ملاحظات</label><textarea id="nd-notes" rows="2"></textarea></div>
     </div>
     <div class="modal-footer"><button class="btn btn-primary" onclick="saveDeal()">حفظ</button><button class="btn" onclick="closeM('m-deal')">إلغاء</button></div>
   </div>
@@ -1491,25 +1491,25 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <input type="hidden" id="nt-id">
       <div class="row">
-        <div class="fg"><label>العنوان</label><input id="nt-title" placeholder="وصف مختصر"></div>
-        <div class="fg"><label>التصنيف</label><select id="nt-category"><option value="">اختر التصنيف</option></select></div>
+        <div class="fg"><label for="nt-title">العنوان</label><input id="nt-title" placeholder="وصف مختصر"></div>
+        <div class="fg"><label for="nt-category">التصنيف</label><select id="nt-category"><option value="">اختر التصنيف</option></select></div>
       </div>
-      <div class="fg"><label>الوصف</label><textarea id="nt-desc" rows="2" placeholder="تفاصيل المشكلة"></textarea></div>
+      <div class="fg"><label for="nt-desc">الوصف</label><textarea id="nt-desc" rows="2" placeholder="تفاصيل المشكلة"></textarea></div>
       <div class="row">
-        <div class="fg"><label>العقار</label><select id="nt-property" onchange="loadUnits4Ticket()"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label>الوحدة</label><select id="nt-unit"><option value="">اختر الوحدة</option></select></div>
-      </div>
-      <div class="row">
-        <div class="fg"><label>الأولوية</label><select id="nt-priority"><option value="low">منخفضة</option><option value="medium" selected>متوسطة</option><option value="high">عالية</option><option value="urgent">عاجلة</option></select></div>
-        <div class="fg"><label>تحمل التكلفة</label><select id="nt-cost-bearer"><option value="owner">المالك</option><option value="company">الشركة</option><option value="tenant">المستأجر</option></select></div>
+        <div class="fg"><label for="nt-property">العقار</label><select id="nt-property" onchange="loadUnits4Ticket()"><option value="">اختر العقار</option></select></div>
+        <div class="fg"><label for="nt-unit">الوحدة</label><select id="nt-unit"><option value="">اختر الوحدة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>التكلفة التقديرية</label><input id="nt-est-cost" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label>تاريخ الصيانة المقرر</label><input id="nt-sched" type="date"></div>
+        <div class="fg"><label for="nt-priority">الأولوية</label><select id="nt-priority"><option value="low">منخفضة</option><option value="medium" selected>متوسطة</option><option value="high">عالية</option><option value="urgent">عاجلة</option></select></div>
+        <div class="fg"><label for="nt-cost-bearer">تحمل التكلفة</label><select id="nt-cost-bearer"><option value="owner">المالك</option><option value="company">الشركة</option><option value="tenant">المستأجر</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الجهة المبلغة</label><input id="nt-reporter" placeholder="اسم المبلغ"></div>
-        <div class="fg"><label>جوال المبلغ</label><input id="nt-reporter-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nt-est-cost">التكلفة التقديرية</label><input id="nt-est-cost" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nt-sched">تاريخ الصيانة المقرر</label><input id="nt-sched" type="date"></div>
+      </div>
+      <div class="row">
+        <div class="fg"><label for="nt-reporter">الجهة المبلغة</label><input id="nt-reporter" placeholder="اسم المبلغ"></div>
+        <div class="fg"><label for="nt-reporter-phone">جوال المبلغ</label><input id="nt-reporter-phone" placeholder="05xxxxxxxx"></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicket()">حفظ</button><button class="btn" onclick="closeM('m-ticket')">إلغاء</button></div>
@@ -1523,7 +1523,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-title"><span>إضافة نشاط</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-ticket-activity')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nta-ticket-id">
-      <div class="fg"><label>الوصف</label><textarea id="nta-desc" rows="3" placeholder="تفاصيل النشاط"></textarea></div>
+      <div class="fg"><label for="nta-desc">الوصف</label><textarea id="nta-desc" rows="3" placeholder="تفاصيل النشاط"></textarea></div>
     </div>
     <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicketActivity()">إضافة</button><button class="btn" onclick="closeM('m-ticket-activity')">إلغاء</button></div>
   </div>
@@ -1547,20 +1547,20 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <input type="hidden" id="nl-id">
       <div class="row">
-        <div class="fg"><label>العنوان (عربي)</label><input id="nl-title-ar" placeholder="مثال: شقة فاخرة للايجار"></div>
-        <div class="fg"><label>العنوان (إنجليزي)</label><input id="nl-title-en" placeholder="Luxury apartment for rent"></div>
+        <div class="fg"><label for="nl-title-ar">العنوان (عربي)</label><input id="nl-title-ar" placeholder="مثال: شقة فاخرة للايجار"></div>
+        <div class="fg"><label for="nl-title-en">العنوان (إنجليزي)</label><input id="nl-title-en" placeholder="Luxury apartment for rent"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الوصف (عربي)</label><textarea id="nl-desc-ar" rows="2" placeholder="وصف الإعلان"></textarea></div>
-        <div class="fg"><label>الوصف (إنجليزي)</label><textarea id="nl-desc-en" rows="2" placeholder="Listing description"></textarea></div>
+        <div class="fg"><label for="nl-desc-ar">الوصف (عربي)</label><textarea id="nl-desc-ar" rows="2" placeholder="وصف الإعلان"></textarea></div>
+        <div class="fg"><label for="nl-desc-en">الوصف (إنجليزي)</label><textarea id="nl-desc-en" rows="2" placeholder="Listing description"></textarea></div>
       </div>
       <div class="row">
-        <div class="fg"><label>العقار</label><select id="nl-property" onchange="loadUnits4Listing()"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label>الوحدة</label><select id="nl-unit"><option value="">اختر الوحدة</option></select></div>
+        <div class="fg"><label for="nl-property">العقار</label><select id="nl-property" onchange="loadUnits4Listing()"><option value="">اختر العقار</option></select></div>
+        <div class="fg"><label for="nl-unit">الوحدة</label><select id="nl-unit"><option value="">اختر الوحدة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>نوع الإعلان</label><select id="nl-type"><option value="rent">تأجير</option><option value="sale">بيع</option><option value="both">بيع وتأجير</option></select></div>
-        <div class="fg"><label>السعر</label><input id="nl-price" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nl-type">نوع الإعلان</label><select id="nl-type"><option value="rent">تأجير</option><option value="sale">بيع</option><option value="both">بيع وتأجير</option></select></div>
+        <div class="fg"><label for="nl-price">السعر</label><input id="nl-price" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
         <div class="fg"><label>قنوات النشر</label><div id="nl-channels" style="max-height:100px;overflow-y:auto;border:1px solid var(--border);padding:6px;border-radius:6px"></div></div>
@@ -1582,16 +1582,16 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <input type="hidden" id="nb-id">
       <div class="row">
-        <div class="fg"><label>الاسم (عربي)</label><input id="nb-name-ar" placeholder="فرع ينبع"></div>
-        <div class="fg"><label>الاسم (إنجليزي)</label><input id="nb-name-en" placeholder="Yanbu Branch"></div>
+        <div class="fg"><label for="nb-name-ar">الاسم (عربي)</label><input id="nb-name-ar" placeholder="فرع ينبع"></div>
+        <div class="fg"><label for="nb-name-en">الاسم (إنجليزي)</label><input id="nb-name-en" placeholder="Yanbu Branch"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الكود</label><input id="nb-code" placeholder="BR-001"></div>
-        <div class="fg"><label>المدينة</label><input id="nb-city" placeholder="ينبع"></div>
+        <div class="fg"><label for="nb-code">الكود</label><input id="nb-code" placeholder="BR-001"></div>
+        <div class="fg"><label for="nb-city">المدينة</label><input id="nb-city" placeholder="ينبع"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>الجوال</label><input id="nb-phone" placeholder="05xxxxxxxx"></div>
-        <div class="fg"><label>البريد</label><input id="nb-email" placeholder="branch@mullak.sa"></div>
+        <div class="fg"><label for="nb-phone">الجوال</label><input id="nb-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nb-email">البريد</label><input id="nb-email" placeholder="branch@mullak.sa"></div>
       </div>
       <div class="row">
         <div class="fg" style="flex:2"><label>العنوان</label><input id="nb-address" placeholder="العنوان الكامل"></div>
@@ -1610,10 +1610,10 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <input type="hidden" id="nr-id">
       <div class="row">
-        <div class="fg"><label>اسم الدور (عربي)</label><input id="nr-name-ar" placeholder="مدير"></div>
-        <div class="fg"><label>اسم الدور (إنجليزي)</label><input id="nr-name-en" placeholder="Manager"></div>
+        <div class="fg"><label for="nr-name-ar">اسم الدور (عربي)</label><input id="nr-name-ar" placeholder="مدير"></div>
+        <div class="fg"><label for="nr-name-en">اسم الدور (إنجليزي)</label><input id="nr-name-en" placeholder="Manager"></div>
       </div>
-      <div class="fg"><label>الوصف</label><textarea id="nr-desc" rows="2" placeholder="وصف الدور"></textarea></div>
+      <div class="fg"><label for="nr-desc">الوصف</label><textarea id="nr-desc" rows="2" placeholder="وصف الدور"></textarea></div>
       <div><label style="font-weight:500;margin-bottom:6px;display:block">الصلاحيات</label></div>
       <div id="nr-perms" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;max-height:300px;overflow-y:auto;border:1px solid var(--border);padding:8px;border-radius:6px"></div>
     </div>
@@ -1638,20 +1638,20 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-title"><span>إضافة عمولة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-commission')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <div class="row">
-        <div class="fg"><label>الوسيط</label><input id="nc-agent" placeholder="اسم الوسيط"></div>
-        <div class="fg"><label>نوع العمولة</label><select id="nc-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="referral">إحالة</option></select></div>
+        <div class="fg"><label for="comm-agent">الوسيط</label><input id="comm-agent" placeholder="اسم الوسيط"></div>
+        <div class="fg"><label for="comm-type">نوع العمولة</label><select id="comm-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="referral">إحالة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label>طريقة الحساب</label><select id="nc-method"><option value="fixed">مبلغ ثابت</option><option value="percentage">نسبة مئوية</option></select></div>
-        <div class="fg"><label>المبلغ الأساس</label><input id="nc-base" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="comm-method">طريقة الحساب</label><select id="comm-method"><option value="fixed">مبلغ ثابت</option><option value="percentage">نسبة مئوية</option></select></div>
+        <div class="fg"><label for="comm-base">المبلغ الأساس</label><input id="comm-base" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>النسبة (%)</label><input id="nc-rate" type="number" min="0" max="100" step="0.01"></div>
-        <div class="fg"><label>المبلغ المحتسب</label><input id="nc-amount" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="comm-rate">النسبة (%)</label><input id="comm-rate" type="number" min="0" max="100" step="0.01"></div>
+        <div class="fg"><label for="comm-amount">المبلغ المحتسب</label><input id="comm-amount" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>تاريخ الاستحقاق</label><input id="nc-due" type="date"></div>
-        <div class="fg"><label>ملاحظات</label><textarea id="nc-notes" rows="2"></textarea></div>
+        <div class="fg"><label for="comm-due">تاريخ الاستحقاق</label><input id="comm-due" type="date"></div>
+        <div class="fg"><label for="comm-notes">ملاحظات</label><textarea id="comm-notes" rows="2"></textarea></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-primary" onclick="saveCommission()">حفظ</button><button class="btn" onclick="closeM('m-commission')">إلغاء</button></div>
@@ -6741,26 +6741,26 @@ async function updateCommission(id, status) {
 }
 
 function resetCommissionModal() {
-  document.getElementById('nc-agent').value = '';
-  document.getElementById('nc-type').value = 'sale';
-  document.getElementById('nc-method').value = 'fixed';
-  document.getElementById('nc-base').value = '';
-  document.getElementById('nc-rate').value = '';
-  document.getElementById('nc-amount').value = '';
-  document.getElementById('nc-due').value = '';
-  document.getElementById('nc-notes').value = '';
+  document.getElementById('comm-agent').value = '';
+  document.getElementById('comm-type').value = 'sale';
+  document.getElementById('comm-method').value = 'fixed';
+  document.getElementById('comm-base').value = '';
+  document.getElementById('comm-rate').value = '';
+  document.getElementById('comm-amount').value = '';
+  document.getElementById('comm-due').value = '';
+  document.getElementById('comm-notes').value = '';
 }
 
 async function saveCommission() {
   const data = {
-    agent_id: document.getElementById('nc-agent').value,
-    commission_type: document.getElementById('nc-type').value,
-    calculation_method: document.getElementById('nc-method').value,
-    base_amount: parseFloat(document.getElementById('nc-base').value) || 0,
-    rate: parseFloat(document.getElementById('nc-rate').value) || 0,
-    calculated_amount: parseFloat(document.getElementById('nc-amount').value) || 0,
-    due_date: document.getElementById('nc-due').value || null,
-    notes: document.getElementById('nc-notes').value.trim(),
+    agent_id: document.getElementById('comm-agent').value,
+    commission_type: document.getElementById('comm-type').value,
+    calculation_method: document.getElementById('comm-method').value,
+    base_amount: parseFloat(document.getElementById('comm-base').value) || 0,
+    rate: parseFloat(document.getElementById('comm-rate').value) || 0,
+    calculated_amount: parseFloat(document.getElementById('comm-amount').value) || 0,
+    due_date: document.getElementById('comm-due').value || null,
+    notes: document.getElementById('comm-notes').value.trim(),
   };
   if (!data.agent_id) { alert('الرجاء اختيار الوسيط'); return; }
   try {
