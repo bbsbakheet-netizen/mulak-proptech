@@ -2359,6 +2359,7 @@ const T = {
     'contract.vat':'ضريبة القيمة المضافة 15%',
     'contract.total':'الإجمالي',
     'contract.deposit':'التأمين',
+    'contract.subtotal':'المجموع الفرعي',
     'contract.nafath':'التحقق عبر النفاذ',
     'contract.verified':'تم التحقق',
     'contract.pending':'في الانتظار',
@@ -2406,6 +2407,7 @@ const T = {
     'reports.expectedAnnual':'الإيرادات السنوية المتوقعة (ر.س)',
     'reports.avgRent':'متوسط الإيجار (ر.س/شهر)',
     'reports.revenueSAR':'الإيرادات (ر.س)',
+    'reports.netAfterExpenses':'صافي الربح بعد المصروفات',
     'roles.confirmDelete':'تأكيد حذف الدور؟',
     'roles.new':'دور جديد',
     'roles.edit':'تعديل الدور',
@@ -2538,11 +2540,14 @@ const T = {
     'prop.type.commercial':'تجاري',
     'prop.type.mixed':'مختلط',
     'prop.delete.confirm':'حذف العقار',
+    'prop.delete.confirmMsg':'حذف "{name}"؟\nسيتم حذف العقار وجميع وحداته.',
+    'prop.enterName':'يرجى إدخال اسم العقار',
     'prop.occupancy':'الإشغال',
     'prop.floors':'طوابق',
     'prop.units':'وحدة',
     'prop.leased':'مؤجرة',
     'prop.vacant':'شاغرة',
+    'common.deleted':'تم الحذف',
     'unit.loading':'جاري التحميل...',
     'prop.all':'كل العقارات',
     'unit.select':'اختر',
@@ -2838,6 +2843,7 @@ const T = {
     'contract.vat':'VAT 15%',
     'contract.total':'Total',
     'contract.deposit':'Deposit',
+    'contract.subtotal':'Subtotal',
     'contract.nafath':'Nafath',
     'contract.verified':'Verified',
     'contract.pending':'Pending',
@@ -2885,6 +2891,7 @@ const T = {
     'reports.expectedAnnual':'Expected Annual Revenue (SAR)',
     'reports.avgRent':'Avg Rent (SAR/mo)',
     'reports.revenueSAR':'Revenue (SAR)',
+    'reports.netAfterExpenses':'Net profit after expenses',
     'roles.confirmDelete':'Delete role?',
     'roles.new':'New Role',
     'roles.edit':'Edit Role',
@@ -3014,11 +3021,14 @@ const T = {
     'prop.type.commercial':'Commercial',
     'prop.type.mixed':'Mixed',
     'prop.delete.confirm':'Delete property',
+    'prop.delete.confirmMsg':'Delete "{name}"?\nAll units under this property will also be deleted.',
+    'prop.enterName':'Please enter property name',
     'prop.occupancy':'Occupancy',
     'prop.floors':'Floors',
     'prop.units':'Units',
     'prop.leased':'Leased',
     'prop.vacant':'Vacant',
+    'common.deleted':'Deleted',
     'unit.loading':'Loading...',
     'prop.all':'All Properties',
     'unit.select':'Select',
@@ -3390,6 +3400,8 @@ function nav(name, el){
 }
 
 function renderPage(name){
+  const titles = pageTitles[name];
+  document.getElementById('page-title').textContent = titles ? (lang==='ar'?titles.ar:titles.en) : name;
   if(name==='dashboard') renderDashboard();
   if(name==='customers') renderCustomers();
   if(name==='owners') renderOwners();
@@ -5049,7 +5061,7 @@ function resetRoleModal() {
   div.innerHTML = Object.entries(allPermissions).map(([key, val]) =>
     `<label style="display:flex;align-items:center;gap:3px;font-size:12px;padding:2px 0"><input type="checkbox" class="np-check" value="${key}"> ${val.ar}</label>`
   ).join('');
-  document.querySelector('#m-role .modal-title span').textContent = lang==='ar'?'دور جديد':'New Role';
+  document.querySelector('#m-role .modal-title span').textContent = t('roles.new');
 }
 
 async function editRole(id) {
@@ -5069,14 +5081,14 @@ async function editRole(id) {
     try { perms = typeof r.permissions === 'string' ? JSON.parse(r.permissions) : (r.permissions || []); }
     catch { perms = []; }
     div.querySelectorAll('.np-check').forEach(el => { el.checked = perms.includes(el.value); });
-    document.querySelector('#m-role .modal-title span').textContent = lang==='ar'?'تعديل الدور':'Edit Role';
+    document.querySelector('#m-role .modal-title span').textContent = t('roles.edit');
     openM('m-role');
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
 
 async function saveRole() {
   const nameAr = document.getElementById('nr-name-ar').value.trim();
-  if (!nameAr) { alert(lang==='ar'?'الرجاء إدخال اسم الدور':'Please enter role name'); return; }
+  if (!nameAr) { alert(t('roles.enterName')); return; }
   const perms = Array.from(document.querySelectorAll('#nr-perms .np-check:checked')).map(el => el.value);
   const data = {
     name_ar: nameAr,
@@ -5173,14 +5185,14 @@ async function editBranch(id) {
     document.getElementById('nb-email').value = b.email || '';
     document.getElementById('nb-address').value = b.address || '';
     document.getElementById('nb-hq').checked = b.is_hq === 1;
-    document.querySelector('#m-branch .modal-title span').textContent = lang==='ar'?'تعديل الفرع':'Edit Branch';
+    document.querySelector('#m-branch .modal-title span').textContent = t('branches.edit');
     openM('m-branch');
   } catch (e) { alert(t('error.prefix') + ' ' + e.message); }
 }
 
 async function saveBranch() {
   const nameAr = document.getElementById('nb-name-ar').value.trim();
-  if (!nameAr) { alert(lang==='ar'?'الرجاء إدخال اسم الفرع':'Please enter branch name'); return; }
+  if (!nameAr) { alert(t('branches.enterName')); return; }
   const data = {
     name_ar: nameAr,
     name_en: document.getElementById('nb-name-en').value.trim(),
@@ -5377,10 +5389,10 @@ function renderReportStats(){
   const activeContracts = contracts.filter(c => c.status === 'active');
   const annualExpected = activeContracts.reduce((s, c) => s + (c.annual || 0), 0);
   document.getElementById('report-stats').innerHTML = `
-    <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${lang==='ar'?'الإيرادات السنوية المتوقعة (ر.س)':'Expected Annual Revenue (SAR)'}</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${t('reports.expectedAnnual')}</div></div>
     <div class="stat-card"><div class="stat-val">${units.length}</div><div class="stat-lbl">${t('reports.totalUnits')}</div></div>
-    <div class="stat-card"><div class="stat-val" style="color:var(--pri)">${avgRent ? numFmt(avgRent) : '—'}</div><div class="stat-lbl">${lang==='ar'?'متوسط الإيجار (ر.س/شهر)':'Avg Rent (SAR/mo)'}</div></div>
-    <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${lang==='ar'?'الصافي بعد المصاريف':'Net after expenses'}</div></div>`;
+    <div class="stat-card"><div class="stat-val" style="color:var(--pri)">${avgRent ? numFmt(avgRent) : '—'}</div><div class="stat-lbl">${t('reports.avgRent')}</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:var(--suc)">${totalRevenue ? numFmt(totalRevenue) : '—'}</div><div class="stat-lbl">${t('reports.netAfterExpenses')}</div></div>`;
 }
 
 function initReportCharts(){
@@ -5438,7 +5450,7 @@ function showContractStep(n){
 
 function calcMonthly(){
   const v = +document.getElementById('c-annual').value||0;
-  document.getElementById('c-monthly').value = v ? numFmt(Math.round(v/12))+' '+(lang==='ar'?'ر.س':'SAR') : '';
+  document.getElementById('c-monthly').value = v ? numFmt(Math.round(v/12))+' '+t('quote.currency') : '';
 }
 
 let cNafathRequestId = null;
@@ -5501,11 +5513,11 @@ function buildContractPreview(){
     <table class="receipt-table">
       <tr><td>${t('col.renter')}</td><td>${tenant}</td></tr>
       <tr><td>${t('contract.term')}</td><td>${start} → ${end}</td></tr>
-      <tr><td>${lang==='ar'?'الإيجار السنوي':'Annual Rent'}</td><td>${numFmt(annual)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
-      <tr><td>${lang==='ar'?'الإيجار الشهري':'Monthly Rent'}</td><td>${numFmt(monthly)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
-      <tr><td>${lang==='ar'?'ضريبة القيمة المضافة 15%':'VAT 15%'}</td><td>${numFmt(vat)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
-      <tr><td><strong>${lang==='ar'?'الإجمالي':'Total'}</strong></td><td><strong>${numFmt(total)} ${lang==='ar'?'ر.س':'SAR'}</strong></td></tr>
-      <tr><td>${lang==='ar'?'التأمين':'Deposit'}</td><td>${numFmt(deposit)} ${lang==='ar'?'ر.س':'SAR'}</td></tr>
+      <tr><td>${t('contract.annualRent')}</td><td>${numFmt(annual)} ${t('quote.currency')}</td></tr>
+      <tr><td>${t('contract.monthlyRent')}</td><td>${numFmt(monthly)} ${t('quote.currency')}</td></tr>
+      <tr><td>${t('contract.vat')}</td><td>${numFmt(vat)} ${t('quote.currency')}</td></tr>
+      <tr><td><strong>${t('contract.total')}</strong></td><td><strong>${numFmt(total)} ${t('quote.currency')}</strong></td></tr>
+      <tr><td>${t('contract.deposit')}</td><td>${numFmt(deposit)} ${t('quote.currency')}</td></tr>
       <tr><td>${t('contract.nafath')}</td><td>${cNafathVerified?`<span style="color:var(--suc)">✓ ${t('contract.verified')}</span>`:`<span style="color:var(--war)">${t('contract.pending')}</span>`}</td></tr>
     </table>
     <div style="margin-top:14px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)">
@@ -5614,9 +5626,9 @@ function calcQuote(){
   }
   const vat=Math.round(sub*0.15);
   document.getElementById('quote-totals').innerHTML=`
-    <span>${lang==='ar'?'المجموع:':'Subtotal:'} ${numFmt(sub)}</span>
-    <span>${lang==='ar'?'ضريبة 15%:':'VAT 15%:'} ${numFmt(vat)}</span>
-    <span style="font-weight:700;color:var(--pri)">${lang==='ar'?'الإجمالي:':'Total:'} ${numFmt(sub+vat)} ${lang==='ar'?'ر.س':'SAR'}</span>`;
+    <span>${t('contract.subtotal')}: ${numFmt(sub)}</span>
+    <span>${t('contract.vat')}: ${numFmt(vat)}</span>
+    <span style="font-weight:700;color:var(--pri)">${t('contract.total')}: ${numFmt(sub+vat)} ${t('quote.currency')}</span>`;
 }
 
 function saveQuote(){
@@ -5656,7 +5668,7 @@ function previewUnits(){
 
 function addProp(){
   const nameAr = document.getElementById('np-name-ar').value.trim();
-  if(!nameAr){ alert(lang==='ar'?'يرجى إدخال اسم العقار':'Please enter property name'); return; }
+  if(!nameAr){ alert(t('prop.enterName')); return; }
   const floors = +document.getElementById('np-floors').value||1;
   const total = +document.getElementById('np-total').value||1;
   const type = document.getElementById('np-type').value;
@@ -5760,13 +5772,13 @@ async function deleteProperty(id){
   const list = window.props || props;
   const p = list.find(x=>(x.id===id||x.id===+id));
   if(!p) return;
-  if(!confirm(lang==='ar'?`حذف "${propName(p)}"؟\nسيتم حذف العقار وجميع وحداته.`:`Delete "${propName(p)}"?\nAll units under this property will also be deleted.`)) return;
+  if(!confirm(t('prop.delete.confirmMsg',{name:propName(p)}))) return;
   try {
     await apiDelete(`/properties/${id}`);
     window.props = list.filter(x=>(x.id!==id&&x.id!==+id));
     renderProperties();
     renderDashboard();
-    addApiLog('DELETE','/properties/'+id,`${lang==='ar'?'تم الحذف':'Deleted'}: ${propName(p)}`);
+    addApiLog('DELETE','/properties/'+id,`${t('common.deleted')}: ${propName(p)}`);
   } catch(e){
     alert(t('error.prefix')+e.message);
   }
@@ -6424,7 +6436,7 @@ async function resetListingModal() {
   document.getElementById('nl-featured').checked = false;
   document.getElementById('nl-property').innerHTML = `<option value="">${t('prop.select')}</option>`;
   document.getElementById('nl-unit').innerHTML = `<option value="">${t('unit.selectUnit')}</option>`;
-  document.querySelector('#m-listing .modal-title span').textContent = lang==='ar'?'إعلان جديد':'New Listing';
+  document.querySelector('#m-listing .modal-title span').textContent = t('listing.new');
   try {
     const [props, channels] = await Promise.all([
       apiGet('/api/v1/properties'),
