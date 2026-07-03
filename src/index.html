@@ -5651,8 +5651,7 @@ function previewUnits(){
   const total = +document.getElementById('np-total').value||0;
   const perFloor = Math.ceil(total/floors);
   document.getElementById('units-preview-text').textContent =
-    t('prop.autoGenerateUnits').replace('{total}',total).replace('{floors}',floors).replace('{perFloor}',perFloor)
-               :`${total} units will be auto-generated across ${floors} floors (${perFloor} units/floor)`;
+    t('prop.autoGenerateUnits').replace('{total}',total).replace('{floors}',floors).replace('{perFloor}',perFloor);
 }
 
 function addProp(){
