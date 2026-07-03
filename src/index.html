@@ -422,7 +422,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
           <div style="font-size:10px;color:var(--md-on-surface-variant);letter-spacing:2px">MULAK PROPTECH</div>
         </div>
       </div>
-      <p style="font-size:13px;color:var(--md-on-surface-variant)" id="reg-subtitle">نظام إدارة العقارات الذكي للسوق السعودي</p>
+      <p style="font-size:13px;color:var(--md-on-surface-variant)" id="reg-subtitle" data-i="owner.property">نظام إدارة العقارات الذكي للسوق السعودي</p>
     </div>
     <div class="register-body">
       <!-- Email/Password Tab -->
@@ -520,16 +520,16 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <!-- Nafath registration step 1 -->
       <div id="reg-step-1" style="display:none">
         <div class="fg">
-          <label id="lbl-nafath-nid" for="inp-nafath-nid">رقم الهوية الوطنية / الإقامة</label>
+          <label id="lbl-nafath-nid" for="inp-nafath-nid" data-i="customer.nid">رقم الهوية الوطنية / الإقامة</label>
           <input id="inp-nafath-nid" placeholder="10 أرقام" maxlength="10" style="font-size:16px;letter-spacing:2px;text-align:center">
           <div class="hint" id="hint-nid">سيتم التحقق من هويتك عبر منصة نفاذ الوطنية</div>
         </div>
         <div class="fg">
-          <label id="lbl-nafath-phone" for="inp-nafath-phone">رقم الجوال</label>
+          <label id="lbl-nafath-phone" for="inp-nafath-phone" data-i="customer.phone">رقم الجوال</label>
           <input id="inp-nafath-phone" placeholder="05xxxxxxxx" maxlength="10">
         </div>
         <div class="fg">
-          <label id="lbl-n-company" for="inp-n-company">اسم الشركة / المؤسسة</label>
+          <label id="lbl-n-company" for="inp-n-company" data-i="ticket.company">اسم الشركة / المؤسسة</label>
           <input id="inp-n-company" placeholder="شركة الأملاك المتحدة">
         </div>
         <button class="btn btn-nafath" style="width:100%;justify-content:center;height:44px;font-size:14px;margin-top:8px" onclick="startNafath()">
@@ -696,13 +696,13 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── CUSTOMERS ─────────────────────────────── -->
   <div id="p-customers" class="page">
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-primary" onclick="resetCustomerModal();openM('m-customer')"><i class="ti ti-plus" aria-hidden="true"></i><span>إضافة عميل</span></button>
+      <button class="btn btn-primary" onclick="resetCustomerModal();openM('m-customer')"><i class="ti ti-plus" aria-hidden="true"></i><span data-i="btn.addCustomer">إضافة عميل</span></button>
     </div>
     <div class="stats-row" id="cust-stats"></div>
     <div class="card" style="padding:0;margin-top:14px"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>النوع</th><th>الاسم</th><th>الجوال</th><th>البريد</th>
-        <th>رقم الهوية / السجل</th><th>الرقم الضريبي</th><th>العنوان الوطني</th><th>الحالة</th><th></th>
+        <th data-i="th.num">#</th><th data-i="th.type">النوع</th><th data-i="th.name">الاسم</th><th data-i="th.mobile">الجوال</th><th data-i="th.email">البريد</th>
+        <th data-i="th.idNum">رقم الهوية / السجل</th><th data-i="th.taxNum">الرقم الضريبي</th><th data-i="th.nationalAddress">العنوان الوطني</th><th data-i="th.status">الحالة</th><th></th>
       </tr></thead><tbody id="cust-body"></tbody></table>
     </div></div>
   </div>
@@ -710,13 +710,13 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── OWNERS ───────────────────────────────── -->
   <div id="p-owners" class="page">
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px;gap:8px;flex-wrap:wrap">
-      <button class="btn btn-primary" onclick="resetOwnerModal();openM('m-owner')"><i class="ti ti-plus"></i><span>إضافة مالك</span></button>
+      <button class="btn btn-primary" onclick="resetOwnerModal();openM('m-owner')"><i class="ti ti-plus"></i><span data-i="btn.addOwner">إضافة مالك</span></button>
     </div>
     <div class="stats-row" id="owner-stats"></div>
     <div class="card" style="padding:0;margin-top:14px"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>الاسم</th><th>الجوال</th><th>البريد</th>
-        <th>رقم الهوية</th><th>عدد العقارات</th><th>نسبة الإدارة</th><th>الحالة</th><th></th>
+        <th data-i="th.num">#</th><th data-i="th.name">الاسم</th><th data-i="th.mobile">الجوال</th><th data-i="th.email">البريد</th>
+        <th data-i="th.idNum">رقم الهوية</th><th data-i="prop.count">عدد العقارات</th><th data-i="th.ownership">نسبة الإدارة</th><th data-i="th.status">الحالة</th><th></th>
       </tr></thead><tbody id="owner-body"></tbody></table>
     </div></div>
   </div>
@@ -732,8 +732,8 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── UNITS ──────────────────────────────────── -->
   <div id="p-units" class="page">
     <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
-      <label style="display:inline-flex;align-items:center;gap:4px" aria-label="تصفية حسب العقار"><select id="uf-prop" onchange="renderUnits()" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12.5px"></select></label>
-      <label style="display:inline-flex;align-items:center;gap:4px" aria-label="تصفية حسب الحالة"><select id="uf-status" onchange="renderUnits()" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12.5px"></select></label>
+      <label style="display:inline-flex;align-items:center;gap:4px" data-i-aria-label="unit.filterByProp" aria-label="تصفية حسب العقار"><select id="uf-prop" onchange="renderUnits()" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12.5px"></select></label>
+      <label style="display:inline-flex;align-items:center;gap:4px" data-i-aria-label="unit.filterByStatus" aria-label="تصفية حسب الحالة"><select id="uf-status" onchange="renderUnits()" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12.5px"></select></label>
         <option value="" data-i="filter.allStatus">كل الحالات</option>
         <option value="vacant" data-i="status.vacant">شاغرة</option>
         <option value="occupied" data-i="status.occupied">مسكونة</option>
@@ -778,7 +778,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="ej-contracts" class="card" style="padding:0;margin-top:8px">
       <div class="table-wrap">
         <table><thead><tr>
-          <th>#</th><th>رقم العقد</th><th>المستأجر</th><th>العقار</th><th>الوحدة</th><th>رقم إيجار</th><th>القيمة</th><th>حالة إيجار</th><th></th>
+          <th data-i="th.num">#</th><th data-i="th.contractNum">رقم العقد</th><th data-i="th.tenant">المستأجر</th><th data-i="th.property">العقار</th><th data-i="th.unit">الوحدة</th><th data-i="ejar.ejarNum">رقم إيجار</th><th data-i="th.amount">القيمة</th><th data-i="ejar.ejarStatus">حالة إيجار</th><th></th>
         </tr></thead><tbody id="ej-contracts-body"></tbody></table>
       </div>
     </div>
@@ -787,7 +787,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="ej-pending" class="card" style="padding:0;margin-top:8px;display:none">
       <div class="table-wrap">
         <table><thead><tr>
-          <th>#</th><th>رقم العقد</th><th>المستأجر</th><th>العقار</th><th>الوحدة</th><th>المدة</th><th>القيمة</th><th></th>
+          <th data-i="th.num">#</th><th data-i="th.contractNum">رقم العقد</th><th data-i="th.tenant">المستأجر</th><th data-i="th.property">العقار</th><th data-i="th.unit">الوحدة</th><th data-i="th.period">المدة</th><th data-i="th.amount">القيمة</th><th></th>
         </tr></thead><tbody id="ej-pending-body"></tbody></table>
       </div>
     </div>
@@ -795,12 +795,12 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <!-- Settings -->
     <div id="ej-settings" class="card" style="margin-top:8px;display:none">
       <div class="row">
-        <div class="fg"><label for="ej-api-key">مفتاح API (Ejar)</label><input id="ej-api-key" placeholder="مفتاح API"></div>
-        <div class="fg"><label for="ej-api-secret">السر (Secret)</label><input id="ej-api-secret" type="password" placeholder="المفتاح السري"></div>
+        <div class="fg"><label for="ej-api-key" data-i="ejar.apiKey">مفتاح API (Ejar)</label><input id="ej-api-key" placeholder="مفتاح API"></div>
+        <div class="fg"><label for="ej-api-secret" data-i="ejar.secret">السر (Secret)</label><input id="ej-api-secret" type="password" placeholder="المفتاح السري"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="ej-env">البيئة</label><select id="ej-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
-        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-primary" onclick="saveEjarSettings()"><i class="ti ti-check"></i><span>حفظ</span></button></div>
+        <div class="fg"><label for="ej-env" data-i="ejar.env">البيئة</label><select id="ej-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
+        <div class="fg" style="display:flex;align-items:flex-end"><button class="btn btn-primary" onclick="saveEjarSettings()"><i class="ti ti-check"></i><span data-i="common.save">حفظ</span></button></div>
       </div>
     </div>
   </div>
@@ -811,7 +811,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <button class="btn" onclick="exportReceiptsCSV()"><i class="ti ti-table-export" aria-hidden="true"></i><span data-i="btn.exportCsv">تصدير CSV</span></button>
     </div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn btn-sm" id="rct-filter-all" onclick="setReceiptFilter('all')" style="background:var(--pri);color:#fff">الكل</button>
+      <button class="btn btn-sm" id="rct-filter-all" onclick="setReceiptFilter('all')" style="background:var(--pri);color:#fff" data-i="common.all">الكل</button>
       <button class="btn btn-sm" id="rct-filter-pending" onclick="setReceiptFilter('pending')" style="background:var(--war);color:#fff">بانتظار الاعتماد</button>
       <button class="btn btn-sm" id="rct-filter-approved" onclick="setReceiptFilter('approved')" style="background:var(--suc);color:#fff">معتمد</button>
     </div>
@@ -873,12 +873,12 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <!-- Roles tab -->
     <div id="rb-roles">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-        <span style="color:var(--text3);font-size:13px">إدارة الأدوار والصلاحيات</span>
-        <button class="btn btn-sm btn-primary" onclick="resetRoleModal();openM('m-role')"><i class="ti ti-plus"></i><span>دور جديد</span></button>
+        <span style="color:var(--text3);font-size:13px" data-i="role.permissions">إدارة الأدوار والصلاحيات</span>
+        <button class="btn btn-sm btn-primary" onclick="resetRoleModal();openM('m-role')"><i class="ti ti-plus"></i><span data-i="role.add">دور جديد</span></button>
       </div>
       <div class="card" style="padding:0"><div class="table-wrap">
         <table><thead><tr>
-          <th>#</th><th>اسم الدور</th><th>عدد المستخدمين</th><th>الصلاحيات</th><th>نظام</th><th></th>
+          <th>#</th><th data-i="role.name">اسم الدور</th><th>عدد المستخدمين</th><th data-i="role.permissions">الصلاحيات</th><th>نظام</th><th></th>
         </tr></thead><tbody id="rb-roles-body"></tbody></table>
       </div></div>
     </div>
@@ -887,7 +887,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="rb-users" style="display:none">
       <div class="card" style="padding:0"><div class="table-wrap">
         <table><thead><tr>
-          <th>#</th><th>الاسم</th><th>البريد</th><th>الأدوار</th><th>الصلاحيات الفعلية</th><th></th>
+          <th>#</th><th>الاسم</th><th>البريد</th><th>الأدوار</th><th data-i="role.permissions">الصلاحيات الفعلية</th><th></th>
         </tr></thead><tbody id="rb-users-body"></tbody></table>
       </div></div>
     </div>
@@ -920,7 +920,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── PAYROLL ────────────────────────────────── -->
   <div id="p-payroll" class="page">
     <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
-      <label aria-label="شهر الراتب" style="display:inline-flex;align-items:center;gap:4px"><input type="month" id="payroll-month" value="2026-06" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1)"></label>
+      <label aria-label="شهر الراتب" data-i-aria-label="payroll.month" style="display:inline-flex;align-items:center;gap:4px"><input type="month" id="payroll-month" value="2026-06" style="padding:7px 10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text1)"></label>
       <button class="btn btn-primary" onclick="runPayroll()"><i class="ti ti-calculator" aria-hidden="true"></i><span data-i="btn.runPayroll">احتساب الرواتب</span></button>
       <button class="btn" onclick="exportSIF()"><i class="ti ti-download" aria-hidden="true"></i><span data-i="btn.exportSif">تصدير SIF</span></button>
     </div>
@@ -958,7 +958,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>الاسم</th><th>الكود</th><th>المدينة</th><th>المدير</th><th>عقارات</th><th>موظفين</th><th>المركز الرئيسي</th><th></th>
+        <th>#</th><th>الاسم</th><th>الكود</th><th data-i="common.city">المدينة</th><th>المدير</th><th>عقارات</th><th>موظفين</th><th>المركز الرئيسي</th><th></th>
       </tr></thead><tbody id="branch-body"></tbody></table>
     </div></div>
   </div>
@@ -977,17 +977,17 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="bi-summary">
       <div class="stats-row" id="bi-summary-stats"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div class="card"><div class="card-title" style="padding:8px 12px"><i class="ti ti-building"></i><span>الإشغال حسب العقار</span></div>
-          <div class="table-wrap"><table><thead><tr><th>العقار</th><th>الإشغال</th></tr></thead><tbody id="bi-occupancy-table"></tbody></table></div></div>
-        <div class="card"><div class="card-title" style="padding:8px 12px"><i class="ti ti-trending-up"></i><span>ROI العقارات</span></div>
-          <div class="table-wrap"><table><thead><tr><th>العقار</th><th>ROI</th></tr></thead><tbody id="bi-roi-table"></tbody></table></div></div>
+        <div class="card"><div class="card-title" style="padding:8px 12px"><i class="ti ti-building"></i><span data-i="owner.property">الإشغال حسب العقار</span></div>
+          <div class="table-wrap"><table><thead><tr><th data-i="owner.property">العقار</th><th>الإشغال</th></tr></thead><tbody id="bi-occupancy-table"></tbody></table></div></div>
+        <div class="card"><div class="card-title" style="padding:8px 12px"><i class="ti ti-trending-up"></i><span data-i="owner.property">ROI العقارات</span></div>
+          <div class="table-wrap"><table><thead><tr><th data-i="owner.property">العقار</th><th>ROI</th></tr></thead><tbody id="bi-roi-table"></tbody></table></div></div>
       </div>
     </div>
 
     <!-- Occupancy Detail -->
     <div id="bi-occupancy" class="card" style="display:none;padding:0">
       <div class="table-wrap"><table><thead><tr>
-        <th>العقار</th><th>إجمالي الوحدات</th><th>مشغول</th><th>فارغ</th><th>نسبة الإشغال</th>
+        <th data-i="owner.property">العقار</th><th>إجمالي الوحدات</th><th>مشغول</th><th>فارغ</th><th>نسبة الإشغال</th>
       </tr></thead><tbody id="bi-occ-body"></tbody></table></div>
     </div>
 
@@ -995,14 +995,14 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="bi-revenue" class="card" style="display:none;padding:0">
       <div class="stats-row" id="bi-rev-stats"></div>
       <div class="table-wrap"><table><thead><tr>
-        <th>الشهر</th><th>الإيراد</th><th>ضريبة VAT</th><th>الإجمالي</th>
+        <th>الشهر</th><th>الإيراد</th><th data-i="purchase.vat">ضريبة VAT</th><th data-i="purchase.total">الإجمالي</th>
       </tr></thead><tbody id="bi-rev-body"></tbody></table></div>
     </div>
 
     <!-- ROI Detail -->
     <div id="bi-roi" class="card" style="display:none;padding:0">
       <div class="table-wrap"><table><thead><tr>
-        <th>العقار</th><th>قيمة الاستثمار</th><th>العائد السنوي</th><th>نسبة الإشغال</th><th>ROI</th>
+        <th data-i="owner.property">العقار</th><th>قيمة الاستثمار</th><th>العائد السنوي</th><th>نسبة الإشغال</th><th>ROI</th>
       </tr></thead><tbody id="bi-roi-body"></tbody></table></div>
     </div>
   </div>
@@ -1087,13 +1087,13 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-chart-of-accounts" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:8px">
-        <button class="btn" onclick="seedAccounts()"><i class="ti ti-database-import"></i><span>بذر دليل الحسابات</span></button>
+        <button class="btn" onclick="seedAccounts()"><i class="ti ti-database-import"></i><span data-i="coa.seed">بذر دليل الحسابات</span></button>
       </div>
-      <button class="btn btn-primary" onclick="openAccountModal()"><i class="ti ti-plus"></i><span>إضافة حساب</span></button>
+      <button class="btn btn-primary" onclick="openAccountModal()"><i class="ti ti-plus"></i><span data-i="coa.addAccount">إضافة حساب</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>الكود</th><th>اسم الحساب (عربي)</th><th>اسم الحساب (إنجليزي)</th><th>النوع</th><th>حساب أب</th><th>حالة</th><th></th>
+        <th data-i="th.code">الكود</th><th data-i="coa.nameAr">اسم الحساب (عربي)</th><th data-i="coa.nameEn">اسم الحساب (إنجليزي)</th><th data-i="th.type">النوع</th><th data-i="coa.parent">حساب أب</th><th data-i="th.status">حالة</th><th></th>
       </tr></thead><tbody id="coa-body"></tbody></table>
     </div></div>
   </div>
@@ -1101,12 +1101,12 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── JOURNAL ENTRIES ─────────────────────────── -->
   <div id="p-journal" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
-      <div class="fg" style="max-width:200px"><select id="je-filter" onchange="renderJournal()" aria-label="تصفية قيود اليومية"><option value="">كل القيود</option><option value="0">غير مرحلة</option><option value="1">مرحلة</option></select></div>
-      <button class="btn btn-primary" onclick="openEntryModal()"><i class="ti ti-plus"></i><span>قيد يومية جديد</span></button>
+      <div class="fg" style="max-width:200px"><select id="je-filter" onchange="renderJournal()" aria-label="تصفية قيود اليومية"><option value="" data-i="journal.all">كل القيود</option><option value="0" data-i="journal.unposted">غير مرحلة</option><option value="1" data-i="journal.posted">مرحلة</option></select></div>
+      <button class="btn btn-primary" onclick="openEntryModal()"><i class="ti ti-plus"></i><span data-i="journal.newEntry">قيد يومية جديد</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>رقم القيد</th><th>التاريخ</th><th>الوصف</th><th>المدين</th><th>الدائن</th><th>الحالة</th><th>بواسطة</th><th></th>
+        <th data-i="journal.entryNo">رقم القيد</th><th data-i="th.date">التاريخ</th><th data-i="ticket.description">الوصف</th><th data-i="th.debit">المدين</th><th data-i="th.credit">الدائن</th><th data-i="th.status">الحالة</th><th data-i="th.by">بواسطة</th><th></th>
       </tr></thead><tbody id="je-body"></tbody></table>
     </div></div>
   </div>
@@ -1114,12 +1114,12 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── TRIAL BALANCE ───────────────────────────── -->
   <div id="p-trial-balance" class="page">
     <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap">
-      <div class="fg" style="max-width:200px"><label>حتى تاريخ</label><input type="date" id="tb-date" onchange="renderTrialBalance()"></div>
-      <button class="btn" onclick="renderTrialBalance()"><i class="ti ti-refresh"></i><span>تحديث</span></button>
+      <div class="fg" style="max-width:200px"><label data-i="tb.asOf">حتى تاريخ</label><input type="date" id="tb-date" onchange="renderTrialBalance()"></div>
+      <button class="btn" onclick="renderTrialBalance()"><i class="ti ti-refresh"></i><span data-i="btn.update">تحديث</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>الكود</th><th>اسم الحساب</th><th>النوع</th><th>مدين</th><th>دائن</th><th>الرصيد</th>
+        <th data-i="th.code">الكود</th><th data-i="coa.nameAr">اسم الحساب</th><th data-i="th.type">النوع</th><th data-i="th.debit">مدين</th><th data-i="th.credit">دائن</th><th data-i="th.balance">الرصيد</th>
       </tr></thead><tbody id="tb-body"></tbody></table>
     </div></div>
     <div class="stats-row" id="tb-stats" style="margin-top:14px"></div>
@@ -1128,9 +1128,9 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <!-- ── FINANCIAL REPORTS ───────────────────────── -->
   <div id="p-financial-reports" class="page">
     <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap">
-      <div class="fg" style="max-width:200px"><label>من تاريخ</label><input type="date" id="fr-from" onchange="renderFinReports()"></div>
-      <div class="fg" style="max-width:200px"><label>إلى تاريخ</label><input type="date" id="fr-to" onchange="renderFinReports()"></div>
-      <button class="btn" onclick="renderFinReports()"><i class="ti ti-refresh"></i><span>تحديث</span></button>
+      <div class="fg" style="max-width:200px"><label data-i="label.fromDate">من تاريخ</label><input type="date" id="fr-from" onchange="renderFinReports()"></div>
+      <div class="fg" style="max-width:200px"><label data-i="label.toDate">إلى تاريخ</label><input type="date" id="fr-to" onchange="renderFinReports()"></div>
+      <button class="btn" onclick="renderFinReports()"><i class="ti ti-refresh"></i><span data-i="btn.refresh">تحديث</span></button>
     </div>
     <div class="grid-2">
       <div class="card" id="fr-income"><div style="font-weight:600;margin-bottom:10px;font-size:14px"><i class="ti ti-trending-up"></i> قائمة الدخل</div><div id="fr-income-body"></div></div>
@@ -1159,28 +1159,28 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <!-- ── TAX REPORT (inside Reports) ──────────── -->
     <div class="card" style="margin-top:20px">
       <div class="card-header">
-        <div class="card-title"><i class="ti ti-file-invoice" aria-hidden="true"></i>التقرير الضريبي</div>
+        <div class="card-title" data-i="reports.taxReport"><i class="ti ti-file-invoice" aria-hidden="true"></i>التقرير الضريبي</div>
         <div style="display:flex;gap:6px;align-items:center">
-          <label aria-label="السنة الضريبية" style="display:inline-flex;align-items:center;gap:4px"><select id="tr-year" onchange="renderTaxReport()" style="padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px">
+          <label aria-label="السنة الضريبية" data-i-aria-label="reports.taxYear" style="display:inline-flex;align-items:center;gap:4px"><select id="tr-year" onchange="renderTaxReport()" style="padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px">
             <option value="2026">2026</option><option value="2025">2025</option>
           </select></label>
-          <label aria-label="الدورة الضريبية" style="display:inline-flex;align-items:center;gap:4px"><select id="tr-cycle" onchange="renderTaxReport()" style="padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px">
-            <option value="monthly">شهري</option>
-            <option value="quarterly">ربع سنوي</option>
-            <option value="semiannual">نصف سنوي</option>
-            <option value="annual">سنوي</option>
+          <label aria-label="الدورة الضريبية" data-i-aria-label="reports.taxCycle" style="display:inline-flex;align-items:center;gap:4px"><select id="tr-cycle" onchange="renderTaxReport()" style="padding:5px 8px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px">
+            <option value="monthly" data-i="freq.monthly">شهري</option>
+            <option value="quarterly" data-i="freq.quarterly">ربع سنوي</option>
+            <option value="semiannual" data-i="freq.semiannual">نصف سنوي</option>
+            <option value="annual" data-i="freq.annual">سنوي</option>
           </select></label>
-          <button class="btn btn-sm" onclick="printTaxReport()"><i class="ti ti-printer" aria-hidden="true"></i> طباعة</button>
+          <button class="btn btn-sm" onclick="printTaxReport()" data-i="btn.print"><i class="ti ti-printer" aria-hidden="true"></i> طباعة</button>
         </div>
       </div>
       <div class="stats-row" id="tr-stats" style="padding:8px">
-        <div class="stat-card"><div class="stat-icon" style="background:#E6F4EC"><i class="ti ti-cash" style="color:#1A7A4A" aria-hidden="true"></i></div><div class="stat-val" id="tr-output-vat" style="color:#1A7A4A">0</div><div class="stat-lbl">ضريبة المخرجات</div></div>
-        <div class="stat-card"><div class="stat-icon" style="background:#FEE2E2"><i class="ti ti-shopping-cart" style="color:#B91C1C" aria-hidden="true"></i></div><div class="stat-val" id="tr-input-vat" style="color:#B91C1C">0</div><div class="stat-lbl">ضريبة المدخلات</div></div>
-        <div class="stat-card"><div class="stat-icon" style="background:#E8F0FB"><i class="ti ti-report-money" style="color:#1B4F8A" aria-hidden="true"></i></div><div class="stat-val" id="tr-net-vat" style="color:#1B4F8A">0</div><div class="stat-lbl">صافي VAT</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#E6F4EC"><i class="ti ti-cash" style="color:#1A7A4A" aria-hidden="true"></i></div><div class="stat-val" id="tr-output-vat" style="color:#1A7A4A">0</div><div class="stat-lbl" data-i="reports.outputVat">ضريبة المخرجات</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#FEE2E2"><i class="ti ti-shopping-cart" style="color:#B91C1C" aria-hidden="true"></i></div><div class="stat-val" id="tr-input-vat" style="color:#B91C1C">0</div><div class="stat-lbl" data-i="reports.inputVat">ضريبة المدخلات</div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:#E8F0FB"><i class="ti ti-report-money" style="color:#1B4F8A" aria-hidden="true"></i></div><div class="stat-val" id="tr-net-vat" style="color:#1B4F8A">0</div><div class="stat-lbl" data-i="reports.netVat">صافي VAT</div></div>
       </div>
       <div class="table-wrap">
         <table><thead><tr>
-          <th>الشهر</th><th>ضريبة المخرجات</th><th>ضريبة المدخلات</th><th>صافي VAT</th><th>الحالة</th>
+          <th>الشهر</th><th data-i="purchase.vat">ضريبة المخرجات</th><th data-i="purchase.vat">ضريبة المدخلات</th><th>صافي VAT</th><th>الحالة</th>
         </tr></thead><tbody id="tr-body"></tbody></table>
       </div>
       <div class="chart-box" style="margin:12px"><canvas id="tr-chart" height="150"></canvas></div>
@@ -1200,28 +1200,28 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="zt-settings" class="card">
       <div class="stats-row" id="zt-status-bar"></div>
       <div class="row">
-        <div class="fg"><label for="zt-org-name">اسم المنشأة</label><input id="zt-org-name" placeholder="الاسم كما يظهر في الفاتورة"></div>
-        <div class="fg"><label for="zt-vat">الرقم الضريبي (VAT)</label><input id="zt-vat" placeholder="300000000000003"></div>
+        <div class="fg"><label for="zt-org-name" data-i="zatca.orgName">اسم المنشأة</label><input id="zt-org-name" placeholder="الاسم كما يظهر في الفاتورة" data-i-placeholder="zatca.orgNamePlaceholder"></div>
+        <div class="fg"><label for="zt-vat" data-i="customer.vat">الرقم الضريبي (VAT)</label><input id="zt-vat" placeholder="300000000000003"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="zt-cr">رقم السجل التجاري</label><input id="zt-cr" placeholder="رقم السجل"></div>
-        <div class="fg"><label for="zt-env">البيئة</label><select id="zt-env"><option value="sandbox">اختبار (Sandbox)</option><option value="production">إنتاج (Production)</option></select></div>
+        <div class="fg"><label for="zt-cr" data-i="customer.cr">رقم السجل التجاري</label><input id="zt-cr" placeholder="رقم السجل"></div>
+        <div class="fg"><label for="zt-env" data-i="zatca.env">البيئة</label><select id="zt-env"><option value="sandbox" data-i="zatca.sandbox">اختبار (Sandbox)</option><option value="production" data-i="zatca.production">إنتاج (Production)</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="zt-building">رقم المبنى</label><input id="zt-building" placeholder="رقم المبنى"></div>
-        <div class="fg"><label for="zt-street">الشارع</label><input id="zt-street" placeholder="اسم الشارع"></div>
+        <div class="fg"><label for="zt-building" data-i="vendor.building">رقم المبنى</label><input id="zt-building" placeholder="رقم المبنى"></div>
+        <div class="fg"><label for="zt-street" data-i="common.street">الشارع</label><input id="zt-street" placeholder="اسم الشارع"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="zt-district">الحي</label><input id="zt-district" placeholder="الحي"></div>
-        <div class="fg"><label for="zt-city">المدينة</label><input id="zt-city" placeholder="المدينة"></div>
+        <div class="fg"><label for="zt-district" data-i="common.district">الحي</label><input id="zt-district" placeholder="الحي"></div>
+        <div class="fg"><label for="zt-city" data-i="common.city">المدينة</label><input id="zt-city" placeholder="المدينة"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="zt-postal">الرمز البريدي</label><input id="zt-postal" placeholder="الرمز البريدي"></div>
-        <div class="fg"><label for="zt-add-no">الرقم الإضافي</label><input id="zt-add-no" placeholder="الرقم الإضافي"></div>
+        <div class="fg"><label for="zt-postal" data-i="vendor.postal">الرمز البريدي</label><input id="zt-postal" placeholder="الرمز البريدي"></div>
+        <div class="fg"><label for="zt-add-no" data-i="zatca.addNo">الرقم الإضافي</label><input id="zt-add-no" placeholder="الرقم الإضافي" data-i-placeholder="zatca.addNoPlaceholder"></div>
       </div>
       <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn btn-primary" onclick="saveZatcaSettings()"><i class="ti ti-check"></i><span>حفظ الإعدادات</span></button>
-        <button class="btn" onclick="testZatcaConnection()"><i class="ti ti-refresh"></i><span>اختبار الاتصال</span></button>
+        <button class="btn btn-primary" onclick="saveZatcaSettings()"><i class="ti ti-check"></i><span data-i="btn.saveSettings">حفظ الإعدادات</span></button>
+        <button class="btn" onclick="testZatcaConnection()"><i class="ti ti-refresh"></i><span data-i="btn.test">اختبار الاتصال</span></button>
       </div>
     </div>
 
@@ -1229,18 +1229,18 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div id="zt-queue" class="card" style="display:none">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
         <div class="stats-row" id="zt-queue-stats" style="flex:1"></div>
-        <button class="btn btn-primary btn-sm" onclick="submitAllZatca()"><i class="ti ti-send"></i><span>إرسال الكل</span></button>
+        <button class="btn btn-primary btn-sm" onclick="submitAllZatca()"><i class="ti ti-send"></i><span data-i="zatca.sendAll">إرسال الكل</span></button>
       </div>
       <div class="table-wrap">
         <table><thead><tr>
-          <th>#</th><th>رقم الفاتورة</th><th>النوع</th><th>المستفيد</th><th>المبلغ</th><th>UUID</th><th>الحالة</th><th>تاريخ الإرسال</th><th></th>
+          <th>#</th><th>رقم الفاتورة</th><th>النوع</th><th>المستفيد</th><th data-i="utility.amountExVat">المبلغ</th><th>UUID</th><th>الحالة</th><th>تاريخ الإرسال</th><th></th>
         </tr></thead><tbody id="zt-queue-body"></tbody></table>
       </div>
     </div>
 
     <!-- Report -->
     <div id="zt-report" class="card" style="display:none">
-      <div id="zt-report-content" style="padding:8px;color:var(--text3);text-align:center">التقارير الضريبية متاحة من صفحة التقارير المالية</div>
+      <div id="zt-report-content" style="padding:8px;color:var(--text3);text-align:center" data-i="zatca.reportsAvailable">التقارير الضريبية متاحة من صفحة التقارير المالية</div>
     </div>
   </div>
 
@@ -1277,7 +1277,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
             <option value="2025">2025</option>
           </select></label>
           <button class="btn btn-sm" onclick="exportPLPDF()"><i class="ti ti-download" aria-hidden="true"></i><span data-i="btn.exportPdf">PDF</span></button>
-          <button class="btn btn-sm" onclick="printPLReport()"><i class="ti ti-printer" aria-hidden="true"></i><span>طباعة</span></button>
+          <button class="btn btn-sm" onclick="printPLReport()"><i class="ti ti-printer" aria-hidden="true"></i><span data-i="btn.print">طباعة</span></button>
         </div>
       </div>
       <div class="chart-box"><canvas id="pl-chart" height="200"></canvas></div>
@@ -1311,7 +1311,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>النوع</th><th>التفاصيل</th><th>العقار / العقد</th><th>الأولوية</th><th>التاريخ</th>
+        <th>النوع</th><th>التفاصيل</th><th data-i="owner.property">العقار / العقد</th><th data-i="ticket.priority">الأولوية</th><th>التاريخ</th>
       </tr></thead><tbody id="alerts-body"></tbody></table>
     </div></div>
   </div>
@@ -1320,22 +1320,22 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-marketing" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:6px;flex-wrap:wrap" id="mkt-filter-bar">
-        <button class="btn btn-sm active" onclick="filterListings('')">الكل</button>
+        <button class="btn btn-sm active" onclick="filterListings('')" data-i="common.all">الكل</button>
         <button class="btn btn-sm" onclick="filterListings('draft')">مسودة</button>
         <button class="btn btn-sm" onclick="filterListings('published')">منشور</button>
         <button class="btn btn-sm" onclick="filterListings('rented')">مؤجر</button>
         <button class="btn btn-sm" onclick="filterListings('sold')">مباع</button>
       </div>
       <div style="display:flex;gap:6px">
-        <button class="btn btn-sm" onclick="filterListingsType('sale')">بيع</button>
-        <button class="btn btn-sm" onclick="filterListingsType('rent')">تأجير</button>
-        <button class="btn btn-primary" onclick="resetListingModal();openM('m-listing')"><i class="ti ti-plus"></i><span>إعلان جديد</span></button>
+        <button class="btn btn-sm" onclick="filterListingsType('sale')" data-i="deal.sale">بيع</button>
+        <button class="btn btn-sm" onclick="filterListingsType('rent')" data-i="deal.rent">تأجير</button>
+        <button class="btn btn-primary" onclick="resetListingModal();openM('m-listing')"><i class="ti ti-plus"></i><span data-i="listing.add">إعلان جديد</span></button>
       </div>
     </div>
     <div class="stats-row" id="mkt-stats"></div>
     <div class="card" style="padding:0;margin-top:10px"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>رقم الإعلان</th><th>العنوان</th><th>العقار</th><th>الوحدة</th><th>النوع</th><th>السعر</th><th>مشاهدات</th><th>استفسارات</th><th>الحالة</th><th></th>
+        <th>#</th><th>رقم الإعلان</th><th data-i="common.address">العنوان</th><th data-i="owner.property">العقار</th><th data-i="ticket.unit">الوحدة</th><th>النوع</th><th>السعر</th><th>مشاهدات</th><th data-i="deals.inquiry">استفسارات</th><th>الحالة</th><th></th>
       </tr></thead><tbody id="mkt-body"></tbody></table>
     </div></div>
   </div>
@@ -1344,20 +1344,20 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-deals" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:6px;flex-wrap:wrap" id="deal-filter-bar">
-        <button class="btn btn-sm active" onclick="filterDeals('')">الكل</button>
-        <button class="btn btn-sm" onclick="filterDeals('lead')">عميل محتمل</button>
-        <button class="btn btn-sm" onclick="filterDeals('inquiry')">استفسار</button>
-        <button class="btn btn-sm" onclick="filterDeals('viewing')">معاينة</button>
-        <button class="btn btn-sm" onclick="filterDeals('negotiation')">تفاوض</button>
-        <button class="btn btn-sm" onclick="filterDeals('offer')">عرض</button>
-        <button class="btn btn-sm" onclick="filterDeals('signed')">متعاقد</button>
+        <button class="btn btn-sm active" onclick="filterDeals('')" data-i="common.all">الكل</button>
+        <button class="btn btn-sm" onclick="filterDeals('lead')" data-i="deals.lead">عميل محتمل</button>
+        <button class="btn btn-sm" onclick="filterDeals('inquiry')" data-i="deals.inquiry">استفسار</button>
+        <button class="btn btn-sm" onclick="filterDeals('viewing')" data-i="deals.viewing">معاينة</button>
+        <button class="btn btn-sm" onclick="filterDeals('negotiation')" data-i="deals.negotiation">تفاوض</button>
+        <button class="btn btn-sm" onclick="filterDeals('offer')" data-i="deals.offer">عرض</button>
+        <button class="btn btn-sm" onclick="filterDeals('signed')" data-i="deals.signed">متعاقد</button>
       </div>
-      <button class="btn btn-primary" onclick="resetDealModal();openM('m-deal')"><i class="ti ti-plus"></i><span>صفقة جديدة</span></button>
+      <button class="btn btn-primary" onclick="resetDealModal();openM('m-deal')"><i class="ti ti-plus"></i><span data-i="deals.new">صفقة جديدة</span></button>
     </div>
     <div class="stats-row" id="deal-stats"></div>
     <div class="card" style="padding:0;margin-top:10px"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>رقم الصفقة</th><th>النوع</th><th>العميل</th><th>العقار</th><th>المسوق</th><th>القيمة</th><th>العمولة</th><th>المرحلة</th><th>تاريخ الإغلاق</th><th></th>
+        <th>#</th><th>رقم الصفقة</th><th>النوع</th><th>العميل</th><th data-i="owner.property">العقار</th><th data-i="deal.agent">المسوق</th><th>القيمة</th><th data-i="po.commission">العمولة</th><th data-i="deal.stage">المرحلة</th><th>تاريخ الإغلاق</th><th></th>
       </tr></thead><tbody id="deal-body"></tbody></table>
     </div></div>
   </div>
@@ -1366,13 +1366,13 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-commissions" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <select id="com-filter-status" onchange="renderCommissions()" style="max-width:150px" aria-label="تصفية العمولات"><option value="">الكل</option><option value="pending">معلقة</option><option value="approved">معتمدة</option><option value="paid">مدفوعة</option></select>
+        <select id="com-filter-status" onchange="renderCommissions()" style="max-width:150px" aria-label="تصفية العمولات"><option value="" data-i="common.all">الكل</option><option value="pending">معلقة</option><option value="approved">معتمدة</option><option value="paid" data-i="commission.paid">مدفوعة</option></select>
       </div>
-      <button class="btn btn-primary" onclick="resetCommissionModal();openM('m-commission')"><i class="ti ti-plus"></i><span>إضافة عمولة</span></button>
+      <button class="btn btn-primary" onclick="resetCommissionModal();openM('m-commission')"><i class="ti ti-plus"></i><span data-i="commissions.add">إضافة عمولة</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>الوسيط</th><th>نوع العمولة</th><th>الأساس</th><th>النسبة</th><th>المبلغ</th><th>المدفوع</th><th>الحالة</th><th>تاريخ الاستحقاق</th><th></th>
+        <th>#</th><th>الوسيط</th><th data-i="po.commission">نوع العمولة</th><th>الأساس</th><th data-i="commission.rate">النسبة</th><th data-i="utility.amountExVat">المبلغ</th><th>المدفوع</th><th>الحالة</th><th data-i="utility.dueDate">تاريخ الاستحقاق</th><th></th>
       </tr></thead><tbody id="com-body"></tbody></table>
     </div></div>
   </div>
@@ -1381,18 +1381,18 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div id="p-maintenance" class="page">
     <div style="display:flex;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap">
       <div style="display:flex;gap:6px;flex-wrap:wrap" id="mt-filter-bar">
-        <button class="btn btn-sm active" onclick="filterTickets('')">الكل</button>
-        <button class="btn btn-sm" onclick="filterTickets('open')">مفتوحة</button>
-        <button class="btn btn-sm" onclick="filterTickets('assigned')">مسندة</button>
-        <button class="btn btn-sm" onclick="filterTickets('in_progress')">قيد التنفيذ</button>
-        <button class="btn btn-sm" onclick="filterTickets('completed')">مكتملة</button>
+        <button class="btn btn-sm active" onclick="filterTickets('')" data-i="common.all">الكل</button>
+        <button class="btn btn-sm" onclick="filterTickets('open')" data-i="maintenance.open">مفتوحة</button>
+        <button class="btn btn-sm" onclick="filterTickets('assigned')" data-i="status.assigned">مسندة</button>
+        <button class="btn btn-sm" onclick="filterTickets('in_progress')" data-i="maintenance.inProgress">قيد التنفيذ</button>
+        <button class="btn btn-sm" onclick="filterTickets('completed')" data-i="status.completed">مكتملة</button>
       </div>
-      <button class="btn btn-primary" onclick="resetTicketModal();openM('m-ticket')"><i class="ti ti-plus"></i><span>تذكرة جديدة</span></button>
+      <button class="btn btn-primary" onclick="resetTicketModal();openM('m-ticket')"><i class="ti ti-plus"></i><span data-i="maintenance.newTicket">تذكرة جديدة</span></button>
     </div>
     <div class="stats-row" id="mt-stats"></div>
     <div class="card" style="padding:0;margin-top:10px"><div class="table-wrap">
       <table><thead><tr>
-        <th>#</th><th>رقم التذكرة</th><th>العنوان</th><th>التصنيف</th><th>العقار</th><th>الوحدة</th><th>الأولوية</th><th>المسند إلى</th><th>التكلفة</th><th>الحالة</th><th></th>
+        <th>#</th><th>رقم التذكرة</th><th data-i="common.address">العنوان</th><th data-i="inv.category">التصنيف</th><th data-i="owner.property">العقار</th><th data-i="ticket.unit">الوحدة</th><th data-i="ticket.priority">الأولوية</th><th>المسند إلى</th><th data-i="inv.roll">التكلفة</th><th>الحالة</th><th></th>
       </tr></thead><tbody id="mt-body"></tbody></table>
     </div></div>
   </div>
@@ -1450,36 +1450,36 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-deal">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>صفقة جديدة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-deal')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="deal.add">صفقة جديدة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-deal')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nd-id">
       <div class="row">
-        <div class="fg"><label for="nd-name">اسم العميل</label><input id="nd-name" placeholder="الاسم الكامل"></div>
-        <div class="fg"><label for="nd-phone">الجوال</label><input id="nd-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nd-name" data-i="deal.clientName">اسم العميل</label><input id="nd-name" placeholder="الاسم الكامل"></div>
+        <div class="fg"><label for="nd-phone" data-i="customer.phone">الجوال</label><input id="nd-phone" placeholder="05xxxxxxxx"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nd-email">البريد الإلكتروني</label><input id="nd-email" type="email" placeholder="example@email.com"></div>
-        <div class="fg"><label for="nd-type">نوع الصفقة</label><select id="nd-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="other">أخرى</option></select></div>
+        <div class="fg"><label for="nd-email" data-i="customer.email">البريد الإلكتروني</label><input id="nd-email" type="email" placeholder="example@email.com"></div>
+        <div class="fg"><label for="nd-type" data-i="deal.type">نوع الصفقة</label><select id="nd-type"><option value="sale" data-i="deal.sale">بيع</option><option value="rent" data-i="deal.rent">تأجير</option><option value="management" data-i="deal.management">إدارة</option><option value="other" data-i="po.other">أخرى</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nd-source">مصدر العميل</label><select id="nd-source"><option value="direct">مباشر</option><option value="referral">إحالة</option><option value="website">الموقع الإلكتروني</option><option value="social">تواصل اجتماعي</option><option value="other">أخرى</option></select></div>
-        <div class="fg"><label for="nd-stage">المرحلة</label><select id="nd-stage"><option value="lead">عميل محتمل</option><option value="inquiry">استفسار</option><option value="viewing">معاينة</option><option value="negotiation">تفاوض</option><option value="offer">عرض</option><option value="signed">متعاقد</option></select></div>
+        <div class="fg"><label for="nd-source" data-i="deal.source">مصدر العميل</label><select id="nd-source"><option value="direct" data-i="deal.direct">مباشر</option><option value="referral" data-i="deal.referral">إحالة</option><option value="website" data-i="deal.website">الموقع الإلكتروني</option><option value="social" data-i="deal.social">تواصل اجتماعي</option><option value="other" data-i="po.other">أخرى</option></select></div>
+        <div class="fg"><label for="nd-stage" data-i="deal.stage">المرحلة</label><select id="nd-stage"><option value="lead" data-i="deals.lead">عميل محتمل</option><option value="inquiry" data-i="deals.inquiry">استفسار</option><option value="viewing" data-i="deals.viewing">معاينة</option><option value="negotiation" data-i="deals.negotiation">تفاوض</option><option value="offer" data-i="deals.offer">عرض</option><option value="signed" data-i="deals.signed">متعاقد</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nd-prop">العقار</label><select id="nd-prop"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label for="nd-agent">المسوق</label><select id="nd-agent"><option value="">اختر المسوق</option></select></div>
+        <div class="fg"><label for="nd-prop" data-i="owner.property">العقار</label><select id="nd-prop"><option value="" data-i="deal.selectProperty">اختر العقار</option></select></div>
+        <div class="fg"><label for="nd-agent" data-i="deal.agent">المسوق</label><select id="nd-agent"><option value="" data-i="deal.selectAgent">اختر المسوق</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nd-value">القيمة المتوقعة</label><input id="nd-value" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label for="nd-comm-pct">نسبة العمولة (%)</label><input id="nd-comm-pct" type="number" min="0" max="100" step="0.01"></div>
+        <div class="fg"><label for="nd-value" data-i="deal.expectedValue">القيمة المتوقعة</label><input id="nd-value" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nd-comm-pct" data-i="deal.commPct">نسبة العمولة (%)</label><input id="nd-comm-pct" type="number" min="0" max="100" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nd-comm-value">قيمة العمولة</label><input id="nd-comm-value" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label for="nd-close-date">تاريخ الإغلاق المتوقع</label><input id="nd-close-date" type="date"></div>
+        <div class="fg"><label for="nd-comm-value" data-i="deal.commValue">قيمة العمولة</label><input id="nd-comm-value" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nd-close-date" data-i="deal.expectedClose">تاريخ الإغلاق المتوقع</label><input id="nd-close-date" type="date"></div>
       </div>
-      <div class="fg"><label for="nd-notes">ملاحظات</label><textarea id="nd-notes" rows="2"></textarea></div>
+      <div class="fg"><label for="nd-notes" data-i="common.notes">ملاحظات</label><textarea id="nd-notes" rows="2"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveDeal()">حفظ</button><button class="btn" onclick="closeM('m-deal')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveDeal()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-deal')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1487,32 +1487,32 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-ticket">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>تذكرة صيانة جديدة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-ticket')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="ticket.add">تذكرة صيانة جديدة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-ticket')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nt-id">
       <div class="row">
-        <div class="fg"><label for="nt-title">العنوان</label><input id="nt-title" placeholder="وصف مختصر"></div>
-        <div class="fg"><label for="nt-category">التصنيف</label><select id="nt-category"><option value="">اختر التصنيف</option></select></div>
+        <div class="fg"><label for="nt-title" data-i="common.address">العنوان</label><input id="nt-title" placeholder="وصف مختصر"></div>
+        <div class="fg"><label for="nt-category" data-i="inv.category">التصنيف</label><select id="nt-category"><option value="" data-i="ticket.selectCategory">اختر التصنيف</option></select></div>
       </div>
-      <div class="fg"><label for="nt-desc">الوصف</label><textarea id="nt-desc" rows="2" placeholder="تفاصيل المشكلة"></textarea></div>
+      <div class="fg"><label for="nt-desc" data-i="ticket.description">الوصف</label><textarea id="nt-desc" rows="2" placeholder="تفاصيل المشكلة"></textarea></div>
       <div class="row">
-        <div class="fg"><label for="nt-property">العقار</label><select id="nt-property" onchange="loadUnits4Ticket()"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label for="nt-unit">الوحدة</label><select id="nt-unit"><option value="">اختر الوحدة</option></select></div>
-      </div>
-      <div class="row">
-        <div class="fg"><label for="nt-priority">الأولوية</label><select id="nt-priority"><option value="low">منخفضة</option><option value="medium" selected>متوسطة</option><option value="high">عالية</option><option value="urgent">عاجلة</option></select></div>
-        <div class="fg"><label for="nt-cost-bearer">تحمل التكلفة</label><select id="nt-cost-bearer"><option value="owner">المالك</option><option value="company">الشركة</option><option value="tenant">المستأجر</option></select></div>
+        <div class="fg"><label for="nt-property" data-i="owner.property">العقار</label><select id="nt-property" onchange="loadUnits4Ticket()"><option value="" data-i="deal.selectProperty">اختر العقار</option></select></div>
+        <div class="fg"><label for="nt-unit" data-i="ticket.unit">الوحدة</label><select id="nt-unit"><option value="" data-i="ticket.selectUnit">اختر الوحدة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nt-est-cost">التكلفة التقديرية</label><input id="nt-est-cost" type="number" min="0" step="0.01"></div>
-        <div class="fg"><label for="nt-sched">تاريخ الصيانة المقرر</label><input id="nt-sched" type="date"></div>
+        <div class="fg"><label for="nt-priority" data-i="ticket.priority">الأولوية</label><select id="nt-priority"><option value="low" data-i="ticket.low">منخفضة</option><option value="medium" selected data-i="ticket.medium">متوسطة</option><option value="high" data-i="ticket.high">عالية</option><option value="urgent" data-i="ticket.urgent">عاجلة</option></select></div>
+        <div class="fg"><label for="nt-cost-bearer" data-i="ticket.costBearer">تحمل التكلفة</label><select id="nt-cost-bearer"><option value="owner" data-i="ticket.owner">المالك</option><option value="company" data-i="ticket.company">الشركة</option><option value="tenant" data-i="ticket.tenant">المستأجر</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nt-reporter">الجهة المبلغة</label><input id="nt-reporter" placeholder="اسم المبلغ"></div>
-        <div class="fg"><label for="nt-reporter-phone">جوال المبلغ</label><input id="nt-reporter-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nt-est-cost" data-i="ticket.estCost">التكلفة التقديرية</label><input id="nt-est-cost" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nt-sched" data-i="ticket.scheduledDate">تاريخ الصيانة المقرر</label><input id="nt-sched" type="date"></div>
+      </div>
+      <div class="row">
+        <div class="fg"><label for="nt-reporter" data-i="ticket.reporter">الجهة المبلغة</label><input id="nt-reporter" placeholder="اسم المبلغ"></div>
+        <div class="fg"><label for="nt-reporter-phone" data-i="ticket.reporterPhone">جوال المبلغ</label><input id="nt-reporter-phone" placeholder="05xxxxxxxx"></div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicket()">حفظ</button><button class="btn" onclick="closeM('m-ticket')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicket()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-ticket')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1523,9 +1523,9 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-title"><span>إضافة نشاط</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-ticket-activity')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nta-ticket-id">
-      <div class="fg"><label for="nta-desc">الوصف</label><textarea id="nta-desc" rows="3" placeholder="تفاصيل النشاط"></textarea></div>
+      <div class="fg"><label for="nta-desc" data-i="ticket.description">الوصف</label><textarea id="nta-desc" rows="3" placeholder="تفاصيل النشاط"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicketActivity()">إضافة</button><button class="btn" onclick="closeM('m-ticket-activity')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveTicketActivity()">إضافة</button><button class="btn" onclick="closeM('m-ticket-activity')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1543,34 +1543,34 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-listing">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>إعلان جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-listing')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="listing.add">إعلان جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-listing')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nl-id">
       <div class="row">
-        <div class="fg"><label for="nl-title-ar">العنوان (عربي)</label><input id="nl-title-ar" placeholder="مثال: شقة فاخرة للايجار"></div>
-        <div class="fg"><label for="nl-title-en">العنوان (إنجليزي)</label><input id="nl-title-en" placeholder="Luxury apartment for rent"></div>
+        <div class="fg"><label for="nl-title-ar" data-i="label.arName">العنوان (عربي)</label><input id="nl-title-ar" placeholder="مثال: شقة فاخرة للايجار"></div>
+        <div class="fg"><label for="nl-title-en" data-i="label.enName">العنوان (إنجليزي)</label><input id="nl-title-en" placeholder="Luxury apartment for rent"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nl-desc-ar">الوصف (عربي)</label><textarea id="nl-desc-ar" rows="2" placeholder="وصف الإعلان"></textarea></div>
-        <div class="fg"><label for="nl-desc-en">الوصف (إنجليزي)</label><textarea id="nl-desc-en" rows="2" placeholder="Listing description"></textarea></div>
+        <div class="fg"><label for="nl-desc-ar" data-i="label.descriptionAr">الوصف (عربي)</label><textarea id="nl-desc-ar" rows="2" placeholder="وصف الإعلان"></textarea></div>
+        <div class="fg"><label for="nl-desc-en" data-i="label.descriptionEn">الوصف (إنجليزي)</label><textarea id="nl-desc-en" rows="2" placeholder="Listing description"></textarea></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nl-property">العقار</label><select id="nl-property" onchange="loadUnits4Listing()"><option value="">اختر العقار</option></select></div>
-        <div class="fg"><label for="nl-unit">الوحدة</label><select id="nl-unit"><option value="">اختر الوحدة</option></select></div>
+        <div class="fg"><label for="nl-property" data-i="th.property">العقار</label><select id="nl-property" onchange="loadUnits4Listing()"><option value="" data-i="deal.selectProperty">اختر العقار</option></select></div>
+        <div class="fg"><label for="nl-unit" data-i="th.unit">الوحدة</label><select id="nl-unit"><option value="" data-i="ticket.selectUnit">اختر الوحدة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nl-type">نوع الإعلان</label><select id="nl-type"><option value="rent">تأجير</option><option value="sale">بيع</option><option value="both">بيع وتأجير</option></select></div>
-        <div class="fg"><label for="nl-price">السعر</label><input id="nl-price" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="nl-type" data-i="listing.type">نوع الإعلان</label><select id="nl-type"><option value="rent" data-i="deal.rent">تأجير</option><option value="sale" data-i="deal.sale">بيع</option><option value="both" data-i="deal.rent">بيع وتأجير</option></select></div>
+        <div class="fg"><label for="nl-price" data-i="th.price">السعر</label><input id="nl-price" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label>قنوات النشر</label><div id="nl-channels" style="max-height:100px;overflow-y:auto;border:1px solid var(--border);padding:6px;border-radius:6px"></div></div>
+        <div class="fg"><label data-i="listing.channels">قنوات النشر</label><div id="nl-channels" style="max-height:100px;overflow-y:auto;border:1px solid var(--border);padding:6px;border-radius:6px"></div></div>
         <div class="fg" style="display:flex;flex-direction:column;justify-content:flex-end">
-          <label style="display:flex;align-items:center;gap:6px;margin-top:6px"><input id="nl-negotiable" type="checkbox" checked> السعر قابل للتفاوض</label>
-          <label style="display:flex;align-items:center;gap:6px"><input id="nl-featured" type="checkbox"> إعلان مميز</label>
+          <label style="display:flex;align-items:center;gap:6px;margin-top:6px" data-i="listing.negotiable"><input id="nl-negotiable" type="checkbox" checked> السعر قابل للتفاوض</label>
+          <label style="display:flex;align-items:center;gap:6px" data-i="listing.featured"><input id="nl-featured" type="checkbox"> إعلان مميز</label>
         </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveListing()">حفظ</button><button class="btn" onclick="closeM('m-listing')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveListing()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-listing')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1578,27 +1578,27 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-branch">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>فرع جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-branch')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="branch.add">فرع جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-branch')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nb-id">
       <div class="row">
-        <div class="fg"><label for="nb-name-ar">الاسم (عربي)</label><input id="nb-name-ar" placeholder="فرع ينبع"></div>
-        <div class="fg"><label for="nb-name-en">الاسم (إنجليزي)</label><input id="nb-name-en" placeholder="Yanbu Branch"></div>
+        <div class="fg"><label for="nb-name-ar" data-i="label.arName">الاسم (عربي)</label><input id="nb-name-ar" placeholder="فرع ينبع"></div>
+        <div class="fg"><label for="nb-name-en" data-i="label.enName">الاسم (إنجليزي)</label><input id="nb-name-en" placeholder="Yanbu Branch"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nb-code">الكود</label><input id="nb-code" placeholder="BR-001"></div>
-        <div class="fg"><label for="nb-city">المدينة</label><input id="nb-city" placeholder="ينبع"></div>
+        <div class="fg"><label for="nb-code" data-i="th.code">الكود</label><input id="nb-code" placeholder="BR-001"></div>
+        <div class="fg"><label for="nb-city" data-i="th.city">المدينة</label><input id="nb-city" placeholder="ينبع"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="nb-phone">الجوال</label><input id="nb-phone" placeholder="05xxxxxxxx"></div>
-        <div class="fg"><label for="nb-email">البريد</label><input id="nb-email" placeholder="branch@mullak.sa"></div>
+        <div class="fg"><label for="nb-phone" data-i="th.mobile">الجوال</label><input id="nb-phone" placeholder="05xxxxxxxx"></div>
+        <div class="fg"><label for="nb-email" data-i="th.email">البريد</label><input id="nb-email" placeholder="branch@mullak.sa"></div>
       </div>
       <div class="row">
-        <div class="fg" style="flex:2"><label>العنوان</label><input id="nb-address" placeholder="العنوان الكامل"></div>
-        <div class="fg" style="flex:1"><label style="display:flex;align-items:center;gap:4px;margin-top:22px"><input id="nb-hq" type="checkbox"> المقر الرئيسي</label></div>
+        <div class="fg" style="flex:2"><label data-i="common.address">العنوان</label><input id="nb-address" placeholder="العنوان الكامل"></div>
+        <div class="fg" style="flex:1"><label style="display:flex;align-items:center;gap:4px;margin-top:22px" data-i="branch.hq"><input id="nb-hq" type="checkbox"> المقر الرئيسي</label></div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveBranch()">حفظ</button><button class="btn" onclick="closeM('m-branch')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveBranch()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-branch')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1606,18 +1606,18 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-role">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>دور جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-role')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="role.add">دور جديد</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-role')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <input type="hidden" id="nr-id">
       <div class="row">
-        <div class="fg"><label for="nr-name-ar">اسم الدور (عربي)</label><input id="nr-name-ar" placeholder="مدير"></div>
-        <div class="fg"><label for="nr-name-en">اسم الدور (إنجليزي)</label><input id="nr-name-en" placeholder="Manager"></div>
+        <div class="fg"><label for="nr-name-ar" data-i="role.name">اسم الدور (عربي)</label><input id="nr-name-ar" placeholder="مدير"></div>
+        <div class="fg"><label for="nr-name-en" data-i="role.name">اسم الدور (إنجليزي)</label><input id="nr-name-en" placeholder="Manager"></div>
       </div>
-      <div class="fg"><label for="nr-desc">الوصف</label><textarea id="nr-desc" rows="2" placeholder="وصف الدور"></textarea></div>
-      <div><label style="font-weight:500;margin-bottom:6px;display:block">الصلاحيات</label></div>
+      <div class="fg"><label for="nr-desc" data-i="label.description">الوصف</label><textarea id="nr-desc" rows="2" placeholder="وصف الدور"></textarea></div>
+      <div><label style="font-weight:500;margin-bottom:6px;display:block" data-i="role.permissions">الصلاحيات</label></div>
       <div id="nr-perms" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;max-height:300px;overflow-y:auto;border:1px solid var(--border);padding:8px;border-radius:6px"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveRole()">حفظ</button><button class="btn" onclick="closeM('m-role')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveRole()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-role')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1635,26 +1635,26 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <div class="overlay" id="m-commission">
   <div class="modal">
     <div class="modal-handle"><i class="ti ti-grip-horizontal"></i></div>
-    <div class="modal-title"><span>إضافة عمولة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-commission')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-title"><span data-i="commission.add">إضافة عمولة</span><button class="btn btn-ghost btn-sm" onclick="closeM('m-commission')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
       <div class="row">
-        <div class="fg"><label for="comm-agent">الوسيط</label><input id="comm-agent" placeholder="اسم الوسيط"></div>
-        <div class="fg"><label for="comm-type">نوع العمولة</label><select id="comm-type"><option value="sale">بيع</option><option value="rent">تأجير</option><option value="management">إدارة</option><option value="referral">إحالة</option></select></div>
+        <div class="fg"><label for="comm-agent" data-i="th.broker">الوسيط</label><input id="comm-agent" placeholder="اسم الوسيط"></div>
+        <div class="fg"><label for="comm-type" data-i="commission.type">نوع العمولة</label><select id="comm-type"><option value="sale" data-i="deal.sale">بيع</option><option value="rent" data-i="deal.rent">تأجير</option><option value="management" data-i="deal.management">إدارة</option><option value="referral" data-i="deal.referral">إحالة</option></select></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="comm-method">طريقة الحساب</label><select id="comm-method"><option value="fixed">مبلغ ثابت</option><option value="percentage">نسبة مئوية</option></select></div>
-        <div class="fg"><label for="comm-base">المبلغ الأساس</label><input id="comm-base" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="comm-method" data-i="commission.method">طريقة الحساب</label><select id="comm-method"><option value="fixed">مبلغ ثابت</option><option value="percentage">نسبة مئوية</option></select></div>
+        <div class="fg"><label for="comm-base" data-i="commission.baseAmount">المبلغ الأساس</label><input id="comm-base" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="comm-rate">النسبة (%)</label><input id="comm-rate" type="number" min="0" max="100" step="0.01"></div>
-        <div class="fg"><label for="comm-amount">المبلغ المحتسب</label><input id="comm-amount" type="number" min="0" step="0.01"></div>
+        <div class="fg"><label for="comm-rate" data-i="commission.rate">النسبة (%)</label><input id="comm-rate" type="number" min="0" max="100" step="0.01"></div>
+        <div class="fg"><label for="comm-amount" data-i="commission.amount">المبلغ المحتسب</label><input id="comm-amount" type="number" min="0" step="0.01"></div>
       </div>
       <div class="row">
-        <div class="fg"><label for="comm-due">تاريخ الاستحقاق</label><input id="comm-due" type="date"></div>
-        <div class="fg"><label for="comm-notes">ملاحظات</label><textarea id="comm-notes" rows="2"></textarea></div>
+        <div class="fg"><label for="comm-due" data-i="commission.dueDate">تاريخ الاستحقاق</label><input id="comm-due" type="date"></div>
+        <div class="fg"><label for="comm-notes" data-i="th.notes">ملاحظات</label><textarea id="comm-notes" rows="2"></textarea></div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-primary" onclick="saveCommission()">حفظ</button><button class="btn" onclick="closeM('m-commission')">إلغاء</button></div>
+    <div class="modal-footer"><button class="btn btn-primary" onclick="saveCommission()" data-i="common.save">حفظ</button><button class="btn" onclick="closeM('m-commission')" data-i="common.cancel">إلغاء</button></div>
   </div>
 </div>
 
@@ -1686,7 +1686,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
         <!-- Step 3: Property Info -->
         <div class="fal-step" data-step="3" style="display:none">
-          <div class="form-row"><div class="fg"><label for="fal-property" data-i="col.property">العقار</label><select id="fal-property" onchange="falLoadUnits()"><option value="">اختر العقار</option></select></div><div class="fg"><label for="fal-unit" data-i="field.unit">الوحدة</label><select id="fal-unit"><option value="">اختر الوحدة (اختياري)</option></select></div></div>
+          <div class="form-row"><div class="fg"><label for="fal-property" data-i="col.property">العقار</label><select id="fal-property" onchange="falLoadUnits()"><option value="" data-i="deal.selectProperty">اختر العقار</option></select></div><div class="fg"><label for="fal-unit" data-i="field.unit">الوحدة</label><select id="fal-unit"><option value="" data-i="ticket.selectUnit">اختر الوحدة (اختياري)</option></select></div></div>
           <div class="form-row"><div class="fg"><label for="fal-prop-address" data-i="field.address">العنوان</label><input id="fal-prop-address" placeholder="عنوان العقار"></div><div class="fg"><label for="fal-prop-city" data-i="field.city">المدينة</label><input id="fal-prop-city" placeholder="الرياض"></div></div>
           <div class="form-row"><div class="fg"><label for="fal-prop-type" data-i="field.type">النوع</label><select id="fal-prop-type"><option value="apartment">شقة</option><option value="villa">فيلا</option><option value="land">أرض</option><option value="commercial">تجاري</option><option value="warehouse">مستودع</option></select></div><div class="fg"><label for="fal-prop-area" data-i="field.areaSqm">المساحة (م²)</label><input type="number" id="fal-prop-area" min="0"></div></div>
         </div>
@@ -1735,77 +1735,77 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <!-- ── CUSTOMER ──────────────────────────── -->
 <div class="overlay" id="m-customer">
   <div class="modal">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-user-plus" aria-hidden="true"></i><span>إضافة عميل</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-customer')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-user-plus" aria-hidden="true"></i><span data-i="customer.add">إضافة عميل</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-customer')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
       <div class="fg" style="margin-bottom:12px">
-        <div style="font-size:13px;font-weight:500;color:var(--text1);margin-bottom:4px">نوع العميل</div>
+        <div style="font-size:13px;font-weight:500;color:var(--text1);margin-bottom:4px" data-i="customer.type">نوع العميل</div>
         <div style="display:flex;gap:8px;margin-top:4px">
-          <div class="toggle-option active" id="ct-individual" onclick="switchCustomerType('individual')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--pri);border-radius:var(--radius);text-align:center;cursor:pointer;background:var(--pri-light);font-weight:600"><i class="ti ti-user" aria-hidden="true"></i> فرد</div>
-          <div class="toggle-option" id="ct-company" onclick="switchCustomerType('company')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--border);border-radius:var(--radius);text-align:center;cursor:pointer"><i class="ti ti-building" aria-hidden="true"></i> مؤسسة</div>
+          <div class="toggle-option active" id="ct-individual" data-i="customer.individual" onclick="switchCustomerType('individual')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--pri);border-radius:var(--radius);text-align:center;cursor:pointer;background:var(--pri-light);font-weight:600"><i class="ti ti-user" aria-hidden="true"></i> فرد</div>
+          <div class="toggle-option" id="ct-company" data-i="customer.company" onclick="switchCustomerType('company')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--border);border-radius:var(--radius);text-align:center;cursor:pointer"><i class="ti ti-building" aria-hidden="true"></i> مؤسسة</div>
         </div>
       </div>
       <div id="cust-individual-fields">
-        <div class="form-row"><div class="fg"><label for="nc-name">الاسم الكامل</label><input id="nc-name" placeholder="الاسم الكامل"></div><div class="fg"><label for="nc-phone">الجوال</label><input id="nc-phone" placeholder="05xxxxxxxx"></div></div>
-        <div class="form-row"><div class="fg"><label for="nc-nid">رقم الهوية</label><input id="nc-nid" placeholder="1xxxxxxxxx" maxlength="10"></div><div class="fg"><label for="nc-email">البريد الإلكتروني</label><input id="nc-email" type="email"></div></div>
+        <div class="form-row"><div class="fg"><label for="nc-name" data-i="owner.fullName">الاسم الكامل</label><input id="nc-name" placeholder="الاسم الكامل"></div><div class="fg"><label for="nc-phone" data-i="th.mobile">الجوال</label><input id="nc-phone" placeholder="05xxxxxxxx"></div></div>
+        <div class="form-row"><div class="fg"><label for="nc-nid" data-i="customer.nid">رقم الهوية</label><input id="nc-nid" placeholder="1xxxxxxxxx" maxlength="10"></div><div class="fg"><label for="nc-email" data-i="customer.email">البريد الإلكتروني</label><input id="nc-email" type="email"></div></div>
       </div>
       <div id="cust-company-fields" style="display:none">
-        <div class="form-row"><div class="fg"><label for="nc-company">اسم المؤسسة</label><input id="nc-company" placeholder="الاسم التجاري"></div><div class="fg"><label for="nc-cr">رقم السجل التجاري</label><input id="nc-cr" placeholder="1xxxxxxxxx"></div></div>
-        <div class="form-row"><div class="fg"><label for="nc-vat">الرقم الضريبي</label><input id="nc-vat" placeholder="3xxxxxxxxxxxxx"></div><div class="fg"><label for="nc-company-phone">الجوال</label><input id="nc-company-phone" placeholder="05xxxxxxxx"></div></div>
+        <div class="form-row"><div class="fg"><label for="nc-company" data-i="customer.companyName">اسم المؤسسة</label><input id="nc-company" placeholder="الاسم التجاري"></div><div class="fg"><label for="nc-cr" data-i="customer.cr">رقم السجل التجاري</label><input id="nc-cr" placeholder="1xxxxxxxxx"></div></div>
+        <div class="form-row"><div class="fg"><label for="nc-vat" data-i="customer.vat">الرقم الضريبي</label><input id="nc-vat" placeholder="3xxxxxxxxxxxxx"></div><div class="fg"><label for="nc-company-phone" data-i="customer.phone">الجوال</label><input id="nc-company-phone" placeholder="05xxxxxxxx"></div></div>
       </div>
       <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">
         <div class="form-row-3">
-          <div class="fg"><label for="nc-building">رقم المبنى</label><input id="nc-building" placeholder="1234"></div>
-          <div class="fg"><label for="nc-sub">الرقم الفرعي</label><input id="nc-sub" placeholder="5678"></div>
-          <div class="fg"><label for="nc-postal">الرمز البريدي</label><input id="nc-postal" placeholder="12345"></div>
+          <div class="fg"><label for="nc-building" data-i="vendor.building">رقم المبنى</label><input id="nc-building" placeholder="1234"></div>
+          <div class="fg"><label for="nc-sub" data-i="vendor.sub">الرقم الفرعي</label><input id="nc-sub" placeholder="5678"></div>
+          <div class="fg"><label for="nc-postal" data-i="vendor.postal">الرمز البريدي</label><input id="nc-postal" placeholder="12345"></div>
         </div>
         <div class="form-row-3">
-          <div class="fg"><label for="nc-district">الحي</label><input id="nc-district" placeholder="حي النخيل"></div>
-          <div class="fg"><label for="nc-street">الشارع</label><input id="nc-street" placeholder="شارع العليا"></div>
-          <div class="fg"><label for="nc-city">المدينة</label><input id="nc-city" placeholder="الرياض"></div>
+          <div class="fg"><label for="nc-district" data-i="common.district">الحي</label><input id="nc-district" placeholder="حي النخيل"></div>
+          <div class="fg"><label for="nc-street" data-i="common.street">الشارع</label><input id="nc-street" placeholder="شارع العليا"></div>
+          <div class="fg"><label for="nc-city" data-i="common.city">المدينة</label><input id="nc-city" placeholder="الرياض"></div>
         </div>
       </div>
-      <div class="fg"><label for="nc-notes">ملاحظات</label><textarea id="nc-notes" style="height:60px"></textarea></div>
+      <div class="fg"><label for="nc-notes" data-i="th.notes">ملاحظات</label><textarea id="nc-notes" style="height:60px"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-customer')">إلغاء</button><button class="btn btn-primary" onclick="addCustomer()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-customer')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="addCustomer()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
   </div>
 </div>
 
 <!-- ── OWNER MODAL ── -->
 <div class="overlay" id="m-owner">
   <div class="modal modal-lg">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-crown"></i><span>إدارة المالك</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-owner')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-crown"></i><span data-i="owner.manage">إدارة المالك</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-owner')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
-      <div class="form-row"><div class="fg"><label for="no-name">الاسم الكامل</label><input id="no-name" placeholder="الاسم الكامل"></div><div class="fg"><label for="no-name-en">الاسم بالإنجليزية</label><input id="no-name-en" placeholder="Full Name"></div></div>
-      <div class="form-row"><div class="fg"><label for="no-nid">رقم الهوية</label><input id="no-nid" placeholder="1xxxxxxxxx" maxlength="10"></div><div class="fg"><label for="no-phone">الجوال</label><input id="no-phone" placeholder="05xxxxxxxx"></div></div>
-      <div class="form-row"><div class="fg"><label for="no-email">البريد الإلكتروني</label><input id="no-email" type="email"></div><div class="fg"><label for="no-city">المدينة</label><input id="no-city" value="ينبع"></div></div>
-      <div class="fg"><label for="no-address">العنوان</label><input id="no-address" placeholder="العنوان الكامل"></div>
+      <div class="form-row"><div class="fg"><label for="no-name" data-i="owner.fullName">الاسم الكامل</label><input id="no-name" placeholder="الاسم الكامل"></div><div class="fg"><label for="no-name-en" data-i="owner.nameEn">الاسم بالإنجليزية</label><input id="no-name-en" placeholder="Full Name"></div></div>
+      <div class="form-row"><div class="fg"><label for="no-nid" data-i="customer.nid">رقم الهوية</label><input id="no-nid" placeholder="1xxxxxxxxx" maxlength="10"></div><div class="fg"><label for="no-phone" data-i="customer.phone">الجوال</label><input id="no-phone" placeholder="05xxxxxxxx"></div></div>
+      <div class="form-row"><div class="fg"><label for="no-email" data-i="customer.email">البريد الإلكتروني</label><input id="no-email" type="email"></div><div class="fg"><label for="no-city" data-i="common.city">المدينة</label><input id="no-city" value="ينبع"></div></div>
+      <div class="fg"><label for="no-address" data-i="common.address">العنوان</label><input id="no-address" placeholder="العنوان الكامل"></div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div class="fg"><div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px"><i class="ti ti-building-bank"></i> البيانات البنكية</div></div>
-        <div class="form-row"><div class="fg"><label for="no-bank">اسم البنك</label><input id="no-bank" placeholder="بنك الراجحي"></div><div class="fg"><label for="no-iban">رقم الآيبان (IBAN)</label><input id="no-iban" placeholder="SA0000000000000000000000" maxlength="24"></div></div>
-        <div class="fg"><label for="no-account">رقم الحساب</label><input id="no-account" placeholder="00000000000000"></div>
+        <div class="fg"><div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px" data-i="owner.bankDetails"><i class="ti ti-building-bank"></i> البيانات البنكية</div></div>
+        <div class="form-row"><div class="fg"><label for="no-bank" data-i="owner.bankName">اسم البنك</label><input id="no-bank" placeholder="بنك الراجحي"></div><div class="fg"><label for="no-iban" data-i="owner.iban">رقم الآيبان (IBAN)</label><input id="no-iban" placeholder="SA0000000000000000000000" maxlength="24"></div></div>
+        <div class="fg"><label for="no-account" data-i="owner.accountNo">رقم الحساب</label><input id="no-account" placeholder="00000000000000"></div>
       </div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
-        <div class="fg"><div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px"><i class="ti ti-percentage"></i> شروط الإدارة</div></div>
-        <div class="form-row"><div class="fg"><label for="no-own-pct">نسبة الملكية (%)</label><input type="number" id="no-own-pct" value="100" min="0" max="100"></div><div class="fg"><label for="no-mgmt-fee">نسبة رسوم الإدارة (%)</label><input type="number" id="no-mgmt-fee" value="0" min="0" max="100" step="0.5"></div></div>
-        <div class="fg"><label for="no-terms">شروط العقد</label><textarea id="no-terms" style="height:60px" placeholder="شروط وأحكام اتفاقية الإدارة"></textarea></div>
+        <div class="fg"><div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px" data-i="owner.mgmtTerms"><i class="ti ti-percentage"></i> شروط الإدارة</div></div>
+        <div class="form-row"><div class="fg"><label for="no-own-pct" data-i="owner.ownershipPct">نسبة الملكية (%)</label><input type="number" id="no-own-pct" value="100" min="0" max="100"></div><div class="fg"><label for="no-mgmt-fee" data-i="owner.mgmtFee">نسبة رسوم الإدارة (%)</label><input type="number" id="no-mgmt-fee" value="0" min="0" max="100" step="0.5"></div></div>
+        <div class="fg"><label for="no-terms" data-i="owner.contractTerms">شروط العقد</label><textarea id="no-terms" style="height:60px" placeholder="شروط وأحكام اتفاقية الإدارة"></textarea></div>
       </div>
-      <div class="fg"><label for="no-notes">ملاحظات</label><textarea id="no-notes" style="height:50px"></textarea></div>
+      <div class="fg"><label for="no-notes" data-i="common.notes">ملاحظات</label><textarea id="no-notes" style="height:50px"></textarea></div>
       <input type="hidden" id="no-id">
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-owner')">إلغاء</button><button class="btn btn-primary" onclick="saveOwner()"><i class="ti ti-check"></i> حفظ</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-owner')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="saveOwner()"><i class="ti ti-check"></i> حفظ</button></div>
   </div>
 </div>
 
 <!-- ── OWNER PROPERTY LINK MODAL ── -->
 <div class="overlay" id="m-owner-link">
   <div class="modal">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-link"></i><span>ربط عقار بالمالك</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-owner-link')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-link"></i><span data-i="owner.linkProperty">ربط عقار بالمالك</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-owner-link')"><i class="ti ti-x"></i></button></div>
     <div class="modal-body">
-      <div class="fg"><label for="nol-property">العقار</label><select id="nol-property"></select></div>
-      <div class="form-row"><div class="fg"><label for="nol-pct">نسبة الملكية (%)</label><input type="number" id="nol-pct" value="100" min="1" max="100"></div><div class="fg"><label for="nol-fee">رسوم الإدارة (%)</label><input type="number" id="nol-fee" value="0" min="0" max="100" step="0.5"></div></div>
+      <div class="fg"><label for="nol-property" data-i="owner.property">العقار</label><select id="nol-property"></select></div>
+      <div class="form-row"><div class="fg"><label for="nol-pct" data-i="owner.ownershipPct">نسبة الملكية (%)</label><input type="number" id="nol-pct" value="100" min="1" max="100"></div><div class="fg"><label for="nol-fee" data-i="deal.management">رسوم الإدارة (%)</label><input type="number" id="nol-fee" value="0" min="0" max="100" step="0.5"></div></div>
       <input type="hidden" id="nol-owner-id">
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-owner-link')">إلغاء</button><button class="btn btn-primary" onclick="saveOwnerLink()"><i class="ti ti-check"></i> ربط</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-owner-link')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="saveOwnerLink()"><i class="ti ti-check"></i> ربط</button></div>
   </div>
 </div>
 
@@ -1817,11 +1817,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
       <div class="form-row"><div class="fg"><label data-i="field.unitNo" for="nu-num">رقم الوحدة</label><input id="nu-num" placeholder="101"></div><div class="fg"><label data-i="field.property" for="nu-prop">العقار</label><select id="nu-prop"></select></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.unitType" for="nu-type">النوع</label><select id="nu-type"><option value="apartment">شقة / Apartment</option><option value="hotel_room">غرفة فندقية / Hotel Room</option><option value="suite">جناح / Suite</option><option value="studio">استوديو / Studio</option><option value="office">مكتب / Office</option></select></div><div class="fg"><label data-i="field.floor" for="nu-floor">الطابق</label><input type="number" id="nu-floor" value="1" min="1"></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.areaSqm" for="nu-area">المساحة م²</label><input type="number" id="nu-area"></div><div class="fg"><label data-i="field.baseRent" for="nu-rent">إيجار أساسي (ر.س/شهر)</label><input type="number" id="nu-rent" value="0"></div></div>
-      <div class="fg"><label data-i="field.status" for="nu-status">الحالة</label><select id="nu-status"><option value="vacant">شاغرة</option><option value="occupied">مسكونة</option><option value="maintenance">صيانة</option></select></div>
+      <div class="fg"><label data-i="field.status" for="nu-status">الحالة</label><select id="nu-status"><option value="vacant">شاغرة</option><option value="occupied">مسكونة</option><option value="maintenance" data-i="purchase.maintenance">صيانة</option></select></div>
       <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
         <div class="fg"><div style="font-size:12px;color:var(--text2)"><i class="ti ti-bolt" aria-hidden="true"></i> أرقام العدادات (للربط الحكومي)</div></div>
-        <div class="form-row"><div class="fg"><label for="nu-meter-el">عداد الكهرباء</label><input id="nu-meter-el" placeholder="EL-MTR-XXXX"></div><div class="fg"><label for="nu-meter-water">عداد المياه</label><input id="nu-meter-water" placeholder="WT-MTR-XXXX"></div></div>
-        <div class="fg"><label for="nu-meter-gas">عداد الغاز</label><input id="nu-meter-gas" placeholder="GS-MTR-XXXX"></div>
+        <div class="form-row"><div class="fg"><label for="nu-meter-el" data-i="utility.electricity">عداد الكهرباء</label><input id="nu-meter-el" placeholder="EL-MTR-XXXX"></div><div class="fg"><label for="nu-meter-water">عداد المياه</label><input id="nu-meter-water" placeholder="WT-MTR-XXXX"></div></div>
+        <div class="fg"><label for="nu-meter-gas" data-i="utility.gas">عداد الغاز</label><input id="nu-meter-gas" placeholder="GS-MTR-XXXX"></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn" onclick="closeM('m-unit')"><span data-i="btn.cancel">إلغاء</span></button><button class="btn btn-primary" onclick="addUnit()"><i class="ti ti-check" aria-hidden="true"></i><span data-i="btn.save">حفظ</span></button></div>
@@ -1941,7 +1941,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-header"><span class="modal-title"><i class="ti ti-user-plus" aria-hidden="true"></i><span data-i="modal.addStaff">إضافة موظف</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-staff')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
       <div class="form-row"><div class="fg"><label data-i="field.nameAr" for="ns-name-ar">الاسم بالعربية</label><input id="ns-name-ar"></div><div class="fg"><label data-i="field.nameEn" for="ns-name-en">الاسم بالإنجليزية</label><input id="ns-name-en"></div></div>
-      <div class="form-row"><div class="fg"><label data-i="field.category" for="ns-cat">الفئة</label><select id="ns-cat"><option value="admin">إداري</option><option value="worker">عامل / فني</option></select></div><div class="fg"><label data-i="field.role" for="ns-role">المسمى</label><input id="ns-role" placeholder="مدير، حارس، كهربائي..."></div></div>
+      <div class="form-row"><div class="fg"><label data-i="field.category" for="ns-cat">الفئة</label><select id="ns-cat"><option value="admin">إداري</option><option value="worker" data-i="vendor.general">عامل / فني</option></select></div><div class="fg"><label data-i="field.role" for="ns-role">المسمى</label><input id="ns-role" placeholder="مدير، حارس، كهربائي..."></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.property" for="ns-prop">العقار</label><select id="ns-prop"></select></div><div class="fg"><label data-i="field.phone" for="ns-phone">الجوال</label><input id="ns-phone"></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.basicSalary" for="ns-basic">الراتب الأساسي</label><input type="number" id="ns-basic"></div><div class="fg"><label data-i="field.housing" for="ns-housing">بدل السكن</label><input type="number" id="ns-housing" value="0"></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.transport" for="ns-transport">بدل المواصلات</label><input type="number" id="ns-transport" value="0"></div><div class="fg"><label data-i="field.iban" for="ns-iban">رقم IBAN</label><input id="ns-iban" placeholder="SA..."></div></div>
@@ -1955,7 +1955,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
   <div class="modal" style="width:500px">
     <div class="modal-header"><span class="modal-title"><i class="ti ti-building-factory" aria-hidden="true"></i><span data-i="modal.addService">إضافة عقد خدمة</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-service')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
-      <div class="form-row"><div class="fg"><label data-i="field.company" for="sv-co">الشركة</label><input id="sv-co"></div><div class="fg"><label data-i="field.serviceType" for="sv-type">نوع الخدمة</label><select id="sv-type"><option>نظافة ومكافحة حشرات</option><option>إعاشة وتموين</option><option>أمن وحراسة</option><option>صيانة عامة</option><option>مصاعد</option><option>مكيفات</option><option>كهرباء وسباكة</option></select></div></div>
+      <div class="form-row"><div class="fg"><label data-i="field.company" for="sv-co">الشركة</label><input id="sv-co"></div><div class="fg"><label data-i="field.serviceType" for="sv-type">نوع الخدمة</label><select id="sv-type"><option data-i="po.cleaning">نظافة ومكافحة حشرات</option><option data-i="vendor.catering">إعاشة وتموين</option><option data-i="vendor.security">أمن وحراسة</option><option data-i="purchase.maintenance">صيانة عامة</option><option>مصاعد</option><option>مكيفات</option><option data-i="utility.electricity">كهرباء وسباكة</option></select></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.from" for="sv-start">من</label><input type="date" id="sv-start"></div><div class="fg"><label data-i="field.to" for="sv-end">إلى</label><input type="date" id="sv-end"></div></div>
       <div class="form-row"><div class="fg"><label data-i="field.annualValue" for="sv-val">القيمة السنوية (ر.س)</label><input type="number" id="sv-val"></div><div class="fg"><label data-i="field.contact" for="sv-phone">رقم التواصل</label><input id="sv-phone"></div></div>
       <div class="fg"><label data-i="field.properties" for="sv-props">العقارات المشمولة</label><input id="sv-props" placeholder="كل العقارات"></div>
@@ -1971,7 +1971,7 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="modal-body">
       <div class="form-row"><div class="fg"><label data-i="field.property" for="wo-prop">العقار</label><select id="wo-prop"></select></div><div class="fg"><label data-i="field.orderType" for="wo-type">النوع</label><select id="wo-type"><option value="corrective">تصحيحي</option><option value="preventive">وقائي</option><option value="emergency">طارئ</option></select></div></div>
       <div class="fg"><label data-i="field.title" for="wo-title">العنوان</label><input id="wo-title"></div>
-      <div class="form-row"><div class="fg"><label data-i="field.priority" for="wo-priority">الأولوية</label><select id="wo-priority"><option value="low">منخفضة</option><option value="medium" selected>متوسطة</option><option value="high">عالية</option><option value="critical">حرجة</option></select></div><div class="fg"><label data-i="field.scheduledDate" for="wo-date">تاريخ التنفيذ</label><input type="date" id="wo-date"></div></div>
+      <div class="form-row"><div class="fg"><label data-i="field.priority" for="wo-priority">الأولوية</label><select id="wo-priority"><option value="low" data-i="ticket.low">منخفضة</option><option value="medium" selected data-i="ticket.medium">متوسطة</option><option value="high" data-i="ticket.high">عالية</option><option value="critical">حرجة</option></select></div><div class="fg"><label data-i="field.scheduledDate" for="wo-date">تاريخ التنفيذ</label><input type="date" id="wo-date"></div></div>
       <div class="fg"><label data-i="field.desc" for="wo-desc">الوصف</label><textarea id="wo-desc"></textarea></div>
     </div>
     <div class="modal-footer"><button class="btn" onclick="closeM('m-wo')"><span data-i="btn.cancel">إلغاء</span></button><button class="btn btn-primary" onclick="addWO()"><i class="ti ti-check" aria-hidden="true"></i><span data-i="btn.save">حفظ</span></button></div>
@@ -1981,167 +1981,167 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 <!-- ── UTILITY BILL ── -->
 <div class="overlay" id="m-utility">
   <div class="modal" style="width:620px">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-bolt" aria-hidden="true"></i><span>فاتورة خدمة جديدة</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-utility')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-bolt" aria-hidden="true"></i><span data-i="utility.add">فاتورة خدمة جديدة</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-utility')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
       <div class="form-row">
-        <div class="fg"><label for="mu-type">نوع الخدمة</label><select id="mu-type"><option value="electricity">كهرباء</option><option value="water">ماء</option><option value="gas">غاز</option><option value="telecom">اتصالات</option><option value="internet">إنترنت</option></select></div>
-        <div class="fg"><label for="mu-provider">المزود</label><input id="mu-provider" placeholder="الشركة السعودية للكهرباء"></div>
+        <div class="fg"><label for="mu-type" data-i="utility.serviceType">نوع الخدمة</label><select id="mu-type"><option value="electricity" data-i="utility.electricity">كهرباء</option><option value="water" data-i="utility.water">ماء</option><option value="gas" data-i="utility.gas">غاز</option><option value="telecom" data-i="utility.telecom">اتصالات</option><option value="internet" data-i="utility.internet">إنترنت</option></select></div>
+        <div class="fg"><label for="mu-provider" data-i="utility.provider">المزود</label><input id="mu-provider" placeholder="الشركة السعودية للكهرباء"></div>
       </div>
       <div id="mu-gov-fields">
         <div class="form-row-3" id="mu-sec-fields" style="display:none">
-          <div class="fg"><label for="mu-sec-account">رقم حساب SEC</label><input id="mu-sec-account" placeholder="رقم حساب المشترك"></div>
-          <div class="fg"><label for="mu-sec-meter">رقم العداد</label><input id="mu-sec-meter" placeholder="رقم العداد الكهربائي"></div>
-          <div class="fg"><label for="mu-sec-branch">رمز الفرع</label><input id="mu-sec-branch" placeholder="رمز الفرع"></div>
+          <div class="fg"><label for="mu-sec-account" data-i="utility.secAccount">رقم حساب SEC</label><input id="mu-sec-account" placeholder="رقم حساب المشترك"></div>
+          <div class="fg"><label for="mu-sec-meter" data-i="utility.meterNo">رقم العداد</label><input id="mu-sec-meter" placeholder="رقم العداد الكهربائي"></div>
+          <div class="fg"><label for="mu-sec-branch" data-i="utility.branchCode">رمز الفرع</label><input id="mu-sec-branch" placeholder="رمز الفرع"></div>
         </div>
         <div class="form-row-3" id="mu-nwc-fields" style="display:none">
-          <div class="fg"><label for="mu-nwc-account">رقم حساب NWC</label><input id="mu-nwc-account" placeholder="رقم حساب المشترك"></div>
-          <div class="fg"><label for="mu-nwc-meter">رقم عداد المياه</label><input id="mu-nwc-meter" placeholder="رقم العداد"></div>
-          <div class="fg"><label for="mu-nwc-branch">رمز الفرع</label><input id="mu-nwc-branch" placeholder="رمز الفرع"></div>
+          <div class="fg"><label for="mu-nwc-account" data-i="utility.nwcAccount">رقم حساب NWC</label><input id="mu-nwc-account" placeholder="رقم حساب المشترك"></div>
+          <div class="fg"><label for="mu-nwc-meter" data-i="utility.nwcMeter">رقم عداد المياه</label><input id="mu-nwc-meter" placeholder="رقم العداد"></div>
+          <div class="fg"><label for="mu-nwc-branch" data-i="utility.branchCode">رمز الفرع</label><input id="mu-nwc-branch" placeholder="رمز الفرع"></div>
         </div>
         <div class="fg" id="mu-gov-id-field" style="display:none">
-          <label for="mu-gov-id">رقم حساب فاتورة (الخدمات البلدية)</label>
-          <input id="mu-gov-id" placeholder="رقم الحساب الموحد">
+          <label for="mu-gov-id" data-i="utility.govId">رقم حساب فاتورة (الخدمات البلدية)</label>
+          <input id="mu-gov-id" placeholder="رقم الحساب الموحد" data-i-placeholder="utility.unifiedAccount">
         </div>
       </div>
       <div class="form-row">
-        <div class="fg"><label for="mu-unit-select">الوحدة (اختياري)</label><select id="mu-unit-select"><option value="">-- اختر الوحدة --</option></select></div>
-        <div class="fg"><label for="mu-meter">رقم العداد</label><input id="mu-meter" placeholder="رقم العداد"></div>
+        <div class="fg"><label for="mu-unit-select" data-i="ticket.unit">الوحدة (اختياري)</label><select id="mu-unit-select"><option value="" data-i="ticket.selectUnit">-- اختر الوحدة --</option></select></div>
+        <div class="fg"><label for="mu-meter" data-i="utility.meterNo">رقم العداد</label><input id="mu-meter" placeholder="رقم العداد"></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label for="mu-date">تاريخ الفاتورة</label><input type="date" id="mu-date"></div>
-        <div class="fg"><label for="mu-due">تاريخ الاستحقاق</label><input type="date" id="mu-due"></div>
+        <div class="fg"><label for="mu-date" data-i="purchase.invoiceDate">تاريخ الفاتورة</label><input type="date" id="mu-date"></div>
+        <div class="fg"><label for="mu-due" data-i="utility.dueDate">تاريخ الاستحقاق</label><input type="date" id="mu-due"></div>
       </div>
       <div class="form-row-3">
-        <div class="fg"><label for="mu-consumption">الاستهلاك</label><input type="number" id="mu-consumption" min="0" step="0.01"></div>
-        <div class="fg"><label for="mu-unit">الوحدة</label><select id="mu-unit"><option value="kWh">kWh</option><option value="m³">m³</option><option value="GB">GB</option></select></div>
-        <div class="fg"><label for="mu-rate">سعر الوحدة</label><input type="number" id="mu-rate" min="0" step="0.01"></div>
+        <div class="fg"><label for="mu-consumption" data-i="utility.consumption">الاستهلاك</label><input type="number" id="mu-consumption" min="0" step="0.01"></div>
+        <div class="fg"><label for="mu-unit" data-i="ticket.unit">الوحدة</label><select id="mu-unit"><option value="kWh">kWh</option><option value="m³">m³</option><option value="GB">GB</option></select></div>
+        <div class="fg"><label for="mu-rate" data-i="utility.unitPrice">سعر الوحدة</label><input type="number" id="mu-rate" min="0" step="0.01"></div>
       </div>
       <div class="form-row-3">
-        <div class="fg"><label for="mu-fixed">الرسوم الثابتة</label><input type="number" id="mu-fixed" min="0" step="0.01" value="0"></div>
-        <div class="fg"><label for="mu-amount">المبلغ (بدون ضريبة)</label><input type="number" id="mu-amount" min="0" step="0.01"></div>
-        <div class="fg"><label for="mu-vat">الضريبة 15%</label><input type="number" id="mu-vat" min="0" step="0.01" readonly></div>
+        <div class="fg"><label for="mu-fixed" data-i="utility.fixedFees">الرسوم الثابتة</label><input type="number" id="mu-fixed" min="0" step="0.01" value="0"></div>
+        <div class="fg"><label for="mu-amount" data-i="utility.amountExVat">المبلغ (بدون ضريبة)</label><input type="number" id="mu-amount" min="0" step="0.01"></div>
+        <div class="fg"><label for="mu-vat" data-i="purchase.vat">الضريبة 15%</label><input type="number" id="mu-vat" min="0" step="0.01" readonly></div>
       </div>
-      <div class="fg"><label for="mu-notes">ملاحظات</label><textarea id="mu-notes"></textarea></div>
+      <div class="fg"><label for="mu-notes" data-i="common.notes">ملاحظات</label><textarea id="mu-notes"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-utility')">إلغاء</button><button class="btn btn-primary" onclick="addUtility()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-utility')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="addUtility()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
   </div>
 </div>
 
 <!-- ── VENDOR ── -->
 <div class="overlay" id="m-vendor">
   <div class="modal" style="width:580px">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-building-warehouse" aria-hidden="true"></i><span>مورد جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-vendor')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-building-warehouse" aria-hidden="true"></i><span data-i="vendor.add">مورد جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-vendor')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
-      <div class="form-row"><div class="fg"><label for="mv-name">اسم المورد</label><input id="mv-name"></div><div class="fg"><label for="mv-name-en">الاسم بالإنجليزية</label><input id="mv-name-en"></div></div>
-      <div class="form-row"><div class="fg"><label for="mv-cr">رقم السجل التجاري</label><input id="mv-cr"></div><div class="fg"><label for="mv-vat">الرقم الضريبي</label><input id="mv-vat"></div></div>
-      <div class="form-row"><div class="fg"><label for="mv-contact">جهة الاتصال</label><input id="mv-contact"></div><div class="fg"><label for="mv-phone">الجوال</label><input id="mv-phone"></div></div>
-      <div class="form-row"><div class="fg"><label for="mv-email">البريد الإلكتروني</label><input id="mv-email"></div><div class="fg"><label for="mv-cat">التصنيف</label><select id="mv-cat"><option value="general">عام</option><option value="electrical">كهرباء</option><option value="plumbing">سباكة</option><option value="ac">تكييف</option><option value="cleaning">نظافة</option><option value="security">حراسة</option><option value="catering">تموين</option></select></div></div>
+      <div class="form-row"><div class="fg"><label for="mv-name" data-i="vendor.name">اسم المورد</label><input id="mv-name"></div><div class="fg"><label for="mv-name-en" data-i="owner.nameEn">الاسم بالإنجليزية</label><input id="mv-name-en"></div></div>
+      <div class="form-row"><div class="fg"><label for="mv-cr" data-i="customer.cr">رقم السجل التجاري</label><input id="mv-cr"></div><div class="fg"><label for="mv-vat" data-i="customer.vat">الرقم الضريبي</label><input id="mv-vat"></div></div>
+      <div class="form-row"><div class="fg"><label for="mv-contact" data-i="vendor.contact">جهة الاتصال</label><input id="mv-contact"></div><div class="fg"><label for="mv-phone" data-i="customer.phone">الجوال</label><input id="mv-phone"></div></div>
+      <div class="form-row"><div class="fg"><label for="mv-email" data-i="customer.email">البريد الإلكتروني</label><input id="mv-email"></div><div class="fg"><label for="mv-cat" data-i="inv.category">التصنيف</label><select id="mv-cat"><option value="general" data-i="vendor.general">عام</option><option value="electrical" data-i="utility.electricity">كهرباء</option><option value="plumbing" data-i="vendor.plumbing">سباكة</option><option value="ac" data-i="vendor.ac">تكييف</option><option value="cleaning" data-i="po.cleaning">نظافة</option><option value="security" data-i="vendor.security">حراسة</option><option value="catering" data-i="vendor.catering">تموين</option></select></div></div>
       <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">
-        <div style="font-size:12px;color:var(--text2);margin-bottom:6px;display:block">العنوان الوطني</div>
+        <div style="font-size:12px;color:var(--text2);margin-bottom:6px;display:block" data-i="vendor.natAddress">العنوان الوطني</div>
         <div class="form-row-3">
-          <div class="fg"><label for="mv-building">رقم المبنى</label><input id="mv-building" placeholder="1234"></div>
-          <div class="fg"><label for="mv-sub">الرقم الفرعي</label><input id="mv-sub" placeholder="5678"></div>
-          <div class="fg"><label for="mv-postal">الرمز البريدي</label><input id="mv-postal" placeholder="12345"></div>
+          <div class="fg"><label for="mv-building" data-i="vendor.building">رقم المبنى</label><input id="mv-building" placeholder="1234"></div>
+          <div class="fg"><label for="mv-sub" data-i="vendor.sub">الرقم الفرعي</label><input id="mv-sub" placeholder="5678"></div>
+          <div class="fg"><label for="mv-postal" data-i="vendor.postal">الرمز البريدي</label><input id="mv-postal" placeholder="12345"></div>
         </div>
         <div class="form-row-3">
-          <div class="fg"><label for="mv-district">الحي</label><input id="mv-district" placeholder="حي النخيل"></div>
-          <div class="fg"><label for="mv-street">الشارع</label><input id="mv-street" placeholder="شارع العليا"></div>
-          <div class="fg"><label for="mv-city">المدينة</label><input id="mv-city" placeholder="الرياض"></div>
+          <div class="fg"><label for="mv-district" data-i="common.district">الحي</label><input id="mv-district" placeholder="حي النخيل"></div>
+          <div class="fg"><label for="mv-street" data-i="common.street">الشارع</label><input id="mv-street" placeholder="شارع العليا"></div>
+          <div class="fg"><label for="mv-city" data-i="common.city">المدينة</label><input id="mv-city" placeholder="الرياض"></div>
         </div>
       </div>
-      <div class="fg"><label for="mv-notes">الملاحظات</label><textarea id="mv-notes"></textarea></div>
+      <div class="fg"><label for="mv-notes" data-i="vendor.notes">الملاحظات</label><textarea id="mv-notes"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-vendor')">إلغاء</button><button class="btn btn-primary" onclick="addVendor()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-vendor')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="addVendor()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
   </div>
 </div>
 
 <!-- ── PURCHASE ORDER ── -->
 <div class="overlay" id="m-po">
   <div class="modal modal-lg" style="width:680px">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-clipboard-list" aria-hidden="true"></i><span>أمر شراء جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-po')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-clipboard-list" aria-hidden="true"></i><span data-i="po.add">أمر شراء جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-po')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
       <div class="form-row">
-        <div class="fg"><label for="mp-vendor">المورد</label><select id="mp-vendor"></select></div>
-        <div class="fg"><label for="mp-date">تاريخ الطلب</label><input type="date" id="mp-date"></div>
+        <div class="fg"><label for="mp-vendor" data-i="po.vendor">المورد</label><select id="mp-vendor"></select></div>
+        <div class="fg"><label for="mp-date" data-i="po.orderDate">تاريخ الطلب</label><input type="date" id="mp-date"></div>
       </div>
-      <div class="fg"><label for="mp-tax-no">الرقم الضريبي للمورد</label><input id="mp-tax-no" placeholder="مثال: 310122393400003" maxlength="15"></div>
-      <div class="fg"><div style="font-size:13px;font-weight:500">بنود الأمر</div></div>
+      <div class="fg"><label for="mp-tax-no" data-i="po.vendorTaxNo">الرقم الضريبي للمورد</label><input id="mp-tax-no" placeholder="مثال: 310122393400003" maxlength="15"></div>
+      <div class="fg"><div style="font-size:13px;font-weight:500" data-i="po.lineItems">بنود الأمر</div></div>
       <div id="po-items">
         <div class="form-row-3" style="align-items:end">
-          <div class="fg"><label>الصنف <input class="po-item-name" placeholder="اسم الصنف" style="display:block;width:100%;margin-top:4px" name="po-item-name"></label></div>
-          <div class="fg"><label>الكمية <input type="number" class="po-item-qty" min="1" value="1" style="display:block;width:100%;margin-top:4px" name="po-item-qty"></label></div>
-          <div class="fg"><label>سعر الوحدة <input type="number" class="po-item-price" min="0" step="0.01" style="display:block;width:100%;margin-top:4px" name="po-item-price"></label></div>
+          <div class="fg"><label data-i="po.itemName">الصنف <input class="po-item-name" placeholder="اسم الصنف" style="display:block;width:100%;margin-top:4px" name="po-item-name"></label></div>
+          <div class="fg"><label data-i="po.qty">الكمية <input type="number" class="po-item-qty" min="1" value="1" style="display:block;width:100%;margin-top:4px" name="po-item-qty"></label></div>
+          <div class="fg"><label data-i="po.unitPrice">سعر الوحدة <input type="number" class="po-item-price" min="0" step="0.01" style="display:block;width:100%;margin-top:4px" name="po-item-price"></label></div>
         </div>
       </div>
-      <button class="btn btn-ghost btn-sm" onclick="addPOItem()"><i class="ti ti-plus" aria-hidden="true"></i> إضافة بند</button>
-      <div class="fg"><label for="mp-category">تصنيف المصروف</label><select id="mp-category" style="padding:7px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px;width:100%">
-        <option value="inventory">مخزون / قطع غيار</option>
-        <option value="maintenance">صيانة وإصلاح</option>
-        <option value="cleaning">نظافة</option>
-        <option value="commission">عمولة</option>
-        <option value="furniture">أثاث وتجهيزات</option>
-        <option value="marketing">تسويق</option>
-        <option value="legal">رسوم حكومية وقانونية</option>
-        <option value="other">أخرى</option>
+      <button class="btn btn-ghost btn-sm" onclick="addPOItem()" data-i="po.addItem"><i class="ti ti-plus" aria-hidden="true"></i> إضافة بند</button>
+      <div class="fg"><label for="mp-category" data-i="po.expenseCategory">تصنيف المصروف</label><select id="mp-category" style="padding:7px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text1);font-size:12px;width:100%">
+        <option value="inventory" data-i="po.inventoryParts">مخزون / قطع غيار</option>
+        <option value="maintenance" data-i="po.maintenance">صيانة وإصلاح</option>
+        <option value="cleaning" data-i="po.cleaning">نظافة</option>
+        <option value="commission" data-i="po.commission">عمولة</option>
+        <option value="furniture" data-i="po.furniture">أثاث وتجهيزات</option>
+        <option value="marketing" data-i="po.marketing">تسويق</option>
+        <option value="legal" data-i="po.legal">رسوم حكومية وقانونية</option>
+        <option value="other" data-i="po.other">أخرى</option>
       </select></div>
       <div id="po-totals" style="margin-top:12px;padding:10px;background:var(--bg2);border-radius:8px;font-size:13px">
-        <div style="display:flex;justify-content:space-between"><span>المجموع بدون ضريبة</span><strong id="po-subtotal">0 ر.س</strong></div>
-        <div style="display:flex;justify-content:space-between"><span>ضريبة القيمة المضافة 15%</span><strong id="po-vat">0 ر.س</strong></div>
-        <div style="display:flex;justify-content:space-between;font-size:15px;border-top:1px solid var(--border);padding-top:6px;margin-top:6px"><span>الإجمالي</span><strong id="po-total" style="color:var(--pri)">0 ر.س</strong></div>
+        <div style="display:flex;justify-content:space-between"><span data-i="po.subtotal">المجموع بدون ضريبة</span><strong id="po-subtotal">0 ر.س</strong></div>
+        <div style="display:flex;justify-content:space-between"><span data-i="po.vat">ضريبة القيمة المضافة 15%</span><strong id="po-vat">0 ر.س</strong></div>
+        <div style="display:flex;justify-content:space-between;font-size:15px;border-top:1px solid var(--border);padding-top:6px;margin-top:6px"><span data-i="purchase.total">الإجمالي</span><strong id="po-total" style="color:var(--pri)">0 ر.س</strong></div>
       </div>
-      <div class="fg" style="margin-top:8px"><label for="mp-notes">ملاحظات</label><textarea id="mp-notes"></textarea></div>
+      <div class="fg" style="margin-top:8px"><label for="mp-notes" data-i="common.notes">ملاحظات</label><textarea id="mp-notes"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-po')">إلغاء</button><button class="btn btn-primary" onclick="addPO()"><i class="ti ti-check" aria-hidden="true"></i> حفظ وإرسال</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-po')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="addPO()"><i class="ti ti-check" aria-hidden="true"></i> حفظ وإرسال</button></div>
   </div>
 </div>
 
 <!-- ── RECORD PURCHASE (simplified tax purchase) ── -->
 <div class="overlay" id="m-purchase">
   <div class="modal" style="width:550px">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-receipt-tax" aria-hidden="true"></i><span>تسجيل مشتريات (فاتورة ضريبية)</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-purchase')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-receipt-tax" aria-hidden="true"></i><span data-i="purchase.add">تسجيل مشتريات (فاتورة ضريبية)</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-purchase')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
       <div class="form-row">
-        <div class="fg"><label for="pur-vendor">المورد</label>
-          <select id="pur-vendor" onchange="purVendorChange()"><option value="">-- مورد جديد (أدخل الاسم أدناه) --</option></select>
+        <div class="fg"><label for="pur-vendor" data-i="po.vendor">المورد</label>
+          <select id="pur-vendor" onchange="purVendorChange()"><option value="" data-i="vendor.add">-- مورد جديد (أدخل الاسم أدناه) --</option></select>
         </div>
-        <div class="fg"><label for="pur-supplier-name">اسم المورد (للمورد الجديد)</label><input id="pur-supplier-name" placeholder="اسم المورد" oninput="purUpdateTaxFields()"></div>
+        <div class="fg"><label for="pur-supplier-name" data-i="vendor.name">اسم المورد (للمورد الجديد)</label><input id="pur-supplier-name" placeholder="اسم المورد" oninput="purUpdateTaxFields()"></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label for="pur-tax-no">الرقم الضريبي للمورد</label><input id="pur-tax-no" placeholder="مثال: 310122393400003" maxlength="15"></div>
-        <div class="fg"><label for="pur-invoice-no">رقم الفاتورة الضريبية</label><input id="pur-invoice-no" placeholder="رقم الفاتورة من المورد"></div>
+        <div class="fg"><label for="pur-tax-no" data-i="po.vendorTaxNo">الرقم الضريبي للمورد</label><input id="pur-tax-no" placeholder="مثال: 310122393400003" maxlength="15"></div>
+        <div class="fg"><label for="pur-invoice-no" data-i="purchase.invoiceNo">رقم الفاتورة الضريبية</label><input id="pur-invoice-no" placeholder="رقم الفاتورة من المورد"></div>
       </div>
       <div class="form-row">
-        <div class="fg"><label for="pur-date">تاريخ الفاتورة</label><input type="date" id="pur-date"></div>
-        <div class="fg"><label for="pur-cat">التصنيف</label>
-          <select id="pur-cat"><option value="inventory">مخزون</option><option value="services">خدمات</option><option value="maintenance">صيانة</option><option value="office">قرطاسية</option><option value="other">أخرى</option></select>
+        <div class="fg"><label for="pur-date" data-i="purchase.invoiceDate">تاريخ الفاتورة</label><input type="date" id="pur-date"></div>
+        <div class="fg"><label for="pur-cat" data-i="inv.category">التصنيف</label>
+          <select id="pur-cat"><option value="inventory" data-i="po.inventoryParts">مخزون</option><option value="services" data-i="purchase.services">خدمات</option><option value="maintenance" data-i="purchase.maintenance">صيانة</option><option value="office" data-i="purchase.office">قرطاسية</option><option value="other" data-i="po.other">أخرى</option></select>
         </div>
       </div>
       <div class="form-row-3">
-        <div class="fg"><label for="pur-amount">المبلغ (قبل الضريبة)</label><input type="number" id="pur-amount" min="0" step="0.01" oninput="purCalc()"></div>
-        <div class="fg"><label for="pur-vat">ضريبة 15%</label><input type="number" id="pur-vat" min="0" step="0.01" readonly style="background:var(--bg2)"></div>
-        <div class="fg"><label for="pur-total">الإجمالي</label><input type="number" id="pur-total" min="0" step="0.01" readonly style="background:var(--bg2);font-weight:700"></div>
+        <div class="fg"><label for="pur-amount" data-i="purchase.exVat">المبلغ (قبل الضريبة)</label><input type="number" id="pur-amount" min="0" step="0.01" oninput="purCalc()"></div>
+        <div class="fg"><label for="pur-vat" data-i="purchase.vat">ضريبة 15%</label><input type="number" id="pur-vat" min="0" step="0.01" readonly style="background:var(--bg2)"></div>
+        <div class="fg"><label for="pur-total" data-i="purchase.total">الإجمالي</label><input type="number" id="pur-total" min="0" step="0.01" readonly style="background:var(--bg2);font-weight:700"></div>
       </div>
-      <div class="fg"><label for="pur-notes">ملاحظات</label><textarea id="pur-notes"></textarea></div>
+      <div class="fg"><label for="pur-notes" data-i="common.notes">ملاحظات</label><textarea id="pur-notes"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-purchase')">إلغاء</button><button class="btn btn-primary" onclick="savePurchase()"><i class="ti ti-check" aria-hidden="true"></i> حفظ الفاتورة</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-purchase')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="savePurchase()"><i class="ti ti-check" aria-hidden="true"></i> حفظ الفاتورة</button></div>
   </div>
 </div>
 
 <!-- ── INVENTORY ── -->
 <div class="overlay" id="m-inv">
   <div class="modal" style="width:500px">
-    <div class="modal-header"><span class="modal-title"><i class="ti ti-package" aria-hidden="true"></i><span>صنف مخزون جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-inv')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+    <div class="modal-header"><span class="modal-title"><i class="ti ti-package" aria-hidden="true"></i><span data-i="inv.add">صنف مخزون جديد</span></span><button class="btn btn-ghost btn-icon" onclick="closeM('m-inv')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
     <div class="modal-body">
-      <div class="form-row"><div class="fg"><label for="mi-name">اسم الصنف</label><input id="mi-name"></div><div class="fg"><label for="mi-name-en">الاسم بالإنجليزية</label><input id="mi-name-en"></div></div>
-      <div class="form-row"><div class="fg"><label for="mi-cat">التصنيف</label><select id="mi-cat"><option value="general">عام</option><option value="spare_parts">قطع غيار</option><option value="cleaning_supplies">مستلزمات نظافة</option><option value="tools">أدوات</option><option value="furniture">أثاث</option><option value="electronics">إلكترونيات</option></select></div><div class="fg"><label for="mi-unit">وحدة القياس</label><select id="mi-unit"><option value="piece">قطعة</option><option value="box">صندوق</option><option value="liter">لتر</option><option value="kg">كجم</option><option value="meter">متر</option><option value="roll">لفة</option></select></div></div>
+      <div class="form-row"><div class="fg"><label for="mi-name" data-i="inv.name">اسم الصنف</label><input id="mi-name"></div><div class="fg"><label for="mi-name-en" data-i="owner.nameEn">الاسم بالإنجليزية</label><input id="mi-name-en"></div></div>
+      <div class="form-row"><div class="fg"><label for="mi-cat" data-i="inv.category">التصنيف</label><select id="mi-cat"><option value="general" data-i="vendor.general">عام</option><option value="spare_parts">قطع غيار</option><option value="cleaning_supplies" data-i="po.cleaning">مستلزمات نظافة</option><option value="tools">أدوات</option><option value="furniture">أثاث</option><option value="electronics">إلكترونيات</option></select></div><div class="fg"><label for="mi-unit" data-i="inv.unit">وحدة القياس</label><select id="mi-unit"><option value="piece" data-i="inv.piece">قطعة</option><option value="box" data-i="inv.box">صندوق</option><option value="liter" data-i="inv.liter">لتر</option><option value="kg" data-i="inv.kg">كجم</option><option value="meter" data-i="inv.meter">متر</option><option value="roll" data-i="inv.roll">لفة</option></select></div></div>
       <div class="form-row-3">
-        <div class="fg"><label for="mi-stock">الرصيد الافتتاحي</label><input type="number" id="mi-stock" min="0" value="0"></div>
-        <div class="fg"><label for="mi-min">الحد الأدنى</label><input type="number" id="mi-min" min="0" value="5"></div>
-        <div class="fg"><label for="mi-max">الحد الأعلى</label><input type="number" id="mi-max" min="0" value="100"></div>
+        <div class="fg"><label for="mi-stock" data-i="inv.openingStock">الرصيد الافتتاحي</label><input type="number" id="mi-stock" min="0" value="0"></div>
+        <div class="fg"><label for="mi-min" data-i="inv.minStock">الحد الأدنى</label><input type="number" id="mi-min" min="0" value="5"></div>
+        <div class="fg"><label for="mi-max" data-i="inv.maxStock">الحد الأعلى</label><input type="number" id="mi-max" min="0" value="100"></div>
       </div>
-      <div class="fg"><label for="mi-notes">ملاحظات</label><textarea id="mi-notes"></textarea></div>
+      <div class="fg"><label for="mi-notes" data-i="common.notes">ملاحظات</label><textarea id="mi-notes"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn" onclick="closeM('m-inv')">إلغاء</button><button class="btn btn-primary" onclick="addInventoryItem()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
+    <div class="modal-footer"><button class="btn" onclick="closeM('m-inv')" data-i="common.cancel">إلغاء</button><button class="btn btn-primary" onclick="addInventoryItem()"><i class="ti ti-check" aria-hidden="true"></i> حفظ</button></div>
   </div>
 </div>
 
@@ -2283,7 +2283,7 @@ const T = {
     'stat.revenue':'الإيرادات (مايو)','stat.occupancyRate':'نسبة الإشغال','stat.overdueShort':'متأخرات',
     'stat.employees':'الموظفون','stat.expiringContracts':'عقود تنتهي قريباً',
     'tbl.empty':'لا توجد عقود حالياً','tbl.emptyQuotes':'لا توجد عروض أسعار','tbl.emptyStaff':'لا يوجد موظفون',
-    'loading':'جاري التحميل...','error.prefix':'خطأ: ',
+    'loading':t('common.loading'),'error.prefix':'خطأ: ',
     'badge.edit':'تعديل','badge.delete':'حذف','badge.view':'عرض','badge.activate':'تفعيل','badge.complete':'إنهاء','badge.cancel':'إلغاء',
     'badge.approve':'اعتماد','badge.pay':'دفع','badge.publish':'نشر',
     'badge.system':'نظام','badge.assignRole':'تعيين دور','badge.none':'لا يوجد',
@@ -2637,6 +2637,259 @@ const T = {
     'fal.modal.new':'عقد تسويق جديد',
     'fal.modal.edit':'تعديل عقد تسويق',
     'fal.select.unit':'اختر الوحدة (اختياري)',
+    'th.num':'#','th.name':'الاسم','th.mobile':'الجوال','th.phone':'الهاتف','th.email':'البريد الإلكتروني',
+    'th.idNum':'رقم الهوية','th.crNum':'السجل التجاري','th.taxNum':'الرقم الضريبي','th.address':'العنوان',
+    'th.status':'الحالة','th.property':'العقار','th.unit':'الوحدة','th.contract':'العقد','th.contractNum':'رقم العقد',
+    'th.date':'التاريخ','th.amount':'المبلغ','th.action':'الإجراء','th.type':'النوع','th.total':'الإجمالي',
+    'th.vat':'الضريبة','th.city':'المدينة','th.role':'الدور','th.permissions':'الصلاحيات','th.details':'التفاصيل',
+    'th.period':'المدة','th.owner':'المالك','th.tenant':'المستأجر','th.notes':'ملاحظات','th.price':'السعر',
+    'th.description':'البيان','th.debit':'مدين','th.credit':'دائن','th.createdAt':'تاريخ الإنشاء',
+    'th.category':'التصنيف','th.priority':'الأولوية','th.supplier':'المورد','th.code':'الكود',
+    'th.balance':'الرصيد','th.receiptNum':'رقم السند','th.paymentMethod':'طريقة الدفع',
+    'th.zatcaStatus':'حالة زاتكا','th.source':'المصدر','th.stage':'المرحلة','th.broker':'الوسيط',
+    'th.ownership':'نسبة الملكية','th.count':'العدد','th.startDate':'تاريخ البداية','th.endDate':'تاريخ النهاية',
+    'th.year':'السنة','th.items':'البنود','th.nationalAddress':'العنوان الوطني',
+    'btn.add':'إضافة','btn.new':'جديد','btn.save':'حفظ','btn.cancel':'إلغاء','btn.delete':'حذف',
+    'btn.edit':'تعديل','btn.print':'طباعة','btn.update':'تحديث','btn.search':'بحث','btn.close':'إغلاق',
+    'btn.confirm':'تأكيد','btn.back':'رجوع','btn.next':'التالي','btn.submit':'إرسال','btn.export':'تصدير',
+    'btn.verify':'تحقق','btn.test':'اختبار','btn.sync':'مزامنة','btn.saveSettings':'حفظ الإعدادات',
+    'status.all':'الكل','status.pending':t('status.approving'),'status.approved':'معتمد','status.rejected':'مرفوض',
+    'status.draft':'مسودة','status.published':'منشور','status.rented':'مؤجر','status.sold':'مباع',
+    'status.lead':'عميل محتمل','status.inquiry':'استفسار','status.inspection':'معاينة',
+    'status.negotiation':'تفاوض','status.offer':'عرض','status.signed':'موقّع','status.lost':'ملغي',
+    'status.open':'مفتوحة','status.assigned':'مسندة','status.inProgress':'قيد التنفيذ','status.completed':'مكتملة',
+    'status.cancelled':'ملغية','status.active':'نشط','status.inactive':'غير نشط','status.paid':t('status.paid'),
+    'status.unpaid':t('status.unpaid'),'status.approving':'قيد الاعتماد',
+    'label.arName':'الاسم العربي','label.enName':'الاسم الإنجليزي','label.phone':'الجوال',
+    'label.email':'البريد الإلكتروني','label.idNum':'رقم الهوية','label.nationalId':'رقم الهوية الوطنية',
+    'label.company':'شركة','label.individual':'فرد','label.fromDate':'من تاريخ','label.toDate':'إلى تاريخ',
+    'label.notes':'ملاحظات','label.bankInfo':'معلومات بنكية','label.ownershipPct':'نسبة الملكية',
+    'label.ownershipTerms':'شروط الملكية','label.password':'كلمة المرور','label.confirmPassword':'تأكيد كلمة المرور',
+    'common.or':'أو','common.nafath':'نفاذ','common.verifyNafath':'التحقق عبر نفاذ',
+    'common.loading':'جارٍ التحميل...','common.error':'خطأ','common.noData':'لا توجد بيانات',
+    'common.yes':'نعم','common.no':'لا','placeholder.companyName':'اسم الشركة',
+  ,
+    'owner.property':'نظام إدارة العقارات الذكي للسوق السعودي',
+    'customer.nid':'رقم الهوية الوطنية / الإقامة',
+    'customer.phone':'رقم الجوال',
+    'ticket.company':'اسم الشركة / المؤسسة',
+    'btn.addCustomer':'إضافة عميل',
+    'btn.addOwner':'إضافة مالك',
+    'prop.count':'عدد العقارات',
+    'ejar.registeredContracts':'العقود المسجلة',
+    'ejar.unregisteredContracts':'عقود غير مسجلة',
+    'ejar.settings':'الإعدادات',
+    'ejar.ejarNum':'رقم إيجار',
+    'ejar.ejarStatus':'حالة إيجار',
+    'ejar.apiKey':'مفتاح API (Ejar)',
+    'ejar.secret':'السر (Secret)',
+    'ejar.env':'البيئة',
+    'common.save':'حفظ',
+    'common.all':'الكل',
+    'rbac.rolesTab':'الأدوار',
+    'rbac.usersTab':'المستخدمين',
+    'rbac.logsTab':'سجل الصلاحيات',
+    'role.permissions':'إدارة الأدوار والصلاحيات',
+    'role.add':'دور جديد',
+    'role.name':'اسم الدور',
+    'branches.addBtn':'فرع جديد',
+    'common.city':'المدينة',
+    'bi.summaryTab':'ملخص',
+    'bi.occupancyTab':'الإشغال',
+    'bi.revenueTab':'الإيرادات',
+    'bi.roiTab':'ROI',
+    'purchase.vat':'ضريبة VAT',
+    'purchase.total':'الإجمالي',
+    'coa.seed':'بذر دليل الحسابات',
+    'coa.addAccount':'إضافة حساب',
+    'coa.nameAr':'اسم الحساب (عربي)',
+    'coa.nameEn':'اسم الحساب (إنجليزي)',
+    'coa.parent':'حساب أب',
+    'journal.all':'كل القيود',
+    'journal.unposted':'غير مرحلة',
+    'journal.newEntry':'قيد يومية جديد',
+    'journal.entryNo':'رقم القيد',
+    'ticket.description':'الوصف',
+    'th.by':'بواسطة',
+    'tb.asOf':'حتى تاريخ',
+    'btn.refresh':'تحديث',
+    'reports.taxReport':'data-i="reports.taxReport">',
+    'freq.semiannual':'نصف سنوي',
+    'reports.outputVat':'ضريبة المخرجات',
+    'reports.inputVat':'ضريبة المدخلات',
+    'reports.netVat':'صافي VAT',
+    'zatca.settingsTab':'الإعدادات',
+    'zatca.queueTab':'سجل الإرسال',
+    'zatca.reportTab':'التقارير الضريبية',
+    'zatca.orgName':'اسم المنشأة',
+    'customer.vat':'الرقم الضريبي (VAT)',
+    'customer.cr':'رقم السجل التجاري',
+    'zatca.sandbox':'اختبار (Sandbox)',
+    'vendor.building':'رقم المبنى',
+    'common.street':'الشارع',
+    'common.district':'الحي',
+    'vendor.postal':'الرمز البريدي',
+    'zatca.addNo':'الرقم الإضافي',
+    'zatca.sendAll':'إرسال الكل',
+    'utility.amountExVat':'المبلغ',
+    'zatca.reportsAvailable':'التقارير الضريبية متاحة من صفحة التقارير المالية',
+    'ticket.priority':'الأولوية',
+    'deal.sale':'بيع',
+    'deal.rent':'تأجير',
+    'listing.add':'إعلان جديد',
+    'common.address':'العنوان',
+    'ticket.unit':'الوحدة',
+    'deals.inquiry':'استفسارات',
+    'deals.lead':'عميل محتمل',
+    'deals.viewing':'معاينة',
+    'deals.negotiation':'تفاوض',
+    'deals.offer':'عرض',
+    'deals.signed':'متعاقد',
+    'deals.new':'صفقة جديدة',
+    'deal.agent':'المسوق',
+    'po.commission':'العمولة',
+    'deal.stage':'المرحلة',
+    'commission.paid':'مدفوعة',
+    'commissions.add':'إضافة عمولة',
+    'commission.rate':'النسبة',
+    'utility.dueDate':'تاريخ الاستحقاق',
+    'maintenance.open':'مفتوحة',
+    'maintenance.inProgress':'قيد التنفيذ',
+    'maintenance.newTicket':'تذكرة جديدة',
+    'inv.category':'التصنيف',
+    'inv.roll':'التكلفة',
+    'deal.add':'صفقة جديدة',
+    'deal.clientName':'اسم العميل',
+    'customer.email':'البريد الإلكتروني',
+    'deal.type':'نوع الصفقة',
+    'deal.management':'إدارة',
+    'po.other':'أخرى',
+    'deal.source':'مصدر العميل',
+    'deal.direct':'مباشر',
+    'deal.referral':'إحالة',
+    'deal.website':'الموقع الإلكتروني',
+    'deal.social':'تواصل اجتماعي',
+    'deal.selectProperty':'اختر العقار',
+    'deal.selectAgent':'اختر المسوق',
+    'deal.expectedValue':'القيمة المتوقعة',
+    'deal.commPct':'نسبة العمولة (%)',
+    'deal.commValue':'قيمة العمولة',
+    'deal.expectedClose':'تاريخ الإغلاق المتوقع',
+    'common.notes':'ملاحظات',
+    'common.cancel':'إلغاء',
+    'ticket.add':'تذكرة صيانة جديدة',
+    'ticket.selectCategory':'اختر التصنيف',
+    'ticket.selectUnit':'اختر الوحدة',
+    'ticket.low':'منخفضة',
+    'ticket.medium':'متوسطة',
+    'ticket.high':'عالية',
+    'ticket.urgent':'عاجلة',
+    'ticket.costBearer':'تحمل التكلفة',
+    'ticket.owner':'المالك',
+    'ticket.tenant':'المستأجر',
+    'ticket.estCost':'التكلفة التقديرية',
+    'ticket.scheduledDate':'تاريخ الصيانة المقرر',
+    'ticket.reporter':'الجهة المبلغة',
+    'ticket.reporterPhone':'جوال المبلغ',
+    'label.descriptionAr':'الوصف (عربي)',
+    'label.descriptionEn':'الوصف (إنجليزي)',
+    'listing.type':'نوع الإعلان',
+    'listing.channels':'قنوات النشر',
+    'listing.negotiable':'data-i="listing.negotiable"> السعر قابل للتفاوض',
+    'listing.featured':'data-i="listing.featured"> إعلان مميز',
+    'branch.add':'فرع جديد',
+    'branch.hq':'data-i="branch.hq"> المقر الرئيسي',
+    'label.description':'الوصف',
+    'commission.add':'إضافة عمولة',
+    'commission.type':'نوع العمولة',
+    'commission.method':'طريقة الحساب',
+    'commission.baseAmount':'المبلغ الأساس',
+    'commission.amount':'المبلغ المحتسب',
+    'commission.dueDate':'تاريخ الاستحقاق',
+    'field.address':'العنوان',
+    'customer.add':'إضافة عميل',
+    'customer.type':'نوع العميل',
+    'customer.individual':'data-i="customer.individual" onclick="switchCustomerType(\'individual\')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--pri);border-radius:var(--radius);text-align:center;cursor:pointer;background:var(--pri-light);font-weight:600">',
+    'customer.company':'data-i="customer.company" onclick="switchCustomerType(\'company\')" role="button" tabindex="0" style="flex:1;padding:8px;border:2px solid var(--border);border-radius:var(--radius);text-align:center;cursor:pointer">',
+    'owner.fullName':'الاسم الكامل',
+    'customer.companyName':'اسم المؤسسة',
+    'vendor.sub':'الرقم الفرعي',
+    'owner.manage':'إدارة المالك',
+    'owner.nameEn':'الاسم بالإنجليزية',
+    'owner.bankDetails':'data-i="owner.bankDetails">',
+    'owner.bankName':'اسم البنك',
+    'owner.iban':'رقم الآيبان (IBAN)',
+    'owner.accountNo':'رقم الحساب',
+    'owner.mgmtTerms':'data-i="owner.mgmtTerms">',
+    'owner.ownershipPct':'نسبة الملكية (%)',
+    'owner.mgmtFee':'نسبة رسوم الإدارة (%)',
+    'owner.contractTerms':'شروط العقد',
+    'owner.linkProperty':'ربط عقار بالمالك',
+    'purchase.maintenance':'صيانة',
+    'utility.electricity':'عداد الكهرباء',
+    'utility.gas':'عداد الغاز',
+    'vendor.general':'عامل / فني',
+    'field.role':'المسمى',
+    'po.cleaning':'نظافة ومكافحة حشرات',
+    'vendor.catering':'إعاشة وتموين',
+    'vendor.security':'أمن وحراسة',
+    'utility.add':'فاتورة خدمة جديدة',
+    'utility.serviceType':'نوع الخدمة',
+    'utility.water':'ماء',
+    'utility.telecom':'اتصالات',
+    'utility.internet':'إنترنت',
+    'utility.provider':'المزود',
+    'utility.secAccount':'رقم حساب SEC',
+    'utility.meterNo':'رقم العداد',
+    'utility.branchCode':'رمز الفرع',
+    'utility.nwcAccount':'رقم حساب NWC',
+    'utility.nwcMeter':'رقم عداد المياه',
+    'utility.govId':'رقم حساب فاتورة (الخدمات البلدية)',
+    'purchase.invoiceDate':'تاريخ الفاتورة',
+    'utility.consumption':'الاستهلاك',
+    'utility.unitPrice':'سعر الوحدة',
+    'utility.fixedFees':'الرسوم الثابتة',
+    'vendor.add':'مورد جديد',
+    'vendor.name':'اسم المورد',
+    'vendor.contact':'جهة الاتصال',
+    'vendor.plumbing':'سباكة',
+    'vendor.ac':'تكييف',
+    'vendor.natAddress':'العنوان الوطني',
+    'vendor.notes':'الملاحظات',
+    'po.add':'أمر شراء جديد',
+    'po.vendor':'المورد',
+    'po.orderDate':'تاريخ الطلب',
+    'po.vendorTaxNo':'الرقم الضريبي للمورد',
+    'po.lineItems':'بنود الأمر',
+    'po.itemName':'data-i="po.itemName">الصنف',
+    'po.qty':'data-i="po.qty">الكمية',
+    'po.unitPrice':'data-i="po.unitPrice">سعر الوحدة',
+    'po.addItem':'data-i="po.addItem">',
+    'po.expenseCategory':'تصنيف المصروف',
+    'po.inventoryParts':'مخزون / قطع غيار',
+    'po.maintenance':'صيانة وإصلاح',
+    'po.furniture':'أثاث وتجهيزات',
+    'po.marketing':'تسويق',
+    'po.legal':'رسوم حكومية وقانونية',
+    'po.subtotal':'المجموع بدون ضريبة',
+    'po.vat':'ضريبة القيمة المضافة 15%',
+    'purchase.add':'تسجيل مشتريات (فاتورة ضريبية)',
+    'purchase.invoiceNo':'رقم الفاتورة الضريبية',
+    'purchase.services':'خدمات',
+    'purchase.office':'قرطاسية',
+    'purchase.exVat':'المبلغ (قبل الضريبة)',
+    'inv.add':'صنف مخزون جديد',
+    'inv.name':'اسم الصنف',
+    'inv.unit':'وحدة القياس',
+    'inv.piece':'قطعة',
+    'inv.box':'صندوق',
+    'inv.liter':'لتر',
+    'inv.kg':'كجم',
+    'inv.meter':'متر',
+    'inv.openingStock':'الرصيد الافتتاحي',
+    'inv.minStock':'الحد الأدنى',
+    'inv.maxStock':'الحد الأعلى',
+    'vendor.loading':'${t(\'vendor.loading\')}'
   },
   en: {
     'nav.main':'Main','nav.dashboard':'Dashboard','nav.customers':'Customers','nav.properties':'Properties',
@@ -2972,7 +3225,229 @@ const T = {
     'purchases.amount.required':'Please enter amount',
     'purchases.vendor.required':'Please enter supplier name or select one',
     'purchases.saved':'Purchase invoice saved',
-    'purchases.saveFailed':'Failed to save invoice: ',
+    'purchases,
+    'owner.property':'owner.property',
+    'customer.nid':'customer.nid',
+    'customer.phone':'customer.phone',
+    'ticket.company':'ticket.company',
+    'btn.addCustomer':'btn.addCustomer',
+    'btn.addOwner':'btn.addOwner',
+    'prop.count':'prop.count',
+    'ejar.registeredContracts':'ejar.registeredContracts',
+    'ejar.unregisteredContracts':'ejar.unregisteredContracts',
+    'ejar.settings':'ejar.settings',
+    'ejar.ejarNum':'ejar.ejarNum',
+    'ejar.ejarStatus':'ejar.ejarStatus',
+    'ejar.apiKey':'ejar.apiKey',
+    'ejar.secret':'ejar.secret',
+    'ejar.env':'ejar.env',
+    'common.save':'common.save',
+    'common.all':'common.all',
+    'rbac.rolesTab':'rbac.rolesTab',
+    'rbac.usersTab':'rbac.usersTab',
+    'rbac.logsTab':'rbac.logsTab',
+    'role.permissions':'role.permissions',
+    'role.add':'role.add',
+    'role.name':'role.name',
+    'branches.addBtn':'branches.addBtn',
+    'common.city':'common.city',
+    'bi.summaryTab':'bi.summaryTab',
+    'bi.occupancyTab':'bi.occupancyTab',
+    'bi.revenueTab':'bi.revenueTab',
+    'bi.roiTab':'bi.roiTab',
+    'purchase.vat':'purchase.vat',
+    'purchase.total':'purchase.total',
+    'coa.seed':'coa.seed',
+    'coa.addAccount':'coa.addAccount',
+    'coa.nameAr':'coa.nameAr',
+    'coa.nameEn':'coa.nameEn',
+    'coa.parent':'coa.parent',
+    'journal.all':'journal.all',
+    'journal.unposted':'journal.unposted',
+    'journal.newEntry':'journal.newEntry',
+    'journal.entryNo':'journal.entryNo',
+    'ticket.description':'ticket.description',
+    'th.by':'th.by',
+    'tb.asOf':'tb.asOf',
+    'btn.refresh':'btn.refresh',
+    'reports.taxReport':'reports.taxReport',
+    'freq.semiannual':'freq.semiannual',
+    'reports.outputVat':'reports.outputVat',
+    'reports.inputVat':'reports.inputVat',
+    'reports.netVat':'reports.netVat',
+    'zatca.settingsTab':'zatca.settingsTab',
+    'zatca.queueTab':'zatca.queueTab',
+    'zatca.reportTab':'zatca.reportTab',
+    'zatca.orgName':'zatca.orgName',
+    'customer.vat':'customer.vat',
+    'customer.cr':'customer.cr',
+    'zatca.sandbox':'zatca.sandbox',
+    'vendor.building':'vendor.building',
+    'common.street':'common.street',
+    'common.district':'common.district',
+    'vendor.postal':'vendor.postal',
+    'zatca.addNo':'zatca.addNo',
+    'zatca.sendAll':'zatca.sendAll',
+    'utility.amountExVat':'utility.amountExVat',
+    'zatca.reportsAvailable':'zatca.reportsAvailable',
+    'ticket.priority':'ticket.priority',
+    'deal.sale':'deal.sale',
+    'deal.rent':'deal.rent',
+    'listing.add':'listing.add',
+    'common.address':'common.address',
+    'ticket.unit':'ticket.unit',
+    'deals.inquiry':'deals.inquiry',
+    'deals.lead':'deals.lead',
+    'deals.viewing':'deals.viewing',
+    'deals.negotiation':'deals.negotiation',
+    'deals.offer':'deals.offer',
+    'deals.signed':'deals.signed',
+    'deals.new':'deals.new',
+    'deal.agent':'deal.agent',
+    'po.commission':'po.commission',
+    'deal.stage':'deal.stage',
+    'commission.paid':'commission.paid',
+    'commissions.add':'commissions.add',
+    'commission.rate':'commission.rate',
+    'utility.dueDate':'utility.dueDate',
+    'maintenance.open':'maintenance.open',
+    'maintenance.inProgress':'maintenance.inProgress',
+    'maintenance.newTicket':'maintenance.newTicket',
+    'inv.category':'inv.category',
+    'inv.roll':'inv.roll',
+    'deal.add':'deal.add',
+    'deal.clientName':'deal.clientName',
+    'customer.email':'customer.email',
+    'deal.type':'deal.type',
+    'deal.management':'deal.management',
+    'po.other':'po.other',
+    'deal.source':'deal.source',
+    'deal.direct':'deal.direct',
+    'deal.referral':'deal.referral',
+    'deal.website':'deal.website',
+    'deal.social':'deal.social',
+    'deal.selectProperty':'deal.selectProperty',
+    'deal.selectAgent':'deal.selectAgent',
+    'deal.expectedValue':'deal.expectedValue',
+    'deal.commPct':'deal.commPct',
+    'deal.commValue':'deal.commValue',
+    'deal.expectedClose':'deal.expectedClose',
+    'common.notes':'common.notes',
+    'common.cancel':'common.cancel',
+    'ticket.add':'ticket.add',
+    'ticket.selectCategory':'ticket.selectCategory',
+    'ticket.selectUnit':'ticket.selectUnit',
+    'ticket.low':'ticket.low',
+    'ticket.medium':'ticket.medium',
+    'ticket.high':'ticket.high',
+    'ticket.urgent':'ticket.urgent',
+    'ticket.costBearer':'ticket.costBearer',
+    'ticket.owner':'ticket.owner',
+    'ticket.tenant':'ticket.tenant',
+    'ticket.estCost':'ticket.estCost',
+    'ticket.scheduledDate':'ticket.scheduledDate',
+    'ticket.reporter':'ticket.reporter',
+    'ticket.reporterPhone':'ticket.reporterPhone',
+    'label.descriptionAr':'label.descriptionAr',
+    'label.descriptionEn':'label.descriptionEn',
+    'listing.type':'listing.type',
+    'listing.channels':'listing.channels',
+    'listing.negotiable':'listing.negotiable',
+    'listing.featured':'listing.featured',
+    'branch.add':'branch.add',
+    'branch.hq':'branch.hq',
+    'label.description':'label.description',
+    'commission.add':'commission.add',
+    'commission.type':'commission.type',
+    'commission.method':'commission.method',
+    'commission.baseAmount':'commission.baseAmount',
+    'commission.amount':'commission.amount',
+    'commission.dueDate':'commission.dueDate',
+    'field.address':'field.address',
+    'customer.add':'customer.add',
+    'customer.type':'customer.type',
+    'customer.individual':'customer.individual',
+    'customer.company':'customer.company',
+    'owner.fullName':'owner.fullName',
+    'customer.companyName':'customer.companyName',
+    'vendor.sub':'vendor.sub',
+    'owner.manage':'owner.manage',
+    'owner.nameEn':'owner.nameEn',
+    'owner.bankDetails':'owner.bankDetails',
+    'owner.bankName':'owner.bankName',
+    'owner.iban':'owner.iban',
+    'owner.accountNo':'owner.accountNo',
+    'owner.mgmtTerms':'owner.mgmtTerms',
+    'owner.ownershipPct':'owner.ownershipPct',
+    'owner.mgmtFee':'owner.mgmtFee',
+    'owner.contractTerms':'owner.contractTerms',
+    'owner.linkProperty':'owner.linkProperty',
+    'purchase.maintenance':'purchase.maintenance',
+    'utility.electricity':'utility.electricity',
+    'utility.gas':'utility.gas',
+    'vendor.general':'vendor.general',
+    'field.role':'field.role',
+    'po.cleaning':'po.cleaning',
+    'vendor.catering':'vendor.catering',
+    'vendor.security':'vendor.security',
+    'utility.add':'utility.add',
+    'utility.serviceType':'utility.serviceType',
+    'utility.water':'utility.water',
+    'utility.telecom':'utility.telecom',
+    'utility.internet':'utility.internet',
+    'utility.provider':'utility.provider',
+    'utility.secAccount':'utility.secAccount',
+    'utility.meterNo':'utility.meterNo',
+    'utility.branchCode':'utility.branchCode',
+    'utility.nwcAccount':'utility.nwcAccount',
+    'utility.nwcMeter':'utility.nwcMeter',
+    'utility.govId':'utility.govId',
+    'purchase.invoiceDate':'purchase.invoiceDate',
+    'utility.consumption':'utility.consumption',
+    'utility.unitPrice':'utility.unitPrice',
+    'utility.fixedFees':'utility.fixedFees',
+    'vendor.add':'vendor.add',
+    'vendor.name':'vendor.name',
+    'vendor.contact':'vendor.contact',
+    'vendor.plumbing':'vendor.plumbing',
+    'vendor.ac':'vendor.ac',
+    'vendor.natAddress':'vendor.natAddress',
+    'vendor.notes':'vendor.notes',
+    'po.add':'po.add',
+    'po.vendor':'po.vendor',
+    'po.orderDate':'po.orderDate',
+    'po.vendorTaxNo':'po.vendorTaxNo',
+    'po.lineItems':'po.lineItems',
+    'po.itemName':'po.itemName',
+    'po.qty':'po.qty',
+    'po.unitPrice':'po.unitPrice',
+    'po.addItem':'po.addItem',
+    'po.expenseCategory':'po.expenseCategory',
+    'po.inventoryParts':'po.inventoryParts',
+    'po.maintenance':'po.maintenance',
+    'po.furniture':'po.furniture',
+    'po.marketing':'po.marketing',
+    'po.legal':'po.legal',
+    'po.subtotal':'po.subtotal',
+    'po.vat':'po.vat',
+    'purchase.add':'purchase.add',
+    'purchase.invoiceNo':'purchase.invoiceNo',
+    'purchase.services':'purchase.services',
+    'purchase.office':'purchase.office',
+    'purchase.exVat':'purchase.exVat',
+    'inv.add':'inv.add',
+    'inv.name':'inv.name',
+    'inv.unit':'inv.unit',
+    'inv.piece':'inv.piece',
+    'inv.box':'inv.box',
+    'inv.liter':'inv.liter',
+    'inv.kg':'inv.kg',
+    'inv.meter':'inv.meter',
+    'inv.openingStock':'inv.openingStock',
+    'inv.minStock':'inv.minStock',
+    'inv.maxStock':'inv.maxStock',
+    'vendor.loading':'vendor.loading'
+  .saveFailed':'Failed to save invoice: ',
     'po.loading':'Loading...',
     'po.empty':'No purchase orders',
     'po.error':'Error loading purchase orders',
@@ -3118,6 +3593,37 @@ const T = {
     'fal.modal.new':'New Marketing Contract',
     'fal.modal.edit':'Edit Marketing Contract',
     'fal.select.unit':'Select Unit (optional)',
+    'th.num':'#','th.name':'Name','th.mobile':'Mobile','th.phone':'Phone','th.email':'Email',
+    'th.idNum':'ID Number','th.crNum':'CR Number','th.taxNum':'Tax Number','th.address':'Address',
+    'th.status':'Status','th.property':'Property','th.unit':'Unit','th.contract':'Contract','th.contractNum':'Contract #',
+    'th.date':'Date','th.amount':'Amount','th.action':'Action','th.type':'Type','th.total':'Total',
+    'th.vat':'VAT','th.city':'City','th.role':'Role','th.permissions':'Permissions','th.details':'Details',
+    'th.period':'Period','th.owner':'Owner','th.tenant':'Tenant','th.notes':'Notes','th.price':'Price',
+    'th.description':'Description','th.debit':'Debit','th.credit':'Credit','th.createdAt':'Created At',
+    'th.category':'Category','th.priority':'Priority','th.supplier':'Supplier','th.code':'Code',
+    'th.balance':'Balance','th.receiptNum':'Receipt #','th.paymentMethod':'Payment Method',
+    'th.zatcaStatus':'ZATCA Status','th.source':'Source','th.stage':'Stage','th.broker':'Broker',
+    'th.ownership':'Ownership %','th.count':'Count','th.startDate':'Start Date','th.endDate':'End Date',
+    'th.year':'Year','th.items':'Items','th.nationalAddress':'National Address',
+    'btn.add':'Add','btn.new':'New','btn.save':'Save','btn.cancel':'Cancel','btn.delete':'Delete',
+    'btn.edit':'Edit','btn.print':'Print','btn.update':'Update','btn.search':'Search','btn.close':'Close',
+    'btn.confirm':'Confirm','btn.back':'Back','btn.next':'Next','btn.submit':'Submit','btn.export':'Export',
+    'btn.verify':'Verify','btn.test':'Test','btn.sync':'Sync','btn.saveSettings':'Save Settings',
+    'status.all':'All','status.pending':'Pending','status.approved':'Approved','status.rejected':'Rejected',
+    'status.draft':'Draft','status.published':'Published','status.rented':'Rented','status.sold':'Sold',
+    'status.lead':'Lead','status.inquiry':'Inquiry','status.inspection':'Inspection',
+    'status.negotiation':'Negotiation','status.offer':'Offer','status.signed':'Signed','status.lost':'Lost',
+    'status.open':'Open','status.assigned':'Assigned','status.inProgress':'In Progress','status.completed':'Completed',
+    'status.cancelled':'Cancelled','status.active':'Active','status.inactive':'Inactive','status.paid':'Paid',
+    'status.unpaid':'Unpaid','status.approving':'Approving',
+    'label.arName':'Arabic Name','label.enName':'English Name','label.phone':'Phone',
+    'label.email':'Email','label.idNum':'ID Number','label.nationalId':'National ID',
+    'label.company':'Company','label.individual':'Individual','label.fromDate':'From Date','label.toDate':'To Date',
+    'label.notes':'Notes','label.bankInfo':'Bank Info','label.ownershipPct':'Ownership %',
+    'label.ownershipTerms':'Ownership Terms','label.password':'Password','label.confirmPassword':'Confirm Password',
+    'common.or':'Or','common.nafath':'Nafath','common.verifyNafath':'Verify via Nafath',
+    'common.loading':'Loading...','common.error':'Error','common.noData':'No data',
+    'common.yes':'Yes','common.no':'No','placeholder.companyName':'Company name',
   }
 };
 
@@ -3272,12 +3778,23 @@ function applyTranslations(){
   document.querySelectorAll('[data-i]').forEach(el=>{
     const key = el.getAttribute('data-i');
     const val = t(key);
-    if(val && val!==key) el.textContent = val;
+    if(val && val!==key){
+      if(el.children.length){
+        el.childNodes.forEach(cn=>{ if(cn.nodeType===3 && cn.textContent.trim()) cn.textContent=val; });
+      } else {
+        el.textContent = val;
+      }
+    }
   });
   document.querySelectorAll('[data-i-placeholder]').forEach(el=>{
     const key = el.getAttribute('data-i-placeholder');
     const val = t(key);
     if(val && val!==key) el.setAttribute('placeholder', val);
+  });
+  document.querySelectorAll('[data-i-aria-label]').forEach(el=>{
+    const key = el.getAttribute('data-i-aria-label');
+    const val = t(key);
+    if(val && val!==key) el.setAttribute('aria-label', val);
   });
 }
 
@@ -3837,7 +4354,7 @@ async function syncUtility(id, type){
     const res = await apiPost(`/api/v1/utilities/${id}/sync-gov`, {});
     alert(JSON.stringify(res, null, 2));
   } catch(e){
-    alert('فشلت المزامنة');
+    alert(t('sync.failed'));
   }
 }
 
@@ -4275,8 +4792,8 @@ function renderContracts(){
       <td>${statusBadge(c.status)}</td>
       <td style="display:flex;gap:4px">
         <button class="btn btn-sm btn-ghost" title="${t('badge.print')}" onclick="printContract(${c.id})"><i class="ti ti-printer" aria-hidden="true"></i></button>
-        ${c.status==='active'?`<button class="btn btn-sm b-suc" title="تسجيل دفعة" onclick="showSchedule('${c.id}')" style="background:var(--suc);color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:10px"><i class="ti ti-cash" aria-hidden="true"></i></button>`:''}
-        <button class="btn btn-sm btn-ghost" title="Receipt" onclick="showContractReceipts(${c.id})"><i class="ti ti-receipt" aria-hidden="true"></i></button>
+        ${c.status==='active'?`<button class="btn btn-sm b-suc" title="${t('schedule.recordPayment')}" onclick="showSchedule('${c.id}')" style="background:var(--suc);color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:10px"><i class="ti ti-cash" aria-hidden="true"></i></button>`:''}
+        <button class="btn btn-sm btn-ghost" title="${t('btn.receipt')}" onclick="showContractReceipts(${c.id})"><i class="ti ti-receipt" aria-hidden="true"></i></button>
       </td>
     </tr>`;
   }).join('');
@@ -4296,25 +4813,25 @@ async function showSchedule(contractId){
     const modal = document.getElementById('m-pay-schedule') || createPayScheduleModal();
     const body = modal.querySelector('.modal-body') || document.getElementById('ps-body');
     const title = modal.querySelector('.modal-title span') || document.getElementById('ps-title');
-    if(title) title.textContent = `سندات الدفع - ${c.num}`;
+    if(title) title.textContent = `${t('schedule.paymentVouchers')} - ${c.num}`;
     body.innerHTML = schedule.map(s => {
       const isPaid = paidScheduleIds.has(s.id) || s.status === 'paid';
       const statusLabel = s.status === 'paid' ? 'مدفوع' : (paidScheduleIds.has(s.id) ? 'قيد الاعتماد' : 'غير مدفوع');
       const statusClass = s.status === 'paid' ? 'b-suc' : (paidScheduleIds.has(s.id) ? 'b-war' : 'b-gray');
       return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid var(--border)">
         <div>
-          <div style="font-weight:500;font-size:13px">الدفعة ${s.installment_no}</div>
-          <div style="font-size:11px;color:var(--text2)">استحقاق: ${s.due_date} | المبلغ: ${numFmt(s.total_amount || s.amount)} ر.س</div>
+          <div style="font-weight:500;font-size:13px">${t('schedule.installment')} ${s.installment_no}</div>
+          <div style="font-size:11px;color:var(--text2)" data-i="utility.amountExVat">استحقاق: ${s.due_date} | المبلغ: ${numFmt(s.total_amount || s.amount)} ر.س</div>
         </div>
         <div style="display:flex;align-items:center;gap:6px">
           <span class="badge ${statusClass}">${statusLabel}</span>
-          ${!isPaid ? `<span class="badge b-gray">غير مدفوع</span>` : ''}
+          ${!isPaid ? `<span class="badge b-gray">${t('status.unpaid')}</span>` : ''}
         </div>
       </div>`;
     }).join('');
     openM('m-pay-schedule');
   } catch(e) {
-    alert('فشل تحميل جدول الدفع: ' + e.message);
+    alert(t('schedule.loadError') + e.message);
   }
 }
 
@@ -4609,7 +5126,7 @@ function showFalModal(data){
     if(el) el.value = '';
   });
   document.getElementById('fal-property').value = '';
-  document.getElementById('fal-unit').innerHTML = `<option value="">${t('fal.selectUnit') || 'اختر الوحدة (اختياري)'}</option>`;
+  document.getElementById('fal-unit').innerHTML = `<option value="" data-i="ticket.selectUnit">${t('fal.selectUnit') || 'اختر الوحدة (اختياري)'}</option>`;
   document.getElementById('fal-prop-type').value = 'apartment';
   document.getElementById('fal-commission-type').value = 'percentage';
   document.getElementById('fal-exclusive').value = '1';
@@ -4617,7 +5134,7 @@ function showFalModal(data){
   // Load properties dropdown
   const props = getProps();
   const propSel = document.getElementById('fal-property');
-  propSel.innerHTML = `<option value="">${t('fal.selectProperty') || 'اختر العقار'}</option>` + props.map(p => `<option value="${p.id}">${p.nameAr||p.name||''}</option>`).join('');
+  propSel.innerHTML = `<option value="" data-i="deal.selectProperty">${t('fal.selectProperty') || 'اختر العقار'}</option>` + props.map(p => `<option value="${p.id}">${p.nameAr||p.name||''}</option>`).join('');
   // If editing, fill data
   if(data){
     document.getElementById('fal-owner-name').value = data.owner_name_ar || '';
@@ -4679,7 +5196,7 @@ function falPrev(){
 function falLoadUnits(){
   const propId = document.getElementById('fal-property').value;
   const unitSel = document.getElementById('fal-unit');
-  unitSel.innerHTML = `<option value="">${t('fal.selectUnit') || 'اختر الوحدة (اختياري)'}</option>`;
+  unitSel.innerHTML = `<option value="" data-i="ticket.selectUnit">${t('fal.selectUnit') || 'اختر الوحدة (اختياري)'}</option>`;
   if(propId){
     const units = getUnits().filter(u => u.propId === propId);
     unitSel.innerHTML += units.map(u => `<option value="${u.id}">${u.no||u.unitNo} — ${u.rent||''}</option>`).join('');
@@ -5584,7 +6101,7 @@ function initQuoteModal(){
 function initPurchaseModal(){
   const vendorSelect = document.getElementById('pur-vendor');
   const vendors = window._vendors || [];
-  vendorSelect.innerHTML = '<option value="">-- مورد جديد (أدخل الاسم أدناه) --</option>'
+  vendorSelect.innerHTML = '<option value="" data-i="vendor.add">-- مورد جديد (أدخل الاسم أدناه) --</option>'
     + vendors.map(v => `<option value="${v.id}" data-name="${v.name_ar}" data-tax="${v.tax_number||''}">${v.name_ar}</option>`).join('');
   document.getElementById('pur-supplier-name').value = '';
   document.getElementById('pur-tax-no').value = '';
@@ -5823,11 +6340,11 @@ function exportPDF(){
   @media print{button{display:none}}</style></head><body>
   <h2>سندات القبض - تقرير شامل</h2>
   <p style="text-align:center;color:#666;font-size:12px">تاريخ التقرير: ${new Date().toLocaleDateString('ar-SA')}</p>
-  <table><thead><tr><th>رقم السند</th><th>التاريخ</th><th>المستأجر</th><th>الوحدة</th><th>المبلغ</th><th>الضريبة</th><th>الإجمالي</th><th>الدفع</th><th>زاتكا</th></tr></thead>
+  <table><thead><tr><th>رقم السند</th><th>التاريخ</th><th data-i="ticket.tenant">المستأجر</th><th data-i="ticket.unit">الوحدة</th><th data-i="utility.amountExVat">المبلغ</th><th data-i="purchase.vat">الضريبة</th><th data-i="purchase.total">الإجمالي</th><th>الدفع</th><th>زاتكا</th></tr></thead>
   <tbody>${list.map(r=>`<tr><td>${r.num}</td><td>${r.date}</td><td>${r.tenant}</td><td>${r.unit}</td><td>${numFmt(r.amount)}</td><td>${numFmt(r.vat)}</td><td>${numFmt(r.total)}</td><td>${r.method}</td><td>${r.zatca==='reported'?'✓':'—'}</td></tr>`).join('')}</tbody>
-  <tfoot><tr class="total"><td colspan="6" style="text-align:left">الإجمالي الكلي</td><td>${numFmt(list.reduce((s,r)=>s+r.total,0))}</td><td colspan="2"></td></tr></tfoot></table>
+  <tfoot><tr class="total"><td colspan="6" style="text-align:left" data-i="purchase.total">الإجمالي الكلي</td><td>${numFmt(list.reduce((s,r)=>s+r.total,0))}</td><td colspan="2"></td></tr></tfoot></table>
   <div class="footer">مُلاك PropTech — تم التصدير في ${new Date().toLocaleDateString('ar-SA')}</div>
-  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة / حفظ PDF</button>
+  <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer" data-i="common.save">🖨 طباعة / حفظ PDF</button>
   </body></html>`); w.document.close();
 }
 function exportSIF(){
@@ -5863,17 +6380,17 @@ function printContract(id){
   </head><body>
   <h2>عقد إيجار عقاري</h2>
   <table><tr><td>رقم العقد</td><td>${c.num}</td></tr>
-  <tr><td>المستأجر</td><td>${c.tenant}</td></tr>
-  <tr><td>رقم الهوية</td><td>${c.nid}</td></tr>
-  <tr><td>الوحدة</td><td>${u?u.num:'—'} - ${p?propName(p):'—'}</td></tr>
+  <tr><td data-i="ticket.tenant">المستأجر</td><td>${c.tenant}</td></tr>
+  <tr><td data-i="customer.nid">رقم الهوية</td><td>${c.nid}</td></tr>
+  <tr><td data-i="ticket.unit">الوحدة</td><td>${u?u.num:'—'} - ${p?propName(p):'—'}</td></tr>
   <tr><td>مدة العقد</td><td>${c.start} إلى ${c.end}</td></tr>
   <tr><td>الإيجار السنوي</td><td>${numFmt(c.annual)} ريال</td></tr>
   <tr><td>الإيجار الشهري</td><td>${numFmt(Math.round(c.annual/12))} ريال</td></tr>
-  <tr><td>ضريبة القيمة المضافة 15%</td><td>${numFmt(Math.round(c.annual/12*0.15))} ريال</td></tr>
+  <tr><td data-i="po.vat">ضريبة القيمة المضافة 15%</td><td>${numFmt(Math.round(c.annual/12*0.15))} ريال</td></tr>
   <tr><td>التأمين</td><td>${numFmt(c.deposit)} ريال</td></tr>
   <tr><td>التحقق عبر النفاذ</td><td>${c.nafathVerified?'✓ تم التحقق':'غير موثق'}</td></tr>
   </table>
-  <div class="sig"><span>توقيع المؤجر: _______________</span><span>توقيع المستأجر: _______________</span></div>
+  <div class="sig"><span>توقيع المؤجر: _______________</span><span data-i="ticket.tenant">توقيع المستأجر: _______________</span></div>
   <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة</button>
   </body></html>`);
 }
@@ -5887,16 +6404,16 @@ function printReceipt(id){
   </head><body>
   <h2>سند قبض - Receipt Voucher</h2>
   <p style="text-align:center;font-size:11px;color:#666">${r.num}</p>
-  <table><tr><td>المستأجر</td><td>${r.tenant}</td></tr>
-  <tr><td>الوحدة</td><td>${r.unit} - ${r.prop}</td></tr>
-  <tr><td>المبلغ</td><td>${numFmt(r.amount)} ريال</td></tr>
-  <tr><td>ضريبة القيمة المضافة 15%</td><td>${numFmt(r.vat)} ريال</td></tr>
+  <table><tr><td data-i="ticket.tenant">المستأجر</td><td>${r.tenant}</td></tr>
+  <tr><td data-i="ticket.unit">الوحدة</td><td>${r.unit} - ${r.prop}</td></tr>
+  <tr><td data-i="utility.amountExVat">المبلغ</td><td>${numFmt(r.amount)} ريال</td></tr>
+  <tr><td data-i="po.vat">ضريبة القيمة المضافة 15%</td><td>${numFmt(r.vat)} ريال</td></tr>
   <tr><td>التاريخ</td><td>${r.date}</td></tr>
   <tr><td>طريقة الدفع</td><td>${r.method}</td></tr>
   <tr><td>حالة زاتكا</td><td>${r.zatca==='reported'?'<span class="zatca-badge">✓ مبلّغ</span>':'<span style="color:#D97706">معلق</span>'}</td></tr>
   </table>
-  <div class="total">الإجمالي: ${numFmt(r.total)} ريال</div>
-  ${qrBase64 ? `<div class="qr"><img src="data:image/png;base64,${qrBase64}" alt="QR"/><div style="font-size:9px;color:#999;margin-top:4px">رمز التحقق – هيئة الزكاة والضريبة والجمارك</div></div>` : ''}
+  <div class="total" data-i="purchase.total">الإجمالي: ${numFmt(r.total)} ريال</div>
+  ${qrBase64 ? `<div class="qr"><img src="data:image/png;base64,${qrBase64}" alt="QR"/><div style="font-size:9px;color:#999;margin-top:4px" data-i="purchase.vat">رمز التحقق – هيئة الزكاة والضريبة والجمارك</div></div>` : ''}
   <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة</button>
   </body></html>`);
 }
@@ -5938,17 +6455,17 @@ function showContractReceipts(cid){
 <h2>سندات القبض</h2>
 <p>العقد: <strong>${c ? c.num : '—'}</strong> &nbsp;|&nbsp; المستأجر: <strong>${c ? c.tenant : '—'}</strong></p>
 <table>
-  <thead><tr><th>#</th><th>رقم السند</th><th>التاريخ</th><th>المبلغ</th><th>VAT 15%</th><th>الإجمالي</th><th>طريقة الدفع</th><th>ZATCA</th></tr></thead>
+  <thead><tr><th>#</th><th>رقم السند</th><th>التاريخ</th><th data-i="utility.amountExVat">المبلغ</th><th>VAT 15%</th><th data-i="purchase.total">الإجمالي</th><th>طريقة الدفع</th><th>ZATCA</th></tr></thead>
   <tbody>${rows}</tbody>
   <tfoot>
     <tr class="total-row">
-      <td colspan="5" style="text-align:left">الإجمالي الكلي</td>
+      <td colspan="5" style="text-align:left" data-i="purchase.total">الإجمالي الكلي</td>
       <td>${numFmt(list.reduce((s,r)=>s+r.total,0))} ر.س</td>
       <td colspan="2"></td>
     </tr>
   </tfoot>
 </table>
-<div class="footer">مُلاك PropTech — نظام إدارة العقارات</div>
+<div class="footer" data-i="owner.property">مُلاك PropTech — نظام إدارة العقارات</div>
 <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px">🖨 طباعة</button>
 </body></html>`);
   w.document.close();
@@ -6367,7 +6884,7 @@ function filterListingsType(type) {
 async function loadUnits4Listing() {
   const propId = document.getElementById('nl-property').value;
   const sel = document.getElementById('nl-unit');
-  sel.innerHTML = '<option value="">اختر الوحدة</option>';
+  sel.innerHTML = '<option value="" data-i="ticket.selectUnit">اختر الوحدة</option>';
   if (!propId) return;
   try {
     const res = await apiGet(`/api/v1/units?property_id=${propId}`);
@@ -6525,14 +7042,14 @@ async function viewListing(id) {
         <div><strong>الحالة:</strong> ${statusMap[l.status] || l.status}</div>
         <div><strong>النوع:</strong> ${typeMap[l.listing_type] || l.listing_type}</div>
         <div><strong>السعر:</strong> ${(l.price || 0).toLocaleString('ar-SA')} ${l.currency}</div>
-        <div><strong>العقار:</strong> ${l.property_name || '-'}</div>
-        <div><strong>الوحدة:</strong> ${l.unit_number || '-'}</div>
+        <div><strong data-i="owner.property">العقار:</strong> ${l.property_name || '-'}</div>
+        <div><strong data-i="ticket.unit">الوحدة:</strong> ${l.unit_number || '-'}</div>
         <div><strong>مشاهدات:</strong> ${l.view_count || 0}</div>
-        <div><strong>استفسارات:</strong> ${l.inquiry_count || 0}</div>
+        <div><strong data-i="deals.inquiry">استفسارات:</strong> ${l.inquiry_count || 0}</div>
         ${l.published_at ? `<div><strong>تاريخ النشر:</strong> ${l.published_at}</div>` : ''}
         ${l.expires_at ? `<div><strong>تاريخ الانتهاء:</strong> ${l.expires_at}</div>` : ''}
       </div>
-      <div style="margin-bottom:12px"><strong>الوصف:</strong><br>${l.description_ar || 'لا يوجد'}</div>
+      <div style="margin-bottom:12px"><strong data-i="ticket.description">الوصف:</strong><br>${l.description_ar || 'لا يوجد'}</div>
       <hr style="margin:12px 0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <strong>الوسائط (${l.media?.length || 0})</strong>
@@ -6542,7 +7059,7 @@ async function viewListing(id) {
       </div>
       <hr style="margin:12px 0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <strong>الاستفسارات (${l.inquiries?.length || 0})</strong>
+        <strong data-i="deals.inquiry">الاستفسارات (${l.inquiries?.length || 0})</strong>
       </div>
       ${l.inquiries && l.inquiries.length > 0 ? l.inquiries.map(inq => `
         <div style="padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px">
@@ -6553,7 +7070,7 @@ async function viewListing(id) {
           <div style="font-size:13px;color:var(--text3)">${inq.inquirer_phone || ''} ${inq.inquirer_email ? '| ' + inq.inquirer_email : ''}</div>
           <div style="font-size:13px;margin-top:4px">${inq.message || ''}</div>
         </div>
-      `).join('') : '<span style="color:var(--text3)">لا توجد استفسارات</span>'}`;
+      `).join('') : '<span style="color:var(--text3)" data-i="deals.inquiry">لا توجد استفسارات</span>'}`;
     document.getElementById('listing-view-content').innerHTML = html;
     openM('m-listing-view');
   } catch (e) { alert('خطأ: ' + e.message); }
@@ -6797,7 +7314,7 @@ function filterTickets(status) {
 async function loadUnits4Ticket() {
   const propId = document.getElementById('nt-property').value;
   const sel = document.getElementById('nt-unit');
-  sel.innerHTML = '<option value="">اختر الوحدة</option>';
+  sel.innerHTML = '<option value="" data-i="ticket.selectUnit">اختر الوحدة</option>';
   if (!propId) return;
   try {
     const res = await apiGet(`/api/v1/units?property_id=${propId}`);
@@ -6817,19 +7334,19 @@ async function renderTickets() {
     const res = await apiGet(url);
     const tickets = res.data || [];
     if (tickets.length === 0) {
-      body.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:20px;color:var(--text3)">لا توجد تذاكر صيانة</td></tr>';
+      body.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:20px;color:var(--text3)" data-i="purchase.maintenance">لا توجد تذاكر صيانة</td></tr>';
       statsEl.innerHTML = '';
       return;
     }
-    const statusMap = { open:'مفتوحة', assigned:'مسندة', in_progress:'قيد التنفيذ', completed:'مكتملة', cancelled:'ملغية' };
+    const statusMap = { open:t('status.open'), assigned:t('status.assigned'), in_progress:t('status.inProgress'), completed:t('status.completed'), cancelled:t('status.cancelled') };
     const statusBadge = { open:'war', assigned:'inf', in_progress:'pri', completed:'suc', cancelled:'dan' };
-    const priorityMap = { low:'منخفضة', medium:'متوسطة', high:'عالية', urgent:'عاجلة' };
+    const priorityMap = { low:t('priority.low'), medium:t('priority.medium'), high:t('priority.high'), urgent:t('priority.urgent') };
     const priorityClass = { low:'', medium:'', high:'badge-war', urgent:'badge-dan' };
     const analytics = await apiGet('/api/v1/maintenance/analytics');
     const a = analytics.data || {};
     statsEl.innerHTML = `
       <div class="stat"><span class="stat-num">${a.total || 0}</span><span class="stat-lbl">إجمالي</span></div>
-      <div class="stat"><span class="stat-num">${a.open || 0}</span><span class="stat-lbl">قيد التنفيذ</span></div>
+      <div class="stat"><span class="stat-num">${a.open || 0}</span><span class="stat-lbl" data-i="maintenance.inProgress">قيد التنفيذ</span></div>
       <div class="stat"><span class="stat-num">${a.completed || 0}</span><span class="stat-lbl">مكتملة</span></div>`;
     body.innerHTML = tickets.map((t, i) => `
       <tr>
@@ -6856,9 +7373,9 @@ async function resetTicketModal() {
   document.getElementById('nt-id').value = '';
   document.getElementById('nt-title').value = '';
   document.getElementById('nt-desc').value = '';
-  document.getElementById('nt-category').innerHTML = '<option value="">اختر التصنيف</option>';
-  document.getElementById('nt-property').innerHTML = '<option value="">اختر العقار</option>';
-  document.getElementById('nt-unit').innerHTML = '<option value="">اختر الوحدة</option>';
+  document.getElementById('nt-category').innerHTML = '<option value="" data-i="ticket.selectCategory">اختر التصنيف</option>';
+  document.getElementById('nt-property').innerHTML = '<option value="" data-i="deal.selectProperty">اختر العقار</option>';
+  document.getElementById('nt-unit').innerHTML = '<option value="" data-i="ticket.selectUnit">اختر الوحدة</option>';
   document.getElementById('nt-priority').value = 'medium';
   document.getElementById('nt-cost-bearer').value = 'owner';
   document.getElementById('nt-est-cost').value = '';
@@ -6915,19 +7432,19 @@ async function viewTicket(id) {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
         <div><strong>رقم التذكرة:</strong> ${t.ticket_number}</div>
         <div><strong>الحالة:</strong> ${statusMap[t.status] || t.status}</div>
-        <div><strong>الأولوية:</strong> ${priorityMap[t.priority] || t.priority}</div>
-        <div><strong>التصنيف:</strong> ${t.category_name || '-'}</div>
-        <div><strong>العقار:</strong> ${t.property_name || '-'}</div>
-        <div><strong>الوحدة:</strong> ${t.unit_number || '-'}</div>
+        <div><strong data-i="ticket.priority">الأولوية:</strong> ${priorityMap[t.priority] || t.priority}</div>
+        <div><strong data-i="inv.category">التصنيف:</strong> ${t.category_name || '-'}</div>
+        <div><strong data-i="owner.property">العقار:</strong> ${t.property_name || '-'}</div>
+        <div><strong data-i="ticket.unit">الوحدة:</strong> ${t.unit_number || '-'}</div>
         <div><strong>المسند إلى:</strong> ${t.assigned_name || '-'}</div>
-        <div><strong>التكلفة التقديرية:</strong> ${(t.estimated_cost || 0).toLocaleString('ar-SA')}</div>
-        <div><strong>التكلفة الفعلية:</strong> ${(t.actual_cost || 0).toLocaleString('ar-SA')}</div>
-        <div><strong>تحمل التكلفة:</strong> ${costMap[t.cost_bearer] || t.cost_bearer}</div>
-        <div><strong>المبلغ:</strong> ${t.reported_by_name || '-'}</div>
-        <div><strong>تاريخ الصيانة:</strong> ${t.scheduled_date || '-'}</div>
+        <div><strong data-i="ticket.estCost">التكلفة التقديرية:</strong> ${(t.estimated_cost || 0).toLocaleString('ar-SA')}</div>
+        <div><strong data-i="inv.roll">التكلفة الفعلية:</strong> ${(t.actual_cost || 0).toLocaleString('ar-SA')}</div>
+        <div><strong data-i="ticket.costBearer">تحمل التكلفة:</strong> ${costMap[t.cost_bearer] || t.cost_bearer}</div>
+        <div><strong data-i="utility.amountExVat">المبلغ:</strong> ${t.reported_by_name || '-'}</div>
+        <div><strong data-i="purchase.maintenance">تاريخ الصيانة:</strong> ${t.scheduled_date || '-'}</div>
       </div>
-      <div style="margin-bottom:12px"><strong>الوصف:</strong><br>${t.description || 'لا يوجد'}</div>
-      <div style="margin-bottom:12px"><strong>ملاحظات الإغلاق:</strong><br>${t.resolution_notes || 'لا يوجد'}</div>
+      <div style="margin-bottom:12px"><strong data-i="ticket.description">الوصف:</strong><br>${t.description || 'لا يوجد'}</div>
+      <div style="margin-bottom:12px"><strong data-i="common.notes">ملاحظات الإغلاق:</strong><br>${t.resolution_notes || 'لا يوجد'}</div>
       <hr style="margin:12px 0">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <strong>الأنشطة</strong>
@@ -7240,7 +7757,7 @@ function exportPLPDF(){
     doc.getElementById('pp-income').textContent = numFmt(yearly.totals.income);
     doc.getElementById('pp-expense').textContent = numFmt(yearly.totals.expenses);
     doc.getElementById('pp-profit').textContent = numFmt(yearly.totals.profit);
-    const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    const months = [t('month.jan'),t('month.feb'),t('month.mar'),t('month.apr'),t('month.may'),t('month.jun'),t('month.jul'),t('month.aug'),t('month.sep'),t('month.oct'),t('month.nov'),t('month.dec')];
     doc.getElementById('pp-rows').innerHTML = yearly.months.map((m,i) =>
       `<tr><td>${months[i]}</td><td>${numFmt(m.income.total)}</td><td>${numFmt(m.expenses.total)}</td><td>${numFmt(m.netProfit)}</td></tr>`
     ).join('');
@@ -7355,9 +7872,9 @@ function printTaxReport(){
   td{padding:6px 8px;border:1px solid #ddd;font-size:12px;text-align:center}
   .footer{text-align:center;margin-top:30px;font-size:11px;color:#999;border-top:1px solid #ddd;padding-top:10px}
   @media print{button{display:none}}</style></head><body>
-  <h2>التقرير الضريبي - ضريبة القيمة المضافة ${year}</h2>
+  <h2 data-i="po.vat">التقرير الضريبي - ضريبة القيمة المضافة ${year}</h2>
   <div id="tr-print-stats" class="stats"></div>
-  <table><thead><tr><th>الشهر</th><th>ضريبة المخرجات</th><th>ضريبة المدخلات</th><th>صافي VAT</th></tr></thead>
+  <table><thead><tr><th>الشهر</th><th data-i="purchase.vat">ضريبة المخرجات</th><th data-i="purchase.vat">ضريبة المدخلات</th><th>صافي VAT</th></tr></thead>
   <tbody id="tr-print-rows"></tbody></table>
   <div class="footer">مُلاك PropTech — تاريخ التقرير: ${new Date().toLocaleDateString('ar-SA')}</div>
   <br><button onclick="window.print()" style="padding:8px 20px;background:#1B4F8A;color:#fff;border:none;border-radius:6px;cursor:pointer">🖨 طباعة</button>
@@ -7366,8 +7883,8 @@ function printTaxReport(){
   apiGet(`/finance/tax-report?year=${year}`).then(data => {
     const d = w.document;
     d.getElementById('tr-print-stats').innerHTML = `
-      <div class="stat-box"><div class="val" style="color:#1A7A4A">${numFmt(data.totals.outputVat)}</div><div class="lbl">إجمالي ضريبة المخرجات</div></div>
-      <div class="stat-box"><div class="val" style="color:#B91C1C">${numFmt(data.totals.inputVat)}</div><div class="lbl">إجمالي ضريبة المدخلات</div></div>
+      <div class="stat-box"><div class="val" style="color:#1A7A4A">${numFmt(data.totals.outputVat)}</div><div class="lbl" data-i="purchase.vat">إجمالي ضريبة المخرجات</div></div>
+      <div class="stat-box"><div class="val" style="color:#B91C1C">${numFmt(data.totals.inputVat)}</div><div class="lbl" data-i="purchase.vat">إجمالي ضريبة المدخلات</div></div>
       <div class="stat-box"><div class="val" style="color:${data.totals.netVat>=0?'#1A7A4A':'#B91C1C'}">${numFmt(data.totals.netVat)}</div><div class="lbl">صافي VAT المستحق</div></div>
     `;
     const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
@@ -7459,9 +7976,9 @@ function addPOItem(reCalc=true){
   row.className = 'form-row-3';
   row.style.cssText = 'align-items:end';
   row.innerHTML = `
-    <div class="fg"><label>اسم الصنف <input class="po-item-name" placeholder="اسم الصنف" name="po-item-name" style="display:block;width:100%;margin-top:4px"></label></div>
-    <div class="fg"><label>الكمية <input type="number" class="po-item-qty" min="1" value="1" oninput="recalcPOTotals()" name="po-item-qty" style="display:block;width:100%;margin-top:4px"></label></div>
-    <div class="fg"><label>سعر الوحدة <input type="number" class="po-item-price" min="0" step="0.01" oninput="recalcPOTotals()" name="po-item-price" style="display:block;width:100%;margin-top:4px"></label></div>`;
+    <div class="fg"><label data-i="po.itemName">اسم الصنف <input class="po-item-name" placeholder="اسم الصنف" name="po-item-name" style="display:block;width:100%;margin-top:4px"></label></div>
+    <div class="fg"><label data-i="po.qty">الكمية <input type="number" class="po-item-qty" min="1" value="1" oninput="recalcPOTotals()" name="po-item-qty" style="display:block;width:100%;margin-top:4px"></label></div>
+    <div class="fg"><label data-i="po.unitPrice">سعر الوحدة <input type="number" class="po-item-price" min="0" step="0.01" oninput="recalcPOTotals()" name="po-item-price" style="display:block;width:100%;margin-top:4px"></label></div>`;
   container.appendChild(row);
   if(reCalc) recalcPOTotals();
 }
