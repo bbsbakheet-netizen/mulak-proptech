@@ -594,17 +594,17 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
     <div class="nav-section" onclick="toggleNavSection(this)" data-i="nav.finance">المالية</div>
     <div class="nav-item" onclick="nav('contracts',this)"><i class="ti ti-file-text" aria-hidden="true"></i><span data-i="nav.contracts">عقود الإيجار</span><span class="nav-badge" id="badge-exp" style="display:none">0</span></div>
-    <div class="nav-item" onclick="nav('ejar',this)"><i class="ti ti-government"></i><span>إيجار</span></div>
+    <div class="nav-item" onclick="nav('ejar',this)"><i class="ti ti-government"></i><span data-i="nav.ejar">إيجار</span></div>
     <div class="nav-item" onclick="nav('receipts',this)"><i class="ti ti-receipt" aria-hidden="true"></i><span data-i="nav.receipts">سندات القبض</span></div>
     <div class="nav-item" onclick="nav('quotations',this)"><i class="ti ti-file-invoice" aria-hidden="true"></i><span data-i="nav.quotations">عروض الأسعار</span></div>
     <div class="nav-item" onclick="nav('payments',this)"><i class="ti ti-cash" aria-hidden="true"></i><span data-i="nav.payments">المدفوعات</span></div>
     <div class="nav-item" onclick="nav('profit-loss',this)"><i class="ti ti-report-money" aria-hidden="true"></i><span data-i="nav.profitLoss">الأرباح والخسائر</span></div>
 
     <div class="nav-section" onclick="toggleNavSection(this)" data-i="nav.marketingOps">التسويق والعمليات</div>
-    <div class="nav-item" onclick="nav('marketing',this)"><i class="ti ti-megaphone"></i><span>التسويق</span></div>
-    <div class="nav-item" onclick="nav('deals',this)"><i class="ti ti-handshake"></i><span>الصفقات</span></div>
-    <div class="nav-item" onclick="nav('commissions',this)"><i class="ti ti-coin"></i><span>العمولات</span></div>
-    <div class="nav-item" onclick="nav('maintenance',this)"><i class="ti ti-wrench"></i><span>الصيانة</span></div>
+    <div class="nav-item" onclick="nav('marketing',this)"><i class="ti ti-megaphone"></i><span data-i="nav.marketing">التسويق</span></div>
+    <div class="nav-item" onclick="nav('deals',this)"><i class="ti ti-handshake"></i><span data-i="nav.deals">الصفقات</span></div>
+    <div class="nav-item" onclick="nav('commissions',this)"><i class="ti ti-coin"></i><span data-i="nav.commissions">العمولات</span></div>
+    <div class="nav-item" onclick="nav('maintenance',this)"><i class="ti ti-wrench"></i><span data-i="nav.maintenance">الصيانة</span></div>
     <div class="nav-item" onclick="nav('fal',this)"><i class="ti ti-ad" aria-hidden="true"></i><span data-i="nav.fal">منصة فال</span></div>
 
     <div class="nav-section" onclick="toggleNavSection(this)" data-i="nav.hr">الموارد البشرية</div>
@@ -621,18 +621,18 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
     <div class="nav-item" onclick="nav('utilities',this)"><i class="ti ti-bolt" aria-hidden="true"></i><span data-i="nav.utilities">فواتير الخدمات</span></div>
 
     <div class="nav-section" onclick="toggleNavSection(this)" data-i="nav.accounting">المحاسبة</div>
-    <div class="nav-item" onclick="nav('chart-of-accounts',this)"><i class="ti ti-book" aria-hidden="true"></i><span>دليل الحسابات</span></div>
-    <div class="nav-item" onclick="nav('journal',this)"><i class="ti ti-notes" aria-hidden="true"></i><span>قيود اليومية</span></div>
-    <div class="nav-item" onclick="nav('trial-balance',this)"><i class="ti ti-scale" aria-hidden="true"></i><span>ميزان المراجعة</span></div>
-    <div class="nav-item" onclick="nav('financial-reports',this)"><i class="ti ti-report-money" aria-hidden="true"></i><span>القوائم المالية</span></div>
-    <div class="nav-item" onclick="nav('zatca',this)"><i class="ti ti-certificate"></i><span>الفوترة الإلكترونية</span></div>
+    <div class="nav-item" onclick="nav('chart-of-accounts',this)"><i class="ti ti-book" aria-hidden="true"></i><span data-i="nav.chartOfAccounts">دليل الحسابات</span></div>
+    <div class="nav-item" onclick="nav('journal',this)"><i class="ti ti-notes" aria-hidden="true"></i><span data-i="nav.journal">قيود اليومية</span></div>
+    <div class="nav-item" onclick="nav('trial-balance',this)"><i class="ti ti-scale" aria-hidden="true"></i><span data-i="nav.trialBalance">ميزان المراجعة</span></div>
+    <div class="nav-item" onclick="nav('financial-reports',this)"><i class="ti ti-report-money" aria-hidden="true"></i><span data-i="nav.financialReports">القوائم المالية</span></div>
+    <div class="nav-item" onclick="nav('zatca',this)"><i class="ti ti-certificate"></i><span data-i="nav.zatca">الفوترة الإلكترونية</span></div>
 
     <div class="nav-section" onclick="toggleNavSection(this)" data-i="nav.reportsSettings">التقارير والإعدادات</div>
     <div class="nav-item" onclick="nav('reports',this)"><i class="ti ti-chart-bar" aria-hidden="true"></i><span data-i="nav.reports">التقارير</span></div>
     <div class="nav-item" onclick="nav('alerts',this)"><i class="ti ti-bell" aria-hidden="true"></i><span data-i="nav.alerts">التنبيهات</span><span class="nav-badge" id="badge-alerts" style="display:none">0</span></div>
-    <div class="nav-item" onclick="nav('rbac',this)"><i class="ti ti-shield-lock"></i><span>الصلاحيات</span></div>
-    <div class="nav-item" onclick="nav('branches',this)"><i class="ti ti-building"></i><span>الفروع</span></div>
-    <div class="nav-item" onclick="nav('bi',this)"><i class="ti ti-chart-infographic"></i><span>تحليلات</span></div>
+    <div class="nav-item" onclick="nav('rbac',this)"><i class="ti ti-shield-lock"></i><span data-i="nav.rbac">الصلاحيات</span></div>
+    <div class="nav-item" onclick="nav('branches',this)"><i class="ti ti-building"></i><span data-i="nav.branches">الفروع</span></div>
+    <div class="nav-item" onclick="nav('bi',this)"><i class="ti ti-chart-infographic"></i><span data-i="nav.bi">تحليلات</span></div>
 
   </div>
   <div class="sidebar-footer">
@@ -766,11 +766,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
   <!-- ── EJAR ────────────────────────────────── -->
   <div id="p-ejar" class="page">
-    <div class="page-header"><i class="ti ti-government"></i><span>منصة إيجار — توثيق العقود</span></div>
+    <div class="page-header"><i class="ti ti-government"></i><span data-i="nav.ejar">منصة إيجار — توثيق العقود</span></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn btn-sm active" onclick="switchEjarTab('contracts',this)"><i class="ti ti-list"></i><span>العقود المسجلة</span></button>
-      <button class="btn btn-sm" onclick="switchEjarTab('pending',this)"><i class="ti ti-clock"></i><span>عقود غير مسجلة</span></button>
-      <button class="btn btn-sm" onclick="switchEjarTab('settings',this)"><i class="ti ti-settings"></i><span>الإعدادات</span></button>
+      <button class="btn btn-sm active" onclick="switchEjarTab('contracts',this)"><i class="ti ti-list"></i><span data-i="ejar.registeredContracts">العقود المسجلة</span></button>
+      <button class="btn btn-sm" onclick="switchEjarTab('pending',this)"><i class="ti ti-clock"></i><span data-i="ejar.unregisteredContracts">عقود غير مسجلة</span></button>
+      <button class="btn btn-sm" onclick="switchEjarTab('settings',this)"><i class="ti ti-settings"></i><span data-i="ejar.settings">الإعدادات</span></button>
     </div>
     <div class="stats-row" id="ejar-stats"></div>
 
@@ -863,11 +863,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
   <!-- ── RBAC ─────────────────────────────────── -->
   <div id="p-rbac" class="page">
-    <div class="page-header"><i class="ti ti-shield-lock"></i><span>إدارة الصلاحيات (RBAC)</span></div>
+    <div class="page-header"><i class="ti ti-shield-lock"></i><span data-i="nav.rbac">إدارة الصلاحيات (RBAC)</span></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn btn-sm active" onclick="switchRbacTab('roles',this)"><i class="ti ti-users"></i><span>الأدوار</span></button>
-      <button class="btn btn-sm" onclick="switchRbacTab('users',this)"><i class="ti ti-user-cog"></i><span>المستخدمين</span></button>
-      <button class="btn btn-sm" onclick="switchRbacTab('logs',this)"><i class="ti ti-list"></i><span>سجل الصلاحيات</span></button>
+      <button class="btn btn-sm active" onclick="switchRbacTab('roles',this)"><i class="ti ti-users"></i><span data-i="rbac.rolesTab">الأدوار</span></button>
+      <button class="btn btn-sm" onclick="switchRbacTab('users',this)"><i class="ti ti-user-cog"></i><span data-i="rbac.usersTab">المستخدمين</span></button>
+      <button class="btn btn-sm" onclick="switchRbacTab('logs',this)"><i class="ti ti-list"></i><span data-i="rbac.logsTab">سجل الصلاحيات</span></button>
     </div>
 
     <!-- Roles tab -->
@@ -951,10 +951,10 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
   <!-- ── BRANCHES ────────────────────────────── -->
   <div id="p-branches" class="page">
-    <div class="page-header"><i class="ti ti-building"></i><span>الفروع</span></div>
+    <div class="page-header"><i class="ti ti-building"></i><span data-i="nav.branches">الفروع</span></div>
     <div style="display:flex;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
       <div class="stats-row" id="branch-stats" style="flex:1"></div>
-      <button class="btn btn-sm btn-primary" onclick="resetBranchModal();openM('m-branch')"><i class="ti ti-plus"></i><span>فرع جديد</span></button>
+      <button class="btn btn-sm btn-primary" onclick="resetBranchModal();openM('m-branch')"><i class="ti ti-plus"></i><span data-i="branches.addBtn">فرع جديد</span></button>
     </div>
     <div class="card" style="padding:0"><div class="table-wrap">
       <table><thead><tr>
@@ -965,12 +965,12 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
   <!-- ── BI ──────────────────────────────────── -->
   <div id="p-bi" class="page">
-    <div class="page-header"><i class="ti ti-chart-infographic"></i><span>تحليلات الأعمال (BI)</span></div>
+    <div class="page-header"><i class="ti ti-chart-infographic"></i><span data-i="nav.bi">تحليلات الأعمال (BI)</span></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn btn-sm active" onclick="switchBiTab('summary',this)"><i class="ti ti-layout-dashboard"></i><span>ملخص</span></button>
-      <button class="btn btn-sm" onclick="switchBiTab('occupancy',this)"><i class="ti ti-building"></i><span>الإشغال</span></button>
-      <button class="btn btn-sm" onclick="switchBiTab('revenue',this)"><i class="ti ti-cash"></i><span>الإيرادات</span></button>
-      <button class="btn btn-sm" onclick="switchBiTab('roi',this)"><i class="ti ti-trending-up"></i><span>ROI</span></button>
+      <button class="btn btn-sm active" onclick="switchBiTab('summary',this)"><i class="ti ti-layout-dashboard"></i><span data-i="bi.summaryTab">ملخص</span></button>
+      <button class="btn btn-sm" onclick="switchBiTab('occupancy',this)"><i class="ti ti-building"></i><span data-i="bi.occupancyTab">الإشغال</span></button>
+      <button class="btn btn-sm" onclick="switchBiTab('revenue',this)"><i class="ti ti-cash"></i><span data-i="bi.revenueTab">الإيرادات</span></button>
+      <button class="btn btn-sm" onclick="switchBiTab('roi',this)"><i class="ti ti-trending-up"></i><span data-i="bi.roiTab">ROI</span></button>
     </div>
 
     <!-- Summary -->
@@ -1189,11 +1189,11 @@ tr:hover td{background:color-mix(in srgb, var(--md-on-surface) 4%, transparent)}
 
   <!-- ── ZATCA PAGE ─────────────────────────── -->
   <div id="p-zatca" class="page">
-    <div class="page-header"><i class="ti ti-certificate"></i><span>الفوترة الإلكترونية (ZATCA)</span></div>
+    <div class="page-header"><i class="ti ti-certificate"></i><span data-i="nav.zatca">الفوترة الإلكترونية (ZATCA)</span></div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn btn-sm active" onclick="switchZatcaTab('settings',this)"><i class="ti ti-settings"></i><span>الإعدادات</span></button>
-      <button class="btn btn-sm" onclick="switchZatcaTab('queue',this)"><i class="ti ti-list"></i><span>سجل الإرسال</span></button>
-      <button class="btn btn-sm" onclick="switchZatcaTab('report',this)"><i class="ti ti-report"></i><span>التقارير الضريبية</span></button>
+      <button class="btn btn-sm active" onclick="switchZatcaTab('settings',this)"><i class="ti ti-settings"></i><span data-i="zatca.settingsTab">الإعدادات</span></button>
+      <button class="btn btn-sm" onclick="switchZatcaTab('queue',this)"><i class="ti ti-list"></i><span data-i="zatca.queueTab">سجل الإرسال</span></button>
+      <button class="btn btn-sm" onclick="switchZatcaTab('report',this)"><i class="ti ti-report"></i><span data-i="zatca.reportTab">التقارير الضريبية</span></button>
     </div>
 
     <!-- Settings -->
@@ -2325,6 +2325,7 @@ const T = {
     'fal.submit':'إرسال إلى فال','fal.changeStage':'تغيير المرحلة',
     'util.syncResult':'تمت المزامنة','util.synced':'تمت مزامنة','util.newBills':'فاتورة جديدة',
     'util.alreadySynced':'جميع الفواتير محدثة مسبقاً','util.syncFailed':'فشلت المزامنة: ',
+    'nav.ejar':'إيجار','nav.chartOfAccounts':'دليل الحسابات','nav.journal':'قيود اليومية','nav.trialBalance':'ميزان المراجعة','nav.financialReports':'القوائم المالية','nav.zatca':'الفوترة الإلكترونية','nav.accounting':'المحاسبة',
     'currency':'ر.س',
     'pl.revenue':'الإيرادات','pl.profit':'ربح','pl.rentIncome':'إيرادات إيجار','pl.total':'الإجمالي',
     'pl.noIncome':'لا توجد إيرادات هذا الشهر','pl.noExpenses':'لا توجد مصروفات هذا الشهر',
@@ -2513,6 +2514,7 @@ const T = {
     'fal.submit':'Submit to Fal','fal.changeStage':'Change Stage',
     'util.syncResult':'Synced','util.synced':'Synced','util.newBills':'new bills',
     'util.alreadySynced':'All bills are already up to date','util.syncFailed':'Sync failed: ',
+    'nav.ejar':'Ejar','nav.chartOfAccounts':'Chart of Accounts','nav.journal':'Journal','nav.trialBalance':'Trial Balance','nav.financialReports':'Financial Reports','nav.zatca':'E-Invoicing','nav.accounting':'Accounting',
     'currency':'SAR',
     'pl.revenue':'Revenue','pl.profit':'Profit','pl.rentIncome':'Rental Income','pl.total':'Total',
     'pl.noIncome':'No income this month','pl.noExpenses':'No expenses this month',
