@@ -44,3 +44,5 @@ server_err.txt
 server.err
 render.yaml
 railway.json
+
+testsprite_tests\tmp\config.json
