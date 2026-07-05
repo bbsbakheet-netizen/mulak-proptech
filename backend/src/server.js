@@ -1,5 +1,6 @@
 import { createApp } from './app.js';
 import { getDb } from './db/database.js';
+import './db/seed.js';
 
 const PORT = process.env.PORT || 3000;
 

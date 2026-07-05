@@ -3781,7 +3781,7 @@ let apiLog = [];
 // ═══════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════
-const t = (k, p) => { let s = T[lang][k] || T.ar[k] || k; if(p) for(const [key,val] of Object.entries(p)) s = s.replace(`{${key}}`,val); return s; };
+const t = (k, p) => { let s = T[lang] && T[lang][k] && T[lang][k] !== k ? T[lang][k] : (T.ar[k] || k); if(p) for(const [key,val] of Object.entries(p)) s = s.replace(`{${key}}`,val); return s; };
 
 function getProp(id){ return getProps().find(p=>p.id===id)||{nameAr:'—',nameEn:'—'}; }
 function getUnit(id){ return getUnits().find(u=>u.id===id)||{num:'—'}; }
