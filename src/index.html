@@ -4142,7 +4142,7 @@ async function renderCustomers(){
   } catch(e) {}
 
   const customers = window.customers || [];
-  const lang = window.lang || 'ar';
+  const currentLang = window.lang || 'ar';
   const individuals = customers.filter(c => c.type === 'individual');
   const companies = customers.filter(c => c.type === 'company');
   const active = customers.filter(c => c.status === 'active');
