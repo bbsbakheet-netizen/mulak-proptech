@@ -3832,15 +3832,11 @@ function avatar(name, i=0){
 function numFmt(n){ return Number(n).toLocaleString(t('locale.numFmt')); }
 
 // API helpers for inline scripts
-if (window.location.protocol === 'file:') {
-  document.body.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:16px;padding:20px;text-align:center;font-family:sans-serif"><div style="font-size:48px">⚠️</div><h2>افتح التطبيق عبر الخادم المحلي</h2><p style="color:#666;max-width:400px">يجب فتح التطبيق عبر <code style="background:#f0f0f0;padding:4px 8px;border-radius:4px">http://127.0.0.1:3000</code> بدلاً من فتح الملف مباشرة بسبب سياسات أمان المتصفح.</p><p style="color:#666;max-width:400px">Open the app via <code style="background:#f0f0f0;padding:4px 8px;border-radius:4px">http://127.0.0.1:3000</code> instead of opening the file directly.</p></div>`;
-  throw new Error('Please open via http://127.0.0.1:3000');
-}
-const API_ROOT = (window.location.origin !== 'null' && window.location.origin) || 'http://127.0.0.1:3000';
-const API_BASE = `${API_ROOT}/api/v1`;
+window.API_ROOT = (window.location.origin !== 'null' && window.location.origin) || 'http://127.0.0.1:3000';
+window.API_BASE = window.API_ROOT + '/api/v1';
 function apiUrl(path){
-  if(path.startsWith('/nafath/') || path.startsWith('/otp/')) return `${API_ROOT}/api${path}`;
-  return path.startsWith('/api/') ? `${API_ROOT}${path}` : `${API_BASE}${path}`;
+  if(path.startsWith('/nafath/') || path.startsWith('/otp/')) return window.API_ROOT + '/api' + path;
+  return path.startsWith('/api/') ? window.API_ROOT + path : window.API_BASE + path;
 }
 function apiHeaders(){
   const token = localStorage.getItem('mullak_token');
